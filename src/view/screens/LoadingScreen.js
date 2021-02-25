@@ -12,7 +12,7 @@ const LoadingScreen = (props) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>HABUL</Text>
+      <Text style={styles.title}>HABUL APP</Text>
     </View>
   );
 };
