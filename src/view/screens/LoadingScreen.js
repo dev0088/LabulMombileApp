@@ -10,6 +10,8 @@ const LoadingScreen = (props) => {
   useEffect(() => {
     if (percent < 100) {
       increasePercent();
+    } else {
+      Actions.reset('home');
     }
   }, [percent]);
 
