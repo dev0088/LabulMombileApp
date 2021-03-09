@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-import { em } from '../common/const';
+import { em } from 'view/common/const';
 
 const CommonText = (props) => {
   let color = '#6A8596';

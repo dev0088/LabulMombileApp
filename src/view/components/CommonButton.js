@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { em, WIDTH } from '../common/const';
+import { em, WIDTH } from 'view/common/const';
 import { TouchableOpacity } from 'react-native';
 
 const CommonButton = (props) => {

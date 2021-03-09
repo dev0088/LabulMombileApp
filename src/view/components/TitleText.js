@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-import { em } from '../common/const';
+import { em } from 'view/common/const';
 
 const TitleText = (props) => {
   let color = '#1E2D60';

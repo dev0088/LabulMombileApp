@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import { em, WIDTH } from '../common/const';
+import { em, WIDTH } from 'view/common/const';
 import LinearGradient from 'react-native-linear-gradient';
 
 const LoadingScreen = (props) => {
@@ -24,7 +24,6 @@ const LoadingScreen = (props) => {
       setPercent(newPercent);
     }, 40);
   }
-
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -35,11 +34,12 @@ const LoadingScreen = (props) => {
         colors={['#64E4F4', '#4BD8E9']}
         style={styles.linearGradient}>
         <View style={styles.topHalfContainer}>
-          <Text>Habule Title</Text>
-          <Text>Habule Logo</Text>
+          <View style={styles.imageLogoContainer}>
+            <Image source={require('assets/images/img_logo_white.png')} style={styles.imageLogo} />
+          </View>
         </View>
         <View style={styles.bottomHalfContainer}>
-          <Text>Habule Title</Text>
+          <Image source={require('assets/images/txt_logo_white.png')} style={styles.textLogo} />
           <View style={styles.progressContainer}>
             <View style={[{ width: ((WIDTH - 120 * em) / 100) * percent }, styles.progressBar]} />
           </View>
@@ -57,6 +57,7 @@ const styles = {
     flex: 0.5,
     flexDirection: 'column-reverse',
     alignItems: 'center',
+    paddingDown: 2.27 * em,
   },
   bottomHalfContainer: {
     flex: 0.5,
@@ -70,6 +71,7 @@ const styles = {
   progressContainer: {
     width: WIDTH - 120 * em,
     height: 6 * em,
+    marginTop: 65 * em,
     backgroundColor: '#A4E4F4',
     borderRadius: 3 * em,
   },
@@ -79,6 +81,22 @@ const styles = {
   linearGradient: {
     flex: 1,
     width: '100%',
+  },
+  imageLogoContainer: {
+    width: 109.07 * em,
+    height: 117.64 * em,
+  },
+  imageLogo: {
+    width: 86.5 * em,
+    height: 98.62 * em,
+    marginLeft: 8.5 * em,
+    marginTop: 9.2 * em,
+    resizeMode: 'contain',
+  },
+  textLogo: {
+    height: 53.59 * em,
+    width: 186.22 * em,
+    resizeMode: 'contain',
   },
 };
 

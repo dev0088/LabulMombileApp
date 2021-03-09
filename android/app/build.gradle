@@ -129,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.habul"
+        applicationId "com.laplus.labul"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
