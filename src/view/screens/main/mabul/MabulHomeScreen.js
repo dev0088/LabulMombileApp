@@ -18,30 +18,24 @@ const MabulHomeScreen = (props) => {
               Actions.mabulOrganize();
             }}
           />
+        </View>
+        <View style={styles.buttonSecondRow}>
+          <CircularButton
+            type="give"
+            onPress={() => {
+              Actions.mabulGive();
+            }}
+          />
           <CircularButton
             type="sell"
             onPress={() => {
               Actions.mabulSell();
             }}
           />
-        </View>
-        <View style={styles.buttonSecondRow}>
           <CircularButton
             type="need"
             onPress={() => {
               Actions.mabulNeed();
-            }}
-          />
-          <CircularButton
-            type="search"
-            onPress={() => {
-              Actions.mabulSearch();
-            }}
-          />
-          <CircularButton
-            type="give"
-            onPress={() => {
-              Actions.mabulGive();
             }}
           />
         </View>
@@ -73,7 +67,7 @@ const styles = {
     justifyContent: 'space-between',
     padding: 16 * em,
   },
-  buttonFirstRow: { width: '52%', flexDirection: 'row', justifyContent: 'space-between' },
+  buttonFirstRow: { width: '100%', flexDirection: 'row', justifyContent: 'center' },
   buttonSecondRow: { width: '80%', flexDirection: 'row', justifyContent: 'space-between' },
   closeButton: { width: 48 * em, resizeMode: 'contain', marginTop: 18 * em },
 };

@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Switch } from 'react-native';
+import { View } from 'react-native';
 import TitleText from 'view/components/TitleText';
 import { em, HEIGHT } from 'view/common/const';
 import FriendsFilterListItem from 'view/components/FriendsFilterListItem';
 import CommonHeader from '../../../components/CommonHeader';
 import CommonText from '../../../components/CommonText';
-import SwitchButton from '../../../components/SwitchButton';
+import Switch from '../../../components/Switch';
 
 const FriendsFilterScreen = () => {
   return (
@@ -40,15 +40,16 @@ const FriendsFilterScreen = () => {
             <CommonText text={'particuliers'} color={'#1E2D60'} style={styles.textSwitch} />
           </View>
 
-          <SwitchButton
-            switchWidth={38 * em}
+          <Switch
+            switchWidth={50 * em}
             switchHeight={28 * em}
+            
             switchdirection="ltr"
             switchBorderColor="#ffffff"
             switchBackgroundColor="#40CDDE"
             btnBorderColor="red"
             btnBackgroundColor="#FFFFFF"
-            style={{ marginTop: 6 * em }}
+            
           />
         </View>
       </View>

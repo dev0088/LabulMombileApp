@@ -15,7 +15,9 @@ const themeData = [
 ];
 const MabulOrganizeScreen = () => {
   const renderFlatList = ({ item }) => (
-    <MabulCommonListItem text={item.themeName} style={styles.listItem} icon={item.icon} />
+    <MabulCommonListItem text={item.themeName} style={styles.listItem} icon={item.icon} onPress={()=>{
+      
+    }}/>
   );
   return (
     <View style={styles.container}>

@@ -28,7 +28,11 @@ const ProfileHomeScreen = () => {
             style={styles.cardStyle}
             icon={require('assets/images/ic_profile_request.png')}
           />
-          <ProfileCommonCard caption={'Mes cercles'} style={styles.cardStyle}  icon={require('assets/images/ic_circles.png')}/>
+          <ProfileCommonCard
+            caption={'Mes cercles'}
+            style={styles.cardStyle}
+            icon={require('assets/images/ic_circles.png')}
+          />
         </View>
         <View style={styles.listBox}>
           <CommentText text={'Mon compte'} style={styles.caption} />
@@ -36,12 +40,18 @@ const ProfileHomeScreen = () => {
             text={'Mes informations'}
             style={styles.listItem}
             icon={require('assets/images/ic_info.png')}
+            onPress={() => {
+              Actions.myInformation();
+            }}
           />
           <View style={styles.line1} />
           <ProfileCommonListItem
             text={'Mes réglages'}
             style={styles.listItem}
             icon={require('assets/images/ic_settings.png')}
+            onPress={() => {
+              Actions.mySetting();
+            }}
           />
         </View>
         <View style={styles.line2} />
@@ -53,6 +63,9 @@ const ProfileHomeScreen = () => {
             subText={'En savoir plus'}
             icon={require('assets/images/ic_location.png')}
             style={styles.listItem}
+            onPress={() => {
+              Actions.premiumSubscription();
+            }}
           />
         </View>
         <View style={{ flexDirection: 'row' }}>

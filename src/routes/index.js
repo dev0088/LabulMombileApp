@@ -25,6 +25,10 @@ import ProfileOverviewScreen from 'view/screens/main/profile/ProfileOverviewScre
 import MabulSellServiceScreen from 'view/screens/main/mabul/sell/MabulSellServiceScreen';
 import FriendsSearchScreen from 'view/screens/main/friends/FriendSearchScreen';
 import FriendsFilterScreen from 'view/screens/main/friends/FriendsFilterScreen';
+import MyInformationScreen from 'view/screens/main/profile/MyInformationScreen';
+import MySettingScreen from '../view/screens/main/profile/MySettingScreen';
+import PremiumSubscriptionScreen from '../view/screens/main/profile/PremiumSubscriptionScreen';
+import PremiumPurchasedScreen from '../view/screens/main/profile/PremiumPurchasedScreen';
 
 class Routes extends Component {
   render() {
@@ -55,6 +59,10 @@ class Routes extends Component {
           <Scene key="mabulSearch" hideNavBar component={MabulSearchScreen} />
           <Scene key="mabulGive" hideNavBar component={MabulGiveScreen} />
           <Scene key="profileOverview" hideNavBar component={ProfileOverviewScreen} />
+          <Scene key="myInformation" hideNavBar component={MyInformationScreen} />
+          <Scene key="mySetting" hideNavBar component={MySettingScreen} />
+          <Scene key="premiumSubscription" hideNavBar component={PremiumSubscriptionScreen} />
+          <Scene key="premiumPurchased" hideNavBar component={PremiumPurchasedScreen} />
           <Scene key="mabulHome" hideNavBar component={MabulHomeScreen} />
         </Scene>
       </Router>
