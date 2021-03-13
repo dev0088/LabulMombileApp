@@ -6,14 +6,18 @@ import FriendsNavigator from './friends/FriendsNavigator';
 import CalendarHomeScreen from './calendar/CalendarHomeScreen';
 import MyActivityHomeScreen from './activity/MyActivityHomeScreen';
 import ProfileHomeScreen from './profile/ProfileHomeScreen';
-import { em } from 'view/common/const';
+import MabulHomeScreeen from './mabul/MabulHomeScreen';
+import { em, WIDTH, HEIGHT } from 'view/common/const';
 import { navigationRef } from './RootNavigation';
 import { Actions } from 'react-native-router-flux';
+import Modal from 'react-native-modal';
+import MyNotificationsScreen from './activity/MyNotificationsScreen';
 
 const Tab = createBottomTabNavigator();
 
 export default function MainScreen() {
   const [selectedTab, setSelectedTab] = React.useState(0);
+  const [mabulVisible, setMabulVisible] = React.useState(false);
 
   let mapImage = require('assets/images/tab_map_off.png');
   if (selectedTab === 0) {
@@ -39,6 +43,7 @@ export default function MainScreen() {
           <Tab.Screen name="Friends" component={FriendsNavigator} options={{ tabBarVisible: false }} />
           <Tab.Screen name="Calendar" component={CalendarHomeScreen} options={{ tabBarVisible: false }} />
           <Tab.Screen name="Activity" component={MyActivityHomeScreen} options={{ tabBarVisible: false }} />
+          <Tab.Screen name="MyNotifictions" component={MyNotificationsScreen} options={{ tabBarVisible: false }} />
           <Tab.Screen name="Profile" component={ProfileHomeScreen} options={{ tabBarVisible: false }} />
         </Tab.Navigator>
       </NavigationContainer>
@@ -64,7 +69,7 @@ export default function MainScreen() {
         <TouchableOpacity
           activeOpacity={0.6}
           onPress={() => {
-            Actions.mabulHome();
+            setMabulVisible(true);
             setSelectedTab(2);
           }}
           style={styles.AddImageWrapper}>
@@ -89,6 +94,13 @@ export default function MainScreen() {
           <Image source={profileImage} style={styles.TapImage} />
         </TouchableOpacity>
       </ImageBackground>
+      <Modal backdropColor={'transparent'} style={styles.modalStyle} isVisible={mabulVisible}>
+        <MabulHomeScreeen
+          onClosePress={() => {
+            setMabulVisible(false);
+          }}
+        />
+      </Modal>
     </View>
   );
 }
@@ -97,6 +109,7 @@ const styles = StyleSheet.create({
   TabBarMainContainer: {
     flex: 1,
   },
+  modalStyle: { margin: 0 },
   VirtualTabButtons: {
     flex: 1,
     width: '100%',

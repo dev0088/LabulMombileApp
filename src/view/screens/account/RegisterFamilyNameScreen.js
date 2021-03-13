@@ -1,21 +1,20 @@
 import React from 'react';
 import { em } from 'view/common/const';
-import { View } from 'react-native';
-import CommonHeader from 'view/components/CommonHeader';
-import PopupHeader from 'view/components/PopupHeader';
+import { View, Image } from 'react-native';
 import TitleText from 'view/components/TitleText';
 import CommonTextInput from 'view/components/CommonTextInput';
 import CommonButton from 'view/components/CommonButton';
 import { Actions } from 'react-native-router-flux';
+import AccountCommonHeader from 'view/components/AccountCommonHeader';
 
 const RegisterFamilyNameScreen = () => {
   return (
     <View style={styles.container}>
-      <CommonHeader style={styles.header} />
+      <AccountCommonHeader style={styles.header} />
       <View style={styles.popupView}>
         <View style={styles.popupTopView}>
-          <PopupHeader hideBack={true} icon={require('assets/images/ic_profile.png')} />
-          <TitleText text={'Mon nom defamille'} style={styles.titleText} />
+          <Image source={require('assets/images/ic_profile.png')} style={styles.icon} />
+          <TitleText text={'Mon nom de famille'} style={styles.titleText} />
           <CommonTextInput text={'Quel est ton nom de famille?'} isPasswordInput={false} style={styles.commonInput} />
         </View>
         <View style={styles.popupBottomView}>
@@ -32,7 +31,14 @@ const styles = {
     backgroundColor: '#40CDDE',
   },
   header: {
-    height: '8%',
+    height: '12%',
+  },
+
+  icon: {
+    width: 20 * em,
+    height: 25 * em,
+    marginTop: 41 * em,
+    marginBottom: 14 * em,
   },
   popupView: {
     flex: 1,

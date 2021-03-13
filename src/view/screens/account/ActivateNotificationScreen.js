@@ -7,7 +7,6 @@ import TitleText from 'view/components/TitleText';
 import { Actions } from 'react-native-router-flux';
 import CommentText from 'view/components/CommentText';
 
-
 const ActivateNotificationScreen = () => {
   return (
     <View style={styles.container}>

@@ -14,7 +14,7 @@ const SignupMenuScreen = () => {
       <Image style={styles.behindImage} source={require('assets/images/img_sample_profiles.png')} />
       <View style={styles.popupView}>
         <PopupHeader icon={require('assets/images/ic_edit.png')} />
-        <TitleText text="Je m’inscris" />
+        <TitleText text="Je m’inscris" style={styles.buttonMargin} />
         <CommonText text="Rejoigns la communauté Labul" />
         <View style={styles.buttonGroup}>
           <CommonButton
@@ -52,18 +52,22 @@ const styles = {
     backgroundColor: '#fafaff',
     resizeMode: 'contain',
   },
-  behindImage: { flex: 0.5 },
+  buttonMargin: {
+    marginTop: 16 * em,
+  },
+  behindImage: { flex: 0.5, resizeMode: 'contain' },
   popupView: {
     flex: 0.75,
-    marginTop: -15 * em,
     backgroundColor: '#ffffff',
     borderTopStartRadius: 25 * em,
     borderTopEndRadius: 25 * em,
     width: '100%',
     alignItems: 'center',
+    position: 'absolute',
+    bottom: 0,
   },
   commonButtonMargin: { marginTop: 12 * em },
-  buttonGroup: { flex: 1, flexDirection: 'column-reverse', marginBottom: 36 * em },
+  buttonGroup: { flex: 1, flexDirection: 'column-reverse', marginBottom: 36 * em, marginTop: 36 * em  },
 };
 
 export default SignupMenuScreen;

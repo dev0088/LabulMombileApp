@@ -5,14 +5,34 @@ import { em, HEIGHT, WIDTH } from 'view/common/const';
 import { FlatList } from 'react-native';
 import MabulCommonListItem from 'view/components/MabulCommonListItem';
 import MabulCommonHeader from 'view/components/MabulCommonHeader';
+import { Actions } from 'react-native-router-flux';
 const needItems = [
-  { id: 0, itemName: 'Coup de main' },
-  { id: 1, itemName: 'Service' },
-  { id: 2, itemName: 'Outil' },
+  {
+    id: 0,
+    itemName: 'Coup de main',
+    onPress: () => {
+      Actions.mabulHelpNeed();
+    },
+  },
+  {
+    id: 1,
+    itemName: 'Service',
+    onPress: () => {
+      Actions.mabulServiceNeed();
+    },
+  },
+  {
+    id: 2,
+    itemName: 'Outil',
+    onPress: () => {
+      Actions.mabulToolNeed();
+    },
+  },
 ];
 const MabulNeedScreen = () => {
+  console.log(needItems[0].onPress);
   const renderFlatList = ({ item }) => (
-    <MabulCommonListItem text={item.itemName} style={styles.listItem} icon={item.icon} noIcons={true} percent={0} />
+    <MabulCommonListItem text={item.itemName} style={styles.listItem} icon={item.icon} onPress={() => item.onPress()} />
   );
   return (
     <View style={styles.container}>

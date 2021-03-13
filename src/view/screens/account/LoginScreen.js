@@ -1,20 +1,19 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { em } from 'view/common/const';
 import CommonButton from 'view/components/CommonButton';
 import { Actions } from 'react-native-router-flux';
-import CommonHeader from 'view/components/CommonHeader';
-import PopupHeader from 'view/components/PopupHeader';
+import AccountCommonHeader from 'view/components/AccountCommonHeader';
 import TitleText from 'view/components/TitleText';
 import CommonTextInput from 'view/components/CommonTextInput';
 
 const LoginScreen = () => {
   return (
     <View style={styles.container}>
-      <CommonHeader style={styles.header} />
+      <AccountCommonHeader style={styles.header} />
       <View style={styles.popupView}>
         <View style={styles.popupTopView}>
-          <PopupHeader hideBack={true} icon={require('assets/images/ic_profile.png')} />
+          <Image source={require('assets/images/ic_profile.png')} style={styles.icon} />
           <TitleText text={'Je me connecte'} style={styles.titleText} />
           <CommonTextInput text={'Saisis to email'} isPasswordInput={false} style={styles.commonInput} />
           <CommonTextInput text={'Saisis ton mot de passe'} isPasswordInput={true} style={styles.commonInput} />
@@ -26,7 +25,7 @@ const LoginScreen = () => {
           <CommonButton text={'Suivant'} onPress={() => Actions.main()} style={styles.btnNext} />
         </View>
         <View style={styles.popupBottomView}>
-          <TouchableOpacity style={styles.btnEmailSignUp} onPress={()=>Actions.signupMenu()}>
+          <TouchableOpacity style={styles.btnEmailSignUp} onPress={() => Actions.signupMenu()}>
             <Text style={styles.btnTextLeft}>Je n’ai pas de compte ?</Text>
             <Text style={styles.btnTextRight}> Je m’inscris</Text>
           </TouchableOpacity>
@@ -43,7 +42,14 @@ const styles = {
     alignItems: 'center',
   },
   header: {
-    height: '8%',
+    height: '12%',
+  },
+
+  icon: {
+    width: 20 * em,
+    height: 25 * em,
+    marginTop: 41 * em,
+    marginBottom: 14 * em,
   },
   popupView: {
     flex: 1,

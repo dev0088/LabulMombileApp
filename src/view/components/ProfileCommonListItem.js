@@ -13,12 +13,21 @@ const ProfileCommonListItem = (props) => {
   if (props.subText == null || props.subText === undefined || props.subText === '') {
     subTextDisplay = 'none';
   }
-
+  var icon = props.iconColor ? (
+    <View style={[styles.icon, { backgroundColor: props.iconColor }]}>
+      <Image source={props.icon} style={{ width: 18 * em, height: 16 * em, resizeMode: 'contain' }} />
+    </View>
+  ) : (
+    <Image source={props.icon} style={styles.icon} />
+  );
+  if (props.icon == null || props.icon === undefined) {
+    icon = <></>;
+  }
   return (
     <TouchableOpacity onPress={props.onPress}>
       <View style={[styles.container, props.style, { height: display === 'flex' ? 38 * em : 19 * em }]}>
         <View style={styles.leftView}>
-          <Image source={props.icon} style={[styles.icon, { display: display }]} />
+          {icon}
           <View style={styles.txtContainer}>
             <TitleText style={styles.textTitle} text={props.text} />
             <CommentText style={{ display: subTextDisplay }} text={props.subText} />
@@ -43,8 +52,11 @@ const styles = {
   icon: {
     width: 38 * em,
     height: 38 * em,
+    borderRadius: 20 * em,
     resizeMode: 'contain',
     marginRight: 15 * em,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   rightView: {
     flexDirection: 'row-reverse',
@@ -58,7 +70,7 @@ const styles = {
   textTitle: {
     fontSize: 16 * em,
     textAlignVertical: 'center',
-    fontWeight: 'medium',
+    fontWeight: '200',
   },
   arrowIcon: {
     backgroundColor: 'white',

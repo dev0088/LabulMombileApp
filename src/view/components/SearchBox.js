@@ -7,9 +7,9 @@ const SearchBox = (props) => {
 
   if (onFocus) {
     return (
-      <View style={[styles.containerFocusOn, props.style]}>
+      <View style={[styles.containerFocusOn, props.style,{paddingTop:0}]}>
         <View>
-          <Text style={styles.commentTextFocusOn}>Saisissez votre email</Text>
+          <Text style={styles.commentTextFocusOn}>{props.comment}</Text>
         </View>
         <View style={styles.containerBottom}>
           <TextInput
@@ -58,7 +58,7 @@ const styles = {
   containerFocusOff: {
     borderBottomColor: '#BFCDDB',
     height: 52 * em,
-    marginTop: 8 * em,
+    paddingTop: 8 * em,
     borderBottomWidth: 1 * em,
   },
   commentTextFocusOn: {

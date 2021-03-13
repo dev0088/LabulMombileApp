@@ -1,27 +1,38 @@
 import React from 'react';
 import { View, TouchableOpacity, Image, Text } from 'react-native';
 import { em, WIDTH } from 'view/common/const';
-import { Actions } from 'react-native-router-flux';
 import CommentText from './CommentText';
+import CommonBackButton from './CommonBackButton';
+import CommonText from './CommonText';
 
 const CommonHeader = (props) => {
-  let backButtonImage = require('assets/images/btn_back_white.png');
-  if (props.isLightTheme) {
-    backButtonImage = require('assets/images/btn_back.png');
+  var leftButton = props.leftTxt ? (
+    <TouchableOpacity>
+      <CommentText text={props.leftTxt} color={'#FFFFFF'} style={styles.leftTxt} />
+    </TouchableOpacity>
+  ) : (
+    <CommonBackButton dark={props.dark} />
+  );
+  var centerIcon = require('assets/images/txt_logo_white.png');
+  if (props.blueLogo) {
+    centerIcon = require('assets/images/txt_logo.png');
   }
+  var logoVisible = 'flex';
+  if (!props.logo) {
+    logoVisible = 'none';
+  }
+  var centerView = props.centerTxt ? (
+    <CommonText text={props.centerTxt} color={'#1E2D60'} style={styles.centerTxt} />
+  ) : (
+    <Image style={styles.icon} source={centerIcon} />
+  );
   return (
     <View style={[styles.container, props.style]}>
-      <TouchableOpacity
-        style={styles.backBtnView}
-        onPress={() => {
-          Actions.pop();
-        }}>
-        <Image style={styles.backButton} source={backButtonImage} />
-      </TouchableOpacity>
-      <Image style={styles.icon} source={props.icon} />
-      <View style={[styles.backBtnView, { height: 16 * em, width: 120 * em }]}>
-        <TouchableOpacity>
-          <CommentText text={props.addBtnText} color={'#FFFFFF'} />
+      <View style={styles.left}>{leftButton}</View>
+      <View style={[styles.center, { display: logoVisible }]}>{centerView}</View>
+      <View style={styles.right}>
+        <TouchableOpacity onPress={() => props.psAction}>
+          <CommentText text={props.rightTxt} color={'#FFFFFF'} style={styles.rightTxt} />
         </TouchableOpacity>
       </View>
     </View>
@@ -30,31 +41,18 @@ const CommonHeader = (props) => {
 
 const styles = {
   container: {
-    marginTop: 23.5 * em,
-    width: '92%',
-    marginLeft: 0.04 * WIDTH,
+    width: WIDTH,
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
-  },
-  backBtnView: {
-    width: 44 * em,
     height: 44 * em,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
-  backButton: {
-    width: 20 * em,
-    height: 18 * em,
-    resizeMode: 'contain',
-  },
-  iconWrapper: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-  icon: {
-    width: 56 * em,
-    height: 19 * em,
-    resizeMode: 'contain',
-    marginTop: 10 * em,
-  },
+  left: { marginLeft: 15 * em, flex: 1, justifyContent: 'flex-start' },
+  leftTxt: { marginLeft: 15 * em, fontSize: 16 * em, color: '#6A8596', lineHeight: 18 * em, textAlign: 'left' },
+  center: { flex: 1, alignItems: 'center', justifyContent: 'center' },
+  centerTxt: { lineHeight: 18 * em, textAlign: 'center' },
+  icon: { width: 80 * em, height: 20 * em, resizeMode: 'contain' },
+  right: { marginRight: 15 * em, flex: 1, justifyContent: 'flex-end' },
+  rightTxt: { marginRight: 15 * em, lineHeight: 17 * em, textAlign: 'right' },
 };
 
 export default CommonHeader;

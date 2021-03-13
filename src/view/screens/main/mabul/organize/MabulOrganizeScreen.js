@@ -5,6 +5,7 @@ import { em, HEIGHT, WIDTH } from 'view/common/const';
 import { FlatList } from 'react-native';
 import MabulCommonListItem from 'view/components/MabulCommonListItem';
 import MabulCommonHeader from 'view/components/MabulCommonHeader';
+import { Actions } from 'react-native-router-flux';
 const themeData = [
   { id: 0, icon: require('assets/images/btn_mabul_organize.png'), themeName: 'Fête' },
   { id: 1, icon: require('assets/images/btn_mabul_organize.png'), themeName: 'Apéro' },
@@ -15,9 +16,14 @@ const themeData = [
 ];
 const MabulOrganizeScreen = () => {
   const renderFlatList = ({ item }) => (
-    <MabulCommonListItem text={item.themeName} style={styles.listItem} icon={item.icon} onPress={()=>{
-      
-    }}/>
+    <MabulCommonListItem
+      text={item.themeName}
+      style={styles.listItem}
+      icon={item.icon}
+      onPress={() => {
+        Actions.mabulOrganizeTitle();
+      }}
+    />
   );
   return (
     <View style={styles.container}>

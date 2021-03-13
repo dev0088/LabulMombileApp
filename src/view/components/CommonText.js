@@ -14,7 +14,9 @@ const CommonText = (props) => {
       </TouchableOpacity>
     );
   }
-  return <Text style={{ fontSize: 16 * em, color: color, textAlign: props.textAlign }}>{props.text}</Text>;
+  return (
+    <Text style={[{ fontSize: 16 * em, color: color, textAlign: props.textAlign }, props.style]}>{props.text}</Text>
+  );
 };
 
 export default CommonText;

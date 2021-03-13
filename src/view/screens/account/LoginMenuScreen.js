@@ -14,7 +14,7 @@ const LoginMenuScreen = () => {
       <Image style={styles.behindImage} source={require('assets/images/img_sample_profiles.png')} />
       <View style={styles.popupView}>
         <PopupHeader />
-        <TitleText text="Je me connecte" />
+        <TitleText text="Je me connecte" style={styles.buttonMargin} />
         <CommonText text="Ravis de te revoir :)" />
         <View style={styles.buttonGroup}>
           <CommonButton
@@ -48,22 +48,26 @@ const LoginMenuScreen = () => {
 const styles = {
   container: {
     flex: 1,
+    flexDirection: 'column',
     alignItems: 'center',
     backgroundColor: '#fafaff',
-    resizeMode: 'contain',
   },
-  behindImage: { flex: 0.5 },
+  buttonMargin: {
+    marginTop: 16 * em,
+  },
+  behindImage: { flex: 0.52, resizeMode: 'contain' },
   popupView: {
-    flex: 0.75,
-    marginTop: -15 * em,
+    flex: 1,
     backgroundColor: '#ffffff',
     borderTopStartRadius: 25 * em,
     borderTopEndRadius: 25 * em,
     width: '100%',
     alignItems: 'center',
+    position: 'absolute',
+    bottom: 0,
   },
   commonButtonMargin: { marginTop: 12 * em },
-  buttonGroup: { flex: 1, flexDirection: 'column-reverse', marginBottom: 36 * em },
+  buttonGroup: { flex: 1, flexDirection: 'column-reverse', marginBottom: 36 * em, marginTop: 36 * em },
 };
 
 export default LoginMenuScreen;

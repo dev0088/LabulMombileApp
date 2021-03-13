@@ -22,9 +22,7 @@ const MabulSellServiceScreen = () => {
     <View style={styles.container}>
       <MabulCommonHeader style={styles.header} percent={48} isNoBackBtn={true} progressBarColor={'#AA87E5'} />
       <View style={styles.body}>
-        <TitleText text={'Je vends'} style={styles.title1} />
-        <TitleText text={'Évènement'} style={styles.title2} />
-
+        <TitleText text={'Je vends Service'} style={styles.title1} />
         <View style={styles.popView}>
           <FlatList data={giveItems} renderItem={renderFlatList} keyExtractor={(i) => i.id} />
         </View>
@@ -46,7 +44,7 @@ const styles = {
     borderTopLeftRadius: 28 * em,
     borderTopRightRadius: 28 * em,
     backgroundColor: '#ffffff',
-    paddingBottom:163*em,
+    paddingBottom: 163 * em,
   },
   body: {
     flex: 1,
@@ -57,12 +55,12 @@ const styles = {
   title1: {
     paddingLeft: WIDTH * 0.08,
     marginTop: 35 * em,
-    fontWeight:'bold',
+    fontWeight: 'bold',
   },
   title2: {
     paddingLeft: WIDTH * 0.08,
-    marginBottom: 35 * em,    
-    fontWeight:'bold',
+    marginBottom: 35 * em,
+    fontWeight: 'bold',
   },
   listItem: {
     height: HEIGHT * 0.09,

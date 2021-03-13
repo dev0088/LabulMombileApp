@@ -14,6 +14,8 @@ const MabulCommonListItem = (props) => {
           <Image source={props.icon} style={[styles.icon, { display: display }]} />
           <View style={styles.txtView}>
             <Text style={styles.textTitle}>{props.text}</Text>
+            <Text style={styles.textSubTitle}>{props.subText}</Text>
+
           </View>
         </View>
         <View style={styles.rightView}>
@@ -37,7 +39,6 @@ const styles = {
   txtView: {
     flex: 1,
     marginLeft: 15 * em,
-
     height: '100%',
     borderBottomWidth: 0.5 * em,
     borderBottomColor: '#B3C6CF33',
@@ -59,6 +60,11 @@ const styles = {
     color: '#1E2D60',
     textAlignVertical: 'center',
     height: 38 * em,
+  },textSubTitle:{
+    fontSize:12*em,
+    color:'#A0AEB8',
+    lineHeight:17*em,
+    width:205*em,
   },
   arrowIcon: {
     backgroundColor: 'white',

@@ -15,6 +15,7 @@ const MabulHomeScreen = (props) => {
         <View style={styles.buttonFirstRow}>
           <CircularButton
             onPress={() => {
+              props.onClosePress();
               Actions.mabulOrganize();
             }}
           />
@@ -23,26 +24,26 @@ const MabulHomeScreen = (props) => {
           <CircularButton
             type="give"
             onPress={() => {
+              props.onClosePress();
               Actions.mabulGive();
             }}
           />
           <CircularButton
             type="sell"
             onPress={() => {
+              props.onClosePress();
               Actions.mabulSell();
             }}
           />
           <CircularButton
             type="need"
             onPress={() => {
+              props.onClosePress();
               Actions.mabulNeed();
             }}
           />
         </View>
-        <TouchableOpacity
-          onPress={() => {
-            Actions.pop();
-          }}>
+        <TouchableOpacity onPress={props.onClosePress}>
           <Image source={require('assets/images/btn_mabul_close.png')} style={styles.closeButton} />
         </TouchableOpacity>
       </View>
@@ -56,6 +57,7 @@ const styles = {
     alignItems: 'center',
     backgroundColor: '#40cdde',
     paddingBottom: 16 * em,
+    opacity: 0.9,
   },
   logoContainer: { flex: 0.5, width: '100%', alignItems: 'center', justifyContent: 'center' },
   logoImage: { width: 84 * em, resizeMode: 'contain' },

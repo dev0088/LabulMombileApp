@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
-import TitleText from 'view/components/TitleText';
-import { em, HEIGHT } from 'view/common/const';
-import CommonHeader from '../../../components/CommonHeader';
-import SearchBox from '../../../components/SearchBox';
+import { em, hm } from 'view/common/const';
+import SearchBox from 'view/components/SearchBox';
 import { FlatList } from 'react-native-gesture-handler';
-import SearchCommonListItem from '../../../components/SearchCommonListItem';
+import SearchCommonListItem from 'view/components/SearchCommonListItem';
+import FriendCommonHeader from 'view/components/FriendCommonHeader';
 
 const FriendsSearchScreen = () => {
   const [searchedUsers, getSearchResult] = useState(true);
@@ -15,10 +14,10 @@ const FriendsSearchScreen = () => {
 
   return (
     <View style={styles.container}>
-      <CommonHeader isLightTheme={true} />
-      <TitleText text="Rechercher" style={styles.title} />
+     <FriendCommonHeader title="Rechercher" />
       <SearchBox
         style={styles.searchbox}
+        comment={'Saisissez votre email'}
         onChangeText={(text) => {
           getSearchResult([
             {
@@ -65,7 +64,7 @@ const styles = {
   },
   title: {
     marginLeft: 30 * em,
-    marginBottom: (35 / 667) * HEIGHT,
+    marginBottom: 35*hm,
   },
   searchbox: {
     width: 315 * em,
@@ -73,8 +72,8 @@ const styles = {
     marginRight: 30 * em,
   },
   listItem: {
-    height: HEIGHT * 0.063,
-    marginTop: 35 * em,
+    height:42*hm,
+    marginTop: 35 * hm,
     marginLeft: 30 * em,
   },
 };

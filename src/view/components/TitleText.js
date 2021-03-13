@@ -14,7 +14,9 @@ const TitleText = (props) => {
   if (props.onPress) {
     return (
       <TouchableOpacity onPress={props.onPress}>
-        <Text style={[{ fontSize: 28 * em, color: color, textAlign: textAlign }, props.style]}>{props.text}</Text>
+        <Text style={[{ fontSize: 28 * em, color: color, textAlign: textAlign, fontWeight: 'bold' }, props.style]}>
+          {props.text}
+        </Text>
       </TouchableOpacity>
     );
   }

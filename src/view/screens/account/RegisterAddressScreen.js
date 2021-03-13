@@ -1,21 +1,20 @@
 import React from 'react';
 import { em } from 'view/common/const';
-import { View } from 'react-native';
-import CommonHeader from 'view/components/CommonHeader';
-import PopupHeader from 'view/components/PopupHeader';
+import { View, Image } from 'react-native';
 import TitleText from 'view/components/TitleText';
 import CommonTextInput from 'view/components/CommonTextInput';
 import CommonButton from 'view/components/CommonButton';
 import { Actions } from 'react-native-router-flux';
 import CommonText from 'view/components/CommonText';
+import AccountCommonHeader from 'view/components/AccountCommonHeader';
 
 const RegisterAddressScreen = () => {
   return (
     <View style={styles.container}>
-      <CommonHeader style={styles.header} />
+      <AccountCommonHeader style={styles.header} />
       <View style={styles.popupView}>
         <View style={styles.popupTopView}>
-          <PopupHeader hideBack={true} icon={require('assets/images/ic_profile.png')} />
+          <Image source={require('assets/images/ic_location_green.png')} style={styles.icon} />
           <TitleText text={'Mon adresse'} style={styles.titleText} />
           <CommonTextInput text={'Saisis ton adresse complète'} isPasswordInput={false} style={styles.commonInput} />
           <View style={styles.viewText}>
@@ -36,7 +35,13 @@ const styles = {
     backgroundColor: '#40CDDE',
   },
   header: {
-    height: '8%',
+    height: '12%',
+  },
+  icon: {
+    width: 21 * em,
+    height: 30 * em,
+    marginTop: 39 * em,
+    marginBottom: 11 * em,
   },
   popupView: {
     flex: 1,

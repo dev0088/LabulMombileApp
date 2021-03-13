@@ -30,14 +30,13 @@ const styles = {
   numberTxt: {
     marginBottom: 6 * em,
     fontSize: 20 * em,
-    lineWeight: 25 * em,
+    lineHeight: 25 * em,
     fontWeight: 'bold',
   },
   nameTxt: {
     fontSize: 13 * em,
     color: '#A0AEB8',
-    lineWeight: 16 * em,
-    fontWeight: 'medium',
+    fontWeight: '200',
   },
 };
 export default ProfileCommonLabel;

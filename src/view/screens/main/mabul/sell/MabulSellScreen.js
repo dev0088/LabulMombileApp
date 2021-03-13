@@ -7,9 +7,27 @@ import MabulCommonListItem from 'view/components/MabulCommonListItem';
 import MabulCommonHeader from 'view/components/MabulCommonHeader';
 import { Actions } from 'react-native-router-flux';
 const sellItems = [
-  { id: 0, itemName: 'Service' },
-  { id: 1, itemName: 'Object' },
-  { id: 2, itemName: 'Évènement' },
+  {
+    id: 0,
+    itemName: 'Service',
+    onPress: () => {
+      Actions.mabulSellService();
+    },
+  },
+  {
+    id: 1,
+    itemName: 'Object',
+    onPress: () => {
+      Actions.mabulSellObject();
+    },
+  },
+  {
+    id: 2,
+    itemName: 'Évènement',
+    onPress: () => {
+      Actions.mabulSellEnvironment();
+    },
+  },
 ];
 const MabulSellScreen = () => {
   const renderFlatList = ({ item }) => (
@@ -19,9 +37,7 @@ const MabulSellScreen = () => {
       icon={item.icon}
       noIcons={true}
       percent={0}
-      onPress={() => {
-        Actions.mabulSellService();
-      }}
+      onPress={() => item.onPress()}
     />
   );
   return (

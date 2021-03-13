@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, ScrollView, Text, ImageBackground, Image } from 'react-native';
+import { View, TouchableOpacity, ScrollView, Text, Image, ActionSheetIOS } from 'react-native';
 import TitleText from 'view/components/TitleText';
 import CommentText from 'view/components/CommentText';
 import { em, WIDTH, HEIGHT } from 'view/common/const';
@@ -27,11 +27,17 @@ const ProfileHomeScreen = () => {
             caption={'Mes demandes'}
             style={styles.cardStyle}
             icon={require('assets/images/ic_profile_request.png')}
+            onPress={() => {
+              Actions.myRequestProfileTab();
+            }}
           />
           <ProfileCommonCard
             caption={'Mes cercles'}
             style={styles.cardStyle}
             icon={require('assets/images/ic_circles.png')}
+            onPress={() => {
+              Actions.myCircles();
+            }}
           />
         </View>
         <View style={styles.listBox}>
@@ -68,11 +74,11 @@ const ProfileHomeScreen = () => {
             }}
           />
         </View>
-        <View style={{ flexDirection: 'row' }}>
+        <View style={styles.rowContainer}>
           <View style={styles.imgBg}>
             <TitleText text={'Créer un compte'} style={styles.imageTextMain} />
             <TitleText text={'Pro/ Association/ institutionnel'} style={styles.imageTextSub} />
-            <CommonButton style={styles.button} text={'Créer maintenant'} />
+            <CommonButton style={styles.button} text={'Créer maintenant'} onPress={() => Actions.createAccountMenu()} />
           </View>
           <View>
             <Image style={styles.imgBg} source={require('assets/images/profie_banner.png')} />
@@ -80,10 +86,22 @@ const ProfileHomeScreen = () => {
         </View>
         <View style={styles.listBox}>
           <CommentText text={'À propos'} style={styles.caption} />
-          <ProfileCommonListItem text={'Politique de confidentialité'} style={styles.listItem} />
+          <ProfileCommonListItem
+            text={'Politique de confidentialité'}
+            style={styles.listItem}
+            onPress={() => {
+              Actions.privacyPolicy();
+            }}
+          />
           <View style={styles.line3} />
 
-          <ProfileCommonListItem text={'Conditions générales d’utilisation'} style={styles.listItem} />
+          <ProfileCommonListItem
+            text={'Conditions générales d’utilisation'}
+            style={styles.listItem}
+            onPress={() => {
+              Actions.termsOfService();
+            }}
+          />
         </View>
         <View style={styles.imgContainer}>
           <Image source={require('assets/images/img_logo.png')} style={styles.imgLogo} />
@@ -98,6 +116,9 @@ const ProfileHomeScreen = () => {
 };
 
 const styles = {
+  rowContainer: {
+    flexDirection: 'row',
+  },
   topView: {
     height: HEIGHT * 0.45,
     backgroundColor: '#40CDDE',
@@ -147,7 +168,7 @@ const styles = {
     width: '100%',
     textAlign: 'left',
     marginLeft: 30 * em,
-    fontWeight: 'medium',
+    fontWeight: '300',
     marginBottom: 20 * em,
   },
   listItem: {

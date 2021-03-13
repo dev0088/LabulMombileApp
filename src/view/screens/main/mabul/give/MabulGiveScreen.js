@@ -16,7 +16,7 @@ const giveItems = [
 ];
 const MabulGiveScreen = () => {
   const renderFlatList = ({ item }) => (
-    <MabulCommonListItem text={item.itemName} style={styles.listItem} icon={item.icon} isNoBackBtn={true} percent={0} />
+    <MabulCommonListItem text={item.itemName} style={styles.listItem} icon={item.icon} />
   );
   return (
     <View style={styles.container}>

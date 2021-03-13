@@ -1,20 +1,20 @@
 import React from 'react';
 import { em } from 'view/common/const';
-import { View } from 'react-native';
-import CommonHeader from 'view/components/CommonHeader';
+import { View, Image } from 'react-native';
 import PopupHeader from 'view/components/PopupHeader';
 import TitleText from 'view/components/TitleText';
 import CommonTextInput from 'view/components/CommonTextInput';
 import CommonButton from 'view/components/CommonButton';
 import { Actions } from 'react-native-router-flux';
+import AccountCommonHeader from 'view/components/AccountCommonHeader';
 
 const RegisterMobileScreen = () => {
   return (
     <View style={styles.container}>
-      <CommonHeader style={styles.header} />
+      <AccountCommonHeader style={styles.header} />
       <View style={styles.popupView}>
         <View style={styles.popupTopView}>
-          <PopupHeader hideBack={true} icon={require('assets/images/ic_phone.png')} />
+          <Image source={require('assets/images/ic_phone.png')} style={styles.icon} />
           <TitleText text={'Mon mobile'} style={styles.titleText} />
           <CommonTextInput
             text={'Quel est ton numéro de téléphone ?'}
@@ -36,7 +36,13 @@ const styles = {
     backgroundColor: '#40CDDE',
   },
   header: {
-    height: '8%',
+    height: '12%',
+  },
+  icon: {
+    width: 25 * em,
+    height: 25 * em,
+    marginTop: 41 * em,
+    marginBottom: 14 * em,
   },
   popupView: {
     flex: 1,

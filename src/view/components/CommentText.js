@@ -8,6 +8,9 @@ const CommentText = (props) => {
     color = props.color;
   }
   let textAlignProp = 'center';
+  if (props.align) {
+    textAlignProp = props.align;
+  }
   if (props.onPress) {
     return (
       <TouchableOpacity onPress={props.onPress}>

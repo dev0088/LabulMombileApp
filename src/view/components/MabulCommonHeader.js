@@ -3,6 +3,7 @@ import { View, TouchableOpacity, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { em, WIDTH } from 'view/common/const';
 import CommentText from './CommentText';
+import CommonBackButton from './CommonBackButton';
 
 function hexToRGB(hex, alpha) {
   var r = parseInt(hex.slice(1, 3), 16),
@@ -24,9 +25,7 @@ const MabulCommonHeader = (props) => {
   return (
     <View style={[styles.container, props.style]}>
       <View style={styles.topViewHeader}>
-        <TouchableOpacity style={styles.backBtnView}>
-          <Image style={styles.backButton} source={backButtonImage} />
-        </TouchableOpacity>
+        <CommonBackButton />
         <CommentText text={'Annuler'} onPress={() => Actions.main()} style={styles.mainBtn} />
       </View>
       <View style={[{ backgroundColor: hexToRGB(props.progressBarColor, 0.24) }, styles.progressContainer]}>

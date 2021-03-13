@@ -20,7 +20,7 @@ const ActivateLocationScreen = () => {
           <CommonButton
             text="Activer"
             onPress={() => {
-              Actions.main();
+              Actions.activateNotification();
             }}
           />
           <View style={styles.bottomButtonContainer}>

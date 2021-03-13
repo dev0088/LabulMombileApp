@@ -1,8 +1,16 @@
 import React from 'react';
 import { Image, Text, ImageBackground, View } from 'react-native';
 import { em } from 'view/common/const';
-import { Reducer } from 'react-native-router-flux';
-
+function hexToRGB(hex, alpha) {
+  var r = parseInt(hex.slice(1, 3), 16),
+    g = parseInt(hex.slice(3, 5), 16),
+    b = parseInt(hex.slice(5, 7), 16);
+  if (alpha) {
+    return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + alpha + ')';
+  } else {
+    return 'rgb(' + r + ', ' + g + ', ' + b + ')';
+  }
+}
 var getInitials = function (string) {
   var names = string.split(' '),
     initials = names[0].substring(0, 1).toUpperCase();
@@ -25,9 +33,10 @@ const ProfileCommonAvatar = (props) => {
           props.style,
           styles.imgWrapper,
           {
-            width: props.style.width + 10 * em,
-            height: props.style.width + 10 * em,
-            borderRadius: props.style.width / 2 + 5 * em,
+            width: props.style.width + 8 * em,
+            height: props.style.width + 8 * em,
+            borderRadius: (props.style.width + 8 * em) / 2,
+            borderWidth: 4 * em,
           },
         ]}>
         <Image style={{ width: props.style.width, height: props.style.width }} source={props.icon} />
@@ -55,10 +64,9 @@ const styles = {
     textAlignVertical: 'center',
   },
   imgWrapper: {
-    backgroundColor: '#ffffff56',
-
     justifyContent: 'center',
     alignItems: 'center',
+    borderColor: hexToRGB('#ffffff', 0.5),
   },
 };
 export default ProfileCommonAvatar;
