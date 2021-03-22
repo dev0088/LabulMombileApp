@@ -87,12 +87,19 @@ const ProfileHomeScreen = (props) => {
           <View style={styles.imgBg}>
             <TitleText text={'Créer un compte'} style={styles.imageTextMain} />
             <TitleText text={'Pro/ Association/ institutionnel'} style={styles.imageTextSub} />
-            <CommonButton style={styles.button} text={'Créer maintenant'} onPress={() => Actions.createAccountMenu()} />
+            <CommonButton
+              style={styles.proBtn}
+              textStyle={{ fontSize: 12 * em }}
+              text={'Créer maintenant'}
+              onPress={() => Actions.createAccountMenu()}
+            />
           </View>
+
           <View>
             <Image style={styles.imgBg} source={require('assets/images/profie_banner.png')} />
           </View>
         </View>
+
         <View style={styles.listBox}>
           <CommentText text={'À propos'} style={styles.caption} />
           <ProfileCommonListItem
@@ -169,15 +176,11 @@ const styles = {
   },
   imageTextMain: { marginTop: 25 * em, fontSize: 20 * em, marginLeft: 18 * em },
   imageTextSub: { fontSize: 15 * em, marginLeft: 18 * em, marginRight: -58 * em, marginBottom: 10 * em },
-  button: {
-    fontSize: 12 * em,
-    lineHeight: 15 * em,
+  proBtn: {
     borderRadius: 9 * em,
     width: 126 * em,
     height: 33 * em,
-    padding: 9 * em,
-    borderWidth: 1 * em,
-    borderColor: '#40CDDE',
+    paddingVertical: 9 * em,
     marginLeft: 15 * em,
   },
   line3: { marginLeft: 30 * em, marginBottom: 25 * em, marginTop: 25 * em, height: 0.5, backgroundColor: '#F0F5F7' },

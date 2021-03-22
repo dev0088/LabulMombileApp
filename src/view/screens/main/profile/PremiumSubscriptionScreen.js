@@ -17,7 +17,7 @@ const PremiumSubscriptionScreen = (props) => {
         <Image
           style={styles.logo}
           source={
-            props.profileType !== 'my'
+            props.profileType === 'my'
               ? require('assets/images/img_logo_subscription.png')
               : require('assets/images/img_logo_subscription_blue.png')
           }
@@ -31,8 +31,7 @@ const PremiumSubscriptionScreen = (props) => {
           <View style={styles.cardContainer}>
             <PurchaseMenuCard
               style={styles.card}
-              name="Light"
-              
+              name="Light"              
               price="0,90€"
               commentRadius="Rayon de 500m."
               comment="Idéal pour vendre juste autour de soi"
@@ -109,7 +108,7 @@ const PremiumSubscriptionScreen = (props) => {
           text="Payer"
           style={styles.modalPayBtn}
           onPress={() => {
-            Actions.premiumPurchased();
+            Actions.premiumPurchased({profileType:props.profileType});
             setModalVisible(false);
           }}
         />

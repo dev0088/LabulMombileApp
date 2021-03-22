@@ -6,9 +6,9 @@ import CommonBackButton from 'view/components/CommonBackButton';
 import PurchaseMenuCard from 'view/components/PurchaseMenuCard';
 import { Actions } from 'react-native-router-flux';
 
-const PremiumPurchasedScreen = () => {
+const PremiumPurchasedScreen = (props) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: props.profiletype === 'my' ? '#40CDDE' : '#7398FC' }]}>
       <CommonBackButton dark={false} style={styles.backBtn} onPress={() => Actions.main()} />
       <Image style={styles.logo} source={require('assets/images/img_logo_subscription_white.png')} />
       <View style={styles.containerTitle}>
@@ -32,7 +32,7 @@ const PremiumPurchasedScreen = () => {
 const styles = {
   container: {
     flex: 1,
-    backgroundColor: '#40CDDE',
+
     alignItems: 'center',
   },
 
