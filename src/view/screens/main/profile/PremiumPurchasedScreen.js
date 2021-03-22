@@ -7,8 +7,9 @@ import PurchaseMenuCard from 'view/components/PurchaseMenuCard';
 import { Actions } from 'react-native-router-flux';
 
 const PremiumPurchasedScreen = (props) => {
+
   return (
-    <View style={[styles.container, { backgroundColor: props.profiletype === 'my' ? '#40CDDE' : '#7398FC' }]}>
+    <View style={[styles.container, { backgroundColor: props.profileType === 'my' ? '#40CDDE' : '#7398FC' }]}>
       <CommonBackButton dark={false} style={styles.backBtn} onPress={() => Actions.main()} />
       <Image style={styles.logo} source={require('assets/images/img_logo_subscription_white.png')} />
       <View style={styles.containerTitle}>

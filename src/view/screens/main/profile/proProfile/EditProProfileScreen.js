@@ -10,7 +10,7 @@ import ProfileCommonAvatar from 'view/components/ProfileCommonAvatar';
 import CommentText from 'view/components/CommentText';
 import { Actions } from 'react-native-router-flux';
 import Modal from 'react-native-modal';
-
+import { ProAddCover } from 'assets/svg/icons';
 const updateUserPrfile = {
   avatar: require('assets/images/avatar_curology.png'),
   cover: require('assets/images/img_curology.png'),
@@ -48,10 +48,9 @@ const EditProProfileScreen = (props) => {
                   ]
                 : styles.bgViewFilter
             }>
-            <Image
-              style={[styles.addCoverBtn, { tintColor: userProfile.cover ? '#FFFFFF' : '#40CDDE' }]}
-              source={require('assets/images/ic_image.png')}
-            />
+            <View style={[styles.addCoverBtn, { tintColor: userProfile.cover ? '#FFFFFF' : '#40CDDE' }]}>
+              <ProAddCover width={27.79 * em} height={28 * em} />
+            </View>
             <CommentText
               text={!userProfile.cover ? 'Ajouter une photo de couverture' : 'Changer photo de couverture'}
               color={userProfile.cover ? '#FFFFFF' : '#40CDDE'}
@@ -98,7 +97,7 @@ const EditProProfileScreen = (props) => {
         />
         <CommonButton
           text={'Supprimer mon compte'}
-          style={styles.deleteBtn}
+          style={styles.deleteBtn}  textStyle={{ color: '#F9547B' }}
           onPress={() => setDeleteModalVisible(true)}
         />
       </ScrollView>

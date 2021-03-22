@@ -7,6 +7,45 @@ import ProfileCommonTextInput from './ProfileCommonTextInput';
 import CommonText from './CommonText';
 import SearchBox from './SearchBox';
 import CommonCheckBox from './CommonCheckBox';
+import {
+  Ambianceur,
+  Aperitif,
+  Benevolent,
+  Bricologe,
+  Confidence,
+  Discret,
+  Dishes,
+  Helpful,
+  GoodNeighbor,
+  GoodHost,
+  GoodLife,
+  HandHeart,
+  Hypersociable,
+  Resourceful,
+  WellLiving,
+  SwissKnife,
+  CheckBlue,
+} from 'assets/svg/icons';
+
+const iconSize = { width: 34 * em, height: 34 * em };
+const feedbackIcons = [
+  { id: 0, name: 'Le discret/ pas intrusif', icon: Discret(iconSize) },
+  { id: 1, name: 'Le pro du bricolage', icon: Bricologe(iconSize) },
+  { id: 2, name: 'Le pro des p’tits plats', icon: Dishes(iconSize) },
+  { id: 3, name: 'Dingue de confiance', icon: Confidence(iconSize) },
+  { id: 4, name: 'Hypersociable', icon: Hypersociable(iconSize) },
+  { id: 5, name: 'Bon hôte', icon: GoodHost(iconSize) },
+  { id: 6, name: 'Pro des Apèros', icon: Aperitif(iconSize) },
+  { id: 7, name: 'La main sur le coeur', icon: HandHeart(iconSize) },
+  { id: 8, name: 'Le débrouillard', icon: Resourceful(iconSize) },
+  { id: 9, name: 'Le bon vivant', icon: WellLiving(iconSize) },
+  { id: 10, name: 'Le bon voisin', icon: GoodNeighbor(iconSize) },
+  { id: 11, name: 'Le serviable', icon: Helpful(iconSize) },
+  { id: 12, name: 'L’ambianceur', icon: Ambianceur(iconSize) },
+  { id: 13, name: 'Le couteau suisse', icon: SwissKnife(iconSize) },
+  { id: 14, name: 'Le bienveillant­­­', icon: Benevolent(iconSize) },
+];
+
 const insertInformations = [
   { title: 'Mon email', inputTexts: [{ commentInput: 'Mon email', value: 'mathieu@labul.com' }] },
   {
@@ -67,7 +106,7 @@ const changedUserProfile = {
   specs: ['Bricoleur', 'Jardinier'],
   circles: { families: 4, friends: 7, neighbours: 17 },
   needs: { helps: 24, donations: 6, events: 2 },
-  badges:[],
+  badges: feedbackIcons,
 };
 const ProfileCommonModal = (props) => {
   const insertInfo = insertInformations[props.itemKey - 1];

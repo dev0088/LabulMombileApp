@@ -1,5 +1,5 @@
 import React from 'react';
-import { em } from 'view/common/const';
+import { em, hexToRGB } from 'view/common/const';
 import { View, Image } from 'react-native';
 import TitleText from 'view/components/TitleText';
 import CommonTextInput from 'view/components/CommonTextInput';
@@ -7,9 +7,9 @@ import CommonButton from 'view/components/CommonButton';
 import { Actions } from 'react-native-router-flux';
 import AccountCommonHeader from 'view/components/AccountCommonHeader';
 
-const NameGroupScreen = () => {
+const NameGroupScreen = (props) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: props.themeColor }]}>
       <AccountCommonHeader style={styles.header} />
       <View style={styles.popupView}>
         <View style={styles.popupTopView}>
@@ -18,7 +18,11 @@ const NameGroupScreen = () => {
           <CommonTextInput text={'Donne un nom à ton groupe'} isPasswordInput={false} style={styles.commonInput} />
         </View>
         <View style={styles.popupBottomView}>
-          <CommonButton text={'Créer groupe'} style={styles.btnNext} onPress={() => Actions.proProfileHome()} />
+          <CommonButton
+            text={'Créer groupe'}
+            style={[styles.btnNext, { backgroundColor: hexToRGB(props.themeColor, 0.5) }]}
+            onPress={() => Actions.myCirclesHome()}
+          />
         </View>
       </View>
     </View>

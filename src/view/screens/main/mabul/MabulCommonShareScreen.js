@@ -37,7 +37,17 @@ const MabulCommonShareScreen = (props) => {
             </View>
           </View>
         </View>
-        <CommonButton style={[styles.btn, { backgroundColor: conceptColor }]} text="Publier" onPress={()=>Actions.myNeed()}/>
+        <CommonButton
+          style={[styles.btn, { backgroundColor: conceptColor }]}
+          text="Publier"
+          onPress={() => {
+            if (props.mabulService === 'organize') {
+              Actions.myOrganize();
+            } else {
+              Actions.myNeed();
+            }
+          }}
+        />
       </View>
     </View>
   );

@@ -84,11 +84,18 @@ const MyParticipationsScreen = () => {
       data={item}
       style={styles.listItem}
       onPress={() => {
-        Actions.friendNeed({data: item });
+        Actions.friendNeed({ data: item });
       }}
     />
   );
-  const listView = <FlatList data={paricipationLists} renderItem={renderFlatList} keyExtractor={(i) => i.id} />;
+  const listView = (
+    <FlatList
+      data={paricipationLists}
+      renderItem={renderFlatList}
+      keyExtractor={(i) => i.id}
+      style={{ paddingTop: 25 * em, paddingHorizontal: 30 * em, backgroundColor: '#ffffff' }}
+    />
+  );
   return <View style={styles.container}>{listView}</View>;
 };
 
@@ -96,9 +103,8 @@ const styles = {
   container: {
     flex: 1,
     alignItems: 'flex-start',
-    backgroundColor: '#ffffff',
-    paddingTop: 25 * hm,
-    paddingHorizontal: 30 * em,
+    backgroundColor: '#F0F5F7',
+    paddingTop: 10 * hm,
   },
 
   emptyView: { marginTop: 74 * hm, width: 315 * em, height: 148.15 * hm, alignSelf: 'center' },

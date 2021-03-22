@@ -24,18 +24,22 @@ const FriendParticipatePopupScreen = (props) => {
         <CommonText text="Dans cette demande Antoine a pévu une liste des choses à apporter" style={styles.comment} />
         <View style={styles.listItem}>
           <CommonText text="Papier de fond noir" style={styles.itemCheckedText} color="#40CDDE" />
-          <CheckBox shape="oval" isChecked={true} />
+          <CheckBox oval isChecked={true} />
         </View>
         <View style={styles.listItem}>
           <CommonText text="Trépied Professionnel" style={styles.itemText} color="#1E2D60" />
-          <CheckBox shape="oval" isChecked={false} />
+          <CheckBox oval isChecked={false} />
         </View>
         <View style={styles.listItem}>
           <CommonText text="Objectif 105mm f / 2.8 EX DG Macro OS HSM" style={styles.itemText} color="#1E2D60" />
-          <CheckBox shape="oval" isChecked={false} color="#40CDDE" />
+          <CheckBox oval isChecked={false} color="#40CDDE" />
         </View>
-        <CommonButton text="Valider" onPress={() => props.onPress()} style={{marginBottom:30*em}} />
       </View>
+      <CommonButton
+        text="Valider"
+        onPress={() => props.onPress()}
+        style={{ marginBottom: 30 * em, alignSelf: 'center' }}
+      />
     </Modal>
   );
 };
@@ -52,7 +56,7 @@ const styles = {
     justifyContent: 'flex-start',
   },
   header: { marginRight: 30 * em, marginBottom: 18 * em, marginTop: 25 * em, alignSelf: 'flex-end' },
-  body: { marginLeft: 30 * em, marginRight: 30 * em, alignItems: 'center' },
+  body: { marginLeft: 30 * em, marginRight: 30 * em, alignItems: 'center', flex: 1 },
   title: { marginTop: 15 * em, fontWeight: 'bold' },
   titleImg: {
     width: 58 * em,

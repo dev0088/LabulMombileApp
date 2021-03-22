@@ -13,7 +13,6 @@ const profileTypes = {
 
 const AccountChangeMenu = (props) => {
   const [menuVisible, setMenuVisible] = useState(false);
-  console.log('shit'+props.type);
   return (
     <View style={{ display: props.visible ? 'flex' : 'none' }}>
       <DropDownButton style={props.style} icon={props.type} onPress={() => setMenuVisible(true)} />
@@ -43,7 +42,7 @@ const AccountChangeMenu = (props) => {
             }
             onPress={() => {
               setMenuVisible(false);
-              props.type !== 'my' ? Actions.profileHome() : Actions.proProfileHome();
+              props.type !== 'my' ? Actions.main({ tabNav: 'Profile' }) :  Actions.main({ tabNav: 'ProProfile' });
             }}
           />
         </View>

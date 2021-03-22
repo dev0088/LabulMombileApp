@@ -58,6 +58,7 @@ const ProProfileOverviewScreen = (props) => {
             icon={require('assets/images/avatar_curology.png')}
             style={styles.avatar}
             logoVisible={false}
+            pro
           />
           <TitleText text={userProfile.name} style={styles.fullNameText} />
           <CommentText text={userProfile.type} color="#1E2D60" />

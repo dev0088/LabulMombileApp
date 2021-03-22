@@ -10,6 +10,7 @@ import User from 'model/User';
 import ScheduleCard from './ScheduleCard';
 import CalendarListView from './CalendarListView';
 import moment from 'moment';
+import 'moment/min/locales';
 import { Actions } from 'react-native-router-flux';
 
 const locale = {

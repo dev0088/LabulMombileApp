@@ -49,7 +49,7 @@ const MyAlertsTabScreen = () => {
       data={alertList}
       renderItem={renderFlatList}
       keyExtractor={(i) => i.id}
-      style={{ flex: 1, width: '100%' }}
+      style={{ flex: 1, width: '100%' , paddingTop: 25 * em, paddingHorizontal: 30 * em, backgroundColor: '#ffffff' }}
     />
   );
   return <View style={styles.container}>{listView}</View>;
@@ -59,9 +59,8 @@ const styles = {
   container: {
     flex: 1,
     alignItems: 'flex-start',
-    backgroundColor: '#ffffff',
-    paddingTop: 25 * hm,
-    paddingHorizontal: 30 * em,
+    backgroundColor: '#F0F5F7',
+    paddingTop: 10 * hm,
   },
   titleStyle: { fontSize: 14 * em, color: '#1E2D60', lineHeight: 22 * em, marginTop: 15 * em },
   subTitleStyle: { color: '#A0AEB8', lineHeight: 16 * em, marginBottom: 21 * em },

@@ -6,10 +6,11 @@ import ProfileCommonListItem from 'view/components/ProfileCommonListItem';
 import AccountCommonHeader from 'view/components/AccountCommonHeader';
 import { Actions } from 'react-native-router-flux';
 import CommonText from 'view/components/CommonText';
-import SearchBox from '../../../../components/SearchBox';
-import CommentText from '../../../../components/CommentText';
-import CommonListItem from '../../../../components/CommonListItem';
-import CheckBox from '../../../../components/CheckBox';
+import SearchBox from 'view/components/SearchBox';
+import CommentText from 'view/components/CommentText';
+import CommonListItem from 'view/components/CommonListItem';
+import CheckBox from 'view/components/CheckBox';
+import CommonButton from 'view/components/CommonButton';
 
 const usersData = [
   {
@@ -66,9 +67,21 @@ const selectedList = [
     relationship: 'Mon ami/ ma famille',
     avatar: require('assets/images/avatar.png'),
   },
+  {
+    sort: 'friends',
+    userName: 'Amandine Bernard',
+    relationship: 'Mon ami/ ma famille',
+    avatar: require('assets/images/avatar.png'),
+  },
+  {
+    sort: 'friends',
+    userName: 'Amandine Bernard',
+    relationship: 'Mon ami/ ma famille',
+    avatar: require('assets/images/avatar.png'),
+  },
 ];
 const SelectedAvatarView = ({ avatar, userName }) => (
-  <View style={{ width: 54 * em, flexGrow: 1, backgroundColor: 'red', alignSelf: 'baseline' }}>
+  <View style={{ width: 54 * em, flexGrow: 1, alignSelf: 'baseline', marginRight: 10 * em }}>
     <ImageBackground
       source={avatar}
       style={{
@@ -87,14 +100,15 @@ const SelectedAvatarView = ({ avatar, userName }) => (
   </View>
 );
 
-const CreateGroupScreen = () => {
+const CreateGroupScreen = (props) => {
   const renderSelectedList = ({ item }) => <SelectedAvatarView avatar={item.avatar} userName={item.userName} />;
   const renderCircleList = ({ item }) => (
     <CommonListItem
       icon={<Image source={item.avatar} style={{ width: 40 * em, height: 40 * em, marginRight: 15 * em }} />}
       title={item.userName}
       titleStyle={{ color: '#1E2D60' }}
-      rightView={<CheckBox shape="oval" bgColor="#EF88B9" />}
+      rightView={<CheckBox oval red bgColor="#EF88B9" />}
+      style={styles.listItem}
     />
   );
   return (
@@ -102,30 +116,25 @@ const CreateGroupScreen = () => {
       <CommonText style={styles.header} text="Annuler" color="#6A8596" onPress={() => Actions.pop()} />
       <TitleText text="Nouveau groupe" style={styles.title} />
       <SearchBox comment="Rechercher un contact" />
-      <FlatList
-        style={{ marginTop: 15 * em }}
-        horizontal={true}
-        data={selectedList}
-        renderItem={renderSelectedList}
-        keyExtractor={(i) => i.id}
-      />
-      <View>
-        <FlatList data={usersData} renderItem={renderCircleList} keyExtractor={(i) => i.id} />
+      <View style={{ height: 90 * em, marginTop: 15 * em, marginBottom: 25 * em }}>
+        <FlatList horizontal={true} data={selectedList} renderItem={renderSelectedList} keyExtractor={(i) => i.id} />
       </View>
+      <FlatList data={usersData} renderItem={renderCircleList} keyExtractor={(i) => i.id} />
+      <CommonButton
+        text="Continuer"
+        style={{ backgroundColor: props.themeColor, marginBottom: 30 * em }}
+        onPress={() => Actions.nameGroup({ themeColor: props.themeColor })}
+      />
     </View>
   );
 };
 
 const styles = {
-  container: {
-    flex: 1,
-    backgroundColor: '#ffffff',
-
-    paddingHorizontal: 30 * em,
-  },
+  container: { flex: 1, backgroundColor: '#ffffff', paddingHorizontal: 30 * em },
   title: { textAlign: 'left', marginTop: 23 * em, marginBottom: 17 * em },
-  header: { backgroundColor: 'red', marginTop: 39 * em, alignSelf: 'flex-end' },
-  selectedFullName: { fontSize: 12 * em, lineHeight: 15 * em, color: '#1E2D60', marginBottom: 0 },
+  header: { marginTop: 39 * em, alignSelf: 'flex-end' },
+  selectedFullName: { fontSize: 12 * em, height: 30 * em, color: '#1E2D60', marginBottom: 0 },
+  listItem: { marginBottom: 35 * em },
 };
 
 export default CreateGroupScreen;

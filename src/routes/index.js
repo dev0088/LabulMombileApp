@@ -19,9 +19,6 @@ import MabulHomeScreen from 'view/screens/main/mabul/MabulHomeScreen';
 import MabulOrganizeScreen from 'view/screens/main/mabul/organize/MabulOrganizeScreen';
 import MabulSellScreen from 'view/screens/main/mabul/sell/MabulSellScreen';
 import MabulNeedScreen from 'view/screens/main/mabul/need/MabulNeedScreen';
-import MabulHelpNeedScreen from 'view/screens/main/mabul/need/MabulHelpNeedScreen';
-import MabulServiceNeedScreen from 'view/screens/main/mabul/need/MabulServiceNeedScreen';
-import MabulToolNeedScreen from 'view/screens/main/mabul/need/MabulToolNeedScreen';
 import MabulDailyNeedScreen from 'view/screens/main/mabul/need/MabulDailyNeedScreen';
 
 import MabulGiveScreen from 'view/screens/main/mabul/give/MabulGiveScreen';
@@ -83,6 +80,8 @@ import ProSellScreen from 'view/screens/main/profile/proProfile/proNeeds/ProSell
 import GroupDetailScreen from 'view/screens/main/profile/myCircles/GroupDetailScreen';
 import ProProfileHomeScreen from '../view/screens/main/profile/proProfile/ProProfileHomeScreen';
 import MyProInformationScreen from '../view/screens/main/profile/proProfile/MyProInformationScreen';
+import MabulNeedSortScreen from '../view/screens/main/mabul/need/MabulNeedSortScreen';
+import NameGroupScreen from '../view/screens/main/profile/myCircles/NameGroupScreen';
 
 class Routes extends Component {
   render() {
@@ -139,11 +138,9 @@ class Routes extends Component {
           <Scene key="mabulSellEnvironment" hideNavBar component={MabulSellEnvironmentScreen} />
 
           <Scene key="mabulNeed" hideNavBar component={MabulNeedScreen} />
-          <Scene key="mabulHelpNeed" hideNavBar component={MabulHelpNeedScreen} />
-          <Scene key="mabulServiceNeed" hideNavBar component={MabulServiceNeedScreen} />
-          <Scene key="mabulToolNeed" hideNavBar component={MabulToolNeedScreen} />
           <Scene key="mabulFamilyNeed" hideNavBar component={MabulFamilyNeedScreen} />
           <Scene key="mabulDailyNeed" hideNavBar component={MabulDailyNeedScreen} />
+          <Scene key="mabulNeedSort" hideNavBar component={MabulNeedSortScreen} />
 
           <Scene key="activityMessage" hideNavBar component={ActivityMessageScreen} />
           <Scene key="activityDial" hideNavBar component={ActivityDialScreen} />
@@ -181,9 +178,10 @@ class Routes extends Component {
           <Scene key="premiumPurchased" hideNavBar component={PremiumPurchasedScreen} />
           <Scene key="mabulHome" hideNavBar component={MabulHomeScreen} />
           <Scene key="myNeedsHome" hideNavBar component={MyNeedsHomeScreen} />
-          
+
           <Scene key="myCirclesHome" hideNavBar component={MyCirclesHomeScreen} />
           <Scene key="createGroup" hideNavBar component={CreateGroupScreen} />
+          <Scene key="nameGroup" hideNavBar component={NameGroupScreen} />
 
           <Scene key="privacyPolicy" hideNavBar component={PrivacyPolicyScreen} />
           <Scene key="termsOfService" hideNavBar component={TermsOfServiceScreen} />

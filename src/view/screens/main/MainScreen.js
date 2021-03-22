@@ -6,6 +6,8 @@ import FriendsNavigator from './friends/FriendsNavigator';
 import CalendarHomeScreen from './calendar/CalendarHomeScreen';
 import MyActivityHomeScreen from './activity/MyActivityHomeScreen';
 import ProfileHomeScreen from './profile/ProfileHomeScreen';
+import ProProfileHomeScreen from './profile/proProfile/ProProfileHomeScreen';
+
 import MabulHomeScreeen from './mabul/MabulHomeScreen';
 import { em, WIDTH, HEIGHT } from 'view/common/const';
 import { navigationRef } from './RootNavigation';
@@ -36,6 +38,7 @@ export default function MainScreen(props) {
   if (selectedTab === 4) {
     profileImage = require('assets/images/tab_profile_on.png');
   }
+
   return (
     <View style={styles.TabBarMainContainer}>
       <NavigationContainer ref={navigationRef}>
@@ -44,7 +47,18 @@ export default function MainScreen(props) {
           <Tab.Screen name="Calendar" component={CalendarHomeScreen} options={{ tabBarVisible: false }} />
           <Tab.Screen name="Activity" component={MyActivityHomeScreen} options={{ tabBarVisible: false }} />
           <Tab.Screen name="MyNotifictions" component={MyNotificationsScreen} options={{ tabBarVisible: false }} />
-          <Tab.Screen name="Profile" component={ProfileHomeScreen} options={{ tabBarVisible: false }} />
+          <Tab.Screen
+            name="Profile"
+            component={ProfileHomeScreen}
+            options={{ tabBarVisible: false }}
+            initialParams={{ userProfile: props.userProfile }}
+          />
+          <Tab.Screen
+            name="ProProfile"
+            component={ProProfileHomeScreen}
+            options={{ tabBarVisible: false }}
+            initialParams={{ userProfile: props.userProfile }}
+          />
         </Tab.Navigator>
       </NavigationContainer>
       <ImageBackground style={styles.VirtualTabButtons} source={require('assets/images/bg_bottom_tab.png')}>

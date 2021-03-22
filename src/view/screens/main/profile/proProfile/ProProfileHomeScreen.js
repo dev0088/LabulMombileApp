@@ -7,14 +7,14 @@ import ProfileCommonAvatar from 'view/components/ProfileCommonAvatar';
 import ProfileCommonCard from 'view/components/ProfileCommonCard';
 import ProfileCommonListItem from 'view/components/ProfileCommonListItem';
 import AccountChangeMenu from '../AccountChangeMenu';
-
+import {ProNeeds} from 'assets/svg/icons';
 const originalProProfile = {
   avatar: '',
   name: 'Curology',
   type: 'Professional',
   publications: { tips: 0, promotions: 0, events: 0 },
 };
-const ProProfileHomeScreen = (props) => {  
+const ProProfileHomeScreen = (props) => {
   const [userProfile] = useState(props.userProfile ? props.userProfile : originalProProfile);
 
   return (
@@ -29,7 +29,7 @@ const ProProfileHomeScreen = (props) => {
               width: '100%',
               alignItems: 'center',
             }}>
-            <ProfileCommonAvatar style={styles.avatar} fullName={userProfile.name} icon={userProfile.avatar} />
+            <ProfileCommonAvatar style={styles.avatar} fullName={userProfile.name} icon={userProfile.avatar} pro />
             <TouchableOpacity onPress={() => Actions.proProfileOverview({ userProfile: originalProProfile })}>
               <Text style={styles.txtFullName}>{userProfile.name}</Text>
               <Text style={styles.txtGoToProfile}>Aller sur mon profil</Text>
@@ -41,7 +41,7 @@ const ProProfileHomeScreen = (props) => {
             <ProfileCommonCard
               caption={'Mes demandes'}
               style={styles.cardStyle}
-              icon={require('assets/images/ic_profile_request.png')}
+              icon={ProNeeds({width:38*em, height:38*em,})}
               onPress={() => {
                 Actions.proNeedsHome();
               }}
@@ -77,7 +77,7 @@ const ProProfileHomeScreen = (props) => {
               icon={require('assets/images/ic_location.png')}
               style={styles.listItem}
               onPress={() => {
-                Actions.premiumSubscription({type:'my'});
+                Actions.premiumSubscription({ profileType: 'pro' });
               }}
             />
           </View>

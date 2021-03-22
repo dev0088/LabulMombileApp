@@ -64,6 +64,8 @@ import Send from 'assets/svg/icons/navigation/Send.svg';
 import Option from 'assets/svg/icons/navigation/Option.svg';
 import ReportProblem from 'assets/svg/icons/navigation/ReportProblem.svg';
 import Delete from 'assets/svg/icons/navigation/Delete.svg';
+import DeleteRed from 'assets/svg/icons/navigation/DeleteRed.svg';
+
 import Ambianceur from 'assets/svg/icons/f/Ambianceur.svg';
 import Aperitif from 'assets/svg/icons/f/Aperitif.svg';
 import Benevolent from 'assets/svg/icons/f/Benevolent.svg';
@@ -90,11 +92,36 @@ import SelectionOff from 'assets/svg/icons/navigation/SelectionOff.svg';
 import CheckOff from 'assets/svg/icons/navigation/CheckOff.svg';
 import CheckRed from 'assets/svg/icons/navigation/CheckRed.svg';
 import LocationBlue from 'assets/svg/icons/navigation/LocationBlue.svg';
+import MabulGive from 'assets/svg/icons/navigation/MabulGive.svg';
+import MabulNeed from 'assets/svg/icons/navigation/MabulNeed.svg';
+import MabulSell from 'assets/svg/icons/navigation/MabulSell.svg';
+import MabulOrganize from 'assets/svg/icons/navigation/MabulOrganize.svg';
+import MabulCancel from 'assets/svg/icons/navigation/MabulCancel.svg';
+import NotificationYellow from 'assets/svg/icons/navigation/NotificationYellow.svg';
+import CrossGray from 'assets/svg/icons/navigation/CrossGray.svg';
+import CrossCircle from 'assets/svg/icons/navigation/CrossCircle.svg';
+import LeftArrow from 'assets/svg/icons/navigation/LeftArrow.svg';
+
+export{MabulCancel,MabulOrganize,MabulSell,MabulNeed,MabulGive,LeftArrow,NotificationYellow,CrossGray,CrossCircle}
+
+import Setting from 'assets/svg/icons/profile/Setting.svg';
+import MyNeeds from 'assets/svg/icons/profile/MyNeeds.svg';
+import Circles from 'assets/svg/icons/profile/Circles.svg';
+import Information from 'assets/svg/icons/profile/Information.svg';
 import Friend from 'assets/svg/icons/profile/Friend.svg';
 import Neighbor from 'assets/svg/icons/profile/Neighbor.svg';
 import Family from 'assets/svg/icons/profile/Family.svg';
 import All from 'assets/svg/icons/profile/All.svg';
+import AddGroup from 'assets/svg/icons/profile/AddGroup.svg';
+import ProAddCover from 'assets/svg/icons/profile/ProAddCover.svg';
+import AvatarBg from 'assets/svg/icons/profile/AvatarBg.svg';
+import ProAvatarBg from 'assets/svg/icons/profile/ProAvatarBg.svg';
+import ProNeeds from 'assets/svg/icons/profile/ProNeeds.svg';
 
+import AddPhotoBlue from 'assets/svg/icons/post/AddPhotoBlue.svg';
+import AddPhotoGreen from 'assets/svg/icons/post/AddPhotoGreen.svg';
+
+export{ProAvatarBg,AvatarBg,Setting,MyNeeds,Circles,Information,ProNeeds,AddPhotoBlue,AddPhotoGreen,AddGroup,DeleteRed,ProAddCover}
 export { NextIcon, PrevIcon, LocationPink, Alert };
 export {
   ComputerIcon,

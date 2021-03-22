@@ -10,7 +10,7 @@ import ProfileCommonAvatar from 'view/components/ProfileCommonAvatar';
 import CommentText from 'view/components/CommentText';
 import { Actions } from 'react-native-router-flux';
 import Modal from 'react-native-modal';
-
+import { CrossGray, AddPhotoGreen } from 'assets/svg/icons';
 const updateUserPrfile = {
   avatar: require('assets/images/avatar_curology.png'),
   cover: require('assets/images/img_curology.png'),
@@ -29,22 +29,26 @@ const EditNeedScreen = (props) => {
       <ScrollView style={styles.container}>
         <ProfileCommonHeader title="Modifier demande" onCancel={() => Actions.pop()} onFinish={() => Actions.pop()} />
         <View style={styles.listItem}>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
+          <View style={{ flexDirection: 'row', marginBottom: 15 * em, justifyContent: 'space-between' }}>
             <CommentText text="PHOTOS" color="#6A8596" />
             <CommentText text="3 maximum" color="#A0AEB8" />
           </View>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-around', width: '100%' }}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
             <ImageBackground
               imageStyle={{ borderRadius: 15 * em }}
               source={require('assets/images/sample_cover_9.png')}
               style={styles.photo}>
-              <Image style={styles.cancel} />
+              <View style={styles.cancel}>
+                <CrossGray width={12 * em} height={12 * em} />
+              </View>
             </ImageBackground>
             <ImageBackground
               imageStyle={{ borderRadius: 15 * em }}
               source={require('assets/images/sample_cover_9.png')}
               style={styles.photo}>
-              <Image style={styles.cancel} />
+              <View style={styles.cancel}>
+                <CrossGray width={12 * em} height={12 * em} />
+              </View>
             </ImageBackground>
             <View
               imageStyle={{ borderRadius: 15 * em }}
@@ -59,7 +63,9 @@ const EditNeedScreen = (props) => {
                   flexDirection: 'column',
                 },
               ]}>
-              <Image style={styles.addPhoto} source={require('assets/images/ic_addphotos_green.png')} />
+              <View style={styles.addPhoto}>
+                <AddPhotoGreen width={32.86 * em} height={23 * em} />
+              </View>
               <CommentText text="Clique ici" color="#40CDDE" />
             </View>
           </View>
@@ -96,7 +102,12 @@ const EditNeedScreen = (props) => {
           style={styles.listItem}
           options={userProfile.specs}
         />
-        <CommonButton text={'Supprimer mon compte'} style={styles.deleteBtn} onPress={() => Actions.pop()} />
+        <CommonButton
+          text={'Supprimer mon compte'}
+          style={styles.deleteBtn}
+          textStyle={{ color: '#F9547B' }}
+          onPress={() => Actions.pop()}
+        />
       </ScrollView>
       {/* <ProfileCommonModal
         visible={modalVisible}
@@ -111,15 +122,8 @@ const EditNeedScreen = (props) => {
 };
 
 const styles = {
-  container: {
-    backgroundColor: '#F0F5F7',
-  },
-  bgView: {
-    marginTop: 10 * em,
-    height: 184 * em,
-
-    backgroundColor: hexToRGB('#40CDDE10', 0.1),
-  },
+  container: { backgroundColor: '#F0F5F7' },
+  bgView: { marginTop: 10 * em, height: 184 * em, backgroundColor: hexToRGB('#40CDDE10', 0.1) },
   photo: {
     width: 95 * em,
     height: 95 * em,
@@ -128,7 +132,7 @@ const styles = {
     flexDirection: 'row-reverse',
     alignItems: 'flex-end',
   },
-  addPhoto: { width: 33 * em, height: 23 * em, marginBottom: 5.5 * em, backgroundColor: 'red' },
+  addPhoto: { width: 33 * em, height: 23 * em, marginBottom: 5.5 * em },
   cancel: {
     width: 26 * em,
     height: 26 * em,
@@ -136,14 +140,11 @@ const styles = {
     marginBottom: 4 * em,
     marginRight: 4 * em,
     backgroundColor: '#ffffff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   addCoverBtn: { width: 28 * em, height: 28 * em, position: 'absolute', top: 47 * em },
-  itemTitle: {
-    height: 18 * em,
-    lineHeight: 18 * em,
-    marginLeft: 30 * em,
-    marginTop: 25 * em,
-  },
+  itemTitle: { height: 18 * em, lineHeight: 18 * em, marginLeft: 30 * em, marginTop: 25 * em },
   listItem: {
     width: '100%',
     marginTop: 10 * em,
@@ -159,7 +160,6 @@ const styles = {
     lineHeight: 19 * em,
     alignSelf: 'center',
     backgroundColor: 'transparent',
-    color: '#F9547B',
   },
   modalView: {
     height: 140 * em,

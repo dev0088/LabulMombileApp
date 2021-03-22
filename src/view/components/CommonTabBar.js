@@ -21,7 +21,7 @@ export default class CommonTabBar extends Component {
     super(props);
 
     this.state = {
-      pos: new Animated.Value(30 * em),
+      pos: new Animated.Value(10 * em),
       btnWidth: 0,
       btnHeight: 0,
     };
@@ -46,7 +46,7 @@ export default class CommonTabBar extends Component {
   render() {
     const { state, descriptors, navigation, position } = this.props;
     return (
-      <View style={{marginBottom:25*em}}>
+      <View style={{marginBottom:25*em,paddingLeft:30*em}}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} ref={(view) => (this.tabContainer = view)}>
           <View style={{ flexDirection: 'row' }}>
             <Animated.View style={{ transform: [{ translateX: this.state.pos }] }}>
@@ -104,7 +104,7 @@ export default class CommonTabBar extends Component {
                     {
                       paddingHorizontal: 14 * em,
                       paddingVertical: 7 * em,
-                      marginLeft: 30 * em,
+                      marginLeft: 10 * em,
                     },
                   ]}
                   key={route.key}>

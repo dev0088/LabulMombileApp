@@ -129,7 +129,7 @@ const styles = {
   },
   nextBtn: {
     alignSelf: 'flex-end',
-    marginRight: 30 * em,
+    // marginRight: 30 * em,
     marginBottom: 30 * em,
   },
 };

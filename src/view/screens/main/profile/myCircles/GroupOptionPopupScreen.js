@@ -5,7 +5,7 @@ import CommonText from 'view/components/CommonText';
 import Modal from 'react-native-modal';
 import CommonListItem from 'view/components/CommonListItem';
 import CommonButton from 'view/components/CommonButton';
-
+import { DeleteRed } from 'assets/svg/icons';
 const GroupOptionPopupScreen = (props) => {
   return (
     <Modal
@@ -18,7 +18,7 @@ const GroupOptionPopupScreen = (props) => {
       <View style={styles.body}>
         <Image source={require('assets/images/avatar.png')} style={styles.avatar} />
         <CommonText text="Cousins" style={styles.userName} />
-        <CommonText text="8 membres" style={styles.userName} color="#A0AEB8"/>
+        <CommonText text="8 membres" color="#A0AEB8" />
 
         <CommonListItem
           style={styles.listItem}
@@ -35,37 +35,25 @@ const GroupOptionPopupScreen = (props) => {
           style={styles.listItem}
           title="Supprimer groupe"
           titleStyle={{ color: '#F9547B' }}
-          rightView={
-            <Image
-              style={{ width: 20 * em, height: 20 * em, resizeMode: 'contain' }}
-              source={require('assets/images/img_close.png')}
-            />
-          }
+          rightView={<DeleteRed width={18 * em} height={20 * em} />}
         />
       </View>
-      <CommonButton text="Annuler" style={styles.cancelBtn} onPress={() => props.onPress()} />
+      <CommonButton
+        text="Annuler"
+        style={styles.cancelBtn}
+        textStyle={{ color: '#1E2D60' }}
+        onPress={() => props.onPress()}
+      />
     </Modal>
   );
 };
 const styles = {
-  container: {
-    margin: 0,
-    flex: 1,
-    justifyContent: 'flex-end',
-  },
-  avatar: {
-    width: 54 * em,
-    height: 54 * em,
-    marginTop: 29 * em,
-  },
-  userName: {
-    color: '#1E2D60',
-    marginBottom: 23 * em,
-    marginTop: 10 * em,
-  },
-
+  container: { margin: 0, flex: 1, justifyContent: 'flex-end' },
+  avatar: { width: 54 * em, height: 54 * em, marginTop: 29 * em },
+  userName: { color: '#1E2D60', marginBottom: 5 * em, marginTop: 5 * em },
   body: {
     paddingHorizontal: 25 * em,
+    paddingBotom: 12 * em,
     alignItems: 'center',
     marginRight: 30 * em,
     marginLeft: 30 * em,

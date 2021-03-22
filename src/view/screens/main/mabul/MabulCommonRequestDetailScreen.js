@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 import TitleText from 'view/components/TitleText';
-import { em, HEIGHT, WIDTH, mabulColors } from 'view/common/const';
+import { hexToRGB, em, HEIGHT, WIDTH, mabulColors } from 'view/common/const';
 import CommentText from 'view/components/CommentText';
 import MabulCommonHeader from 'view/components/MabulCommonHeader';
 import MabulCommonListItem from 'view/components/MabulCommonListItem';
@@ -49,7 +49,7 @@ const MabulCommonRequestDetailScreen = (props) => {
           <View style={styles.line} />
         </View>
         <MabulNextButton
-          color={conceptColor}
+          color={hexToRGB(conceptColor,0.5)}
           style={styles.nextBtn}
           onPress={() => {
             if (props.mabulService === 'sell') {

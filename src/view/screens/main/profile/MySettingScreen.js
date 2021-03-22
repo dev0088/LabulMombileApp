@@ -6,55 +6,63 @@ import TitleText from 'view/components/TitleText';
 import CommentText from 'view/components/CommentText';
 import Switch from 'view/components/Switch';
 import CommonListItem from 'view/components/CommonListItem';
-
+import { Address, NotificationYellow } from 'assets/svg/icons';
 const MySettingScreen = () => {
   return (
     <View style={styles.container}>
       <CommonHeader dark={true} style={styles.header} />
       <View style={styles.line} />
-      <View style={styles.listItem}>
-        <Image style={styles.icon} />
-        <View style={styles.containerTxt}>
-          <TitleText text="Localisation" style={styles.listTitle} />
-          <CommentText text="Ma localisation est activé" style={styles.listComment} color={'#9093A3'} />
-        </View>
-        <Switch
-          switchWidth={49 * em}
-          switchHeight={27 * em}
-          switchdirection="rtl"
-          switchBorderColor="#ffffff"
-          switchBackgroundColor="#40CDDE"
-          btnBorderColor="red"
-          btnBackgroundColor="#FFFFFF"
-          initialValue={1}
-          style={styles.switch}
-        />
-      </View>
+      <CommonListItem
+        style={styles.listItem}
+        icon={
+          <View style={[styles.icon, { backgroundColor: 'rgba(64, 205, 222, 0.15)' }]}>
+            <Address height={22 * em} width={15 * em} />
+          </View>
+        }
+        title="Localisation"
+        titleStyle={styles.listTitle}
+        subTitleStyle={styles.listComment}
+        rightView={
+          <Switch
+            switchWidth={49 * em}
+            switchHeight={27 * em}
+            switchdirection="rtl"
+            switchBorderColor="#ffffff"
+            switchBackgroundColor="#40CDDE"
+            btnBorderColor="red"
+            btnBackgroundColor="#FFFFFF"
+            initialValue={1}
+            style={styles.switch}
+          />
+        }
+        subTitle="Vous êtes visibles dans la carte Labul"
+      />
       <View style={styles.line} />
-      {/* <CommonListItem
-        icon={<Image style={styles.icon} />}
+      <CommonListItem
+        style={styles.listItem}
+        icon={
+          <View style={[styles.icon, { backgroundColor: 'rgba(253, 198, 65,.15)' }]}>
+            <NotificationYellow height={22.39 * em} width={18.76 * em} />
+          </View>
+        }
         title="Notifications"
+        titleStyle={styles.listTitle}
+        subTitleStyle={styles.listComment}
+        rightView={
+          <Switch
+            switchWidth={49 * em}
+            switchHeight={27 * em}
+            switchdirection="rtl"
+            switchBorderColor="#ffffff"
+            switchBackgroundColor="#40CDDE"
+            btnBorderColor="red"
+            btnBackgroundColor="#FFFFFF"
+            initialValue={1}
+            style={styles.switch}
+          />
+        }
         subTitle="Activez la réception de notifications"
-      /> */}
-      <View style={styles.listItem}>
-        <Image style={styles.icon} />
-        <View style={styles.containerTxt}>
-          <TitleText text="Notifications" style={styles.listTitle} />
-          <CommentText text="Activez la réception de notifications" style={styles.listComment} color={'#9093A3'} />
-        </View>
-        <Switch
-          switchWidth={49 * em}
-          switchHeight={27 * em}
-          switchdirection="rtl"
-          switchBorderColor="#ffffff"
-          switchBackgroundColor="#40CDDE"
-          btnBorderColor="red"
-          btnBackgroundColor="#FFFFFF"
-          initialValue={2}
-          style={[styles.switch, { marginTop: 9 * em }]}
-          value={1}
-        />
-      </View>
+      />
     </View>
   );
 };
@@ -82,8 +90,12 @@ const styles = {
     marginBottom: 25 * em,
   },
   icon: {
+    marginRight: 15 * em,
+    alignItems: 'center',
+    justifyContent: 'center',
     width: 39 * em,
     height: 39 * em,
+    borderRadius: 20 * em,
   },
   containerTxt: {
     flex: 1,
@@ -94,7 +106,7 @@ const styles = {
     fontSize: 18 * em,
     lineHeight: 23 * em,
     textAlign: 'left',
-    fontWeight: 'bold',
+    color: 'rgba(30, 45, 96, 1)',
   },
   listComment: {
     lineHeight: 16 * em,

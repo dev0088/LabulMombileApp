@@ -6,37 +6,27 @@ import { FlatList } from 'react-native';
 import MabulCommonListItem from 'view/components/MabulCommonListItem';
 import MabulCommonHeader from 'view/components/MabulCommonHeader';
 import { Actions } from 'react-native-router-flux';
+
 const needItems = [
-  {
-    id: 0,
-    itemName: 'Coup de main',
-    onPress: () => {
-      Actions.mabulHelpNeed();
-    },
-  },
-  {
-    id: 1,
-    itemName: 'Service',
-    onPress: () => {
-      Actions.mabulServiceNeed();
-    },
-  },
-  {
-    id: 2,
-    itemName: 'Outil',
-    onPress: () => {
-      Actions.mabulToolNeed();
-    },
-  },
+  { id: 0, itemName: 'Coup de main' },
+  { id: 1, itemName: 'Service' },
+  { id: 2, itemName: 'Outil' },
 ];
-const MabulNeedScreen = () => {
+const MabulNeedScreen = (props) => {
   console.log(needItems[0].onPress);
   const renderFlatList = ({ item }) => (
-    <MabulCommonListItem text={item.itemName} style={styles.listItem} icon={item.icon} onPress={() => item.onPress()} />
+    <MabulCommonListItem
+      text={item.itemName}
+      style={styles.listItem}
+      icon={item.icon}
+      onPress={() => {
+        Actions.mabulNeedSort({ title: item.itemName, process: 11.2 });
+      }}
+    />
   );
   return (
     <View style={styles.container}>
-      <MabulCommonHeader style={styles.header} percent={7} noBackButton progressBarColor={'#38C2FF'} />
+      <MabulCommonHeader style={styles.header} percent={props.process} noBackButton progressBarColor={'#38C2FF'} />
       <View style={styles.body}>
         <TitleText text={'J’ai besoin'} style={styles.title} />
         <FlatList data={needItems} renderItem={renderFlatList} keyExtractor={(i) => i.id} />

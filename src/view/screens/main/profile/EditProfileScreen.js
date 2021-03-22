@@ -14,7 +14,7 @@ const EditProfileScreen = (props) => {
   const [inputItemKey, setInputItemKey] = useState(1);
   const [modalVisible, setModalVisible] = useState(false);
   const [userProfile, setUserProfileOnChanged] = useState(props.userProfile);
-  console.log(userProfile)
+  console.log(userProfile);
   return (
     <View>
       <ScrollView style={styles.container}>
@@ -74,7 +74,12 @@ const EditProfileScreen = (props) => {
             setModalVisible(!modalVisible);
           }}
         />
-        <CommonButton text={'Supprimer mon compte'} style={styles.deleteBtn} onPress={() => Actions.main()} />
+        <CommonButton
+          text={'Supprimer mon compte'}
+          textStyle={{ color: '#F9547B' }}
+          style={styles.deleteBtn}
+          onPress={() => Actions.main()}
+        />
       </ScrollView>
       <ProfileCommonModal
         visible={modalVisible}
@@ -113,7 +118,6 @@ const styles = {
     lineHeight: 19 * em,
     alignSelf: 'center',
     backgroundColor: 'transparent',
-    color: '#F9547B',
   },
 };
 

@@ -10,24 +10,30 @@ const PurchaseMenuCard = (props) => {
     marginBottom: 15 * em,
     bgColor: '#BFCDDB',
   };
-  if (props.selected ) {
-    psStyle.borderColor = '#41D0E2';
-    psStyle.bgColor = '#41D0E2';
+  if (props.selected) {
+    psStyle.borderColor = props.name === 'Pro' ? '#7398FD' : '#41D0E2';
+    psStyle.bgColor = props.name === 'Pro' ? '#7398FD' : '#41D0E2';
     psStyle.marginTop = 35 * em;
     psStyle.marginBottom = 19 * em;
   }
   return (
     <View style={[styles.container, props.style, { borderColor: psStyle.borderColor }]}>
-      <Text style={[styles.title, { backgroundColor: psStyle.bgColor, borderColor: props.borderColor }]}>
-        {props.name}
-      </Text>
+      <Text style={[styles.title, { backgroundColor: psStyle.bgColor }]}>{props.name}</Text>
       <TitleText text={props.price} style={styles.price} />
       <TitleText text={'par mois'} style={{ marginBottom: 17 * em, fontSize: 12 * em, lineHeight: 14 * em }} />
       <View style={[styles.containerTxt, { width: props.txtWidth }]}>
         <Text style={styles.comment}>{props.commentRadius}</Text>
         <Text style={styles.comment}>{props.comment}</Text>
       </View>
-      <Text style={[styles.addTxt, { marginTop: psStyle.marginTop, marginBottom: psStyle.marginBottom }]}>
+      <Text
+        style={[
+          styles.addTxt,
+          {
+            color: props.name === 'Pro' ? '#7398FD' : '#41D0E2',
+            marginTop: psStyle.marginTop,
+            marginBottom: psStyle.marginBottom,
+          },
+        ]}>
         En savoir plus
       </Text>
     </View>

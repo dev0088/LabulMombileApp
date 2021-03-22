@@ -6,7 +6,7 @@ import Accordion from 'react-native-collapsible/Accordion';
 import CommentText from 'view/components/CommentText';
 import FriendCommonHeader from 'view/components/CommentText';
 import CommonHeader from 'view/components/CommonHeader';
-
+import { RightArrow, LeftArrow } from 'assets/svg/icons';
 const sections = [
   { title: 'Politique de confidentialité1', content: '' },
   {
@@ -23,12 +23,19 @@ const sections = [
 const PrivacyPolicyScreen = () => {
   const [activeSections, setActiveSections] = useState([]);
   const _renderHeader = (section, index, isActive) => {
-    console.log(isActive);
-
+    const Arrow = !isActive ? (
+      <View style={{ marginTop: 8 * em, transform: [{ rotate: '-90deg' }] }}>
+        <LeftArrow width={11 * em} height={18 * em} />
+      </View>
+    ) : (
+      <View style={{ marginTop: 8 * em, transform: [{ rotate: '-90deg' }] }}>
+        <RightArrow width={11 * em} height={18 * em} />
+      </View>
+    );
     return (
       <View style={styles.header}>
         <Text style={styles.headerText}>{section.title}</Text>
-        <Image style={styles.arrowDown} />
+        {Arrow}
       </View>
     );
   };
@@ -51,7 +58,7 @@ const PrivacyPolicyScreen = () => {
       <Accordion
         sections={sections}
         activeSections={activeSections}
-        renderHeader={(isActive) => _renderHeader(isActive)}
+        renderHeader={_renderHeader}
         renderContent={_renderContent}
         onChange={_updateSections}
         sectionContainerStyle={styles.sectionStyle}
@@ -93,12 +100,6 @@ const styles = {
     lineHeight: 29 * em,
     textAlign: 'left',
     color: '#1E2D60',
-  },
-  arrowDown: {
-    backgroundColor: 'gray',
-    width: 18 * em,
-    height: 11 * em,
-    marginTop: 8 * em,
   },
   contentText: {
     textAlign: 'left',

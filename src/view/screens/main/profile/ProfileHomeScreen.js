@@ -9,7 +9,7 @@ import ProfileCommonCard from 'view/components/ProfileCommonCard';
 import ProfileCommonListItem from 'view/components/ProfileCommonListItem';
 import CommonButton from 'view/components/CommonButton';
 import AccountChangeMenu from './AccountChangeMenu';
-
+import {MyNeeds, Circles, Information, Setting} from 'assets/svg/icons'
 const originalMyProfile = {
   avatar: '',
   fullName: 'Mathieu Torin1',
@@ -18,9 +18,10 @@ const originalMyProfile = {
 };
 const ProfileHomeScreen = (props) => {
   const [userProfile] = useState(props.userProfile ? props.userProfile : originalMyProfile);
+  console.log(props.route.params.userProfile)
   return (
     <ScrollView style={styles.scrollView}>
-      <AccountChangeMenu style={styles.dropDown} type="my" visible={props.userProfile ? true : false} />
+      <AccountChangeMenu style={styles.dropDown} type="my" visible={(props.route.params.userProfile||props.userProfile) ? true : false} />
 
       <View style={styles.topView}>
         <ProfileCommonAvatar style={styles.avatar} fullName={userProfile.fullName} />
@@ -35,7 +36,7 @@ const ProfileHomeScreen = (props) => {
           <ProfileCommonCard
             caption={'Mes demandes'}
             style={styles.cardStyle}
-            icon={require('assets/images/ic_profile_request.png')}
+            icon={MyNeeds({width:38*em, height:38*em,})}
             onPress={() => {
               Actions.myNeedsHome();
             }}
@@ -43,7 +44,7 @@ const ProfileHomeScreen = (props) => {
           <ProfileCommonCard
             caption={'Mes cercles'}
             style={styles.cardStyle}
-            icon={require('assets/images/ic_circles.png')}
+            icon={Circles({width:38*em, height:38*em,})}
             onPress={() => {
               Actions.myCirclesHome();
             }}

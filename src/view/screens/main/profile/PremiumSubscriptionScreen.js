@@ -31,14 +31,15 @@ const PremiumSubscriptionScreen = (props) => {
           <View style={styles.cardContainer}>
             <PurchaseMenuCard
               style={styles.card}
-              name="Light"              
+              selected={props.profileType === 'my'}
+              name="Light"
               price="0,90€"
               commentRadius="Rayon de 500m."
               comment="Idéal pour vendre juste autour de soi"
             />
             <PurchaseMenuCard
               style={styles.card}
-              selected
+              selected={props.profileType === 'pro'}
               name="Pro"
               price="1,90€"
               commentRadius="Rayon de 1 à 3Km. "
@@ -61,7 +62,7 @@ const PremiumSubscriptionScreen = (props) => {
       <View style={styles.btnView}>
         <CommonButton
           text="M’abonner Labul Light - 0,90€/mois"
-          style={styles.purchaseBtn}
+          style={{ backgroundColor: props.profileType === 'my' ? '#40CDDE' : '#7398FD' }}
           onPress={() => setModalVisible(true)}
         />
       </View>
@@ -108,7 +109,7 @@ const PremiumSubscriptionScreen = (props) => {
           text="Payer"
           style={styles.modalPayBtn}
           onPress={() => {
-            Actions.premiumPurchased({profileType:props.profileType});
+            Actions.premiumPurchased({ profileType: props.profileType });
             setModalVisible(false);
           }}
         />
@@ -194,7 +195,6 @@ const styles = {
     color: '#A0AEB8',
     lineHeight: 18 * em,
   },
-  purchaseBtn: {},
   modal: {
     backgroundColor: '#F9F9F9C7',
     marginTop: 192 * em,

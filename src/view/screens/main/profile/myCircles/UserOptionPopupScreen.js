@@ -5,7 +5,7 @@ import CommonText from 'view/components/CommonText';
 import Modal from 'react-native-modal';
 import CommonListItem from 'view/components/CommonListItem';
 import CommonButton from 'view/components/CommonButton';
-
+import { AddGroup, CrossCircle } from 'assets/svg/icons';
 const UserOptionPopupScreen = (props) => {
   return (
     <Modal
@@ -21,38 +21,28 @@ const UserOptionPopupScreen = (props) => {
         <CommonListItem
           style={styles.listItem}
           title="Ajouter à ma famille"
-          titleStyle={{ color: '#6A8596' }}
-          rightView={
-            <Image
-              style={{ width: 18 * em, height: 20 * em, resizeMode: 'contain' }}
-              source={require('assets/images/img_close.png')}
-            />
-          }
+          titleStyle={{ color: '#EF88B9' }}
+          rightView={<AddGroup width={29.5 * em} height={32.06 * em} />}
         />
         <CommonListItem
           style={styles.listItem}
           title="Retirer de mes amis"
-          titleStyle={{ color: '#F9547B' }}
-          rightView={
-            <Image
-              style={{ width: 20 * em, height: 20 * em, resizeMode: 'contain' }}
-              source={require('assets/images/img_close.png')}
-            />
-          }
+          titleStyle={{ color: '#6A8596' }}
+          rightView={<CrossCircle width={22 * em} height={22 * em} />}
         />
         <CommonListItem
           style={styles.listItem}
           title="Retirer de mes voisins"
-          titleStyle={{ color: '#F9547B' }}
-          rightView={
-            <Image
-              style={{ width: 20 * em, height: 20 * em, resizeMode: 'contain' }}
-              source={require('assets/images/img_close.png')}
-            />
-          }
+          titleStyle={{ color: '#6A8596' }}
+          rightView={<CrossCircle width={22 * em} height={22 * em} />}
         />
       </View>
-      <CommonButton text="Annuler" style={styles.cancelBtn} onPress={() => props.onPress()} />
+      <CommonButton
+        text="Annuler"
+        style={styles.cancelBtn}
+        textStyle={{ color: '#1E2D60' }}
+        onPress={() => props.onPress()}
+      />
     </Modal>
   );
 };

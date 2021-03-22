@@ -43,7 +43,7 @@ const MabulFamilyNeedScreen = () => {
       style={styles.listItem}
       subText={item.subName}
       icon={item.icon}
-      onPress={() => Actions.mabulCommonRequestDetail({ mabulService: 'need' })}
+      onPress={() => Actions.mabulCommonRequestDetail({ mabulService: 'need' ,process:22.4})}
     />
   );
   return (

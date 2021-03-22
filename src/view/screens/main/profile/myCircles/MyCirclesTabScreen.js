@@ -124,14 +124,26 @@ const MyCirclesTabScreen = (props) => {
   };
   return (
     <View style={styles.container}>
-      <FlatList data={usersData} renderItem={renderFlatList} keyExtractor={(i) => i.id} />
+      <FlatList
+        data={usersData}
+        renderItem={renderFlatList}
+        style={{
+          backgroundColor: '#ffffff',
+          flex: 1,
+          width: '100%',
+          paddingTop: 25 * em,
+          paddingHorizontal: 30 * em,
+          // backgroundColor: '#ffffff',
+        }}
+        keyExtractor={(i) => i.id}
+      />
       <CommonCircularButton
         radius={30 * em}
         src={require('assets/images/ic_add_blue.png')}
         iconStyle={styles.icon}
         bgColor={themeColors[sort]}
         style={styles.addBtn}
-        onPress={() => Actions.createGroup()}
+        onPress={() => Actions.createGroup({themeColor:themeColors[sort]})}
       />
       <UserOptionPopupScreen visible={userOptionVisible} onPress={() => setUserOptionVisible(false)} />
       <GroupOptionPopupScreen visible={groupOptionVisible} onPress={() => setGroupOptionVisible(false)} />
@@ -141,15 +153,14 @@ const MyCirclesTabScreen = (props) => {
 export default MyCirclesTabScreen;
 const styles = {
   container: {
-    paddingTop: 25 * em,
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#F0F5F7',
+    paddingTop: 10 * hm,
   },
   listItem: {
     height: 42 * hm,
     marginBottom: 35 * hm,
-    marginLeft: 30 * em,
-    marginRight: 30 * em,
+ 
     width: 315 * em,
   },
   addBtn: {

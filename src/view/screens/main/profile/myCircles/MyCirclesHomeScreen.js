@@ -8,6 +8,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { NavigationContainer } from '@react-navigation/native';
 import MyCirclesTabScreen from './MyCirclesTabScreen';
 import CommonBackButton from '../../../../components/CommonBackButton';
+import { Actions } from 'react-native-router-flux';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -15,7 +16,7 @@ const MyCirclesHomeScreen = () => {
   return (
     <NavigationContainer>
       <View style={styles.container}>
-        <CommonBackButton dark style={{ marginLeft: 15 * em }} />
+        <CommonBackButton dark style={{ marginLeft: 15 * em }} onPress={() => Actions.main({ tabNav: 'Profile' })} />
         <TitleText text={'Mes Circles'} style={styles.title} />
         <Tab.Navigator tabBar={(props) => <CommonTabBar {...props} />} swipeEnabled={false} initialRouteName="families">
           <Tab.Screen

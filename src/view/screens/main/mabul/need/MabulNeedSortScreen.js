@@ -15,7 +15,7 @@ const needItems = [
     subName: 'Enfants/ Soutien scolaire/Aide aux personnes âgées/ Animaux de compagnie/ Informatique…',
     icon: NeedFamily(iconSize),
     onPress: () => {
-      Actions.mabulFamilyNeed();
+      Actions.mabulFamilyNeed({process:15});
     },
   },
   {
@@ -24,11 +24,11 @@ const needItems = [
     subName: 'Maison/ Livraison/ Repas/ Repassage/ Achats de Courses/ Transport/ Co-voiturage/ Soins…',
     icon: NeedDaily(iconSize),
     onPress: () => {
-      Actions.mabulDailyNeed();
+      Actions.mabulDailyNeed({process:15});
     },
   },
 ];
-const MabulServiceNeedScreen = () => {
+const MabulNeedSortScreen = (props) => {
   const renderFlatList = ({ item }) => (
     <MabulCommonListItem
       text={item.itemName}
@@ -40,9 +40,14 @@ const MabulServiceNeedScreen = () => {
   );
   return (
     <View style={styles.container}>
-      <MabulCommonHeader style={styles.header} percent={11} isNoBackBtn={false} progressBarColor={'#38C2FF'} />
+      <MabulCommonHeader
+        style={styles.header}
+        percent={props.process}
+        isNoBackBtn={false}
+        progressBarColor={'#38C2FF'}
+      />
       <View style={styles.body}>
-        <TitleText text={'J’ai besoin Service'} style={styles.title} />
+        <TitleText text={'J’ai besoin '+props.title} style={styles.title} />
         <View style={styles.popView}>
           <FlatList data={needItems} renderItem={renderFlatList} keyExtractor={(i) => i.id} />
         </View>
@@ -89,4 +94,4 @@ const styles = {
   },
 };
 
-export default MabulServiceNeedScreen;
+export default MabulNeedSortScreen;
