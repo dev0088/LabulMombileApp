@@ -4,14 +4,15 @@ import { em, WIDTH } from 'view/common/const';
 import CommentText from './CommentText';
 import CommonBackButton from './CommonBackButton';
 import CommonText from './CommonText';
+import { Actions } from 'react-native-router-flux';
 
 const CommonHeader = (props) => {
   var leftButton = props.leftTxt ? (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={props.onLeftPress ? props.onLeftPress : () => Actions.pop()}>
       <CommentText text={props.leftTxt} color={'#FFFFFF'} style={styles.leftTxt} />
     </TouchableOpacity>
   ) : (
-    <CommonBackButton dark={props.dark} />
+    <CommonBackButton dark={props.dark} onPress={props.onLeftPress ? props.onLeftPress : null} />
   );
   var centerIcon = require('assets/images/txt_logo_white.png');
   if (props.blueLogo) {
@@ -31,7 +32,7 @@ const CommonHeader = (props) => {
       <View style={styles.left}>{leftButton}</View>
       <View style={[styles.center, { display: logoVisible }]}>{centerView}</View>
       <View style={styles.right}>
-        <TouchableOpacity onPress={() => props.psAction}>
+        <TouchableOpacity onPress={() => props.onRightPress()}>
           <CommentText text={props.rightTxt} color={'#FFFFFF'} style={styles.rightTxt} />
         </TouchableOpacity>
       </View>

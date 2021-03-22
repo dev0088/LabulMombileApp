@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { View, FlatList, Image } from 'react-native';
 import { em } from 'view/common/const';
-import CommonText from '../../../components/CommonText';
-import TitleText from '../../../components/TitleText';
-import CommonButton from '../../../components/CommonButton';
-import CheckBox from '../../../components/CheckBox';
+import CommonText from 'view/components/CommonText';
+import TitleText from 'view/components/TitleText';
+import CommonButton from 'view/components/CommonButton';
+import CheckBox from 'view/components/CheckBox';
 
 import Modal from 'react-native-modal';
 const FriendParticipatePopupScreen = (props) => {
@@ -32,9 +32,9 @@ const FriendParticipatePopupScreen = (props) => {
         </View>
         <View style={styles.listItem}>
           <CommonText text="Objectif 105mm f / 2.8 EX DG Macro OS HSM" style={styles.itemText} color="#1E2D60" />
-          <CheckBox shape="oval" isChecked={false} />
+          <CheckBox shape="oval" isChecked={false} color="#40CDDE" />
         </View>
-        <CommonButton text="Valider" onPress={() => props.onPress()} />
+        <CommonButton text="Valider" onPress={() => props.onPress()} style={{marginBottom:30*em}} />
       </View>
     </Modal>
   );

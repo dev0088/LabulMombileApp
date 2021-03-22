@@ -4,37 +4,17 @@ import { em, WIDTH } from 'view/common/const';
 import CommentText from './CommentText';
 import NeedServiceType from 'model/service/NeedServiceType';
 import ServiceType from 'model/service/ServiceType';
-import SellService from '../../model/service/SellService';
-import SellServiceType from '../../model/service/SellServiceType';
+import SellService from 'model/service/SellService';
+import SellServiceType from 'model/service/SellServiceType';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { getUserBadge } from 'view/common/icons';
+import CommonListItem from './CommonListItem';
+import AvatarWithBadge from './AvatarWithBadge';
 
 const coverImageMargin = 24 * em;
 const horizontalMagin = 22 * em;
 const userPhotoSize = 36 * em;
-const badgeSize = 20 * em;
 
-const getUserBadge = (type, subType) => {
-  let userBadge = require('assets/images/ic_workshop.png');
-  if (type === ServiceType.NEED) {
-    if (subType === NeedServiceType.REPAIR) {
-      userBadge = require('assets/images/ic_sample2.png');
-    } else if (subType === NeedServiceType.CARPOOL) {
-      userBadge = require('assets/images/ic_sample3.png');
-    } else if (subType === NeedServiceType.REPAIR_DEVICE) {
-      userBadge = require('assets/images/ic_sample4.png');
-    } else if (subType === NeedServiceType.VEGAN_FOOD) {
-      userBadge = require('assets/images/ic_sample6.png');
-    }
-  } else if (type === ServiceType.GIVE) {
-    userBadge = require('assets/images/ic_sample_5.png');
-  } else if (type === ServiceType.SELL) {
-    if (subType === SellServiceType.PLANT) {
-      userBadge = require('assets/images/sample_ic_plant.png');
-    } else {
-      userBadge = require('assets/images/sample_ic_hair.png');
-    }
-  }
-  return userBadge;
-};
 
 const FriendListCard = (props) => {
   const { data } = props;
@@ -54,11 +34,21 @@ const FriendListCard = (props) => {
             />
           </View>
           {data.date && <Text style={styles.dateTextCommon}>{data.date}</Text>}
-          <View style={{marginTop: 12 * em}}>
+          <View style={{ marginTop: 12 * em }}>
             <CommentText text={data.title} color="#1E2D60" />
-            <Text style={[styles.userDescText, styles.imageMarginLeft, {marginTop: 8 * em}]}>{data.slogan}</Text>
-            <CommentText align="left" text={data.comment} color="#1E2D60" style={[styles.imageMarginLeft, {marginTop: 4 * em}]} />
-            <CommentText align="left" text={data.price} color="#1E2D60" style={[styles.imageMarginLeft, {marginTop: 12 * em}]} />
+            <Text style={[styles.userDescText, styles.imageMarginLeft, { marginTop: 8 * em }]}>{data.slogan}</Text>
+            <CommentText
+              align="left"
+              text={data.comment}
+              color="#1E2D60"
+              style={[styles.imageMarginLeft, { marginTop: 4 * em }]}
+            />
+            <CommentText
+              align="left"
+              text={data.price}
+              color="#1E2D60"
+              style={[styles.imageMarginLeft, { marginTop: 12 * em }]}
+            />
           </View>
         </View>
       </TouchableOpacity>
@@ -74,17 +64,24 @@ const FriendListCard = (props) => {
           <Image source={data.coverImage} style={styles.coverImage} />
           {data.date && <Text style={styles.dateText}>01 Mar · 13h00</Text>}
         </View>
-        <View style={styles.bottomContent}>
-          <View style={{ marginLeft: coverImageMargin, width: userPhotoSize }}>
-            <Image source={data.user.photo} style={{ width: userPhotoSize, height: userPhotoSize }} />
-            <Image source={userBadge} style={styles.userBadge} />
-          </View>
-          <View style={styles.userDesc}>
-            <Text style={styles.userDescText}>{data.user.name}</Text>
-            {data.type === ServiceType.GIVE && <CommentText align="left" color="#1E2D60" text={data.organName} />}
-            {data.type !== ServiceType.GIVE && <Text style={styles.userDescText}>{data.title}</Text>}
-          </View>
-        </View>
+
+        <CommonListItem
+          style={styles.bottomContent}
+          icon={
+            <AvatarWithBadge
+              avatar={data.user.photo}
+              badge={userBadge}
+              avatarDiameter={35 * em}
+              badgeDiameter={21 * em}
+              style={{ marginLeft: coverImageMargin, width: userPhotoSize, zIndex: 1, marginRight: 16 * em }}
+              onPress={() => props.onAvatarPress()}
+            />
+          }
+          title={data.user.name}
+          titleStyle={{ textAlign: 'left', color: '#1E2D60', fontSize: 12 * em }}
+          subTitle={data.type === ServiceType.GIVE ? data.organName : data.title}
+          subTitleStyle={styles.userDescText}
+        />
         {data.type === ServiceType.GIVE && (
           <View style={styles.locationContainer}>
             <Image
@@ -142,8 +139,7 @@ const styles = {
     fontSize: 12 * em,
     color: '#6A8596',
   },
-  bottomContent: { flexDirection: 'row', marginTop: 16 * em },
-  userBadge: { position: 'absolute', right: -3 * em, bottom: -3 * em, width: badgeSize, height: badgeSize },
+  bottomContent: { marginTop: 16 * em },
   userDesc: { flex: 1, marginHorizontal: 12 * em, justifyContent: 'space-between' },
   userDescText: { fontSize: 12 * em, color: '#1E2D60' },
   organText: { marginLeft: 72 * em, marginTop: 12 * em },

@@ -20,7 +20,7 @@ const friends = [
     'Réparer une chaise',
     new Date(),
     require('assets/images/sample_cover_2.png'),
-    1,
+    3,
     NeedServiceType.REPAIR
   ),
   new NeedService(
@@ -29,7 +29,7 @@ const friends = [
     'Réparer une chaise',
     new Date(),
     require('assets/images/sample_cover_3.png'),
-    1,
+    3,
     NeedServiceType.CARPOOL
   ),
   new SellService(
@@ -96,12 +96,17 @@ const FriendsListScreen = () => {
     <FriendListCard
       data={item}
       onPress={() => {
-        if (item.type === ServiceType.ORGANIZE || item.type === ServiceType.NEED) {
+        if (item.type === ServiceType.ORGANIZE) {
           Actions.friendOrganize();
         } else {
-          Actions.friendSell();
+          if (item.type === ServiceType.NEED) {
+            Actions.friendNeed();
+          } else {
+            Actions.friendSell();
+          }
         }
       }}
+      onAvatarPress={() => Actions.userProfile()}
     />
   );
   return (

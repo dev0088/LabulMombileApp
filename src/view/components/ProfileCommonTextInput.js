@@ -12,7 +12,8 @@ const ProfileCommonTextInput = (props) => {
           style={styles.textInput}
           onFocus={() => setOnFocus(true)}
           onBlur={() => setOnFocus(false)}
-          value={props.placeholder}
+          multiline={true}
+          value={props.value}
         />
       </View>
     );
@@ -25,7 +26,7 @@ const ProfileCommonTextInput = (props) => {
           multiline={true}
           onFocus={() => setOnFocus(true)}
           onBlur={() => setOnFocus(false)}
-          value={props.placeholder}
+          value={props.value}
         />
       </View>
     );

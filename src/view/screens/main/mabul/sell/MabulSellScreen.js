@@ -11,25 +11,25 @@ const sellItems = [
     id: 0,
     itemName: 'Service',
     onPress: () => {
-      Actions.mabulSellService();
+      Actions.mabulSellService({process:26});
     },
   },
   {
     id: 1,
     itemName: 'Object',
     onPress: () => {
-      Actions.mabulSellObject();
+      Actions.mabulSellObject({process:26});
     },
   },
   {
     id: 2,
     itemName: 'Évènement',
     onPress: () => {
-      Actions.mabulSellEnvironment();
+      Actions.mabulSellEnvironment({process:26});
     },
   },
 ];
-const MabulSellScreen = () => {
+const MabulSellScreen = (props) => {
   const renderFlatList = ({ item }) => (
     <MabulCommonListItem
       text={item.itemName}
@@ -42,7 +42,7 @@ const MabulSellScreen = () => {
   );
   return (
     <View style={styles.container}>
-      <MabulCommonHeader style={styles.header} percent={26} isNoBackBtn={true} progressBarColor={'#AA87E5'} />
+      <MabulCommonHeader style={styles.header} percent={props.process} noBackButton progressBarColor={'#AA87E5'} />
       <View style={styles.body}>
         <TitleText text={'Je vends'} style={styles.title} />
         <FlatList data={sellItems} renderItem={renderFlatList} keyExtractor={(i) => i.id} />

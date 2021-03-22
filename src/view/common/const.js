@@ -14,3 +14,4 @@ export function hexToRGB(hex, alpha) {
     return 'rgb(' + r + ', ' + g + ', ' + b + ')';
   }
 }
+export const mabulColors = { organize: '#FDC641', sell: '#AA87E5', need: '#38C2FF', give: '#34D9B8' };

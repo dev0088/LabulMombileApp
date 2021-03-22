@@ -36,7 +36,7 @@ const MabulNeedScreen = () => {
   );
   return (
     <View style={styles.container}>
-      <MabulCommonHeader style={styles.header} percent={26} isNoBackBtn={true} progressBarColor={'#38C2FF'} />
+      <MabulCommonHeader style={styles.header} percent={7} noBackButton progressBarColor={'#38C2FF'} />
       <View style={styles.body}>
         <TitleText text={'J’ai besoin'} style={styles.title} />
         <FlatList data={needItems} renderItem={renderFlatList} keyExtractor={(i) => i.id} />

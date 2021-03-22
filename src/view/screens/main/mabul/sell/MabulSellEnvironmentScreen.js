@@ -6,25 +6,33 @@ import { FlatList } from 'react-native';
 import MabulCommonListItem from 'view/components/MabulCommonListItem';
 import MabulCommonHeader from 'view/components/MabulCommonHeader';
 import { Actions } from 'react-native-router-flux';
-const giveItems = [
-  { id: 0, itemName: 'Fête', icon: require('assets/images/btn_mabul_sell.png') },
-  { id: 1, itemName: 'Apéro', icon: require('assets/images/btn_mabul_sell.png') },
-  { id: 2, itemName: 'Spectacle', icon: require('assets/images/btn_mabul_sell.png') },
-  { id: 3, itemName: 'Rencontre', icon: require('assets/images/btn_mabul_sell.png') },
-  { id: 4, itemName: 'Repas', icon: require('assets/images/btn_mabul_sell.png') },
-  { id: 5, itemName: 'Atelier', icon: require('assets/images/btn_mabul_sell.png') },
+import {Apero, Meet,Meal,Show,Party,WorkshpIcon} from 'assets/svg/icons';
+const iconSize = { width: 38 * em, height: 38 * em };
+
+const themeData = [
+  { id: 0, icon: Party(iconSize), themeName: 'Fête' },
+  { id: 1, icon: Apero(iconSize), themeName: 'Apéro' },
+  { id: 2, icon: Show(iconSize), themeName: 'Spectacle' },
+  { id: 3, icon: Meet(iconSize), themeName: 'Rencontre' },
+  { id: 4, icon: Meal(iconSize), themeName: 'Repas' },
+  { id: 5, icon: WorkshpIcon(iconSize), themeName: 'Atelier' },
 ];
-const MabulSellEnvironmentScreen = () => {
+const MabulSellEnvironmentScreen = (props) => {
   const renderFlatList = ({ item }) => (
-    <MabulCommonListItem text={item.itemName} style={styles.listItem} icon={item.icon} />
+    <MabulCommonListItem
+      text={item.themeName}
+      style={styles.listItem}
+      icon={item.icon}
+      onPress={() => Actions.mabulCommonRequestDetail({ mabulService: 'sell' })}
+    />
   );
   return (
     <View style={styles.container}>
-      <MabulCommonHeader style={styles.header} percent={48} isNoBackBtn={true} progressBarColor={'#AA87E5'} />
+      <MabulCommonHeader style={styles.header} percent={props.process} isNoBackBtn={true} progressBarColor={'#AA87E5'} />
       <View style={styles.body}>
         <TitleText text={'Je vends Évènement'} style={styles.title2} />
         <View style={styles.popView}>
-          <FlatList data={giveItems} renderItem={renderFlatList} keyExtractor={(i) => i.id} />
+          <FlatList data={themeData} renderItem={renderFlatList} keyExtractor={(i) => i.id} />
         </View>
       </View>
     </View>

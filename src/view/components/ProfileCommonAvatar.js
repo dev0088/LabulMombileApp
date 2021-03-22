@@ -20,7 +20,7 @@ var getInitials = function (string) {
   return initials;
 };
 const ProfileCommonAvatar = (props) => {
-  if (props.icon == null || props.icon === undefined) {
+  if (!props.icon) {
     return (
       <ImageBackground style={[styles.bgImage, props.style]} source={require('assets/images/bg_avatar.png')}>
         <Text style={styles.txtInitial}>{getInitials(props.fullName)}</Text>
@@ -36,7 +36,7 @@ const ProfileCommonAvatar = (props) => {
             width: props.style.width + 8 * em,
             height: props.style.width + 8 * em,
             borderRadius: (props.style.width + 8 * em) / 2,
-            borderWidth: 4 * em,
+            borderWidth: props.borderWidth,
           },
         ]}>
         <Image style={{ width: props.style.width, height: props.style.width }} source={props.icon} />

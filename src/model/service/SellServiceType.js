@@ -1,4 +1,5 @@
 export default {
-  PLANT: 40,
-  BEAUTY: 41,
+  TIP: 40,
+  PROMOTION: 41,
+  EVENT: 42,
 };

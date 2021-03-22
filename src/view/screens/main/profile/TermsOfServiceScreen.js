@@ -3,9 +3,9 @@ import { View, Text, Image, ScrollView } from 'react-native';
 import TitleText from 'view/components/TitleText';
 import { em } from 'view/common/const';
 import Accordion from 'react-native-collapsible/Accordion';
-import CommentText from '../../../components/CommentText';
-import FriendCommonHeader from '../../../components/FriendCommonHeader';
-import CommonHeader from '../../../components/CommonHeader';
+import CommentText from 'view/components/CommentText';
+import FriendCommonHeader from 'view/components/FriendCommonHeader';
+import CommonHeader from 'view/components/CommonHeader';
 
 const sections = [
   { title: 'Conditions générales d’utilisation1', content: '' },

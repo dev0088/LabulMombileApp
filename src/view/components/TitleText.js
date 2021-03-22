@@ -11,16 +11,19 @@ const TitleText = (props) => {
   if (props.textAlign) {
     textAlign = props.textAlign;
   }
+  const propsTextStyle = { color: color, textAlign: textAlign };
   if (props.onPress) {
     return (
       <TouchableOpacity onPress={props.onPress}>
-        <Text style={[{ fontSize: 28 * em, color: color, textAlign: textAlign, fontWeight: 'bold' }, props.style]}>
-          {props.text}
-        </Text>
+        <Text style={[styles.textStyle, propsTextStyle, props.style]}>{props.text}</Text>
       </TouchableOpacity>
     );
   }
-  return <Text style={[{ fontSize: 28 * em, color: color, textAlign: textAlign }, props.style]}>{props.text}</Text>;
+  return <Text style={[styles.textStyle, propsTextStyle, props.style]}>{props.text}</Text>;
+};
+
+const styles = {
+  textStyle: { fontSize: 32 * em, fontFamily: 'Lato-Bold' },
 };
 
 export default TitleText;

@@ -6,12 +6,14 @@ import { FlatList } from 'react-native';
 import MabulCommonListItem from 'view/components/MabulCommonListItem';
 import MabulCommonHeader from 'view/components/MabulCommonHeader';
 import { Actions } from 'react-native-router-flux';
+import { NeedDaily, NeedFamily } from 'assets/svg/icons';
+const iconSize = { width: 38 * em, height: 38 * em };
 const needItems = [
   {
     id: 0,
     itemName: 'Besoin de la famille',
     subName: 'Enfants/ Soutien scolaire/Aide aux personnes âgées/ Animaux de compagnie/ Informatique…',
-    icon: require('assets/images/btn_mabul_give.png'),
+    icon: NeedFamily(iconSize),
     onPress: () => {
       Actions.mabulFamilyNeed();
     },
@@ -20,7 +22,7 @@ const needItems = [
     id: 1,
     itemName: 'Besoin de vie quotidienne',
     subName: 'Maison/ Livraison/ Repas/ Repassage/ Achats de Courses/ Transport/ Co-voiturage/ Soins…',
-    icon: require('assets/images/btn_mabul_give.png'),
+    icon: NeedDaily(iconSize),
     onPress: () => {
       Actions.mabulDailyNeed();
     },
@@ -38,7 +40,7 @@ const MabulHelpNeedScreen = () => {
   );
   return (
     <View style={styles.container}>
-      <MabulCommonHeader style={styles.header} percent={24} isNoBackBtn={false} progressBarColor={'#38C2FF'} />
+      <MabulCommonHeader style={styles.header} percent={11} isNoBackBtn={false} progressBarColor={'#38C2FF'} />
       <View style={styles.body}>
         <TitleText text={'J’ai besoin Coup de main'} style={styles.title} />
         <View style={styles.popView}>
@@ -82,7 +84,6 @@ const styles = {
     textAlignVertical: 'center',
   },
   listItem: {
-    height: HEIGHT * 0.09,
     width: WIDTH * 0.92,
     marginTop: 25 * em,
   },

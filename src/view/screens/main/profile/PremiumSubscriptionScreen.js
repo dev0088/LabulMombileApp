@@ -8,12 +8,20 @@ import PurchaseMenuCard from 'view/components/PurchaseMenuCard';
 import Modal from 'react-native-modal';
 import { Actions } from 'react-native-router-flux';
 
-const PremiumSubscriptionScreen = () => {
+const PremiumSubscriptionScreen = (props) => {
   const [modalVisible, setModalVisible] = useState(false);
+  console.log(props.profileType);
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scrollView}>
-        <Image style={styles.logo} source={require('assets/images/img_logo_subscription.png')} />
+        <Image
+          style={styles.logo}
+          source={
+            props.profileType === 'my'
+              ? require('assets/images/img_logo_subscription.png')
+              : require('assets/images/img_logo_subscription_blue.png')
+          }
+        />
         <View style={styles.containerTitle}>
           <TitleText text="Labul" style={styles.title} />
           <TitleText text=" Premium" style={styles.title} color={'#40CDDE'} />
@@ -23,13 +31,14 @@ const PremiumSubscriptionScreen = () => {
           <View style={styles.cardContainer}>
             <PurchaseMenuCard
               style={styles.card}
-              name="Light"
+              name="Light"              
               price="0,90€"
               commentRadius="Rayon de 500m."
               comment="Idéal pour vendre juste autour de soi"
             />
             <PurchaseMenuCard
               style={styles.card}
+              selected
               name="Pro"
               price="1,90€"
               commentRadius="Rayon de 1 à 3Km. "
@@ -99,7 +108,7 @@ const PremiumSubscriptionScreen = () => {
           text="Payer"
           style={styles.modalPayBtn}
           onPress={() => {
-            Actions.premiumPurchased();
+            Actions.premiumPurchased({profileType:props.profileType});
             setModalVisible(false);
           }}
         />

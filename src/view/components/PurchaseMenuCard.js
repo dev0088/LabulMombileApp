@@ -10,7 +10,7 @@ const PurchaseMenuCard = (props) => {
     marginBottom: 15 * em,
     bgColor: '#BFCDDB',
   };
-  if (props.name === 'Light') {
+  if (props.selected ) {
     psStyle.borderColor = '#41D0E2';
     psStyle.bgColor = '#41D0E2';
     psStyle.marginTop = 35 * em;

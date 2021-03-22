@@ -15,7 +15,7 @@ import MyNotificationsScreen from './activity/MyNotificationsScreen';
 
 const Tab = createBottomTabNavigator();
 
-export default function MainScreen() {
+export default function MainScreen(props) {
   const [selectedTab, setSelectedTab] = React.useState(0);
   const [mabulVisible, setMabulVisible] = React.useState(false);
 
@@ -39,7 +39,7 @@ export default function MainScreen() {
   return (
     <View style={styles.TabBarMainContainer}>
       <NavigationContainer ref={navigationRef}>
-        <Tab.Navigator>
+        <Tab.Navigator initialRouteName={props.tabNav ? props.tabNav : 'Friends'}>
           <Tab.Screen name="Friends" component={FriendsNavigator} options={{ tabBarVisible: false }} />
           <Tab.Screen name="Calendar" component={CalendarHomeScreen} options={{ tabBarVisible: false }} />
           <Tab.Screen name="Activity" component={MyActivityHomeScreen} options={{ tabBarVisible: false }} />

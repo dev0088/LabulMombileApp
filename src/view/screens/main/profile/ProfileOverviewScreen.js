@@ -1,32 +1,77 @@
-import React from 'react';
-import { View, Image, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { View, ScrollView, Image } from 'react-native';
 import TitleText from 'view/components/TitleText';
-import { em, WIDTH, HEIGHT } from 'view/common/const';
+import { em, WIDTH } from 'view/common/const';
 import CommonText from 'view/components/CommonText';
 import ProfileCommonLabel from 'view/components/ProfileCommonLabel';
 import CommonHeader from 'view/components/CommonHeader';
-import CommonBackButton from 'view/components/CommonBackButton';
-
 import ProfileCommonAvatar from 'view/components/ProfileCommonAvatar';
+import { Actions } from 'react-native-router-flux';
+import CommentText from 'view/components/CommentText';
+import ProfileCommonSpecView from 'view/components/ProfileCommonSpecView';
 
-const ProfileOverviewScreen = () => {
+const ProfileOverviewScreen = (props) => {
+  const [] = useState(false);
+  const [userProfile] = useState(props.userProfile);
+  const badgesView = userProfile.badges ? (
+    <ScrollView horizontal={true} style={{ marginLeft: 30 * em }}>
+      {userProfile.badges.map((badge, index) => {
+        <Image style={styles.badgeIcon} source={badge} />;
+      })}
+    </ScrollView>
+  ) : (
+    <>
+      <CommonText text={'Tu n’as pas de badges'} style={styles.noticeText} />
+      <CommonText text={'Crée des demandes pour avoir des badges'} style={styles.requestText} />
+    </>
+  );
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scrollView}>
-        <CommonHeader rightTxt={'Modifier mon profil'} style={styles.header} />
+        <CommonHeader
+          rightTxt={'Modifier mon profil'}
+          style={styles.header}
+          onLeftPress={() => Actions.profileHome({ userProfile: userProfile })}
+          onRightPress={() => Actions.editProfile({ userProfile: userProfile })}
+        />
         <View style={styles.firstPopView}>
-          <ProfileCommonAvatar icon={require('assets/images/avatar.png')} style={styles.avatar} logoVisible={false} />
-          <TitleText text={'Mathieu Torin'} style={styles.fullNameText} />
+          <ProfileCommonAvatar
+            icon={require('assets/images/tab_profile_off.png')}
+            style={styles.avatar}
+            logoVisible={false}
+          />
+          <TitleText text={userProfile.fullName} style={styles.fullNameText} />
+          {userProfile.availability && <CommentText text={userProfile.availability} color="#1E2D60" />}
+          {userProfile.presentation && <CommentText text={userProfile.presentation} color="#6A8596" />}
+          {userProfile.specs && (
+            <View style={{ flexDirection: 'row', marginTop: 15 * em }}>
+              {userProfile.specs.map((spec) => (
+                <ProfileCommonSpecView text={spec} />
+              ))}
+            </View>
+          )}
           <TitleText text={'Mes cercles'} style={styles.title} />
           <View style={styles.circlesView}>
             <View style={styles.labelView}>
-              <ProfileCommonLabel icon={require('assets/images/ic_neighbour.png')} number={0} name={'Mes voisins'} />
+              <ProfileCommonLabel
+                icon={require('assets/images/ic_neighbour.png')}
+                number={userProfile.circles.neighbours}
+                name={'Mes voisins'}
+              />
             </View>
             <View style={styles.labelView}>
-              <ProfileCommonLabel icon={require('assets/images/ic_friends.png')} number={0} name={'Mes amis'} />
+              <ProfileCommonLabel
+                icon={require('assets/images/ic_friends.png')}
+                number={userProfile.circles.friends}
+                name={'Mes amis'}
+              />
             </View>
             <View style={styles.labelView}>
-              <ProfileCommonLabel icon={require('assets/images/ic_family.png')} number={0} name={'Ma famille'} />
+              <ProfileCommonLabel
+                icon={require('assets/images/ic_family.png')}
+                number={userProfile.circles.families}
+                name={'Ma famille'}
+              />
             </View>
           </View>
         </View>
@@ -34,22 +79,19 @@ const ProfileOverviewScreen = () => {
           <TitleText text={'Mes demandes'} style={styles.title} />
           <View style={styles.circlesView}>
             <View style={styles.labelView}>
-              <ProfileCommonLabel number={0} name={'Mes voisins'} />
+              <ProfileCommonLabel number={userProfile.needs.helps} name={'Coup de main'} />
             </View>
             <View style={styles.labelView}>
-              <ProfileCommonLabel number={0} name={'Mes amis'} />
+              <ProfileCommonLabel number={userProfile.needs.donations} name={'Dons'} />
             </View>
             <View style={styles.labelView}>
-              <ProfileCommonLabel number={0} name={'Ma famille'} />
+              <ProfileCommonLabel number={userProfile.needs.events} name={'Évènements'} />
             </View>
           </View>
           <TitleText text={'Mes badges'} style={styles.title} />
-
-          <CommonText text={'Tu n’as pas de badges'} style={styles.noticeText} />
-          <CommonText text={'Crée des demandes pour avoir des badges'} style={styles.requestText} />
+          {badgesView}
         </View>
       </ScrollView>
-      <CommonBackButton />
     </View>
   );
 };
@@ -69,7 +111,8 @@ const styles = {
     backgroundColor: '#ffffff',
     borderRadius: 20 * em,
     marginTop: 76 * em,
-    height: 325 * em,
+    paddingHorizontal: 30 * em,
+    paddingBottom: 35 * em,
   },
   avatar: {
     marginTop: -54 * em,
@@ -101,15 +144,20 @@ const styles = {
     borderTopLeftRadius: 20 * em,
     borderTopRightRadius: 20 * em,
     marginTop: 15 * em,
-    height: 321 * em,
   },
   noticeText: {
-    marginBottom: 60 * em,
+    marginBottom: 10 * em,
     fontWeight: 'bold',
   },
   requestText: {
     fontSize: 14 * em,
     marginBottom: 65 * em,
+  },
+  badgeIcon: {
+    width: 60 * em,
+    height: 60 * em,
+    marginRight: 18 * em,
+    backgroundColor: 'yellow',
   },
 };
 

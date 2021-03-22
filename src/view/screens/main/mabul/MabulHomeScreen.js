@@ -32,7 +32,7 @@ const MabulHomeScreen = (props) => {
             type="sell"
             onPress={() => {
               props.onClosePress();
-              Actions.mabulSell();
+              Actions.mabulSell({process:14});
             }}
           />
           <CircularButton

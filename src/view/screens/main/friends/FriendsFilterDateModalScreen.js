@@ -2,13 +2,14 @@ import React from 'react';
 import { View } from 'react-native';
 import TitleText from 'view/components/TitleText';
 import { em, WIDTH, hm } from 'view/common/const';
-import CommonBackButton from '../../../components/CommonBackButton';
-import CommentText from '../../../components/CommentText';
+import CommonBackButton from 'view/components/CommonBackButton';
+import CommentText from 'view/components/CommentText';
 import { FlatList } from 'react-native-gesture-handler';
-import CommonButton from '../../../components/CommonButton';
-import CommonCheckBox from '../../../components/CommonCheckBox';
+import CommonButton from 'view/components/CommonButton';
+import CommonCheckBox from 'view/components/CommonCheckBox';
 
 import Modal from 'react-native-modal';
+import { Actions } from 'react-native-router-flux';
 
 const options = [
   { key: 0, option: 'Aujourd’hui' },
@@ -17,7 +18,7 @@ const options = [
   { key: 3, option: 'Semaine prochaine' },
 ];
 const FriendsFilterDateModalScreen = (props) => {
-  const renderFlatList = ({ item }) => <CommonCheckBox text={item.option} style={styles.listItem} shape="oval" />;
+  const renderFlatList = ({ item }) => <CommonCheckBox text={item.option} style={styles.listItem} oval />;
   console.log(props);
   return (
     <Modal
@@ -35,7 +36,13 @@ const FriendsFilterDateModalScreen = (props) => {
         </View>
       </View>
       <FlatList data={options} renderItem={renderFlatList} keyExtractor={(i) => i.id} />
-      <CommonButton text="Voir demandes" />
+      <CommonButton
+        text="Voir demandes"
+        onPress={() => {
+          props.onPress();
+          Actions.main({ tabNav: 'Friends' });
+        }}
+      />
     </Modal>
   );
 };
