@@ -14,7 +14,7 @@ const FriendsSearchScreen = () => {
 
   return (
     <View style={styles.container}>
-     <FriendCommonHeader title="Rechercher" />
+      <FriendCommonHeader title="Rechercher" />
       <SearchBox
         style={styles.searchbox}
         comment={'Saisissez votre email'}
@@ -64,7 +64,7 @@ const styles = {
   },
   title: {
     marginLeft: 30 * em,
-    marginBottom: 35*hm,
+    marginBottom: 35 * hm,
   },
   searchbox: {
     width: 315 * em,
@@ -72,9 +72,11 @@ const styles = {
     marginRight: 30 * em,
   },
   listItem: {
-    height:42*hm,
+    height: 42 * hm,
     marginTop: 35 * hm,
     marginLeft: 30 * em,
+    marginRight: 30 * em,
+    width: 315 * em,
   },
 };
 

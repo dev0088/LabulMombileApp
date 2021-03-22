@@ -11,11 +11,10 @@ const MabulCommonListItem = (props) => {
     <TouchableOpacity onPress={props.onPress}>
       <View style={[styles.container, props.style]}>
         <View style={styles.leftView}>
-          <Image source={props.icon} style={[styles.icon, { display: display }]} />
+          {props.icon}
           <View style={styles.txtView}>
             <Text style={styles.textTitle}>{props.text}</Text>
             <Text style={styles.textSubTitle}>{props.subText}</Text>
-
           </View>
         </View>
         <View style={styles.rightView}>
@@ -43,11 +42,6 @@ const styles = {
     borderBottomWidth: 0.5 * em,
     borderBottomColor: '#B3C6CF33',
   },
-  icon: {
-    width: 38 * em,
-    height: 38 * em,
-    resizeMode: 'contain',
-  },
   rightView: {
     flexDirection: 'row-reverse',
 
@@ -59,7 +53,6 @@ const styles = {
     fontSize: 18 * em,
     color: '#1E2D60',
     textAlignVertical: 'center',
-    height: 38 * em,
   },textSubTitle:{
     fontSize:12*em,
     color:'#A0AEB8',

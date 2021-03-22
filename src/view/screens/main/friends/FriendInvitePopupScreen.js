@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { View, FlatList } from 'react-native';
 import { em } from 'view/common/const';
-import CommonText from '../../../components/CommonText';
-import TitleText from '../../../components/TitleText';
-import SearchBox from '../../../components/SearchBox';
-import SearchCommonListItem from '../../../components/SearchCommonListItem';
+import CommonText from 'view/components/CommonText';
+import TitleText from 'view/components/TitleText';
+import SearchBox from 'view/components/SearchBox';
+import SearchCommonListItem from 'view/components/SearchCommonListItem';
 import Modal from 'react-native-modal';
 
 const FriendInvitePopupScreen = (props) => {
@@ -46,7 +46,8 @@ const FriendInvitePopupScreen = (props) => {
       subText={item.relationship}
       icon={item.avatar}
       style={styles.listItem}
-      addBtn={item.invited}
+      inviteBtn
+      invited={item.invited}
     />
   );
 
@@ -83,7 +84,7 @@ const styles = {
   },
   header: { marginRight: 30 * em, marginBottom: 18 * em, marginTop: 25 * em, alignSelf: 'flex-end' },
   body: { marginLeft: 30 * em, marginRight: 30 * em },
-  title: { marginBottom: 17 * em },
+  title: { marginBottom: 17 * em, alignSelf: 'flex-start', fontWeight: 'bold' },
   searchbox: { marginBottom: 29 * em, paddingTop: 18 * em },
   listItem: { marginBottom: 35 * em },
 };

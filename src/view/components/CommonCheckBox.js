@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import CommonText from 'view/components/CommonText';
 import { em } from 'view/common/const';
-import { hm } from '../common/const';
+import { hm } from 'view/common/const';
 import CheckBox from 'view/components/CheckBox';
 
 const CommonCheckBox = (props) => {
   const [checked, setChecked] = useState(false);
   return (
     <View style={[styles.container, props.style]}>
-      <TitleText text={props.text} style={styles.title} />
-      <CheckBox isChecked={checked} onClick={() => setChecked(!checked)} shape={props.shape} />
+      <CommonText text={props.text} style={styles.title} color="#1E2D60" />
+      <CheckBox isChecked={checked} onClick={() => setChecked(!checked)} oval={props.oval} />
     </View>
   );
 };

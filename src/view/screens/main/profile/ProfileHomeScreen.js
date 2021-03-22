@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, TouchableOpacity, ScrollView, Text, Image, ActionSheetIOS } from 'react-native';
 import TitleText from 'view/components/TitleText';
 import CommentText from 'view/components/CommentText';
@@ -8,19 +8,28 @@ import ProfileCommonAvatar from 'view/components/ProfileCommonAvatar';
 import ProfileCommonCard from 'view/components/ProfileCommonCard';
 import ProfileCommonListItem from 'view/components/ProfileCommonListItem';
 import CommonButton from 'view/components/CommonButton';
-const user = {
-  fullName: 'Dathieu Torin',
+import AccountChangeMenu from './AccountChangeMenu';
+
+const originalMyProfile = {
+  avatar: '',
+  fullName: 'Mathieu Torin1',
+  circles: { families: 0, friends: 0, neighbours: 0 },
+  needs: { helps: 0, donations: 0, events: 0 },
 };
-const ProfileHomeScreen = () => {
+const ProfileHomeScreen = (props) => {
+  const [userProfile] = useState(props.userProfile ? props.userProfile : originalMyProfile);
   return (
     <ScrollView style={styles.scrollView}>
+      <AccountChangeMenu style={styles.dropDown} type="my" visible={props.userProfile ? true : false} />
+
       <View style={styles.topView}>
-        <ProfileCommonAvatar style={styles.avatar} fullName={user.fullName} />
-        <TouchableOpacity onPress={() => Actions.profileOverview()}>
-          <Text style={styles.txtFullName}>{user.fullName}</Text>
+        <ProfileCommonAvatar style={styles.avatar} fullName={userProfile.fullName} />
+        <TouchableOpacity onPress={() => Actions.profileOverview({ userProfile: userProfile })}>
+          <Text style={styles.txtFullName}>{userProfile.fullName}</Text>
           <Text style={styles.txtGoToProfile}>Aller sur mon profil</Text>
         </TouchableOpacity>
       </View>
+
       <View style={styles.bottomView}>
         <View style={styles.cardContainer}>
           <ProfileCommonCard
@@ -28,7 +37,7 @@ const ProfileHomeScreen = () => {
             style={styles.cardStyle}
             icon={require('assets/images/ic_profile_request.png')}
             onPress={() => {
-              Actions.myRequestProfileTab();
+              Actions.myNeedsHome();
             }}
           />
           <ProfileCommonCard
@@ -36,7 +45,7 @@ const ProfileHomeScreen = () => {
             style={styles.cardStyle}
             icon={require('assets/images/ic_circles.png')}
             onPress={() => {
-              Actions.myCircles();
+              Actions.myCirclesHome();
             }}
           />
         </View>
@@ -70,7 +79,7 @@ const ProfileHomeScreen = () => {
             icon={require('assets/images/ic_location.png')}
             style={styles.listItem}
             onPress={() => {
-              Actions.premiumSubscription();
+              Actions.premiumSubscription({ profileType: 'my' });
             }}
           />
         </View>
@@ -116,54 +125,29 @@ const ProfileHomeScreen = () => {
 };
 
 const styles = {
-  rowContainer: {
-    flexDirection: 'row',
-  },
-  topView: {
-    height: HEIGHT * 0.45,
-    backgroundColor: '#40CDDE',
-    alignItems: 'center',
-  },
-  avatar: {
-    marginTop: 89 * em,
-  },
-  txtFullName: {
-    marginTop: 15 * em,
-    fontSize: 20 * em,
-    color: '#FFFFFF',
-    fontWeight: 'bold',
-  },
-  txtGoToProfile: {
-    marginTop: 5 * em,
-    fontSize: 14 * em,
-    color: '#FFFFFF',
-  },
-  scrollView: {
-    width: WIDTH,
-    backgroundColor: '#ffffff',
-  },
+  rowContainer: { flexDirection: 'row' },
+  dropDown: { right: 30 * em, top: 33 * em, position: 'absolute', zIndex: 1 },
+
+  topView: { height: HEIGHT * 0.45, backgroundColor: '#40CDDE', alignItems: 'center' },
+  avatar: { marginTop: 89 * em, height: 70 * em, width: 70 * em },
+  txtFullName: { marginTop: 15 * em, fontSize: 20 * em, color: '#FFFFFF', fontWeight: 'bold', textAlign: 'center' },
+  txtGoToProfile: { marginTop: 5 * em, fontSize: 14 * em, color: '#FFFFFF', textAlign: 'center' },
+  scrollView: { width: WIDTH, backgroundColor: '#ffffff' },
   bottomView: {
     backgroundColor: '#FFFFFF',
     shadowColor: '#254D5612',
-    shadowOffset: {
-      width: 0,
-      height: 12 * em,
-    },
+    shadowOffset: { width: 0, height: 12 * em },
     shadowRadius: 25 * em,
   },
   cardContainer: {
+    paddingHorizontal: 30 * em,
+    justifyContent: 'space-between',
     flexDirection: 'row',
-    justifyContent: 'center',
     marginTop: -HEIGHT * 0.07,
     marginBottom: 30 * em,
   },
-  cardStyle: {
-    marginLeft: 7.5 * em,
-    marginRight: 7.5 * em,
-  },
-  listBox: {
-    marginTop: 15 * em,
-  },
+  cardStyle: { width: 150 * em },
+  listBox: { marginTop: 15 * em },
   caption: {
     width: '100%',
     textAlign: 'left',
@@ -171,23 +155,9 @@ const styles = {
     fontWeight: '300',
     marginBottom: 20 * em,
   },
-  listItem: {
-    marginLeft: 30 * em,
-    marginRight: 30 * em,
-  },
-  line1: {
-    marginLeft: 83 * em,
-    marginBottom: 25 * em,
-    marginTop: 15 * em,
-    height: 0.5,
-    backgroundColor: '#F0F5F7',
-  },
-  line2: {
-    marginBottom: 19 * em,
-    marginTop: 16 * em,
-    height: 0.5,
-    backgroundColor: '#F0F5F7',
-  },
+  listItem: { marginLeft: 30 * em, marginRight: 30 * em },
+  line1: { marginLeft: 83 * em, marginBottom: 25 * em, marginTop: 15 * em, height: 0.5, backgroundColor: '#F0F5F7' },
+  line2: { marginBottom: 19 * em, marginTop: 16 * em, height: 0.5, backgroundColor: '#F0F5F7' },
   imgBg: {
     height: HEIGHT * 0.21,
     flex: 1,
@@ -197,17 +167,8 @@ const styles = {
     alignItems: 'flex-start',
     flexDirection: 'column',
   },
-  imageTextMain: {
-    marginTop: 25 * em,
-    fontSize: 20 * em,
-    marginLeft: 18 * em,
-  },
-  imageTextSub: {
-    fontSize: 15 * em,
-    marginLeft: 18 * em,
-    marginRight: -58 * em,
-    marginBottom: 10 * em,
-  },
+  imageTextMain: { marginTop: 25 * em, fontSize: 20 * em, marginLeft: 18 * em },
+  imageTextSub: { fontSize: 15 * em, marginLeft: 18 * em, marginRight: -58 * em, marginBottom: 10 * em },
   button: {
     fontSize: 12 * em,
     lineHeight: 15 * em,
@@ -219,13 +180,7 @@ const styles = {
     borderColor: '#40CDDE',
     marginLeft: 15 * em,
   },
-  line3: {
-    marginLeft: 30 * em,
-    marginBottom: 25 * em,
-    marginTop: 25 * em,
-    height: 0.5,
-    backgroundColor: '#F0F5F7',
-  },
+  line3: { marginLeft: 30 * em, marginBottom: 25 * em, marginTop: 25 * em, height: 0.5, backgroundColor: '#F0F5F7' },
   imgContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -233,20 +188,9 @@ const styles = {
     marginTop: 50 * em,
     marginBottom: 15 * em,
   },
-  imgLogo: {
-    height: 26 * em,
-    width: 20 * em,
-    resizeMode: 'contain',
-    marginRight: 10 * em,
-  },
-  txtLogo: {
-    height: 23 * em,
-    width: 80 * em,
-    resizeMode: 'contain',
-  },
-  txtVersion: {
-    marginBottom: 110 * em,
-  },
+  imgLogo: { height: 26 * em, width: 20 * em, resizeMode: 'contain', marginRight: 10 * em },
+  txtLogo: { height: 23 * em, width: 80 * em, resizeMode: 'contain' },
+  txtVersion: { marginBottom: 110 * em },
 };
 
 export default ProfileHomeScreen;

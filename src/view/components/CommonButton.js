@@ -1,26 +1,32 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { em, WIDTH } from 'view/common/const';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
+import CommonText from './CommonText';
 
 const CommonButton = (props) => {
   return (
-    <TouchableOpacity onPress={props.onPress}>
-      <Text style={[styles.buttonStyle, props.style]}>{props.text}</Text>
+    <TouchableOpacity onPress={props.onPress} style={[styles.buttonStyle, props.style]}>
+      {props.rightIcon && <View style={[styles.iconStyle, props.iconStyle]}>{props.rightIcon}</View>}
+      <CommonText text={props.text} style={[styles.textStyle, props.textStyle]} color={props.color}/>
+      {props.leftIcon && <View style={[styles.iconStyle, props.iconStyle]}>{props.leftIcon}</View>}
     </TouchableOpacity>
   );
 };
 
 const styles = {
   buttonStyle: {
-    fontSize: 16 * em,
     backgroundColor: '#40CDDE',
-    color: '#FFFFFF',
-    padding: 12 * em,
-    width: WIDTH * 0.8,
+    paddingVertical: 20 * em,
+    width: 315 * em,
     textAlign: 'center',
-    borderRadius: 12 * em,
+    borderRadius: 20 * em,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
   },
+  textStyle: { textAlign: 'center', color: '#FFFFFF' },
+  iconStyle: {},
 };
 
 export default CommonButton;

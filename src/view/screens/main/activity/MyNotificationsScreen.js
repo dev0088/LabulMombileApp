@@ -1,16 +1,46 @@
-import React from 'react';
-import { View, Image, TouchableOpacity } from 'react-native';
-import { em } from 'view/common/const';
+import React, { useState } from 'react';
+import { View, Image, TouchableOpacity, FlatList } from 'react-native';
+import { em, hm } from 'view/common/const';
 import CommonText from 'view/components/CommonText';
 import CircleDraw from 'view/components/CircleDraw';
 import CommentText from 'view/components/CommentText';
 import TitleText from 'view/components/TitleText';
 import { Actions } from 'react-native-router-flux';
-import { navigationRef } from '../RootNavigation';
+import { navigationRef } from 'view/screens/main/RootNavigation';
+import CommonListItem from 'view/components/CommonListItem';
+import AvatarWithBadge from 'view/components/AvatarWithBadge';
 
+const notificationUsers = [
+  {
+    id: 0,
+    avatar: require('assets/images/avatar.png'),
+    userName: 'Amandine Bernard',
+    date: '21:59',
+    comment: 'A besoin un coup de main :',
+    notification: 'Réparer une chaise',
+  },
+  {
+    id: 1,
+    avatar: require('assets/images/avatar.png'),
+    userName: 'Amandine Bernard',
+    date: '21:59',
+    comment: 'A besoin un coup de main :',
+    notification: 'Réparer une chaise',
+  },
+  {
+    id: 2,
+    avatar: require('assets/images/avatar.png'),
+    userName: 'Amandine Bernard',
+    date: '21:59',
+    comment: 'A besoin un coup de main :',
+    notification: 'Réparer une chaise',
+  },
+];
 const MyNotificationsScreen = (props) => {
+  const [isEmpty, setIsEmpty] = useState(true);
+
   const emptyView = (
-    <View style={styles.emptyView}>
+    <TouchableOpacity style={styles.emptyView} onPress={() => setIsEmpty(!isEmpty)}>
       <CircleDraw
         radius={17.31 * em}
         color="#A0AEB8"
@@ -28,8 +58,32 @@ const MyNotificationsScreen = (props) => {
         color={'#6A8596'}
         style={styles.explainTxt}
       />
-    </View>
+    </TouchableOpacity>
   );
+
+  const renderFlatList = ({ item }) => (
+    <CommonListItem
+      title={item.userName}
+      titleStyle={styles.listItemUserName}
+      subTitle={item.comment}
+      subTitleStyle={styles.listItemComment}
+      comment={item.notification}
+      commentStyle={styles.listItemNotification}
+      icon={
+        <AvatarWithBadge
+          avatar={item.avatar}
+          badge={item.badge}
+          avatarDiameter={40 * em}
+          badgeDiameter={22 * em}
+          style={{ marginRight: 15 * em }}
+        />
+      }
+      style={styles.listItem}
+      rightView={<CommentText text={item.date} style={styles.listItemDate} />}
+    />
+  );
+  const listView = <FlatList data={notificationUsers} renderItem={renderFlatList} keyExtractor={(i) => i.id} />;
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -43,7 +97,7 @@ const MyNotificationsScreen = (props) => {
         </View>
         <TitleText text={'Mes notifications'} style={styles.title} />
       </View>
-      <View style={styles.body}>{emptyView}</View>
+      <View style={styles.body}>{isEmpty ? emptyView : listView}</View>
     </View>
   );
 };
@@ -82,9 +136,11 @@ const styles = {
     backgroundColor: '#ffffff',
     width: '100%',
     flex: 1,
+    paddingHorizontal: 30 * em,
+    paddingTop: 25 * em,
   },
   emptyView: {
-    marginTop: 99 * em,
+    marginTop: 109 * em,
     width: 315 * em,
     height: 148.15 * em,
     alignSelf: 'center',
@@ -111,6 +167,14 @@ const styles = {
     textAlign: 'center',
     alignSelf: 'center',
   },
+  listItem: {
+    marginBottom: 35 * em,
+    width: '100%',
+  },
+  listItemUserName: { color: '#1E2D60', lineHeight: 21 * hm, fontWeight: 'bold' },
+  listItemComment: { color: '#A0AEB8', lineHeight: 18 * hm },
+  listItemDate: { color: '#A0AEB8', fontSize: 13 * em, textAlign: 'right' },
+  listItemNotification: { marginLeft: 55 * em, textAlign: 'left', color: '#1E2D60' },
 };
 
 export default MyNotificationsScreen;

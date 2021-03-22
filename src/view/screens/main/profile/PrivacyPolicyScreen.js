@@ -3,9 +3,9 @@ import { View, Text, Image, ScrollView } from 'react-native';
 import TitleText from 'view/components/TitleText';
 import { em } from 'view/common/const';
 import Accordion from 'react-native-collapsible/Accordion';
-import CommentText from '../../../components/CommentText';
-import FriendCommonHeader from '../../../components/CommentText';
-import CommonHeader from '../../../components/CommonHeader';
+import CommentText from 'view/components/CommentText';
+import FriendCommonHeader from 'view/components/CommentText';
+import CommonHeader from 'view/components/CommonHeader';
 
 const sections = [
   { title: 'Politique de confidentialité1', content: '' },
@@ -22,10 +22,9 @@ const sections = [
 
 const PrivacyPolicyScreen = () => {
   const [activeSections, setActiveSections] = useState([]);
-  const _renderHeader = (section,index,isActive) => {
-    console.log(isActive)
-    
-    
+  const _renderHeader = (section, index, isActive) => {
+    console.log(isActive);
+
     return (
       <View style={styles.header}>
         <Text style={styles.headerText}>{section.title}</Text>
@@ -42,7 +41,6 @@ const PrivacyPolicyScreen = () => {
   };
 
   const _updateSections = (index) => {
-    
     setActiveSections(index);
   };
   return (

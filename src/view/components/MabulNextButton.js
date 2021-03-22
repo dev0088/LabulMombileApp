@@ -5,7 +5,7 @@ import { TouchableOpacity } from 'react-native';
 
 const MabulNextButton = (props) => {
   return (
-    <TouchableOpacity onPress={props.onPress} style={[styles.container,props.style, { backgroundColor: props.color }]}>
+    <TouchableOpacity onPress={props.onPress} style={[styles.container, props.style, { backgroundColor: props.color }]}>
       <Text style={styles.txt}>Suivant</Text>
       <Image style={styles.arrowImg} source={require('assets/images/btn_arrow_ltr.png')} />
     </TouchableOpacity>
@@ -17,7 +17,7 @@ const styles = {
     flexDirection: 'row',
     borderRadius: 20 * em,
     paddingVertical: 20 * em,
-    width:163*em,
+    width: 163 * em,
     backgroundColor: '#40CDDE',
     alignItems: 'center',
     justifyContent: 'center',
@@ -32,6 +32,7 @@ const styles = {
   arrowImg: {
     width: 10 * em,
     height: 17 * em,
+    tintColor: '#ffffff',
   },
 };
 

@@ -4,42 +4,46 @@ import { em } from 'view/common/const';
 import TitleText from './TitleText';
 import CommentText from './CommentText';
 import CommonText from './CommonText';
+import CommonListItem from './CommonListItem';
+import ProfileCommonSpecView from './ProfileCommonSpecView';
 
 const ProfileInformationListItem = (props) => {
+  console.log(props.options);
+  const optionView = props.options && (
+    <>
+      {props.options.map((option,index) => (
+        <ProfileCommonSpecView text={option} key={index} />
+      ))}
+    </>
+  );
+  console.log(optionView);
   return (
-    <TouchableOpacity onPress={props.onPress}>
-      <View style={[styles.container, props.style]}>
-        <View style={styles.leftView}>
-          <View style={styles.txtContainer}>
-            <CommentText style={styles.textTitle} color={'#A0AEB8'} text={props.text} />
-            <CommonText color={'#1E2D60'} text={props.subText} />
-          </View>
-        </View>
+    <CommonListItem
+      style={[styles.container, props.style]}
+      onPress={props.onPress}
+      title={props.caption}
+      titleStyle={styles.textTitle}
+      subTitle={props.value}
+      subTitleStyle={
+        props.placeholder
+          ? { color: '#6A8596', lineHeight: 20 * em, marginRight: 30 * em }
+          : { color: '#1E2D60', fontSize: 16 * em, lineHeight: 19 * em, marginRight: 30 * em }
+      }
+      comment={props.commentText}
+      commentStyle={styles.commentStyle}
+      rightView={
         <View style={styles.rightView}>
           <Image style={styles.arrowIcon} source={require('assets/images/btn_arrow_ltr.png')} />
         </View>
-      </View>
-    </TouchableOpacity>
+      }
+      commentView={optionView}
+    />
   );
 };
 export default ProfileInformationListItem;
 const styles = {
   container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    backgroundColor: 'white',
-  },
-  leftView: {
-    flexDirection: 'row',
-  },
-  rightView: {
-    flexDirection: 'row-reverse',
-    alignItems: 'center',
-  },
-  txtContainer: {
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
+    backgroundColor: '#ffffff',
   },
   textTitle: {
     lineHeight: 16 * em,
@@ -51,4 +55,6 @@ const styles = {
     width: 11 * em,
     height: 18 * em,
   },
+  rightView: { justifyContent: 'center' },
+  commentStyle: { textAlign: 'left', fontSize: 12 * em, color: '#A0AEB8', marginTop: 10 * em, marginRight: 30 * em },
 };

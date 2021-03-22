@@ -10,7 +10,8 @@ import { Actions } from 'react-native-router-flux';
 import FriendsFilterRequestModalScreen from './FriendsFilterRequestModalScreen';
 import FriendsFilterDateModalScreen from './FriendsFilterDateModalScreen';
 import FriendCommonHeader from 'view/components/FriendCommonHeader';
-
+import CommonListItem from 'view/components/CommonListItem';
+import { TypeRequest, Address, Calendar } from 'assets/svg/icons';
 const FriendsFilterScreen = () => {
   const [filterRequestModalVisible, setfilterRequestModalVisible] = useState(false);
   const [filterDateModalVisible, setfilterDateModalVisible] = useState(false);

@@ -5,18 +5,42 @@ import { em, HEIGHT, WIDTH } from 'view/common/const';
 import { FlatList } from 'react-native';
 import MabulCommonListItem from 'view/components/MabulCommonListItem';
 import MabulCommonHeader from 'view/components/MabulCommonHeader';
+import { Actions } from 'react-native-router-flux';
+import {
+  HouseWork,
+  BricologeIcon,
+  Tool,
+  Gardening,
+  MealPreparation,
+  Ironing,
+  Transport,
+  Delivery,
+  BeautyCare,
+} from 'assets/svg/icons';
+const iconSize = { width: 38 * em, height: 38 * em };
+
 const needItems = [
-  { id: 0, itemName: 'Entretien de la maison/ travaux ménagers', icon: require('assets/images/btn_mabul_give.png') },
-  { id: 1, itemName: 'Bricolage', icon: require('assets/images/btn_mabul_give.png') },
-  { id: 2, itemName: 'Outillage', icon: require('assets/images/btn_mabul_give.png') },
-  { id: 3, itemName: 'Jardinage/ élagage', icon: require('assets/images/btn_mabul_give.png') },
-  { id: 4, itemName: 'Préparation/ Livraison repas', icon: require('assets/images/btn_mabul_give.png') },
-  { id: 5, itemName: 'Repassage', icon: require('assets/images/btn_mabul_give.png') },
+  { id: 0, itemName: 'Entretien de la maison/ travaux ménagers', icon: HouseWork(iconSize) },
+  { id: 1, itemName: 'Bricolage', icon: BricologeIcon(iconSize) },
+  { id: 2, itemName: 'Outillage', icon: Tool(iconSize) },
+  { id: 3, itemName: 'Jardinage/ élagage', icon: Gardening(iconSize) },
+  { id: 4, itemName: 'Préparation/ Livraison repas', icon: MealPreparation(iconSize) },
+  { id: 5, itemName: 'Repassage', icon: Ironing(iconSize) },
+  { id: 5, itemName: 'Livraison/ Achat de courses', icon: Transport(iconSize) },
+  { id: 5, itemName: 'Transport/ Co-voiturage', icon: Delivery(iconSize) },
+
+  { id: 5, itemName: 'Soins d’esthétique à domicile', icon: BeautyCare(iconSize) },
 ];
 
 const MabulDailyNeedScreen = () => {
   const renderFlatList = ({ item }) => (
-    <MabulCommonListItem text={item.itemName} style={styles.listItem} subText={item.subName} icon={item.icon} />
+    <MabulCommonListItem
+      text={item.itemName}
+      style={styles.listItem}
+      subText={item.subName}
+      icon={item.icon}
+      onPress={() => Actions.mabulCommonRequestDetail({ mabulService: 'need' })}
+    />
   );
   return (
     <View style={styles.container}>

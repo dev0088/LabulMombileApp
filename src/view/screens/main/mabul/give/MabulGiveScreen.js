@@ -5,6 +5,7 @@ import { em, HEIGHT, WIDTH } from 'view/common/const';
 import { FlatList } from 'react-native';
 import MabulCommonListItem from 'view/components/MabulCommonListItem';
 import MabulCommonHeader from 'view/components/MabulCommonHeader';
+import { Actions } from 'react-native-router-flux';
 const giveItems = [
   { id: 0, itemName: 'Objet divers', icon: require('assets/images/btn_mabul_give.png') },
   { id: 1, itemName: 'Meuble', icon: require('assets/images/btn_mabul_give.png') },
@@ -16,11 +17,16 @@ const giveItems = [
 ];
 const MabulGiveScreen = () => {
   const renderFlatList = ({ item }) => (
-    <MabulCommonListItem text={item.itemName} style={styles.listItem} icon={item.icon} />
+    <MabulCommonListItem
+      text={item.itemName}
+      style={styles.listItem}
+      icon={item.icon}
+      onPress={() => Actions.mabulCommonRequestDetail({ mabulService: 'give' })}
+    />
   );
   return (
     <View style={styles.container}>
-      <MabulCommonHeader style={styles.header} percent={24} isNoBackBtn={true} progressBarColor={'#34D9B8'} />
+      <MabulCommonHeader style={styles.header} percent={24} noBackButton progressBarColor={'#34D9B8'} />
       <View style={styles.body}>
         <TitleText text={'Je donne'} style={styles.title} />
         <View style={styles.popView}>

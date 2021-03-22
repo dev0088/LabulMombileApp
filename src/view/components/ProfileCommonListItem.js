@@ -3,6 +3,7 @@ import React from 'react';
 import { em } from 'view/common/const';
 import TitleText from './TitleText';
 import CommentText from './CommentText';
+import CommonListItem from './CommonListItem';
 
 const ProfileCommonListItem = (props) => {
   var display = 'flex';
@@ -25,7 +26,7 @@ const ProfileCommonListItem = (props) => {
   }
   return (
     <TouchableOpacity onPress={props.onPress}>
-      <View style={[styles.container, props.style, { height: display === 'flex' ? 38 * em : 19 * em }]}>
+      <View style={[styles.container, props.style]}>
         <View style={styles.leftView}>
           {icon}
           <View style={styles.txtContainer}>
@@ -71,6 +72,7 @@ const styles = {
     fontSize: 16 * em,
     textAlignVertical: 'center',
     fontWeight: '200',
+    lineHeight:19*em,
   },
   arrowIcon: {
     backgroundColor: 'white',

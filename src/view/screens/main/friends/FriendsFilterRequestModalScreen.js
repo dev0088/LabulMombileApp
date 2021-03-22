@@ -2,13 +2,15 @@ import React from 'react';
 import { View } from 'react-native';
 import TitleText from 'view/components/TitleText';
 import { em, WIDTH, hm } from 'view/common/const';
-import CommonBackButton from '../../../components/CommonBackButton';
-import CommentText from '../../../components/CommentText';
+import CommonBackButton from 'view/components/CommonBackButton';
+import CommentText from 'view/components/CommentText';
 import { FlatList } from 'react-native-gesture-handler';
-import CommonButton from '../../../components/CommonButton';
-import CommonCheckBox from '../../../components/CommonCheckBox';
+import CommonButton from 'view/components/CommonButton';
+import CommonCheckBox from 'view/components/CommonCheckBox';
 
 import Modal from 'react-native-modal';
+import CommonText from '../../../components/CommonText';
+import { Actions } from 'react-native-router-flux';
 
 const options = [
   { key: '0', option: 'J’ai besoin' },
@@ -31,12 +33,18 @@ const FriendsFilterRequestModalScreen = (props) => {
       <View style={styles.header}>
         <View style={{ flexDirection: 'row' }}>
           <CommonBackButton dark={true} onPress={props.onPress} />
-          <TitleText text="Type de demande" style={styles.title} />
+          <CommonText text="Type de demande" style={styles.title} color="#1E2D60" />
         </View>
         <CommentText text="Réinitialiser" style={styles.resetBtn} />
       </View>
       <FlatList data={options} renderItem={renderFlatList} keyExtractor={(i) => i.key} />
-      <CommonButton text="Voir demandes" />
+      <CommonButton
+        text="Voir demandes"
+        onPress={() => {
+          props.onPress();
+          Actions.main({ tabNav: 'Friends' });
+        }}
+      />
     </Modal>
   );
 };

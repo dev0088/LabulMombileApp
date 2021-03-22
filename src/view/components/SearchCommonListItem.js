@@ -1,87 +1,58 @@
 import { View, TouchableOpacity, Image } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { em } from 'view/common/const';
 import TitleText from './TitleText';
 import InviteButton from './InviteButton';
+import CommonListItem from './CommonListItem';
+import CheckBox from './CheckBox';
 
 const SearchCommonListItem = (props) => {
-  var display = 'flex';
-  if (props.icon == null || props.icon === undefined) {
-    display = 'none';
-  }
-  var subTextDisplay = 'flex';
-  if (props.subText == null || props.subText === undefined || props.subText === '') {
-    subTextDisplay = 'none';
-  }
-  var inviteBtn = <></>;
-  console.log(props.addBtn);
-  if (props.addBtn !== undefined) {
-    inviteBtn = <InviteButton invited={props.addBtn} />;
-  }
-  if (props.onPress) {
-    return (
-      <TouchableOpacity onPress={() => props.onPress()}>
-        <View style={[styles.container, props.style, { height: display === 'flex' ? 40 * em : 19 * em }]}>
-          <View style={styles.leftView}>
-            <Image source={props.icon} style={[styles.icon, { display: display }]} />
-            <View style={styles.txtContainer}>
-              <TitleText style={styles.textTitle} text={props.text} />
-              <TitleText
-                style={[styles.textTitle, { display: subTextDisplay }]}
-                color={'#A0AEB8'}
-                text={props.subText}
-              />
-            </View>
-          </View>
-          <View style={styles.btnView}>{inviteBtn}</View>
-        </View>
-      </TouchableOpacity>
-    );
-  } else {
-    return (
-      <View style={[styles.container, props.style, { height: display === 'flex' ? 40 * em : 19 * em }]}>
-        <View style={styles.leftView}>
-          <Image source={props.icon} style={[styles.icon, { display: display }]} />
-          <View style={styles.txtContainer}>
-            <TitleText style={styles.textTitle} text={props.text} />
-            <TitleText style={[styles.textTitle, { display: subTextDisplay }]} color={'#A0AEB8'} text={props.subText} />
-          </View>
-        </View>
-        <View style={styles.btnView}>{inviteBtn}</View>
-      </View>
+  var inviteBtn = props.inviteBtn && <InviteButton invited={props.invited} />;
+  const [checked, setChecked] = useState(false);
+  var option = props.option && (
+    <CheckBox
+      shape="oval"
+      isChecked={checked}
+      color={props.color}
+      onClick={() => setChecked(!checked)}
+      style={{ alignSelf: 'center' }}
+    />
+  );
+  var icon = props.icon && <Image source={props.icon} style={styles.icon} />;
+  if (props.iconSize) {
+    icon = (
+      <Image source={[props.icon, { width: props.iconSize * em, height: props.iconSize * em }]} style={styles.icon} />
     );
   }
+  return (
+    <CommonListItem
+      title={props.text}
+      titleStyle={styles.textTitle}
+      subTitle={props.subText}
+      subTitleStyle={styles.subTextTitle}
+      icon={icon}
+      rightView={inviteBtn || option}
+      style={props.style}
+    />
+  );
 };
 export default SearchCommonListItem;
 const styles = {
-  container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  leftView: {
-    flexDirection: 'row',
-  },
   icon: {
     width: 40 * em,
     height: 40 * em,
     resizeMode: 'contain',
     marginRight: 15 * em,
   },
-  rightView: {
-    flexDirection: 'row-reverse',
-    alignItems: 'center',
-  },
-  txtContainer: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-  },
+
   textTitle: {
     fontSize: 16 * em,
     textAlignVertical: 'center',
     fontWeight: '200',
+    color: '#1E2D60',
+    lineHeight: 19 * em,
   },
+  subTextTitle: { color: '#A0AEB8', fontSize: 16 * em, lineHeight: 18 * em },
   arrowIcon: {
     backgroundColor: 'white',
     width: 11 * em,

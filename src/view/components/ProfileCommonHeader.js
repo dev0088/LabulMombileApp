@@ -3,19 +3,15 @@ import { View, TouchableOpacity } from 'react-native';
 import { em } from 'view/common/const';
 import CommonText from './CommonText';
 import TitleText from './TitleText';
-import { Actions } from 'react-native-router-flux';
 
 const ProfileCommonHeader = (props) => {
   return (
     <View style={[styles.container, props.style]}>
       <View style={styles.containerTxtBtn}>
-        <TouchableOpacity
-          onPress={() => {
-            Actions.pop();
-          }}>
+        <TouchableOpacity onPress={() => props.onCancel()}>
           <CommonText text={'Annuler'} />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => props.onFinish()}>
           <CommonText text={'Terminer'} color={'#40CDDE'} />
         </TouchableOpacity>
       </View>

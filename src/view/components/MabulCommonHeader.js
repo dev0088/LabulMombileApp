@@ -4,6 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import { em, WIDTH } from 'view/common/const';
 import CommentText from './CommentText';
 import CommonBackButton from './CommonBackButton';
+import CommonText from './CommonText';
 
 function hexToRGB(hex, alpha) {
   var r = parseInt(hex.slice(1, 3), 16),
@@ -17,17 +18,20 @@ function hexToRGB(hex, alpha) {
 }
 
 const MabulCommonHeader = (props) => {
-  let backButtonImage = require('assets/images/btn_back_white.png');
-
-  if (props.isNoBackBtn) {
-    backButtonImage = null;
-  }
+  console.log(props.noBackButton);
+  var topViewHeader = props.noBackButton ? (
+    <View style={[styles.topViewHeader, { flexDirection: 'row-reverse' }]}>
+      <CommentText text={'Annuler'} onPress={() => Actions.main()} style={styles.mainBtn} />
+    </View>
+  ) : (
+    <View style={styles.topViewHeader}>
+      <CommonBackButton dark={true} style={styles.backBtnView} />
+      <CommentText text={'Annuler'} onPress={() => Actions.main()} style={styles.mainBtn} />
+    </View>
+  );
   return (
     <View style={[styles.container, props.style]}>
-      <View style={styles.topViewHeader}>
-        <CommonBackButton />
-        <CommentText text={'Annuler'} onPress={() => Actions.main()} style={styles.mainBtn} />
-      </View>
+      {topViewHeader}
       <View style={[{ backgroundColor: hexToRGB(props.progressBarColor, 0.24) }, styles.progressContainer]}>
         <View
           style={[
@@ -43,37 +47,28 @@ const MabulCommonHeader = (props) => {
 const styles = {
   container: {
     flexDirection: 'column',
+    justifyContent: 'flex-end',
     width: '100%',
   },
   topViewHeader: {
-    paddingDown: 4 * em,
-    flex: 1,
+    height: 44 * em,
     flexDirection: 'row',
     alignItems: 'center',
+    marginBottom: 4 * em,
     justifyContent: 'space-between',
   },
   backBtnView: {
+    alignSelf: 'flex-end',
     width: 44 * em,
     height: 44 * em,
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 15 * em,
   },
-  backButton: {
-    width: 20 * em,
-    height: 18 * em,
-    resizeMode: 'contain',
-  },
-  mainBtn: {
-    marginRight: 30 * em,
-  },
-  progressBar: {
-    height: 6 * em,
-  },
-  progressContainer: {
-    width: '100%',
-    height: 6 * em,
-  },
+  headerTitle: { marginLeft: 10 * em },
+  mainBtn: { marginRight: 30 * em },
+  progressBar: { height: 6 * em },
+  progressContainer: { width: '100%', height: 6 * em },
 };
 
 export default MabulCommonHeader;

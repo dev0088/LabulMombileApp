@@ -1,22 +1,11 @@
 import React from 'react';
 import { View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import TitleText from 'view/components/TitleText';
-import { em } from 'view/common/const';
-import CommonText from '../../../components/CommonText';
-import CommentText from '../../../components/CommentText';
-import CommonButton from '../../../components/CommonButton';
+import { em, hexToRGB } from 'view/common/const';
+import CommonText from 'view/components/CommonText';
+import CommentText from 'view/components/CommentText';
+import CommonButton from 'view/components/CommonButton';
 import { Actions } from 'react-native-router-flux';
-
-function hexToRGB(hex, alpha) {
-  var r = parseInt(hex.slice(1, 3), 16),
-    g = parseInt(hex.slice(3, 5), 16),
-    b = parseInt(hex.slice(5, 7), 16);
-  if (alpha) {
-    return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + alpha + ')';
-  } else {
-    return 'rgb(' + r + ', ' + g + ', ' + b + ')';
-  }
-}
 
 const FriendSellScreen = () => {
   return (

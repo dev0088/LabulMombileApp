@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Image, TouchableHighlight, ViewPropTypes as RNViewPropTypes, Animated } from 'react-native';
 import PropTypes from 'prop-types';
 import { em } from 'view/common/const';
-
+import { SelectionOn, SelectionOff, CheckBlue, CheckOff, CheckRed } from 'assets/svg/icons';
 const ViewPropTypes = RNViewPropTypes || View.propTypes;
 
+const checkShapeSize = { width: 26 * em, height: 26 * em };
 export default class CheckBox extends Component {
   static propTypes = {
     ...ViewPropTypes,
@@ -12,6 +13,7 @@ export default class CheckBox extends Component {
     isChecked: PropTypes.bool.isRequired,
     disabled: PropTypes.bool,
     shape: PropTypes.string,
+    color: PropTypes.string,
   };
   static defaultProps = {
     isChecked: false,
@@ -21,6 +23,7 @@ export default class CheckBox extends Component {
     super(props);
     this.state = {
       fadeAnim: new Animated.Value(1), // Initial value for opacity: 0
+      isChecked: false,
     };
     this.fadeOut = this.fadeOut.bind(this);
   }
@@ -38,28 +41,18 @@ export default class CheckBox extends Component {
   }
   onClick() {
     this.props.onClick();
+    // this.setState({ isChecked: !this.state.isChecked });
     this.fadeOut;
   }
 
   genShape() {
-    let source;
-    source = this.props.isChecked ? (
-      <View style={styles.checkedShape}>
-        <Image source={require('../../assets/images/ic_check.png')} style={styles.iconCheck} />
-      </View>
-    ) : (
-      <View style={styles.unCheckShape} />
-    );
-    if (this.props.shape === 'oval') {
-      source = this.props.isChecked ? (
-        <View style={[styles.checkedShape, { borderRadius: 13 * em }]}>
-          <Image source={require('../../assets/images/ic_check.png')} style={styles.iconCheck} />
-        </View>
-      ) : (
-        <View style={[styles.unCheckShape, { borderRadius: 13 * em }]} />
-      );
-    }
-    return source;
+    const CheckTrue = this.props.oval ? CheckOff(checkShapeSize) : SelectionOff(checkShapeSize);
+    const CheckFalse = this.props.oval
+      ? this.props.red
+        ? CheckRed(checkShapeSize)
+        : CheckBlue(checkShapeSize)
+      : SelectionOn(checkShapeSize);
+    return this.props.isChecked ? CheckTrue : CheckFalse;
   }
 
   render() {

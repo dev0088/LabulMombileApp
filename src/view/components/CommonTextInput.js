@@ -42,7 +42,6 @@ const CommonTextInput = (props) => {
 export default CommonTextInput;
 const styles = {
   containerFocusOn: {
-    height: 52 * em,
     flexDirection: 'column',
     borderBottomColor: '#41D0E2',
     borderBottomWidth: 2 * em,

@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { View, Image, Text } from 'react-native';
 import { em, WIDTH, HEIGHT } from 'view/common/const';
 import CommonHeader from 'view/components/CommonHeader';
-import TitleText from '../../../components/TitleText';
-import CommentText from '../../../components/CommentText';
-import Switch from '../../../components/Switch';
+import TitleText from 'view/components/TitleText';
+import CommentText from 'view/components/CommentText';
+import Switch from 'view/components/Switch';
+import CommonListItem from 'view/components/CommonListItem';
 
 const MySettingScreen = () => {
   return (
     <View style={styles.container}>
-      <CommonHeader isLightTheme={true} style={styles.header} />
+      <CommonHeader dark={true} style={styles.header} />
       <View style={styles.line} />
       <View style={styles.listItem}>
         <Image style={styles.icon} />
@@ -30,7 +31,11 @@ const MySettingScreen = () => {
         />
       </View>
       <View style={styles.line} />
-
+      {/* <CommonListItem
+        icon={<Image style={styles.icon} />}
+        title="Notifications"
+        subTitle="Activez la réception de notifications"
+      /> */}
       <View style={styles.listItem}>
         <Image style={styles.icon} />
         <View style={styles.containerTxt}>

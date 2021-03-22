@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { View, Image, FlatList } from 'react-native';
 import TitleText from 'view/components/TitleText';
-import { em, HEIGHT } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import CommonHeader from 'view/components/CommonHeader';
 import SearchBox from 'view/components/SearchBox';
 import CommentText from 'view/components/CommentText';
 import SearchCommonListItem from 'view/components/SearchCommonListItem';
-
+import { LocationBlue } from 'assets/svg/icons';
 const InputLocationScreen = () => {
   const [searchedUsers, getSearchResult] = useState('');
   const [locationViewVisible, setlocationViewVisible] = useState('flex');
@@ -45,8 +45,8 @@ const InputLocationScreen = () => {
         }}
       />
       <View style={[styles.location, { display: locationViewVisible }]}>
-        <Image style={styles.locationIcon} />
-        <CommentText text={'Utiliser ma position'} color="#40CDDE" />
+        <LocationBlue width={16 * em} height={19 * em} />
+        <CommentText text={'Utiliser ma position'} color="#40CDDE" style={{ marginTop: 5 * em }} />
       </View>
 
       <FlatList
@@ -81,17 +81,13 @@ const styles = {
     alignSelf: 'center',
     marginTop: 15 * em,
     alignItems: 'center',
-  },
-  locationIcon: {
-    width: 16 * em,
-    height: 19 * em,
-    backgroundColor: '#40CDDE',
-    marginBottom: 5 * em,
-  },
+  },  
   listItem: {
-    height: HEIGHT * 0.063,
-    marginTop: 35 * em,
+    height: 38 * hm,
+    marginTop: 35 * hm,
     marginLeft: 30 * em,
+    marginRight: 30 * em,
+    width: 315 * em,
   },
 };
 

@@ -5,6 +5,7 @@ import ProfileInformationListItem from 'view/components/ProfileInformationListIt
 import CommonText from 'view/components/CommonText';
 import ProfileCommonHeader from 'view/components/ProfileCommonHeader';
 import ProfileCommonModal from 'view/components/ProfileCommonModal';
+import { Actions } from 'react-native-router-flux';
 
 const MyInformationScreen = () => {
   const [inputItemKey, setInputItemKey] = useState(1);
@@ -12,11 +13,11 @@ const MyInformationScreen = () => {
   return (
     <View>
       <ScrollView style={styles.container}>
-        <ProfileCommonHeader title="Mes informations" />
+        <ProfileCommonHeader title="Mes informations" onCancel={() => Actions.pop()} onFinish={() => Actions.pop()} />
         <CommonText text="Connexion et sécurité" style={styles.itemTitle} />
         <ProfileInformationListItem
-          text={'Mon email'}
-          subText={'Mon email'}
+          caption={'Mon email'}
+          value={'Mon email'}
           style={styles.listItem}
           onPress={() => {
             setInputItemKey(1);
@@ -24,28 +25,28 @@ const MyInformationScreen = () => {
           }}
         />
         <ProfileInformationListItem
-          text={'Modifier mot de passe'}
-          subText={'...........'}
-          style={styles.listItem}
-          onPress={() => {
-            setInputItemKey(4);
-            setModalVisible(!modalVisible);
-          }}
-        />
-        <CommonText text="Contact" style={styles.itemTitle} />
-        <ProfileInformationListItem
-          text={'Mon mobile'}
-          subText={'+590 6 90 874 258'}
+          caption={'Modifier mot de passe'}
+          value={'...........'}
           style={styles.listItem}
           onPress={() => {
             setInputItemKey(2);
             setModalVisible(!modalVisible);
           }}
         />
+        <CommonText text="Contact" style={styles.itemTitle} />
+        <ProfileInformationListItem
+          caption={'Mon mobile'}
+          value={'+590 6 90 874 258'}
+          style={styles.listItem}
+          onPress={() => {
+            setInputItemKey(3);
+            setModalVisible(!modalVisible);
+          }}
+        />
         <CommonText text="Localisation" style={styles.itemTitle} />
         <ProfileInformationListItem
-          text={'Mon dresse'}
-          subText={'ABYMES 97139 Guadeloupe'}
+          caption={'Mon dresse'}
+          value={'ABYMES 97139 Guadeloupe'}
           style={styles.listItem}
           onPress={() => {
             setInputItemKey(3);
@@ -87,7 +88,6 @@ const styles = {
     paddingBottom: 25 * em,
     paddingRight: 30 * em,
     paddingLeft: 30 * em,
-    height: 95 * em,
   },
   notice: {
     marginTop: 10 * em,

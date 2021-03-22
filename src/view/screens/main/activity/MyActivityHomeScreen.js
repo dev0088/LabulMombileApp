@@ -1,15 +1,16 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { View, TouchableOpacity, Image, ScrollView } from 'react-native';
 import TitleText from 'view/components/TitleText';
 import { em } from 'view/common/const';
 import SwitchButton from 'view/components/SwitchButton';
-import CommonText from '../../../components/CommonText';
-import CommentText from '../../../components/CommentText';
-import CircleDraw from '../../../components/CircleDraw';
+import CommonText from 'view/components/CommonText';
+import CommentText from 'view/components/CommentText';
+import CircleDraw from 'view/components/CircleDraw';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import MyInviationsTabScreen from './MyInviationsTabScreen';
-import MyRequestsTabScreen from './MyRequestsTabScreen';
-import { navigationRef } from '../RootNavigation';
+import { navigationRef } from 'view/screens/main/RootNavigation';
+import MyNeedsTabScreen from './MyNeedsTabScreen';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -50,7 +51,7 @@ const MyActivityHomeScreen = (props) => {
         />
       </View>
       <Tab.Navigator tabBar={() => null} swipeEnabled={false}>
-        <Tab.Screen name="Demandes" component={MyRequestsTabScreen} />
+        <Tab.Screen name="Demandes" component={MyNeedsTabScreen} />
         <Tab.Screen name="Invitations" component={MyInviationsTabScreen} />
       </Tab.Navigator>
     </View>
