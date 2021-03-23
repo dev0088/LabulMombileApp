@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { View, Image } from 'react-native';
-import TitleText from 'view/components/TitleText';
-import { em, mabulColors } from 'view/common/const';
-import CommonText from 'view/components/CommonText';
-import MabulCommonHeader from 'view/components/MabulCommonHeader';
-import CommonButton from 'view/components/CommonButton';
+import TitleText from 'view/components/text/TitleText';
+import { em } from 'view/common/const';
+import CommonText from 'view/components/text/CommonText';
+import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
 import { Actions } from 'react-native-router-flux';
 import CheckBox from 'view/components/CheckBox';
-import MabulNextButton from 'view/components/MabulNextButton';
+import MabulNextButton from 'view/components/button/MabulNextButton';
 import { FlatList } from 'react-native-gesture-handler';
-
+import { Neighbor } from 'assets/svg/icons';
 const options = [
-  { id: 0, title: 'J’ai besoin de' },
+  { id: 0, title: 'Accident' },
   { id: 1, title: 'Route barrée' },
   { id: 2, title: 'Travaux' },
 ];
@@ -25,19 +24,19 @@ const AlertClassOptionScreen = (props) => {
     return (
       <View style={[styles.optionBox, { elevation: elevation }]}>
         <TitleText style={styles.optionCaption} text={item.title} />
-        <CheckBox shape="oval" isChecked={checked} singleSelection={true} onClick={() => setOptionCheck(item.id)} />
+        <CheckBox oval red isChecked={checked} singleSelection={true} onClick={() => setOptionCheck(item.id)} />
       </View>
     );
   };
   return (
     <View style={styles.container}>
-      <MabulCommonHeader style={styles.header} percent={24} progressBarColor={conceptColor} />
+      <MabulCommonHeader style={styles.header} percent={props.process} progressBarColor={conceptColor} />
       <View style={styles.body}>
         <View>
           <TitleText text={'J’alerte'} style={styles.title} />
           <View style={styles.circleSortView}>
-            <Image style={styles.icon} />
-            <CommonText text="Mes voisins" />
+            <Neighbor width={31 * em} height={31 * em} />
+            <CommonText text="Mes voisins" style={{ marginLeft: 10 }} />
           </View>
           <FlatList data={options} renderItem={renderOptions} keyExtractor={(i) => i.id} />
         </View>
@@ -45,7 +44,7 @@ const AlertClassOptionScreen = (props) => {
           color={conceptColor}
           style={[styles.btn, { backgroundColor: conceptColor }]}
           text="Suivant"
-          onPress={() => Actions.alertAddress()}
+          onPress={() => Actions.alertAddress({ process: 40 })}
         />
       </View>
     </View>

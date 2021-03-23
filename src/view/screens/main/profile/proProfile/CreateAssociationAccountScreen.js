@@ -1,21 +1,20 @@
 import React from 'react';
 import { em } from 'view/common/const';
-import { View, Image } from 'react-native';
-import CommonHeader from 'view/components/CommonHeader';
-import PopupHeader from 'view/components/PopupHeader';
-import TitleText from 'view/components/TitleText';
+import { View } from 'react-native';
+import PopupHeader from 'view/components/header/PopupHeader';
+import TitleText from 'view/components/text/TitleText';
 import CommonTextInput from 'view/components/CommonTextInput';
-import CommonButton from 'view/components/CommonButton';
+import CommonButton from 'view/components/button/CommonButton';
 import { Actions } from 'react-native-router-flux';
-import AccountCommonHeader from 'view/components/AccountCommonHeader';
-
+import AccountCommonHeader from 'view/components/header/AccountCommonHeader';
+import { AssociationInner } from 'assets/svg/icons';
 const CreateAssociationAccountScreen = () => {
   return (
     <View style={styles.container}>
       <AccountCommonHeader style={styles.header} rightTxt="Annuler" />
       <View style={styles.popupView}>
         <View style={styles.popupTopView}>
-          <PopupHeader hideBack={true} icon={require('assets/images/ic_enterprise.png')} />
+          <AssociationInner width={39 * em} height={30 * em} />
           <TitleText text={'Identité'} style={styles.titleText} />
           <CommonTextInput
             text={'Quel est le nom de ton association ?'}
@@ -55,13 +54,8 @@ const styles = {
     borderTopRightRadius: 28 * em,
     justifyContent: 'space-between',
   },
-  popupTopView: {
-    alignItems: 'center',
-    width: '80%',
-  },
-  titleText: {
-    marginBottom: 35 * em,
-  },
+  popupTopView: { paddingTop: 30 * em, alignItems: 'center', width: '80%' },
+  titleText: { marginTop: 11 * em, marginBottom: 35 * em },
   btnNext: {
     marginBottom: 30 * em,
     backgroundColor: '#7398FC',

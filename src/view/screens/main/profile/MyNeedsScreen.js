@@ -1,19 +1,15 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
-import { View, TouchableOpacity, Image, ScrollView } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import { View, TouchableOpacity, Image } from 'react-native';
+import TitleText from 'view/components/text/TitleText';
 import { em } from 'view/common/const';
-import SwitchButton from 'view/components/SwitchButton';
-import CommonText from 'view/components/CommonText';
-import CommentText from 'view/components/CommentText';
-import CircleDraw from 'view/components/CircleDraw';
+import SwitchButton from 'view/components/button/SwitchButton';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { navigationRef } from 'view/screens/main/RootNavigation';
 
 const Tab = createMaterialTopTabNavigator();
 
 const MyNeedsScreen = (props) => {
-  const [activeTab, setActiveTab] = React.useState(1);
+  const [, setActiveTab] = React.useState(1);
 
   return (
     <View style={styles.container}>

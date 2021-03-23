@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { View, Image } from 'react-native';
 import { em } from 'view/common/const';
-import CommonText from 'view/components/CommonText';
-import CommentText from 'view/components/CommentText';
+import CommonText from 'view/components/text/CommonText';
+import CommentText from 'view/components/text/CommentText';
 import { FlatList, TouchableOpacity, TextInput } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import CommonBackButton from 'view/components/CommonBackButton';
+import CommonBackButton from 'view/components/button/CommonBackButton';
+import CommonButton from 'view/components/button/CommonButton';
 import MessageCounterDownPopupScreen from './MessageCounterDownPopupScreen';
 import MessageProfilePopupScreen from './MessageProfilePopupScreen';
-
+import { TelephoneWhite } from 'assets/svg/icons';
 import ClockDraw from 'view/components/ClockDraw';
 import MessageView from 'view/components/MessageView';
-
+import { CheckedBlue } from 'assets/svg/icons';
 const OTHERSIDE = 1;
 const OURSIDE = 2;
 
@@ -27,7 +28,7 @@ const messageLists = [
     ],
   },
 ];
-const requestMessage = [
+var requestMessage = [
   {
     id: 0,
     date: '21:59',
@@ -37,42 +38,81 @@ const requestMessage = [
 ];
 
 const ActivityMessageScreen = (props) => {
-  console.log(props.sort);
   const [messageCounterVisible, setMessageCounterVisible] = useState(false);
   const [messageProfileVisible, setMessageProfileVisible] = useState(false);
-
+  const [accepted, setAccepted] = useState(false);
   const [isAccepted, setIsAccepted] = useState();
   const popupHeader = (
     <View style={styles.popupHeader}>
       <View style={styles.titleView}>
-        <Image source={require('assets/images/sample_cover_9.png')} style={styles.titleIcon} />
-        <CommentText color="#1E2D60" text="Récolter des figues" />
+        <Image source={props.user.badge} style={styles.titleIcon} />
+        <CommentText color="#1E2D60" text="Récolter des figues" style={{ fontFamily: 'Lato-Bold' }} />
       </View>
       {isAccepted && <ClockDraw height={28 * em} seconds={isAccepted} />}
     </View>
   );
+  const AcceptButton = accepted ? (
+    <CommonButton
+      style={[styles.optionBtn, { backgroundColor: 'rgba(64, 205, 222, 0.2)' }]}
+      rightIcon={<CheckedBlue width={12 * em} height={8.79 * em} />}
+      text="Accepter"
+      textStyle={{ fontSize: 14 * em, color: '#40CDDE', marginLeft: 5 * em }}
+    />
+  ) : (
+    <CommonButton
+      style={styles.optionBtn}
+      // rightIcon={}
+      text="Accepter"
+      textStyle={{ fontSize: 14 * em }}
+      onPress={() => {
+        props.activityType === 'invitation' ? setAccepted(true) : setMessageCounterVisible(true);
+      }}
+    />
+  );
   const optionView = (
     <View style={styles.optionView}>
-      <TouchableOpacity
-        style={styles.optionBtn}
+      {AcceptButton}
+      <CommonButton
+        style={[styles.optionBtn, { backgroundColor: '#F9547B' }]}
+        // rightIcon={}
+        text="Refuser"
+        textStyle={{ fontSize: 14 * em }}
         onPress={() => {
-          setMessageCounterVisible(true);
-        }}>
-        <Image />
-        <CommentText text="Accepter" color="#ffffff" />
-      </TouchableOpacity>
-      <TouchableOpacity style={[styles.optionBtn, { backgroundColor: '#F9547B' }]}>
-        <Image />
-        <CommentText text="Refuser" color="#ffffff" />
-      </TouchableOpacity>
+          props.activityType === 'invitation' ? {} : setMessageCounterVisible(true);
+        }}
+      />
     </View>
   );
-  console.log(requestMessage);
-
+  const SuccessToast = (
+    <View style={styles.toast}>
+      <View style={{ flexDirection: 'row', marginTop: 27 * em, marginBottom: 15 * em }}>
+        <Image source={require('assets/images/avatar.png')} style={styles.toastAvatar} />
+        <View style={styles.avatarCheck}>
+          <CheckedBlue wdith={16.67 * em} height={12.2 * em} />
+        </View>
+      </View>
+      <CommentText
+        text="Mathieu viens d’accepter la participation d’Amandine"
+        color="#1E2D60"
+        style={{ fontFamily: 'Lato-Bold' }}
+      />
+    </View>
+  );
   const renderMessageList = ({ item, index }) => {
     const { date, messages, side } = item;
     return <MessageView date={date} messages={messages} side={side} />;
   };
+
+  if (props.activityType === 'invitation') {
+    requestMessage = [
+      {
+        id: 0,
+        date: '21:59',
+        side: OTHERSIDE,
+        messages: ['Bonjour Mathieu, je souhaite t’inviter pour Nettoyage de ma voiture'],
+      },
+    ];
+  }
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -82,15 +122,18 @@ const ActivityMessageScreen = (props) => {
             style={{ flexDirection: 'row', flex: 1, alignItems: 'center' }}
             onPress={() => setMessageProfileVisible(!messageProfileVisible)}>
             <Image source={require('assets/images/avatar.png')} style={styles.avatarIcon} />
-            <CommonText text="Amandine Bernard" color="#ffffff" />
+            <CommonText text="Amandine Bernard" color="#ffffff" style={{ fontFamily: 'Lato-Bold' }} />
           </TouchableOpacity>
         </View>
         <TouchableOpacity onPress={() => Actions.activityDial()}>
-          <Image source={require('assets/images/ic_phone.png')} style={styles.dialIcon} />
+          <View style={styles.dialIcon}>
+            <TelephoneWhite width={20 * em} height={20 * em} />
+          </View>
         </TouchableOpacity>
       </View>
       <View style={styles.popup}>
         {popupHeader}
+        {isAccepted && SuccessToast}
         <View style={styles.popupBody}>
           <View style={styles.popupFooter}>
             <Image source={require('assets/images/ic_image.png')} style={styles.imageIcon} />
@@ -137,6 +180,28 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'flex-end',
   },
+  toast: {
+    margin: -30 * em,
+    alignItems: 'center',
+    left: 0,
+    top: 8 * em,
+    height: 183 * em,
+    postion: 'absolute',
+    width: 375 * em,
+    backgroundColor: 'rgba(64, 205, 222, 0.15)',
+    paddingHorizontal: 30 * em,
+    paddingBottom: 21 * em,
+  },
+  avatarCheck: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 34 * em,
+    width: 34 * em,
+    borderRadius: 24 * em,
+    backgroundColor: '#ffffff',
+    marginLeft: -32 * em,
+    marginTop: -5 * em,
+  },
   avatarIcon: { width: 28 * em, height: 28 * em, marginLeft: 10 * em, marginRight: 10 * em },
   dialIcon: { width: 20 * em, height: 20 * em, marginRight: 15 * em, tintColor: '#ffffff', marginBottom: 11 * em },
   popup: {
@@ -167,10 +232,12 @@ const styles = {
   imageIcon: { width: 40 * em, height: 40 * em, marginRight: 15 * em },
   optionBtn: {
     paddingVertical: 12 * em,
-    paddingHorizontal: 22 * em,
+    paddingHorizontal: 15 * em,
     backgroundColor: '#40CDDE',
     borderRadius: 21 * em,
     alignSelf: 'baseline',
+    width: 125 * em,
+    // flex: 1,
   },
 
   optionView: {

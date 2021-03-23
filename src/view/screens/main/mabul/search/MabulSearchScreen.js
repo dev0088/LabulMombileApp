@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import { em } from 'view/common/const';
 
 const MabulSearchScreen = () => {

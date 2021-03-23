@@ -1,20 +1,19 @@
 import React from 'react';
-import { View, Image } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import { View } from 'react-native';
+import TitleText from 'view/components/text/TitleText';
 import { em } from 'view/common/const';
-import CommonText from 'view/components/CommonText';
-import MabulCommonHeader from 'view/components/MabulCommonHeader';
-import CommonButton from 'view/components/CommonButton';
-import MabulNextButton from 'view/components/MabulNextButton';
+import CommonText from 'view/components/text/CommonText';
+import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
+import MabulNextButton from 'view/components/button/MabulNextButton';
 import { Actions } from 'react-native-router-flux';
 import { Family, Friend, Neighbor, All } from 'assets/svg/icons';
 
-const AlertCircleSelectionScreen = (props) => {
+const AlertCircleSelectionScreen = () => {
   const conceptColor = '#F9547B';
 
   return (
     <View style={styles.container}>
-      <MabulCommonHeader style={styles.header} percent={24} noBackButton={true} progressBarColor={conceptColor} />
+      <MabulCommonHeader style={styles.header} percent={20} noBackButton={true} progressBarColor={conceptColor} />
       <View style={styles.body}>
         <View>
           <TitleText text={'J’alerte'} style={styles.title} />
@@ -43,7 +42,7 @@ const AlertCircleSelectionScreen = (props) => {
           color={conceptColor}
           style={[styles.btn, { backgroundColor: conceptColor }]}
           text="Suivant"
-          onPress={() => Actions.alertClass()}
+          onPress={() => Actions.alertClass({ process: 40 })}
         />
       </View>
     </View>

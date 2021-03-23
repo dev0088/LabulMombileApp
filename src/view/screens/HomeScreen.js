@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 import { em } from 'view/common/const';
-import CommonButton from 'view/components/CommonButton';
-import CommonText from 'view/components/CommonText';
-import TitleText from 'view/components/TitleText';
+import CommonButton from 'view/components/button/CommonButton';
+import CommonText from 'view/components/text/CommonText';
+import TitleText from 'view/components/text/TitleText';
 import { Actions } from 'react-native-router-flux';
 
 const HomeScreen = () => {
@@ -17,6 +17,7 @@ const HomeScreen = () => {
           onPress={() => {
             Actions.signupMenu();
           }}
+          style={{ fontFamily: 'Lato-Bold' }}
         />
       </View>
       <CommonButton

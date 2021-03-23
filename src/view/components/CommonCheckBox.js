@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
-import CommonText from 'view/components/CommonText';
+import CommonText from 'view/components/text/CommonText';
 import { em } from 'view/common/const';
 import { hm } from 'view/common/const';
 import CheckBox from 'view/components/CheckBox';
@@ -22,11 +22,7 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  title: {
-    fontSize: 18 * em,
-    lineHeight: 23 * hm,
-    textAlign: 'left',
-  },
+  title: { fontFamily: 'Lato-Bold', fontSize: 18 * em, lineHeight: 23 * hm, textAlign: 'left' },
 };
 
 export default CommonCheckBox;

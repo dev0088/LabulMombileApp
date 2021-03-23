@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, Image } from 'react-native';
-import TitleText from 'view/components/TitleText';
-import { hexToRGB, em, HEIGHT, WIDTH, mabulColors } from 'view/common/const';
-import CommentText from 'view/components/CommentText';
-import MabulCommonHeader from 'view/components/MabulCommonHeader';
-import MabulCommonListItem from 'view/components/MabulCommonListItem';
+import TitleText from 'view/components/text/TitleText';
+import { hexToRGB, em, mabulColors } from 'view/common/const';
+import CommentText from 'view/components/text/CommentText';
+import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
 import { Actions } from 'react-native-router-flux';
-import MabulNextButton from 'view/components/MabulNextButton';
-import CommonListItem from 'view/components/CommonListItem';
+import MabulNextButton from 'view/components/button/MabulNextButton';
+import CommonListItem from 'view/components/adapter/CommonListItem';
+import { Edit, Edit1, Edit2, Edit3, Document, Document1, Document2, Document3 } from 'assets/svg/icons';
 
 const title = {
   organize: 'Donne un titre à ton apéro',
@@ -17,9 +17,19 @@ const title = {
 };
 const MabulCommonRequestDetailScreen = (props) => {
   const conceptColor = mabulColors[props.mabulService];
-  var iconEdit = (
-    <Image style={[styles.icon, { tintColor: conceptColor }]} source={require('assets/images/ic_edit.png')} />
-  );
+  var iconEdit = Edit2(styles.icon);
+  var iconDocument = Document2(styles.icon);
+  if (props.mabulService === 'give') {
+    iconEdit = Edit3(styles.icon);
+    iconDocument = Document3(styles.icon);
+  } else if (props.mabulService === 'sell') {
+    iconEdit = Edit1(styles.icon);
+    iconDocument = Document1(styles.icon);
+  } else if (props.mabulService === 'need') {
+    iconEdit = Edit(styles.icon);
+    iconDocument = Document(styles.icon);
+  }
+
   return (
     <View style={styles.container}>
       <MabulCommonHeader style={styles.header} percent={24} isNoBackBtn={true} progressBarColor={conceptColor} />
@@ -39,7 +49,7 @@ const MabulCommonRequestDetailScreen = (props) => {
           />
           <View style={styles.line} />
           <CommonListItem
-            icon={iconEdit}
+            icon={iconDocument}
             style={[styles.listItem, { height: 62 * em }]}
             title="Détail ta demande ici"
             subTitle="(Soit concis pour être plus efficace)"
@@ -49,7 +59,7 @@ const MabulCommonRequestDetailScreen = (props) => {
           <View style={styles.line} />
         </View>
         <MabulNextButton
-          color={hexToRGB(conceptColor,0.5)}
+          color={hexToRGB(conceptColor, 0.5)}
           style={styles.nextBtn}
           onPress={() => {
             if (props.mabulService === 'sell') {
@@ -71,6 +81,7 @@ const styles = {
   },
   header: {
     height: '10.3%',
+    marginTop: 16 * em,
   },
   body: {
     flex: 1,

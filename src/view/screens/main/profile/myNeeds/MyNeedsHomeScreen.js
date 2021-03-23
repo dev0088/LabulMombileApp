@@ -1,26 +1,19 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { View, TouchableOpacity, Image, ScrollView } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import { View } from 'react-native';
+import TitleText from 'view/components/text/TitleText';
 import { em } from 'view/common/const';
-import SwitchButton from 'view/components/SwitchButton';
-import CommonText from 'view/components/CommonText';
-import CommentText from 'view/components/CommentText';
 import CommonTabBar from 'view/components/CommonTabBar';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import MyInviationsTabScreen from 'view/screens/main/activity/MyInviationsTabScreen';
-import { navigationRef } from 'view/screens/main/RootNavigation';
 import MyNeedsTabScreen from './MyNeedsTabScreen';
 import { NavigationContainer } from '@react-navigation/native';
-import MyParticipationsScreen from './MyParticipationsTabScreen';
-import MyAlertsScreen from './MyAlertsTabScreen';
 import MyParticipationsTabScreen from './MyParticipationsTabScreen';
 import MyAlertsTabScreen from './MyAlertsTabScreen';
-import CommonBackButton from '../../../../components/CommonBackButton';
+import CommonBackButton from 'view/components/button/CommonBackButton';
 
 const Tab = createMaterialTopTabNavigator();
 
-const MyNeedsHomeScreen = (props) => {
+const MyNeedsHomeScreen = () => {
   return (
     <NavigationContainer>
       <View style={styles.container}>
@@ -50,6 +43,7 @@ const MyNeedsHomeScreen = (props) => {
 
 const styles = {
   container: {
+    paddingTop:27*em,
     flex: 1,
     backgroundColor: '#FFFFFF',
   },
@@ -71,7 +65,6 @@ const styles = {
     fontSize: 34 * em,
     lineHeight: 38 * em,
     height: 40 * em,
-    fontWeight: 'bold',
     textAlign: 'left',
     marginLeft: 30 * em,
     marginTop: 10 * em,

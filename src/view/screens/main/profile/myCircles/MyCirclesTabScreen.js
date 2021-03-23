@@ -1,14 +1,14 @@
-import { View, TouchableOpacity, Image, Text } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { em, hm } from 'view/common/const';
-import CirclesCommonListItem from 'view/components/CirclesCommonListItem';
+import CirclesCommonListItem from 'view/components/adapter/CirclesCommonListItem';
 import { FlatList } from 'react-native-gesture-handler';
-import CommonCircularButton from 'view/components/CommonCircularButton';
+import CommonCircularButton from 'view/components/button/CommonCircularButton';
 import { Actions } from 'react-native-router-flux';
 import UserType from 'model/user/UserType';
 import UserOptionPopupScreen from './UserOptionPopupScreen';
 import GroupOptionPopupScreen from './GroupOptionPopupScreen';
-
+import { AddFamily, AddFriend, AddNeighbor } from 'assets/svg/icons';
 const usersData = [
   {
     sort: 'families',
@@ -87,16 +87,23 @@ const themeColors = {
   friends: '#6784DA',
   neighbours: '#40CDDE',
 };
+const addIconSize = { width: 59 * em, height: 59 * em };
+const themeButton = {
+  families: AddFamily(addIconSize),
+  friends: AddFriend(addIconSize),
+  neighbours: AddNeighbor(addIconSize),
+};
 const MyCirclesTabScreen = (props) => {
   const sort = props.route.params.sort;
   const [groupOptionVisible, setGroupOptionVisible] = useState(false);
   const [userOptionVisible, setUserOptionVisible] = useState(false);
-
+  console.log(themeButton[sort]);
   const renderFlatList = ({ item }) => {
     if (item.sort === sort) {
       if (item.type === UserType.GROUP) {
         return (
           <CirclesCommonListItem
+            sort={item.sort}
             type={item.type}
             name={item.userName}
             subName={item.number}
@@ -137,14 +144,11 @@ const MyCirclesTabScreen = (props) => {
         }}
         keyExtractor={(i) => i.id}
       />
-      <CommonCircularButton
-        radius={30 * em}
-        src={require('assets/images/ic_add_blue.png')}
-        iconStyle={styles.icon}
-        bgColor={themeColors[sort]}
-        style={styles.addBtn}
-        onPress={() => Actions.createGroup({themeColor:themeColors[sort]})}
-      />
+      <TouchableOpacity
+        style={{ position: 'absolute', bottom: 30 * em, right: 30 * em }}
+        onPress={() => Actions.createGroup({ themeColor: themeColors[sort],sort:sort })}>
+        {themeButton[sort]}
+      </TouchableOpacity>
       <UserOptionPopupScreen visible={userOptionVisible} onPress={() => setUserOptionVisible(false)} />
       <GroupOptionPopupScreen visible={groupOptionVisible} onPress={() => setGroupOptionVisible(false)} />
     </View>
@@ -152,25 +156,12 @@ const MyCirclesTabScreen = (props) => {
 };
 export default MyCirclesTabScreen;
 const styles = {
-  container: {
-    flex: 1,
-    backgroundColor: '#F0F5F7',
-    paddingTop: 10 * hm,
-  },
+  container: { flex: 1, backgroundColor: '#F0F5F7', paddingTop: 10 * hm },
   listItem: {
     height: 42 * hm,
     marginBottom: 35 * hm,
- 
+
     width: 315 * em,
   },
-  addBtn: {
-    position: 'absolute',
-    bottom: 30 * em,
-    right: 30 * em,
-  },
-  icon: {
-    width: 25 * em,
-    height: 18 * em,
-    tintColor: '#ffffff',
-  },
+  icon: { width: 25 * em, height: 18 * em, tintColor: '#ffffff' },
 };

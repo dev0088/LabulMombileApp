@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { View, Image, TouchableOpacity, ScrollView } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import { em, hexToRGB } from 'view/common/const';
-import CommentText from 'view/components/CommentText';
-import CommonButton from 'view/components/CommonButton';
+import CommentText from 'view/components/text/CommentText';
+import CommonText from 'view/components/text/CommonText';
+import CommonButton from 'view/components/button/CommonButton';
+import CommonBackButton from 'view/components/button/CommonBackButton';
+import SmallText from 'view/components/text/SmallText';
 import { Actions } from 'react-native-router-flux';
 import SellServiceType from 'model/service/SellServiceType';
 import SellService from 'model/service/SellService';
@@ -30,12 +33,12 @@ const ProSellScreen = (props) => {
 
         <View style={styles.body}>
           <Image source={require('assets/images/avatar_curology.png')} style={styles.icon} />
-          <CommentText style={styles.itemName} text="Curology" color={'#1E2D60'} />
+          <CommentText style={styles.itemName} text="Curology" color={'#1E2D60'} style={{ fontFamily: 'Lato-Black' }} />
           <CommentText style={styles.comment} text={data.slogan} color={'#1E2D60'} />
           <TitleText text={'Spray cuisine 100% Bio'} style={styles.title} />
-          <View style={{ flexDirection: 'row' }}>
-            <TitleText text={'5,00 €'} style={styles.price} />
-            <CommentText text={data.discountInfo} />
+          <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
+            <CommonText text={'5,00 €'} style={styles.price} color="#1E2D60" />
+            <SmallText text={data.discountInfo} color="#A0AEB8" />
           </View>
           <View style={{ marginLeft: 30 * em }}>
             <CommentText text={'Lorem ipsum dolor sit amet, consetetur '} style={styles.content} />
@@ -46,24 +49,20 @@ const ProSellScreen = (props) => {
               <CommentText text={'Continuer à lire'} color={'#40CDDE'} style={styles.content} />
             </View>
           </View>
-          <CommonButton style={styles.quizBtn} text="Modifier" />
-          <CommonButton style={styles.inviteBtn} text="Inviter à participer" />
+          <CommonButton style={styles.quizBtn} text="Modifier" textStyle={{ color: '#41D0E2' }} />
+          <CommonButton style={styles.inviteBtn} text="Partager" textStyle={{ color: '#41D0E2' }} />
           <View style={{ height: 130 * em }} />
         </View>
       </ScrollView>
-      <TouchableOpacity onPress={() => Actions.pop()} style={styles.backBtnView}>
-        <Image style={styles.backBtn} source={require('assets/images/btn_back_wrap.png')} />
-      </TouchableOpacity>
+      <CommonBackButton dark style={styles.backBtnView} />
     </View>
   );
 };
 
 const styles = {
-  container: {
-    flex: 1,
-    backgroundColor: 'transparent',
-  },
+  container: { flex: 1, backgroundColor: 'transparent' },
   backBtnView: {
+    backgroundColor: '#ffffff',
     zIndex: 1,
     width: 44 * em,
     height: 44 * em,
@@ -72,10 +71,7 @@ const styles = {
     top: 27 * em,
   },
   backBtn: { width: 44 * em, height: 44 * em, resizeMode: 'contain', zIndex: 1 },
-  cover: {
-    width: '100%',
-    height: 312 * em,
-  },
+  cover: { width: '100%', height: 312 * em },
   body: {
     marginTop: -41 * em,
     borderTopRightRadius: 28 * em,
@@ -83,12 +79,7 @@ const styles = {
     backgroundColor: '#ffffff',
     width: '100%',
   },
-  icon: {
-    width: 61 * em,
-    height: 61 * em,
-    marginTop: -30.5 * em,
-    alignSelf: 'center',
-  },
+  icon: { width: 61 * em, height: 61 * em, marginTop: -30.5 * em, alignSelf: 'center' },
   itemName: {
     marginTop: 5 * em,
     height: 22 * em,
@@ -119,7 +110,7 @@ const styles = {
     textAlign: 'left',
     marginLeft: 30 * em,
     marginTop: 5 * em,
-    fontWeight: 'bold',
+    marginBottom: 10 * em,
   },
   price: {
     fontSize: 18 * em,
@@ -128,13 +119,14 @@ const styles = {
     height: 21 * em,
     textAlign: 'left',
     textAlignVertical: 'center',
+    marginRight: 10 * em,
   },
   contentBox: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
   },
   content: { lineHeight: 25 * em, textAlign: 'left', marginTop: 3 * em },
-  quizBtn: { color: '#41D0E2', marginLeft: 30 * em, marginTop: 25 * em, backgroundColor: hexToRGB('#41D0E2', 0.2) },
+  quizBtn: { marginLeft: 30 * em, marginTop: 25 * em, backgroundColor: hexToRGB('#41D0E2', 0.2) },
   inviteBtn: { marginLeft: 30 * em, marginTop: 15 * em, backgroundColor: 'transparent', color: '#41D0E2' },
 
   btnBox: {

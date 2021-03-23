@@ -1,14 +1,12 @@
 import React from 'react';
 import { View, Image } from 'react-native';
-import TitleText from 'view/components/TitleText';
-import { em, HEIGHT, WIDTH, mabulColors } from 'view/common/const';
-import CommentText from 'view/components/CommentText';
-import MabulCommonHeader from 'view/components/MabulCommonHeader';
+import TitleText from 'view/components/text/TitleText';
+import { em, mabulColors } from 'view/common/const';
+import CommentText from 'view/components/text/CommentText';
+import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
 import { Actions } from 'react-native-router-flux';
-import MabulNextButton from 'view/components/MabulNextButton';
-import CommonListItem from 'view/components/CommonListItem';
-import CommonCircularButton from 'view/components/CommonCircularButton';
-import CommonCheckBox from 'view/components/CommonCheckBox';
+import MabulNextButton from 'view/components/button/MabulNextButton';
+import CommonListItem from 'view/components/adapter/CommonListItem';
 import Switch from 'view/components/Switch';
 
 const MabulCommonDateSettingScreen = (props) => {

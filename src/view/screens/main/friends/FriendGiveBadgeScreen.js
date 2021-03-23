@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
-import { View, Image, ScrollView, Text, TouchableOpacity } from 'react-native';
-import TitleText from 'view/components/TitleText';
-import { em, WIDTH, HEIGHT } from 'view/common/const';
-import CommonText from 'view/components/CommonText';
-import ProfileCommonLabel from 'view/components/ProfileCommonLabel';
-import CommonHeader from 'view/components/CommonHeader';
-import CommonBackButton from 'view/components/CommonBackButton';
-
+import { View, ScrollView, TouchableOpacity } from 'react-native';
+import { em, WIDTH } from 'view/common/const';
+import CommonText from 'view/components/text/CommonText';
+import TitleText from 'view/components/text/TitleText';
 import ProfileCommonAvatar from 'view/components/ProfileCommonAvatar';
-import CommentText from '../../../components/CommentText';
-import CommonButton from '../../../components/CommonButton';
+import CommentText from 'view/components/text/CommentText';
+import CommonButton from 'view/components/button/CommonButton';
 import FriendBadgeNoticePopupScreen from './FriendBadgeNoticePopupScreen';
 import {
   Ambianceur,
@@ -22,14 +18,13 @@ import {
   Helpful,
   GoodNeighbor,
   GoodHost,
-  GoodLife,
   HandHeart,
   Hypersociable,
   Resourceful,
   WellLiving,
   SwissKnife,
   CheckBlue,
-} from '../../../../assets/svg/icons';
+} from 'assets/svg/icons';
 import { Actions } from 'react-native-router-flux';
 
 const iconSize = { width: 33 * em, height: 33 * em };
@@ -80,7 +75,7 @@ const FriendGiveBadgeScreen = () => {
             logoVisible={false}
           />
           <CommonText text={'Amandine Bernard'} style={styles.title} color="#1E2D60" />
-          <CommentText text="Quel badge tu lui attribues ?" color="#1E2D60" style={styles.comment} />
+          <TitleText text="Quel badge tu lui attribues ?" color="#1E2D60" style={styles.comment} />
           <CommentText text="3 maximum" color="#A0AEB8" style={styles.notice} />
           <View style={{ flexWrap: 'wrap', flexDirection: 'row', justifyContent: 'space-between' }}>
             {feedbackIcons.map((feedback) => (
@@ -91,7 +86,7 @@ const FriendGiveBadgeScreen = () => {
         </View>
       </ScrollView>
       <View style={styles.btnBox}>
-        <CommonButton text={'Participer'} onPress={() => setBadgeNoticeVisible(true)} />
+        <CommonButton text={'Continuer'} onPress={() => setBadgeNoticeVisible(true)} />
       </View>
       <FriendBadgeNoticePopupScreen
         visible={badgeNoticeVisible}
@@ -146,12 +141,7 @@ const styles = {
     width: 97 * em,
     height: 97 * em,
   },
-  title: {
-    marginTop: 10 * em,
-    marginBottom: 10 * em,
-    marginBottom: 10 * em,
-    fontWeight: 'bold',
-  },
+  title: { marginTop: 10 * em, marginBottom: 10 * em, fontFamily: 'Lato-Bold' },
   comment: { fontSize: 22 * em, marginTop: 10 * em, marginBottom: 5 * em },
   notice: { marginTop: 5 * em, marginBottom: 35 * em },
   circlesView: {

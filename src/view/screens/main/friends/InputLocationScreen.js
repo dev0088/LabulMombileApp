@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
-import { View, Image, FlatList } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import { View, FlatList } from 'react-native';
+import TitleText from 'view/components/text/TitleText';
 import { em, hm } from 'view/common/const';
-import CommonHeader from 'view/components/CommonHeader';
+import CommonHeader from 'view/components/header/CommonHeader';
 import SearchBox from 'view/components/SearchBox';
-import CommentText from 'view/components/CommentText';
-import SearchCommonListItem from 'view/components/SearchCommonListItem';
+import CommentText from 'view/components/text/CommentText';
+import SearchCommonListItem from 'view/components/adapter/SearchCommonListItem';
 import { LocationBlue } from 'assets/svg/icons';
 const InputLocationScreen = () => {
   const [searchedUsers, getSearchResult] = useState('');
   const [locationViewVisible, setlocationViewVisible] = useState('flex');
   const renderFlatList = ({ item }) => (
-    <SearchCommonListItem text={item.userName} subText={item.address} icon={item.ic_location} style={styles.listItem} />
+    <SearchCommonListItem
+      location
+      text={item.userName}
+      subText={item.address}
+      icon={item.ic_location}
+      style={styles.listItem}
+    />
   );
   return (
     <View style={styles.container}>
@@ -22,24 +28,11 @@ const InputLocationScreen = () => {
       <SearchBox
         style={styles.searchBox}
         comment="Rechercher par ville"
-        onChangeText={(text) => {
+        onChangeText={() => {
           getSearchResult([
-            {
-              id: 0,
-              userName: 'Le Gosier',
-              ic_location: require('assets/images/ic_location.png'),
-            },
-            {
-              id: 1,
-              userName: 'Gosier Guadeloupe',
-              ic_location: require('assets/images/ic_location.png'),
-            },
-            {
-              id: 2,
-              userName: 'Beaumanoir, Le Gosier',
-              address: 'Route de Beaumanoir, Le Gosier',
-              ic_location: require('assets/images/ic_location.png'),
-            },
+            { id: 0, userName: 'Le Gosier' },
+            { id: 1, userName: 'Gosier Guadeloupe' },
+            { id: 2, userName: 'Beaumanoir, Le Gosier', address: 'Route de Beaumanoir, Le Gosier' },
           ]);
           setlocationViewVisible('none');
         }}
@@ -76,12 +69,12 @@ const styles = {
     height: 40 * em,
     marginTop: 10 * em,
   },
-  searchBox: { marginTop: 25 * em, width: 315 * em, marginLeft: 30 * em },
+  searchBox: { marginTop: 25 * em, width: 315 * em, marginLeft: 30 * em, height: 44 * em },
   location: {
     alignSelf: 'center',
     marginTop: 15 * em,
     alignItems: 'center',
-  },  
+  },
   listItem: {
     height: 38 * hm,
     marginTop: 35 * hm,

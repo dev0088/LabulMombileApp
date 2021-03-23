@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { View, ScrollView, Text, TouchableOpacity, ImageBackground, Image } from 'react-native';
+import { View, ScrollView, Text, TouchableOpacity, ImageBackground } from 'react-native';
 import { em, hexToRGB } from 'view/common/const';
-import ProfileInformationListItem from 'view/components/ProfileInformationListItem';
-import CommonText from 'view/components/CommonText';
-import ProfileCommonHeader from 'view/components/ProfileCommonHeader';
-import ProfileCommonModal from 'view/components/ProfileCommonModal';
-import CommonButton from 'view/components/CommonButton';
+import ProfileInformationListItem from 'view/components/adapter/ProfileInformationListItem';
+import ProfileCommonHeader from 'view/components/header/ProfileCommonHeader';
+import CommonButton from 'view/components/button/CommonButton';
 import ProfileCommonAvatar from 'view/components/ProfileCommonAvatar';
-import CommentText from 'view/components/CommentText';
+import CommentText from 'view/components/text/CommentText';
 import { Actions } from 'react-native-router-flux';
 import Modal from 'react-native-modal';
 import { ProAddCover } from 'assets/svg/icons';
@@ -23,7 +21,7 @@ const updateUserPrfile = {
     'Des soins de la peau personnalisés pour les besoins uniques de votre peau. Maintenant disponible dans un ensemble avec nettoyant et hydratant!',
 };
 const EditProProfileScreen = (props) => {
-  const [inputItemKey, setInputItemKey] = useState(1);
+  const [, setInputItemKey] = useState(1);
   const [modalVisible, setModalVisible] = useState(false);
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
 
@@ -58,7 +56,7 @@ const EditProProfileScreen = (props) => {
           </View>
         </ImageBackground>
         <View style={[styles.listItem, { marginTop: 0, paddingVertical: 0 }]}>
-          <ProfileCommonAvatar fullName={userProfile.name} style={styles.avatar} icon={userProfile.avatar} />
+          <ProfileCommonAvatar pro fullName={userProfile.name} style={styles.avatar} icon={userProfile.avatar} />
           <CommentText text="Ajouter mon logo" style={styles.addPhotoBtn} color="#40CDDE" />
         </View>
         <ProfileInformationListItem

@@ -10,7 +10,7 @@ const ClockDraw = (props) => {
         style={{
           width: 0.79 * height,
           height: 0.79 * height,
-          borderRadius: 0.79 * height/2,
+          borderRadius: (0.79 * height) / 2,
           marginRight: 0.11 * height,
           backgroundColor: '#F9547B',
         }}
@@ -26,7 +26,7 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  secondsTxt: { color: '#F9547B', textAlign: 'left', textAlignVertical: 'center' },
+  secondsTxt: { fontFamily: 'Lato-Bold', color: '#F9547B', textAlign: 'left', textAlignVertical: 'center' },
 };
 
 export default ClockDraw;

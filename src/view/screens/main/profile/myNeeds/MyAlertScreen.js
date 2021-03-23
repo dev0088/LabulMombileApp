@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { View, ScrollView } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import { em } from 'view/common/const';
-import CommonButton from 'view/components/CommonButton';
+import CommonButton from 'view/components/button/CommonButton';
 import { Actions } from 'react-native-router-flux';
 import NeedService from 'model/service/NeedService';
 import NeedServiceType from 'model/service/NeedServiceType';
@@ -10,8 +10,8 @@ import User from 'model/User';
 import AvatarWithBadge from 'view/components/AvatarWithBadge';
 import FriendInvitePopupScreen from 'view/screens/main/friends/FriendInvitePopupScreen';
 import { LocationPink, Alert } from 'assets/svg/icons/index.js';
-import CommonListItem from 'view/components/CommonListItem';
-import CommonBackButton from 'view/components/CommonBackButton';
+import CommonListItem from 'view/components/adapter/CommonListItem';
+import CommonBackButton from 'view/components/button/CommonBackButton';
 const needData = new NeedService(
   new User('Mathieu Torin', require('assets/images/tab_profile_off.png'), 'anton@gmail.com'),
   'J’ai besoin coup de main bricolage',
@@ -25,10 +25,22 @@ const MyAlertScreen = () => {
   const [invitePopupVisible, setInvitePopupVisible] = useState(false);
   const [data] = useState(needData);
   const InviteButton = (
-    <CommonButton style={styles.inviteBtn} text="Inviter à participer" onPress={() => setInvitePopupVisible(true)} />
+    <CommonButton
+      textStyle={{ color: '#F9547B' }}
+      style={styles.inviteBtn}
+      text="Partager"
+      onPress={() => setInvitePopupVisible(true)}
+    />
   );
-  const ModifyButton = <CommonButton style={styles.quizBtn} text="Modifier" onPress={() => Actions.editNeed()} />;
-  const AskButton = <CommonButton style={styles.quizBtn} text="Poser une question" />;
+  const ModifyButton = (
+    <CommonButton
+      textStyle={{ color: '#F9547B' }}
+      style={styles.quizBtn}
+      text="Modifier"
+      onPress={() => Actions.editNeed()}
+    />
+  );
+  const AskButton = <CommonButton textStyle={{ color: '#F9547B' }} style={styles.quizBtn} text="Poser une question" />;
   return (
     <View style={styles.container}>
       <View style={styles.cover}>
@@ -99,7 +111,7 @@ const styles = {
     marginBottom: 14 * em,
     fontWeight: 'bold',
   },
-  quizBtn: { color: '#F9547B', marginTop: 25 * em, backgroundColor: '#FEE0E7' },
+  quizBtn: { marginTop: 25 * em, backgroundColor: '#FEE0E7' },
   inviteBtn: { marginTop: 15 * em, backgroundColor: 'transparent', color: '#F9547B' },
 
   btnBox: {

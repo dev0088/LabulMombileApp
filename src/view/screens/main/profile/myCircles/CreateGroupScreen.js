@@ -1,17 +1,15 @@
 import React from 'react';
-import { View, Image, ScrollView, ImageBackground, FlatList } from 'react-native';
-import TitleText from 'view/components/TitleText';
-import { em, hexToRGB } from 'view/common/const';
-import ProfileCommonListItem from 'view/components/ProfileCommonListItem';
-import AccountCommonHeader from 'view/components/AccountCommonHeader';
+import { View, Image, ImageBackground, FlatList } from 'react-native';
+import TitleText from 'view/components/text/TitleText';
+import { em } from 'view/common/const';
 import { Actions } from 'react-native-router-flux';
-import CommonText from 'view/components/CommonText';
+import CommonText from 'view/components/text/CommonText';
 import SearchBox from 'view/components/SearchBox';
-import CommentText from 'view/components/CommentText';
-import CommonListItem from 'view/components/CommonListItem';
+import CommentText from 'view/components/text/CommentText';
+import CommonListItem from 'view/components/adapter/CommonListItem';
 import CheckBox from 'view/components/CheckBox';
-import CommonButton from 'view/components/CommonButton';
-
+import CommonButton from 'view/components/button/CommonButton';
+import { Cancel } from 'assets/svg/icons';
 const usersData = [
   {
     sort: 'families',
@@ -81,7 +79,7 @@ const selectedList = [
   },
 ];
 const SelectedAvatarView = ({ avatar, userName }) => (
-  <View style={{ width: 54 * em, flexGrow: 1, alignSelf: 'baseline', marginRight: 10 * em }}>
+  <View style={{ width: 60 * em, flexGrow: 1, alignSelf: 'baseline', marginRight: 10 * em }}>
     <ImageBackground
       source={avatar}
       style={{
@@ -91,10 +89,17 @@ const SelectedAvatarView = ({ avatar, userName }) => (
         alignItems: 'flex-end',
         justifyContent: 'flex-start',
       }}>
-      <Image
-        source={require('assets/images/ic_close.png')}
-        style={{ borderWidth: 2 * em, width: 16 * em, height: 16 * em, borderRadius: 8 * em, borderColor: '#ffffff' }}
-      />
+      <View
+        style={{
+          borderWidth: 2 * em,
+          width: 20 * em,
+          height: 20 * em,
+          borderRadius: 10 * em,
+          backgroundColor: '#ffffff',
+          borderColor: '#ffffff',
+        }}>
+        <Cancel width={16 * em} height={16 * em} />
+      </View>
     </ImageBackground>
     <CommentText text={userName} style={styles.selectedFullName} />
   </View>
@@ -106,7 +111,7 @@ const CreateGroupScreen = (props) => {
     <CommonListItem
       icon={<Image source={item.avatar} style={{ width: 40 * em, height: 40 * em, marginRight: 15 * em }} />}
       title={item.userName}
-      titleStyle={{ color: '#1E2D60' }}
+      titleStyle={{ color: '#1E2D60',fontFamily:'Lato-Black' }}
       rightView={<CheckBox oval red bgColor="#EF88B9" />}
       style={styles.listItem}
     />
@@ -123,7 +128,7 @@ const CreateGroupScreen = (props) => {
       <CommonButton
         text="Continuer"
         style={{ backgroundColor: props.themeColor, marginBottom: 30 * em }}
-        onPress={() => Actions.nameGroup({ themeColor: props.themeColor })}
+        onPress={() => Actions.nameGroup({ themeColor: props.themeColor,sort:props.sort })}
       />
     </View>
   );
@@ -133,7 +138,7 @@ const styles = {
   container: { flex: 1, backgroundColor: '#ffffff', paddingHorizontal: 30 * em },
   title: { textAlign: 'left', marginTop: 23 * em, marginBottom: 17 * em },
   header: { marginTop: 39 * em, alignSelf: 'flex-end' },
-  selectedFullName: { fontSize: 12 * em, height: 30 * em, color: '#1E2D60', marginBottom: 0 },
+  selectedFullName: { fontSize: 12 * em, height: 30 * em, color: '#1E2D60', marginBottom: 0, fontFamily: 'Lato-Bold' },
   listItem: { marginBottom: 35 * em },
 };
 

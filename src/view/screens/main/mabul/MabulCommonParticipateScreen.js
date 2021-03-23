@@ -1,16 +1,15 @@
 import React from 'react';
-import { View, Image } from 'react-native';
-import TitleText from 'view/components/TitleText';
-import { em, HEIGHT, WIDTH, mabulColors } from 'view/common/const';
-import CommentText from 'view/components/CommentText';
-import MabulCommonHeader from 'view/components/MabulCommonHeader';
+import { View } from 'react-native';
+import TitleText from 'view/components/text/TitleText';
+import { em, mabulColors } from 'view/common/const';
+import CommentText from 'view/components/text/CommentText';
+import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
 import { Actions } from 'react-native-router-flux';
-import MabulNextButton from 'view/components/MabulNextButton';
+import MabulNextButton from 'view/components/button/MabulNextButton';
 import { TextInput } from 'react-native-gesture-handler';
 
 const MabulCommonParticipateScreen = (props) => {
   const conceptColor = mabulColors[props.mabulService];
-  console.log(conceptColor)
   return (
     <View style={styles.container}>
       <MabulCommonHeader style={styles.header} percent={24} isNoBackBtn={true} progressBarColor={conceptColor} />

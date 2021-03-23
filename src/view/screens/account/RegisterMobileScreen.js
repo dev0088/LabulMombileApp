@@ -1,12 +1,12 @@
 import React from 'react';
 import { em } from 'view/common/const';
-import { View, Image } from 'react-native';
-import PopupHeader from 'view/components/PopupHeader';
-import TitleText from 'view/components/TitleText';
+import { View } from 'react-native';
+import TitleText from 'view/components/text/TitleText';
 import CommonTextInput from 'view/components/CommonTextInput';
-import CommonButton from 'view/components/CommonButton';
+import CommonButton from 'view/components/button/CommonButton';
 import { Actions } from 'react-native-router-flux';
-import AccountCommonHeader from 'view/components/AccountCommonHeader';
+import AccountCommonHeader from 'view/components/header/AccountCommonHeader';
+import { Mobile } from 'assets/svg/icons';
 
 const RegisterMobileScreen = () => {
   return (
@@ -14,7 +14,9 @@ const RegisterMobileScreen = () => {
       <AccountCommonHeader style={styles.header} />
       <View style={styles.popupView}>
         <View style={styles.popupTopView}>
-          <Image source={require('assets/images/ic_phone.png')} style={styles.icon} />
+          <View style={styles.icon}>
+            <Mobile width={25 * em} height={25 * em} />
+          </View>
           <TitleText text={'Mon mobile'} style={styles.titleText} />
           <CommonTextInput
             text={'Quel est ton numéro de téléphone ?'}
@@ -31,19 +33,9 @@ const RegisterMobileScreen = () => {
 };
 
 const styles = {
-  container: {
-    flex: 1,
-    backgroundColor: '#40CDDE',
-  },
-  header: {
-    height: '12%',
-  },
-  icon: {
-    width: 25 * em,
-    height: 25 * em,
-    marginTop: 41 * em,
-    marginBottom: 14 * em,
-  },
+  container: { flex: 1, backgroundColor: '#40CDDE' },
+  header: { height: '12%' },
+  icon: { marginTop: 41 * em, marginBottom: 14 * em },
   popupView: {
     flex: 1,
     height: '88%',
@@ -60,9 +52,7 @@ const styles = {
   titleText: {
     marginBottom: 35 * em,
   },
-  btnNext: {
-    marginBottom: 30 * em,
-  },
+  btnNext: { backgroundColor: 'rgba(64, 205, 222, 0.5)', marginBottom: 30 * em },
   commonInput: {
     width: '100%',
     height: 52 * em,

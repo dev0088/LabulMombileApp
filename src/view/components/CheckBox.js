@@ -46,8 +46,8 @@ export default class CheckBox extends Component {
   }
 
   genShape() {
-    const CheckTrue = this.props.oval ? CheckOff(checkShapeSize) : SelectionOff(checkShapeSize);
-    const CheckFalse = this.props.oval
+    const CheckFalse = this.props.oval ? CheckOff(checkShapeSize) : SelectionOff(checkShapeSize);
+    const CheckTrue = this.props.oval
       ? this.props.red
         ? CheckRed(checkShapeSize)
         : CheckBlue(checkShapeSize)

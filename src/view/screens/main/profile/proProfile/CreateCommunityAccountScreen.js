@@ -1,21 +1,20 @@
 import React from 'react';
 import { em } from 'view/common/const';
 import { View } from 'react-native';
-import CommonHeader from 'view/components/CommonHeader';
-import PopupHeader from 'view/components/PopupHeader';
-import TitleText from 'view/components/TitleText';
+import PopupHeader from 'view/components/header/PopupHeader';
+import TitleText from 'view/components/text/TitleText';
 import CommonTextInput from 'view/components/CommonTextInput';
-import CommonButton from 'view/components/CommonButton';
+import CommonButton from 'view/components/button/CommonButton';
 import { Actions } from 'react-native-router-flux';
-import AccountCommonHeader from 'view/components/AccountCommonHeader';
-
+import AccountCommonHeader from 'view/components/header/AccountCommonHeader';
+import { InstitutionInner } from 'assets/svg/icons';
 const CreateCommunityAccountScreen = () => {
   return (
     <View style={styles.container}>
       <AccountCommonHeader style={styles.header} rightTxt="Annuler" />
       <View style={styles.popupView}>
         <View style={styles.popupTopView}>
-          <PopupHeader hideBack={true} icon={require('assets/images/ic_institution.png')} />
+          <InstitutionInner width={35 * em} height={30 * em} />
           <TitleText text={'Identité'} style={styles.titleText} />
           <CommonTextInput
             text={'Quel est le nom de ton collectivité/ institution ?'}
@@ -50,13 +49,8 @@ const styles = {
     borderTopRightRadius: 28 * em,
     justifyContent: 'space-between',
   },
-  popupTopView: {
-    alignItems: 'center',
-    width: '80%',
-  },
-  titleText: {
-    marginBottom: 35 * em,
-  },
+  popupTopView: { paddingTop: 39 * em, alignItems: 'center', width: '80%' },
+  titleText: { marginTop: 11 * em, marginBottom: 35 * em },
   btnNext: {
     marginBottom: 30 * em,
     backgroundColor: '#7398FC',

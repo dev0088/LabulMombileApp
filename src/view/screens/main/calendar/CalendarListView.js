@@ -1,10 +1,9 @@
 import React from 'react';
 import { View } from 'react-native';
-import TitleText from 'view/components/TitleText';
 import { em, HEIGHT } from 'view/common/const';
-import { LocaleConfig, Calendar, CalendarList, Agenda } from 'react-native-calendars';
+import { LocaleConfig, CalendarList } from 'react-native-calendars';
 
-LocaleConfig.locales['fr'] = {
+LocaleConfig.locales.fr = {
   monthNames: [
     'Janvier',
     'Février',
@@ -27,10 +26,7 @@ LocaleConfig.locales['fr'] = {
 LocaleConfig.defaultLocale = 'fr';
 
 const CalendarListView = (props) => {
-  const vacation = { key: 'vacation', color: 'red', selectedDotColor: 'blue' };
-  const massage = { key: 'massage', color: 'blue', selectedDotColor: 'blue' };
-  const workout = { key: 'workout', color: 'green' };
-  const [calendarItems, setCalendarItems] = React.useState({});
+  const [] = React.useState({});
 
   return (
     <View style={styles.container}>
@@ -40,7 +36,9 @@ const CalendarListView = (props) => {
         }}
         scrollEnabled={true}
         showScrollIndicator={true}
-        onDayPress={(day) => {props.onDayPress(day)}}
+        onDayPress={(day) => {
+          props.onDayPress(day);
+        }}
       />
     </View>
   );

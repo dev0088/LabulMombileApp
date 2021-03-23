@@ -1,22 +1,22 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { em } from 'view/common/const';
-import CommonButton from 'view/components/CommonButton';
-import CommonText from 'view/components/CommonText';
-import TitleText from 'view/components/TitleText';
+import CommonButton from 'view/components/button/CommonButton';
+import CommonText from 'view/components/text/CommonText';
+import TitleText from 'view/components/text/TitleText';
 import { Actions } from 'react-native-router-flux';
-import CommentText from 'view/components/CommentText';
+import CommentText from 'view/components/text/CommentText';
 
 const ActivateNotificationScreen = () => {
   return (
     <View style={styles.container}>
       <Image style={styles.behindImage} source={require('assets/images/bg_active_notification.png')} />
       <View style={styles.popupView}>
-        <TitleText text="Activer" style={{ marginTop: 24 * em }} />
-        <TitleText text="les notifications" />
-
-        <CommentText text="Active les notifications pour recevoir l’activité de" style={{ marginTop: 12 * em }} />
-        <CommentText text=" tes amis, ta famille et tes voisins." />
+        <TitleText text={'Activer\nles notifications'} style={{ marginTop: 24 * em }} />
+        <CommentText
+          text={'Active les notifications pour recevoir l’activité de\n tes amis, ta famille et tes voisins.'}
+          style={{ marginTop: 12 * em }}
+        />
         <View style={styles.buttonsContainer}>
           <View style={styles.fakeContainer} />
           <CommonButton
@@ -43,7 +43,7 @@ const styles = {
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#fafaff',
+    backgroundColor: '#F0F5F7',
   },
   behindImage: { flex: 0.45, resizeMode: 'contain' },
   popupView: {

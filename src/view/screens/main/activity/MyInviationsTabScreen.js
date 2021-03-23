@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { View, Image, TouchableOpacity, FlatList } from 'react-native';
 import { em, hm } from 'view/common/const';
-import CommonText from 'view/components/CommonText';
+import CommonText from 'view/components/text/CommonText';
 import CircleDraw from 'view/components/CircleDraw';
-import CommentText from 'view/components/CommentText';
+import CommentText from 'view/components/text/CommentText';
 import { Actions } from 'react-native-router-flux';
 import AvatarWithBadge from 'view/components/AvatarWithBadge';
-import CommonListItem from 'view/components/CommonListItem';
+import CommonListItem from 'view/components/adapter/CommonListItem';
 
 const invitationUsers = [
   {
@@ -81,21 +81,20 @@ const MyInviationsTabScreen = () => {
           </View>
         )
       }
-      onPress={() => Actions.activityMessage({ sort: 'invitation' })}
+      onPress={() => Actions.activityMessage({ activityType: 'invitation', user: item })}
     />
   );
   const listView = <FlatList data={invitationUsers} renderItem={renderFlatList} keyExtractor={(i) => i.id} />;
-  return <View style={styles.container}>{isEmpty ? emptyView : listView}</View>;
+  return (
+    <View style={styles.container}>
+      <View style={styles.view}>{isEmpty ? emptyView : listView}</View>
+    </View>
+  );
 };
 
 const styles = {
-  container: {
-    flex: 1,
-    alignItems: 'flex-start',
-    backgroundColor: '#ffffff',
-    paddingTop: 25 * hm,
-    paddingHorizontal: 30 * em,
-  },
+  container: { flex: 1, alignItems: 'flex-start', backgroundColor: '#F0F5F7', paddingTop: 10 * hm },
+  view: { flex: 1, backgroundColor: '#ffff', width: '100%', paddingTop: 25 * em, paddingHorizontal: 30 * em },
   emptyView: {
     marginTop: 74 * em,
     width: 315 * em,
@@ -111,12 +110,7 @@ const styles = {
     alignSelf: 'center',
     borderRadius: 19.5 * em,
   },
-  msgTxt: {
-    marginTop: 15 * em,
-    textAlign: 'center',
-    fontWeight: 'bold',
-    lineHeight: 23 * em,
-  },
+  msgTxt: { fontFamily: 'Lato-Black', marginTop: 15 * em, textAlign: 'center', lineHeight: 23 * em },
   explainTxt: {
     marginTop: 10 * em,
     lineHeight: 23 * em,
@@ -128,7 +122,7 @@ const styles = {
     marginBottom: 35 * em,
     width: 315 * em,
   },
-  listItemUserName: { color: '#1E2D60', lineHeight: 21 * hm, fontWeight: 'bold' },
+  listItemUserName: { color: '#1E2D60', lineHeight: 21 * hm, fontFamily: 'Lato-Black' },
   listItemComment: { color: '#A0AEB8', lineHeight: 18 * hm },
   listItemDate: { color: '#A0AEB8', fontSize: 13 * em, textAlign: 'right' },
   listItemLastText: { marginTop: 6 * hm, marginLeft: 55 * em, textAlign: 'left' },

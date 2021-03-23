@@ -1,11 +1,11 @@
 import React from 'react';
 import { em } from 'view/common/const';
 import { View, Image } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import CommonTextInput from 'view/components/CommonTextInput';
-import CommonButton from 'view/components/CommonButton';
+import CommonButton from 'view/components/button/CommonButton';
 import { Actions } from 'react-native-router-flux';
-import AccountCommonHeader from 'view/components/AccountCommonHeader';
+import AccountCommonHeader from 'view/components/header/AccountCommonHeader';
 
 const RegisterFamilyNameScreen = () => {
   return (
@@ -18,7 +18,7 @@ const RegisterFamilyNameScreen = () => {
           <CommonTextInput text={'Quel est ton nom de famille?'} isPasswordInput={false} style={styles.commonInput} />
         </View>
         <View style={styles.popupBottomView}>
-          <CommonButton text={'Continuer'} onPress={() => Actions.registerMobile()} style={styles.btnNext} />
+          <CommonButton text={'Continuer'} onPress={() => Actions.registerName()} style={styles.btnNext} />
         </View>
       </View>
     </View>
@@ -56,9 +56,7 @@ const styles = {
   titleText: {
     marginBottom: 35 * em,
   },
-  btnNext: {
-    marginBottom: 30 * em,
-  },
+  btnNext: { backgroundColor: 'rgba(64, 205, 222, 0.5)', marginBottom: 30 * em },
   commonInput: {
     width: '100%',
     height: 52 * em,

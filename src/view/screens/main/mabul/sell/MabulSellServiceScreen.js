@@ -1,20 +1,17 @@
 import React from 'react';
 import { View } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import { em, HEIGHT, WIDTH } from 'view/common/const';
 import { FlatList } from 'react-native';
-import MabulCommonListItem from 'view/components/MabulCommonListItem';
-import MabulCommonHeader from 'view/components/MabulCommonHeader';
+import MabulCommonListItem from 'view/components/adapter/MabulCommonListItem';
+import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
 import { Actions } from 'react-native-router-flux';
 import {
   AnimalSell,
   BeautyCareSell,
-  DeliverySell,
   GardeningSell,
-  HelpOlderSell,
   HouseWorkSell,
   IroningSell,
-  MealPreparationSell,
   SchoolSupportSell,
   SupportChildrenSell,
   ChildCareSell,
@@ -22,7 +19,6 @@ import {
   ComputerSell,
   AdministrativeSell,
 } from 'assets/svg/icons';
-import { ComputerBlue } from '../../../../../assets/svg/icons';
 const iconSize = { width: 38 * em, height: 38 * em };
 const giveItems = [
   { id: 0, itemName: 'Garde d’enfants/ Baby Sitting', icon: ChildCareSell(iconSize) },
@@ -63,6 +59,7 @@ const styles = {
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
+    marginTop: 16 * em,
   },
   header: {
     height: '10.3%',

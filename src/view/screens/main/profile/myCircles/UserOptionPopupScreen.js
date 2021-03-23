@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 import { em } from 'view/common/const';
-import CommonText from 'view/components/CommonText';
+import CommonText from 'view/components/text/CommonText';
 import Modal from 'react-native-modal';
-import CommonListItem from 'view/components/CommonListItem';
-import CommonButton from 'view/components/CommonButton';
+import CommonListItem from 'view/components/adapter/CommonListItem';
+import CommonButton from 'view/components/button/CommonButton';
 import { AddGroup, CrossCircle } from 'assets/svg/icons';
 const UserOptionPopupScreen = (props) => {
   return (
@@ -57,11 +57,7 @@ const styles = {
     height: 54 * em,
     marginTop: 29 * em,
   },
-  userName: {
-    color: '#1E2D60',
-    marginBottom: 23 * em,
-    marginTop: 10 * em,
-  },
+  userName: { fontFamily: 'Lato-Black', color: '#1E2D60', marginBottom: 23 * em, marginTop: 10 * em },
 
   body: {
     paddingHorizontal: 25 * em,

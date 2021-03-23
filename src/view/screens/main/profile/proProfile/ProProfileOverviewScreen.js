@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { View, ScrollView, Image, ImageBackground } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import { em, WIDTH } from 'view/common/const';
-import CommonText from 'view/components/CommonText';
+import CommonText from 'view/components/text/CommonText';
 import ProfileCommonLabel from 'view/components/ProfileCommonLabel';
-import CommonHeader from 'view/components/CommonHeader';
+import CommonHeader from 'view/components/header/CommonHeader';
 import ProfileCommonAvatar from 'view/components/ProfileCommonAvatar';
 import { Actions } from 'react-native-router-flux';
-import CommentText from 'view/components/CommentText';
+import CommentText from 'view/components/text/CommentText';
 import ProfileCommonSpecView from 'view/components/ProfileCommonSpecView';
-
+import { Events, Promotion, Tips } from 'assets/svg/icons';
 const ProProfileOverviewScreen = (props) => {
+  const iconSize = { width: 33 * em, height: 33 * em };
+
   const [] = useState(false);
   const [userProfile] = useState(props.userProfile);
   const servicesView = userProfile.services ? (
@@ -45,12 +47,12 @@ const ProProfileOverviewScreen = (props) => {
         <CommonHeader
           rightTxt={'Modifier mon profil'}
           style={styles.header}
-          onLeftPress={() => Actions.proProfileHome({ userProfile: userProfile })}
+          onLeftPress={() => Actions.main({ tabNav: 'ProProfile', userProfile: userProfile })}
           onRightPress={() => Actions.editProProfile({ userProfile: userProfile })}
         />
         {userProfile.cover && (
           <ImageBackground source={userProfile.cover} style={styles.cover} blurRadius={8}>
-            <View style={{ backgroundColor: 'rgba(30, 45, 96, 0.64)',flex:1 }} />
+            <View style={{ backgroundColor: 'rgba(30, 45, 96, 0.64)', flex: 1 }} />
           </ImageBackground>
         )}
         <View style={styles.firstPopView}>
@@ -68,22 +70,18 @@ const ProProfileOverviewScreen = (props) => {
           <TitleText text={'Mes publications'} style={styles.title} />
           <View style={styles.circlesView}>
             <View style={styles.labelView}>
-              <ProfileCommonLabel
-                icon={require('assets/images/ic_neighbour.png')}
-                number={userProfile.publications.tips}
-                name={'Bons plans'}
-              />
+              <ProfileCommonLabel icon={Tips(iconSize)} number={userProfile.publications.tips} name={'Bons plans'} />
             </View>
             <View style={styles.labelView}>
               <ProfileCommonLabel
-                icon={require('assets/images/ic_friends.png')}
+                icon={Promotion(iconSize)}
                 number={userProfile.publications.promotions}
                 name={'Promotions'}
               />
             </View>
             <View style={styles.labelView}>
               <ProfileCommonLabel
-                icon={require('assets/images/ic_family.png')}
+                icon={Events(iconSize)}
                 number={userProfile.publications.events}
                 name={'Évènements'}
               />
@@ -110,7 +108,7 @@ const styles = {
     backgroundColor: '#7398FD',
     paddingBottom: 16 * em,
   },
-  cover: { zIndex: -1, resizeMode: 'contain', width: '100%', height: 200 * em,position:'absolute' },
+  cover: { zIndex: -1, resizeMode: 'contain', width: '100%', height: 200 * em, position: 'absolute' },
   header: { marginTop: 27 * em },
   firstPopView: {
     alignItems: 'center',
@@ -120,21 +118,13 @@ const styles = {
     paddingHorizontal: 30 * em,
     paddingBottom: 35 * em,
   },
-  avatar: {
-    marginTop: -54 * em,
-    width: 108 * em,
-    height: 108 * em,
-  },
-  fullNameText: {
-    marginTop: 15 * em,
-    marginBottom: 10 * em,
-    fontWeight: 'bold',
-  },
+  avatar: { marginTop: -54 * em, width: 108 * em, height: 108 * em },
+  fullNameText: { marginTop: 15 * em, marginBottom: 10 * em, fontFamily: 'Lato-Black' },
   title: {
     marginTop: 17 * em,
     marginBottom: 20 * em,
     fontSize: 21 * em,
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Black',
   },
   circlesView: {
     flexDirection: 'row',
@@ -152,11 +142,7 @@ const styles = {
     marginTop: 15 * em,
     paddingBottom: 47 * em,
   },
-  noticeText: {
-    marginBottom: 10 * em,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
+  noticeText: { fontFamily: 'Lato-Black', marginBottom: 10 * em, textAlign: 'center' },
   requestText: {
     fontSize: 14 * em,
     textAlign: 'center',

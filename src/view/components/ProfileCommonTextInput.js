@@ -14,6 +14,7 @@ const ProfileCommonTextInput = (props) => {
           onBlur={() => setOnFocus(false)}
           multiline={true}
           value={props.value}
+          selectionColor="#40CDDE"
         />
       </View>
     );

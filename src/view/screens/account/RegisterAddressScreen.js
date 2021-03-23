@@ -1,12 +1,13 @@
 import React from 'react';
 import { em } from 'view/common/const';
-import { View, Image } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import { View } from 'react-native';
+import TitleText from 'view/components/text/TitleText';
 import CommonTextInput from 'view/components/CommonTextInput';
-import CommonButton from 'view/components/CommonButton';
+import CommonButton from 'view/components/button/CommonButton';
 import { Actions } from 'react-native-router-flux';
-import CommonText from 'view/components/CommonText';
-import AccountCommonHeader from 'view/components/AccountCommonHeader';
+import CommentText from 'view/components/text/CommentText';
+import AccountCommonHeader from 'view/components/header/AccountCommonHeader';
+import { Address } from 'assets/svg/icons';
 
 const RegisterAddressScreen = () => {
   return (
@@ -14,11 +15,13 @@ const RegisterAddressScreen = () => {
       <AccountCommonHeader style={styles.header} />
       <View style={styles.popupView}>
         <View style={styles.popupTopView}>
-          <Image source={require('assets/images/ic_location_green.png')} style={styles.icon} />
+          <View source={require('assets/images/ic_location_green.png')} style={styles.icon}>
+            <Address width={21 * em} height={30 * em} />
+          </View>
           <TitleText text={'Mon adresse'} style={styles.titleText} />
           <CommonTextInput text={'Saisis ton adresse complète'} isPasswordInput={false} style={styles.commonInput} />
           <View style={styles.viewText}>
-            <CommonText color={'#40CDDE'} text={'Me géolocalisers'} />
+            <CommentText color={'#40CDDE'} text={'Me géolocalisers'} />
           </View>
         </View>
         <View style={styles.popupBottomView}>
@@ -59,11 +62,9 @@ const styles = {
   titleText: {
     marginBottom: 35 * em,
   },
-  btnNext: {
-    marginBottom: 30 * em,
-  },
+  btnNext: { backgroundColor: 'rgba(64, 205, 222, 0.5)', marginBottom: 30 * em },
   viewText: {
-    marginTop: 25 * em,
+    marginTop: 15 * em,
   },
   commonInput: {
     width: '100%',

@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { View, Text, Image, ScrollView } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import { View, Text, ScrollView } from 'react-native';
+import TitleText from 'view/components/text/TitleText';
 import { em } from 'view/common/const';
 import Accordion from 'react-native-collapsible/Accordion';
-import CommentText from 'view/components/CommentText';
-import FriendCommonHeader from 'view/components/CommentText';
-import CommonHeader from 'view/components/CommonHeader';
+import CommentText from 'view/components/text/CommentText';
+import CommonHeader from 'view/components/header/CommonHeader';
 import { RightArrow, LeftArrow } from 'assets/svg/icons';
 const sections = [
   { title: 'Politique de confidentialité1', content: '' },
@@ -52,8 +51,8 @@ const PrivacyPolicyScreen = () => {
   };
   return (
     <ScrollView style={styles.container}>
-      <CommonHeader dark={true} />
-      <TitleText text="Politique de confidentialité" style={styles.title} />
+      <CommonHeader dark style={{ martinTop: 27 * em }} />
+      <TitleText text={'Politique\nde confidentialité'} style={styles.title} />
       <View style={styles.line} />
       <Accordion
         sections={sections}
@@ -68,9 +67,7 @@ const PrivacyPolicyScreen = () => {
 };
 
 const styles = {
-  container: {
-    backgroundColor: '#FFFFFF',
-  },
+  container: { backgroundColor: '#FFFFFF' },
   title: {
     lineHeight: 38 * em,
     width: 231 * em,
@@ -78,34 +75,16 @@ const styles = {
     marginLeft: 30 * em,
     paddingBottom: 35 * em,
   },
-  line: {
-    height: 10 * em,
-    backgroundColor: '#F0F5F7',
-  },
+  line: { height: 10 * em, backgroundColor: '#F0F5F7' },
   sectionStyle: {
     paddingVertical: 10 * em,
     borderBottomWidth: 10 * em,
     borderBottomColor: '#F0F5F7',
     paddingHorizontal: 30 * em,
   },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 15 * em,
-  },
-  headerText: {
-    width: 260 * em,
-
-    fontSize: 24 * em,
-    lineHeight: 29 * em,
-    textAlign: 'left',
-    color: '#1E2D60',
-  },
-  contentText: {
-    textAlign: 'left',
-    lineHeight: 25 * em,
-    marginBottom: 10 * em,
-  },
+  header: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 15 * em },
+  headerText: { width: 260 * em, fontSize: 24 * em, lineHeight: 29 * em, textAlign: 'left', color: '#1E2D60' },
+  contentText: { textAlign: 'left', lineHeight: 25 * em, marginBottom: 10 * em },
 };
 
 export default PrivacyPolicyScreen;

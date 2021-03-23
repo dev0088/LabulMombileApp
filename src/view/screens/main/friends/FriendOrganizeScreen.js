@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
-import { View, Image, TouchableOpacity, ScrollView } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import { View } from 'react-native';
 import { em } from 'view/common/const';
-import CommonText from 'view/components/CommonText';
-import CommentText from 'view/components/CommentText';
-import CommonButton from 'view/components/CommonButton';
-import { Actions } from 'react-native-router-flux';
+import CommonButton from 'view/components/button/CommonButton';
 import FriendParticipatePopupScreen from './FriendParticipatePopupScreen';
 import FriendInvitePopupScreen from './FriendInvitePopupScreen';
 import OrganizeServiceType from 'model/service/OrganizeServiceType';

@@ -6,6 +6,7 @@ import { Animals, Bricolage, HomeCare, Interview, Workshop, Path, Return2Point }
 const servicIconSize = { width: 18 * em, height: 18 * em };
 const locationList = [
   {
+    id: '0',
     top: 205 * em,
     left: 36 * em,
     avatar: require('assets/images/sample_user_2.png'),
@@ -13,6 +14,7 @@ const locationList = [
     bgColor: 'rgba(56, 194, 255, 0.2)',
   },
   {
+    id: '1',
     top: 183 * em,
     left: 166 * em,
     avatar: require('assets/images/sample_ic_plant.png'),
@@ -20,6 +22,7 @@ const locationList = [
     bgColor: 'rgba(170, 135, 229, 0.2)',
   },
   {
+    id: '2',
     top: 273 * em,
     left: 211 * em,
     avatar: require('assets/images/sample_user_2.png'),
@@ -27,6 +30,7 @@ const locationList = [
     bgColor: 'rgba(56, 194, 255, 0.2)',
   },
   {
+    id: '3',
     top: 321 * em,
     left: 149 * em,
     avatar: require('assets/images/avatar.png'),
@@ -34,6 +38,7 @@ const locationList = [
     bgColor: 'rgba(56, 194, 255, 0.2)',
   },
   {
+    id: '4',
     top: 396 * em,
     left: 72 * em,
     avatar: require('assets/images/sample_ic_hair.png'),
@@ -41,6 +46,7 @@ const locationList = [
     bgColor: 'rgba(170, 135, 229, 0.2)',
   },
   {
+    id: '5',
     top: 490 * em,
     left: 170 * em,
     avatar: require('assets/images/sample_user_2.png'),
@@ -121,9 +127,9 @@ const FriendsMenuScreen = () => {
   );
 };
 
-const PositionView = ({ top, left, avatar, serviceIcon, bgColor }) => (
+const PositionView = ({ top, left, avatar, serviceIcon, bgColor, id }) => (
   <>
-    <View style={{ position: 'absolute', top: top - 2 * em, left: left - 2 * em }}>
+    <View style={{ position: 'absolute', top: top - 2 * em, left: left - 2 * em }} key={id}>
       <Path width={76 * em} height={48 * em} />
     </View>
     <View
@@ -158,7 +164,6 @@ const styles = {
     resizeMode: 'contain',
     top: 463 * em,
     left: 309 * em,
-
   },
 };
 

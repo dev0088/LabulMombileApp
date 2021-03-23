@@ -1,11 +1,12 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { em } from 'view/common/const';
-import CommonButton from 'view/components/CommonButton';
+import CommonButton from 'view/components/button/CommonButton';
 import { Actions } from 'react-native-router-flux';
-import AccountCommonHeader from 'view/components/AccountCommonHeader';
-import TitleText from 'view/components/TitleText';
+import AccountCommonHeader from 'view/components/header/AccountCommonHeader';
+import TitleText from 'view/components/text/TitleText';
 import CommonTextInput from 'view/components/CommonTextInput';
+import CommonText from 'view/components/text/CommonText';
 
 const LoginScreen = () => {
   return (
@@ -24,11 +25,16 @@ const LoginScreen = () => {
           </View>
           <CommonButton text={'Suivant'} onPress={() => Actions.main()} style={styles.btnNext} />
         </View>
-        <View style={styles.popupBottomView}>
-          <TouchableOpacity style={styles.btnEmailSignUp} onPress={() => Actions.signupMenu()}>
-            <Text style={styles.btnTextLeft}>Je n’ai pas de compte ?</Text>
-            <Text style={styles.btnTextRight}> Je m’inscris</Text>
-          </TouchableOpacity>
+        <View style={styles.registerWrapper}>
+          <CommonText text="Je n'ai pas de compte ? " />
+          <CommonText
+            text="Je m'inscris"
+            color="#40CDDE"
+            onPress={() => {
+              Actions.signupMenu();
+            }}
+            style={{ fontFamily: 'Lato-Bold' }}
+          />
         </View>
       </View>
     </View>
@@ -74,13 +80,8 @@ const styles = {
     marginTop: 10 * em,
     marginBottom: 15 * em,
   },
-  textForgetPsswd: {
-    fontSize: 12 * em,
-    color: '#1E2D60',
-  },
-  btnNext: {
-    marginBottom: 30 * em,
-  },
+  textForgetPsswd: { fontFamily: 'Lato-Regular', fontSize: 12 * em, color: '#1E2D60' },
+  btnNext: { marginBottom: 30 * em, backgroundColor: 'rgba(64, 205, 222, 0.5)' },
   commonInput: {
     marginTop: 26 * em,
     width: '100%',
@@ -94,9 +95,8 @@ const styles = {
     flexDirection: 'row',
     marginBottom: 50 * em,
   },
-  btnTextRight: {
-    color: '#40CDDE',
-    fontSize: 16 * em,
-  },
+  registerWrapper: { flexDirection: 'row', alignItems: 'center', paddingVertical: 36 * em },
+
+  btnTextRight: { fontFamily: 'Lato-Bold' },
 };
 export default LoginScreen;

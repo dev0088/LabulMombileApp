@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, Image } from 'react-native';
 import { em } from 'view/common/const';
-
+import { Invisible, CrossCircle } from 'assets/svg/icons';
 const CommonTextInput = (props) => {
   const [onFocus, setOnFocus] = useState(false);
   let icon = null;
   if (props.isPasswordInput) {
-    icon = require('assets/images/ic_show_password.png');
+    icon = (
+      <View style={{ marginTop: 15 * em }}>
+        <Invisible width={20 * em} height={17 * em} />
+      </View>
+    );
   }
   if (onFocus) {
     return (
@@ -15,9 +19,14 @@ const CommonTextInput = (props) => {
           <Text style={styles.commentTextFocusOn}>{props.text}</Text>
         </View>
         <View style={styles.containerBottom}>
-          <TextInput style={styles.textInput} onFocus={() => setOnFocus(true)} onBlur={() => setOnFocus(false)} />
+          <TextInput
+            style={styles.textInput}
+            onFocus={() => setOnFocus(true)}
+            onBlur={() => setOnFocus(false)}
+            selectionColor="#40CDDE"
+          />
           <TouchableOpacity>
-            <Image style={styles.imgBtnDelete} source={require('assets/images/ic_close.png')} />
+            <CrossCircle width={17 * em} height={17 * em} />
           </TouchableOpacity>
         </View>
       </View>
@@ -30,9 +39,7 @@ const CommonTextInput = (props) => {
           <TextInput onFocus={() => setOnFocus(true)} onBlur={() => setOnFocus(false)} />
         </View>
         <View>
-          <TouchableOpacity>
-            <Image style={styles.imgBtnShowPsswd} source={icon} />
-          </TouchableOpacity>
+          <TouchableOpacity>{icon}</TouchableOpacity>
         </View>
       </View>
     );
@@ -41,25 +48,16 @@ const CommonTextInput = (props) => {
 
 export default CommonTextInput;
 const styles = {
-  containerFocusOn: {
-    flexDirection: 'column',
-    borderBottomColor: '#41D0E2',
-    borderBottomWidth: 2 * em,
-  },
-  containerBottom: {
-    width: '100%',
-    height: 18 * em,
-    flexDirection: 'row',
-    marginTop: 2 * em,
-  },
+  containerFocusOn: { flexDirection: 'column', borderBottomColor: '#41D0E2', borderBottomWidth: 2 * em },
+  containerBottom: { width: '100%', height: 18 * em, flexDirection: 'row', marginTop: 2 * em },
   containerFocusOff: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderBottomColor: '#BFCDDB',
     borderBottomWidth: 1 * em,
   },
-  commentTextFocusOn: { fontSize: 12 * em, color: '#A0AEB8', lineHeight: 14 * em },
-  commentTextFocusOff: { fontSize: 16 * em, color: '#A0AEB8', marginTop: 9 * em },
+  commentTextFocusOn: { fontSize: 12 * em, color: '#A0AEB8', lineHeight: 14 * em, fontFamily: 'Lato-Regular' },
+  commentTextFocusOff: { fontSize: 16 * em, color: '#A0AEB8', marginTop: 9 * em, fontFamily: 'Lato-Regular' },
   textInput: {
     color: '#1E2D60',
     fontSize: 18 * em,
@@ -68,15 +66,6 @@ const styles = {
     paddingVertical: 0,
     paddingHorizontal: 0,
     flex: 1,
-    selectionColor: '#40CDDE',
-  },
-  imgBtnDelete: {
-    width: 17 * em,
-    height: 17 * em,
-  },
-  imgBtnShowPsswd: {
-    width: 20 * em,
-    height: 17 * em,
-    marginTop: 15 * em,
+    fontFamily: 'Lato-Regular',
   },
 };

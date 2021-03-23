@@ -1,14 +1,11 @@
-import { View, TouchableOpacity, Image, Text } from 'react-native';
+import { View } from 'react-native';
 import React, { useState } from 'react';
 import { em, hm } from 'view/common/const';
-import CirclesCommonListItem from 'view/components/CirclesCommonListItem';
+import CirclesCommonListItem from 'view/components/adapter/CirclesCommonListItem';
 import { FlatList } from 'react-native-gesture-handler';
-import CommonCircularButton from 'view/components/CommonCircularButton';
-import { Actions } from 'react-native-router-flux';
-import UserType from 'model/user/UserType';
 import UserOptionPopupScreen from './UserOptionPopupScreen';
-import CommonBackButton from '../../../../components/CommonBackButton';
-import CommonText from '../../../../components/CommonText';
+import CommonBackButton from 'view/components/button/CommonBackButton';
+import CommonText from 'view/components/text/CommonText';
 
 const usersData = [
   {
@@ -58,11 +55,6 @@ const usersData = [
     avatar: require('assets/images/avatar.png'),
   },
 ];
-const themeColors = {
-  families: '#EF88B9',
-  friends: '#6784DA',
-  neighbours: '#40CDDE',
-};
 const GroupDetailScreen = (props) => {
   const [userOptionVisible, setUserOptionVisible] = useState(false);
   const renderFlatList = ({ item }) => {

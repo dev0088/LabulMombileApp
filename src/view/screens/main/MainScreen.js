@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet, TouchableOpacity, Image, ImageBackground } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Image, ImageBackground, StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FriendsNavigator from './friends/FriendsNavigator';
@@ -14,25 +14,33 @@ import { navigationRef } from './RootNavigation';
 import { Actions } from 'react-native-router-flux';
 import Modal from 'react-native-modal';
 import MyNotificationsScreen from './activity/MyNotificationsScreen';
-
+import {
+  TabPlus,
+  TabCalendarOff,
+  TabCalendarOn,
+  TabCardOff,
+  TabCardOn,
+  TabMessageOff,
+  TabMessageOn,
+} from 'assets/svg/icons';
 const Tab = createBottomTabNavigator();
 
 export default function MainScreen(props) {
   const [selectedTab, setSelectedTab] = React.useState(0);
   const [mabulVisible, setMabulVisible] = React.useState(false);
 
-  let mapImage = require('assets/images/tab_map_off.png');
+  let mapImage = TabCardOff(styles.TapImage);
   if (selectedTab === 0) {
-    mapImage = require('assets/images/tab_map_on.png');
+    mapImage = TabCardOn(styles.TapImage);
   }
-  let calendarImage = require('assets/images/tab_calendar_off.png');
+  let calendarImage = TabCalendarOff(styles.TapImage);
   if (selectedTab === 1) {
-    calendarImage = require('assets/images/tab_calendar_on.png');
+    calendarImage = TabCalendarOn(styles.TapImage);
   }
-  let addImage = require('assets/images/tab_add.png');
-  let chatImage = require('assets/images/tab_chat_off.png');
+  let addImage = TabPlus(styles.AddImage);
+  let chatImage = TabMessageOff(styles.TapImage);
   if (selectedTab === 3) {
-    chatImage = require('assets/images/tab_chat_on.png');
+    chatImage = TabMessageOn(styles.TapImage);
   }
   let profileImage = require('assets/images/tab_profile_off.png');
   if (selectedTab === 4) {
@@ -69,7 +77,7 @@ export default function MainScreen(props) {
             setSelectedTab(0);
           }}
           style={styles.TapImageWrapper}>
-          <Image source={mapImage} style={styles.TapImage} />
+          {mapImage}
         </TouchableOpacity>
         <TouchableOpacity
           activeOpacity={0.6}
@@ -78,7 +86,7 @@ export default function MainScreen(props) {
             setSelectedTab(1);
           }}
           style={styles.TapImageWrapper}>
-          <Image source={calendarImage} style={styles.TapImage} />
+          {calendarImage}
         </TouchableOpacity>
         <TouchableOpacity
           activeOpacity={0.6}
@@ -87,7 +95,7 @@ export default function MainScreen(props) {
             setSelectedTab(2);
           }}
           style={styles.AddImageWrapper}>
-          <Image source={addImage} style={styles.AddImage} />
+          {addImage}
         </TouchableOpacity>
         <TouchableOpacity
           activeOpacity={0.6}
@@ -96,7 +104,7 @@ export default function MainScreen(props) {
             setSelectedTab(3);
           }}
           style={styles.TapImageWrapper}>
-          <Image source={chatImage} style={styles.TapImage} />
+          {chatImage}
         </TouchableOpacity>
         <TouchableOpacity
           activeOpacity={0.6}
@@ -108,7 +116,11 @@ export default function MainScreen(props) {
           <Image source={profileImage} style={styles.TapImage} />
         </TouchableOpacity>
       </ImageBackground>
-      <Modal backdropColor={'transparent'} style={styles.modalStyle} isVisible={mabulVisible}>
+      <Modal
+        backdropColor={'transparent'}
+        statusBarTranslucent={true}
+        style={styles.modalStyle}
+        isVisible={mabulVisible}>
         <MabulHomeScreeen
           onClosePress={() => {
             setMabulVisible(false);
@@ -123,7 +135,7 @@ const styles = StyleSheet.create({
   TabBarMainContainer: {
     flex: 1,
   },
-  modalStyle: { margin: 0 },
+  modalStyle: { margin: 0, height: HEIGHT },
   VirtualTabButtons: {
     flex: 1,
     width: '100%',
@@ -144,7 +156,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   AddImage: {
-    resizeMode: 'contain',
     width: 46 * em,
     height: 46 * em,
   },
@@ -156,9 +167,5 @@ const styles = StyleSheet.create({
     marginTop: 18 * em,
     alignItems: 'center',
   },
-  TapImage: {
-    width: 22 * em,
-    height: 22 * em,
-    resizeMode: 'contain',
-  },
+  TapImage: { width: 22 * em, height: 22 * em },
 });

@@ -4,7 +4,7 @@ import { em } from 'view/common/const';
 import OrganizeService from 'model/service/OrganizeService';
 import User from 'model/User';
 import OrganizeServiceType from 'model/service/OrganizeServiceType';
-import FriendListCard from 'view/components/FriendListCard';
+import FriendListCard from 'view/components/adapter/FriendListCard';
 import ServiceType from 'model/service/ServiceType';
 import { Actions } from 'react-native-router-flux';
 import NeedService from 'model/service/NeedService';

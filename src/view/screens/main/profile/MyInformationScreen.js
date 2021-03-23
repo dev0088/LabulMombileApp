@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, ScrollView } from 'react-native';
 import { em } from 'view/common/const';
-import ProfileInformationListItem from 'view/components/ProfileInformationListItem';
-import CommonText from 'view/components/CommonText';
-import ProfileCommonHeader from 'view/components/ProfileCommonHeader';
+import ProfileInformationListItem from 'view/components/adapter/ProfileInformationListItem';
+import CommonText from 'view/components/text/CommonText';
+import ProfileCommonHeader from 'view/components/header/ProfileCommonHeader';
 import ProfileCommonModal from 'view/components/ProfileCommonModal';
 import { Actions } from 'react-native-router-flux';
 

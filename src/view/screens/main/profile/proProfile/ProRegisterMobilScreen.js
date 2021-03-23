@@ -1,20 +1,20 @@
 import React from 'react';
 import { em } from 'view/common/const';
 import { View } from 'react-native';
-import PopupHeader from 'view/components/PopupHeader';
-import TitleText from 'view/components/TitleText';
+import PopupHeader from 'view/components/header/PopupHeader';
+import TitleText from 'view/components/text/TitleText';
 import CommonTextInput from 'view/components/CommonTextInput';
-import CommonButton from 'view/components/CommonButton';
+import CommonButton from 'view/components/button/CommonButton';
 import { Actions } from 'react-native-router-flux';
-import AccountCommonHeader from 'view/components/AccountCommonHeader';
-
+import AccountCommonHeader from 'view/components/header/AccountCommonHeader';
+import { MobileBlue } from 'assets/svg/icons';
 const ProRegisterMobilScreen = () => {
   return (
     <View style={styles.container}>
       <AccountCommonHeader style={styles.header} />
       <View style={styles.popupView}>
         <View style={styles.popupTopView}>
-          <PopupHeader hideBack={true} icon={require('assets/images/ic_phone_blue.png')} />
+          <MobileBlue width={25 * em} height={25 * em} />
           <TitleText text={'Contact'} style={styles.titleText} />
           <CommonTextInput
             text={'Quel est le contact de ton activité ?'}
@@ -49,13 +49,8 @@ const styles = {
     borderTopRightRadius: 28 * em,
     justifyContent: 'space-between',
   },
-  popupTopView: {
-    alignItems: 'center',
-    width: '80%',
-  },
-  titleText: {
-    marginBottom: 35 * em,
-  },
+  popupTopView: { paddingTop: 41 * em, alignItems: 'center', width: '80%' },
+  titleText: { marginTop: 14 * em, marginBottom: 35 * em },
   btnNext: {
     marginBottom: 30 * em,
     backgroundColor: '#7398FC',

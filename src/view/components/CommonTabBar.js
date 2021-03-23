@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Animated, ScrollView } from '
 import PropTypes from 'prop-types';
 import { em } from 'view/common/const';
 import { TabActions, NavigationContainer } from '@react-navigation/native';
-import CommentText from './CommentText';
+import CommentText from 'view/components/text/CommentText';
 import { cos } from 'react-native-reanimated';
 
 export default class CommonTabBar extends Component {
@@ -46,7 +46,7 @@ export default class CommonTabBar extends Component {
   render() {
     const { state, descriptors, navigation, position } = this.props;
     return (
-      <View style={{marginBottom:25*em,paddingLeft:30*em}}>
+      <View style={{ marginBottom: 25 * em, paddingLeft: 20 * em }}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} ref={(view) => (this.tabContainer = view)}>
           <View style={{ flexDirection: 'row' }}>
             <Animated.View style={{ transform: [{ translateX: this.state.pos }] }}>
@@ -108,7 +108,11 @@ export default class CommonTabBar extends Component {
                     },
                   ]}
                   key={route.key}>
-                  <CommentText color={!isFocused ? '#6A8596' : '#FFFFFF'} text={label} />
+                  <CommentText
+                    color={!isFocused ? '#6A8596' : '#FFFFFF'}
+                    text={label}
+                    style={{ fontFamiy: 'Lato-Bold' }}
+                  />
                 </TouchableOpacity>
               );
             })}

@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 import { em } from 'view/common/const';
-import CommonButton from 'view/components/CommonButton';
-import TitleText from 'view/components/TitleText';
-import CommonText from 'view/components/CommonText';
+import CommonButton from 'view/components/button/CommonButton';
+import TitleText from 'view/components/text/TitleText';
+import CommonText from 'view/components/text/CommonText';
 import { Actions } from 'react-native-router-flux';
-import SocialButton from 'view/components/SocialButton';
-import PopupHeader from 'view/components/PopupHeader';
+import SocialButton from 'view/components/button/SocialButton';
+import PopupHeader from 'view/components/header/PopupHeader';
 
 const SignupMenuScreen = () => {
   return (

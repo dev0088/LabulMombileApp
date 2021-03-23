@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { View, TouchableOpacity, Image } from 'react-native';
 import { em, hexToRGB } from 'view/common/const';
 import Modal from 'react-native-modal';
-import CommonListItem from 'view/components/CommonListItem';
-import CommonText from 'view/components/CommonText';
+import CommonListItem from 'view/components/adapter/CommonListItem';
+import CommonText from 'view/components/text/CommonText';
 import { Actions } from 'react-native-router-flux';
 
 const profileTypes = {
@@ -42,7 +42,7 @@ const AccountChangeMenu = (props) => {
             }
             onPress={() => {
               setMenuVisible(false);
-              props.type !== 'my' ? Actions.main({ tabNav: 'Profile' }) :  Actions.main({ tabNav: 'ProProfile' });
+              props.type !== 'my' ? Actions.main({ tabNav: 'Profile' }) : Actions.main({ tabNav: 'ProProfile' });
             }}
           />
         </View>
@@ -83,7 +83,7 @@ const styles = {
     alignSelf: 'center',
   },
   modal: { margin: 0 },
-  menuCaption: { fontSize: 15 * em, lineHeight: 18 * em, color: '#1E2D60' },
+  menuCaption: { fontSize: 15 * em, lineHeight: 18 * em, color: '#1E2D60', fontFamily: 'Lato-Bold' },
   menuIcon: {
     width: 28 * em,
     height: 28 * em,

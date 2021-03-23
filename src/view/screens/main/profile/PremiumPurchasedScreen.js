@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Image, Text } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import { em, HEIGHT } from 'view/common/const';
-import CommonBackButton from 'view/components/CommonBackButton';
-import PurchaseMenuCard from 'view/components/PurchaseMenuCard';
+import CommonBackButton from 'view/components/button/CommonBackButton';
+import PurchaseMenuCard from 'view/components/adapter/PurchaseMenuCard';
 import { Actions } from 'react-native-router-flux';
 
 const PremiumPurchasedScreen = (props) => {

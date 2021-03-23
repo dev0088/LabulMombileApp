@@ -1,19 +1,19 @@
 import React from 'react';
 import { em } from 'view/common/const';
 import { View, Image } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import CommonTextInput from 'view/components/CommonTextInput';
-import CommonButton from 'view/components/CommonButton';
+import CommonButton from 'view/components/button/CommonButton';
 import { Actions } from 'react-native-router-flux';
-import AccountCommonHeader from 'view/components/AccountCommonHeader';
-
+import AccountCommonHeader from 'view/components/header/AccountCommonHeader';
+import { EmailBlue } from 'assets/svg/icons';
 const ProRegisterEmailScreen = () => {
   return (
     <View style={styles.container}>
       <AccountCommonHeader style={styles.header} />
       <View style={styles.popupView}>
         <View style={styles.popupTopView}>
-          <Image source={require('assets/images/ic_email_blue.png')} style={styles.icon} />
+          <EmailBlue width={30 * em} height={21 * em} />
           <TitleText text={'Mon Email'} style={styles.titleText} />
           <CommonTextInput text={'Saisis to email'} isPasswordInput={false} style={styles.commonInput} />
         </View>
@@ -50,13 +50,8 @@ const styles = {
     borderTopRightRadius: 28 * em,
     justifyContent: 'space-between',
   },
-  popupTopView: {
-    alignItems: 'center',
-    width: '80%',
-  },
-  titleText: {
-    marginBottom: 35 * em,
-  },
+  popupTopView: { paddingTop: 40 * em, alignItems: 'center', width: '80%' },
+  titleText: { marginTop: 13 * em, marginBottom: 35 * em },
   btnNext: { backgroundColor: '#7398FD', marginBottom: 30 * em },
   commonInput: {
     width: '100%',

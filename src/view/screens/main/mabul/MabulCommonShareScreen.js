@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Image } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import { em, mabulColors } from 'view/common/const';
-import CommonText from 'view/components/CommonText';
-import MabulCommonHeader from 'view/components/MabulCommonHeader';
-import CommonButton from '../../../components/CommonButton';
+import CommonText from 'view/components/text/CommonText';
+import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
+import CommonButton from 'view/components/button/CommonButton';
 import { Family, Friend, Neighbor, All } from 'assets/svg/icons';
 import { Actions } from 'react-native-router-flux';
 const MabulCommonShareScreen = (props) => {

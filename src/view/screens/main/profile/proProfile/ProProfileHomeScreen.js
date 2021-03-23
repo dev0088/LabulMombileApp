@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, ScrollView, Text, Image, ActionSheetIOS, ImageBackground } from 'react-native';
-import CommentText from 'view/components/CommentText';
+import CommentText from 'view/components/text/CommentText';
 import { em, WIDTH, HEIGHT } from 'view/common/const';
 import { Actions } from 'react-native-router-flux';
 import ProfileCommonAvatar from 'view/components/ProfileCommonAvatar';
-import ProfileCommonCard from 'view/components/ProfileCommonCard';
-import ProfileCommonListItem from 'view/components/ProfileCommonListItem';
+import ProfileCommonCard from 'view/components/adapter/ProfileCommonCard';
+import ProfileCommonListItem from 'view/components/adapter/ProfileCommonListItem';
 import AccountChangeMenu from '../AccountChangeMenu';
-import {ProNeeds} from 'assets/svg/icons';
+import { ProNeeds,MyNeeds, Circles, Information, Setting, AddressBlue } from 'assets/svg/icons';
+const iconSize = { width: 38 * em, height: 38 * em };
+
 const originalProProfile = {
   avatar: '',
   name: 'Curology',
@@ -52,7 +54,7 @@ const ProProfileHomeScreen = (props) => {
             <ProfileCommonListItem
               text={'Mes informations'}
               style={styles.listItem}
-              icon={require('assets/images/ic_info.png')}
+              icon={Information(iconSize)}
               onPress={() => {
                 Actions.myProInformation();
               }}
@@ -61,7 +63,7 @@ const ProProfileHomeScreen = (props) => {
             <ProfileCommonListItem
               text={'Mes réglages'}
               style={styles.listItem}
-              icon={require('assets/images/ic_settings.png')}
+              icon={Setting(iconSize)}
               onPress={() => {
                 Actions.mySetting();
               }}
@@ -74,8 +76,19 @@ const ProProfileHomeScreen = (props) => {
             <ProfileCommonListItem
               text={'Abonnement Premim'}
               subText={'En savoir plus'}
-              icon={require('assets/images/ic_location.png')}
-              style={styles.listItem}
+              icon={
+                <View
+                  style={{
+                    width: 38 * em,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: 38 * em,
+                    borderRadius: 19 * em,
+                    backgroundColor: 'rgba(115, 152, 253, 0.2)',
+                  }}>
+                  {AddressBlue({ width: 20 * em, height: 22 * em })}
+                </View>
+              }              style={styles.listItem}
               onPress={() => {
                 Actions.premiumSubscription({ profileType: 'pro' });
               }}

@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
-import { View, Image, FlatList, Text } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import React from 'react';
+import { View, FlatList } from 'react-native';
+import TitleText from 'view/components/text/TitleText';
 import { em, hm } from 'view/common/const';
-import CommonHeader from 'view/components/CommonHeader';
 import SearchBox from 'view/components/SearchBox';
-import CommentText from 'view/components/CommentText';
-import SearchCommonListItem from 'view/components/SearchCommonListItem';
-import MabulCommonHeader from 'view/components/MabulCommonHeader';
-import MabulNextButton from 'view/components/MabulNextButton';
+import SearchCommonListItem from 'view/components/adapter/SearchCommonListItem';
+import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
+import CommonButton from 'view/components/button/CommonButton';
+import { AlertWhite } from 'assets/svg/icons';
 import { Actions } from 'react-native-router-flux';
-import CommonButton from 'view/components/CommonButton';
 
 const usersList = [
   { id: 0.1, userName: 'Tous' },
@@ -44,30 +42,28 @@ const usersList = [
     invited: true,
   },
 ];
-const AlertShareScreen = () => {
+const AlertShareScreen = (props) => {
   const conceptColor = '#F9547B';
-  const [locationViewVisible, setlocationViewVisible] = useState('flex');
   const renderFlatList = ({ item }) => (
-    <SearchCommonListItem text={item.userName} icon={item.avatar} style={styles.listItem} option color={conceptColor} />
+    <SearchCommonListItem text={item.userName} icon={item.avatar} style={styles.listItem} option />
   );
   return (
     <View style={styles.container}>
-      <MabulCommonHeader style={styles.header} percent={24} progressBarColor={conceptColor} />
+      <MabulCommonHeader style={styles.header} percent={props.process} progressBarColor={conceptColor} />
       <View style={styles.body}>
         <TitleText text={'Partager avec'} style={styles.title} />
-
         <SearchBox style={styles.searchBox} comment="Rechercher par ville" />
-        
         <FlatList
           data={usersList}
           renderItem={renderFlatList}
           keyExtractor={(i) => i.id}
           style={{ marginTop: 25 * em }}
         />
-        
         <CommonButton
           style={[styles.btn, { backgroundColor: conceptColor }]}
           text="J’alerte"
+          textStyle={{ marginLeft: 12.52 * em }}
+          leftIcon={<AlertWhite width={27.21 * em} height={22.03 * em} />}
           onPress={() => Actions.myAlert()}
         />
       </View>

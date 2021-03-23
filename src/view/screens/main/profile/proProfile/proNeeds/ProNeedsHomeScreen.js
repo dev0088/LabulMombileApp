@@ -1,26 +1,22 @@
 import React from 'react';
-import { View, TouchableOpacity, Image, ScrollView } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import { View } from 'react-native';
+import TitleText from 'view/components/text/TitleText';
 import { em } from 'view/common/const';
-import SwitchButton from 'view/components/SwitchButton';
-import CommonText from 'view/components/CommonText';
-import CommentText from 'view/components/CommentText';
 import CommonTabBar from 'view/components/CommonTabBar';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { navigationRef } from 'view/screens/main/RootNavigation';
 import { NavigationContainer } from '@react-navigation/native';
-import CommonBackButton from 'view/components/CommonBackButton';
+import CommonBackButton from 'view/components/button/CommonBackButton';
 import ProTipsTabScreen from './ProTipsTabScreen';
 import ProPromotionsTabScreen from './ProPromotionsTabScreen';
 import ProEventsTabScreen from './ProEventsTabScreen';
 
 const Tab = createMaterialTopTabNavigator();
 
-const ProNeedsHomeScreen = (props) => {
+const ProNeedsHomeScreen = () => {
   return (
     <NavigationContainer>
       <View style={styles.container}>
-        <CommonBackButton dark style={{ marginLeft: 15 * em }} />
+        <CommonBackButton dark style={{marginTop:27*em, marginLeft: 15 * em }} />
         <TitleText text={'Mes demandes'} style={styles.title} />
         <Tab.Navigator tabBar={(props) => <CommonTabBar {...props} />} swipeEnabled={false} initialRouteName="tips">
           <Tab.Screen name="tips" options={{ title: 'Bons plans', tabColor: '#7398FD' }} component={ProTipsTabScreen} />
@@ -63,7 +59,6 @@ const styles = {
     fontSize: 34 * em,
     lineHeight: 38 * em,
     height: 40 * em,
-    fontWeight: 'bold',
     textAlign: 'left',
     marginLeft: 30 * em,
     marginTop: 10 * em,

@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Image, TouchableOpacity, ScrollView } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import { em, hexToRGB } from 'view/common/const';
-import CommonText from 'view/components/CommonText';
-import CommentText from 'view/components/CommentText';
-import CommonButton from 'view/components/CommonButton';
+import CommentText from 'view/components/text/CommentText';
+import CommonButton from 'view/components/button/CommonButton';
+import CommonBackButton from 'view/components/button/CommonBackButton';
+import FriendInvitePopupScreen from 'view/screens/main/friends/FriendInvitePopupScreen'
 import { Actions } from 'react-native-router-flux';
 
 const FriendSellScreen = () => {
+  const [invitePopupVisible, setInvitePopupVisible] = useState(false);
+
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scrollView}>
@@ -18,7 +21,7 @@ const FriendSellScreen = () => {
           <CommentText style={styles.itemName} text="Arbre de vie" color={'#1E2D60'} />
           <CommentText style={styles.comment} text="Je vends Objet Entretien de la maison" color={'#1E2D60'} />
           <TitleText text={'Spray cuisine 100% Bio'} style={styles.title} />
-          <TitleText text={'5,00 €'} style={styles.price} />
+          <CommentText text={'5,00 €'} style={styles.price} />
 
           <View style={{ marginLeft: 30 * em }}>
             <CommentText text={'Lorem ipsum dolor sit amet, consetetur '} style={styles.content} />
@@ -29,34 +32,28 @@ const FriendSellScreen = () => {
               <CommentText text={'Continuer à lire'} color={'#40CDDE'} style={styles.content} />
             </View>
           </View>
-          <CommonButton style={styles.quizBtn} text="Poser une question" />
-          <CommonButton style={styles.inviteBtn} text="Inviter à participer" />
+          <CommonButton style={styles.quizBtn} text="Je suis intéresse" />
+
+          <CommonButton
+            style={styles.inviteBtn}
+            text="Pparticiper"
+            textStyle={{ color: '#41D0E2' }}
+            onPress={() => setInvitePopupVisible(true)}
+          />
           <View style={{ height: 130 * em }} />
         </View>
       </ScrollView>
-      <TouchableOpacity onPress={() => Actions.pop()} style={styles.backBtnView}>
-        <Image style={styles.backBtn} source={require('assets/images/btn_back_wrap.png')} />
-      </TouchableOpacity>
-      <View style={styles.btnBox}>
-        <CommonButton text={'Je suis intéresse'} style={styles.partBtn} />
-      </View>
+
+      <CommonBackButton dark style={styles.backBtnView} />
+      <FriendInvitePopupScreen visible={invitePopupVisible} onPress={() => setInvitePopupVisible(false)} />
     </View>
   );
 };
 
 const styles = {
-  container: {
-    flex: 1,
-    backgroundColor: 'transparent',
-  },
-  backBtnView: {
-    zIndex: 1,
-    width: 44 * em,
-    height: 44 * em,
-    position: 'absolute',
-    left: 15 * em,
-    top: 27 * em,
-  },
+  container: { flex: 1, backgroundColor: 'transparent' },
+  backBtnView: { backgroundColor: '#ffffff', position: 'absolute', left: 15 * em, top: 27 * em },
+
   backBtn: { width: 44 * em, height: 44 * em, resizeMode: 'contain', zIndex: 1 },
   cover: {
     width: '100%',
@@ -83,7 +80,7 @@ const styles = {
     textAlign: 'left',
     textAlignVertical: 'center',
     alignSelf: 'center',
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Black',
   },
   avatarBox: { width: 42 * em, flexDirection: 'row' },
   avatar: { width: 35.82 * em, height: 35.82 * em },
@@ -105,7 +102,8 @@ const styles = {
     textAlign: 'left',
     marginLeft: 30 * em,
     marginTop: 5 * em,
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Black',
+    marginBottom: 10 * em,
   },
   price: {
     fontSize: 18 * em,
@@ -120,7 +118,7 @@ const styles = {
     justifyContent: 'flex-start',
   },
   content: { lineHeight: 25 * em, textAlign: 'left', marginTop: 3 * em },
-  quizBtn: { color: '#41D0E2', marginLeft: 30 * em, marginTop: 25 * em, backgroundColor: hexToRGB('#41D0E2', 0.2) },
+  quizBtn: { color: '#41D0E2', marginLeft: 30 * em, marginTop: 25 * em },
   inviteBtn: { marginLeft: 30 * em, marginTop: 15 * em, backgroundColor: 'transparent', color: '#41D0E2' },
 
   btnBox: {

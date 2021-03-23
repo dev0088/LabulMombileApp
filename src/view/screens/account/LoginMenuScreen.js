@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 import { em } from 'view/common/const';
-import CommonButton from 'view/components/CommonButton';
-import TitleText from 'view/components/TitleText';
-import CommonText from 'view/components/CommonText';
+import CommonButton from 'view/components/button/CommonButton';
+import TitleText from 'view/components/text/TitleText';
+import CommonText from 'view/components/text/CommonText';
 import { Actions } from 'react-native-router-flux';
-import SocialButton from 'view/components/SocialButton';
-import PopupHeader from 'view/components/PopupHeader';
+import SocialButton from 'view/components/button/SocialButton';
+import PopupHeader from 'view/components/header/PopupHeader';
 
 const LoginMenuScreen = () => {
   return (
@@ -52,22 +52,20 @@ const styles = {
     alignItems: 'center',
     backgroundColor: '#fafaff',
   },
-  buttonMargin: {
-    marginTop: 16 * em,
-  },
+  buttonMargin: { marginTop: 16 * em, marginBottom: 7 * em },
   behindImage: { flex: 0.52, resizeMode: 'contain' },
   popupView: {
     flex: 1,
     backgroundColor: '#ffffff',
-    borderTopStartRadius: 25 * em,
-    borderTopEndRadius: 25 * em,
+    borderTopStartRadius: 28 * em,
+    borderTopEndRadius: 28 * em,
     width: '100%',
     alignItems: 'center',
     position: 'absolute',
     bottom: 0,
   },
-  commonButtonMargin: { marginTop: 12 * em },
-  buttonGroup: { flex: 1, flexDirection: 'column-reverse', marginBottom: 36 * em, marginTop: 36 * em },
+  commonButtonMargin: { marginTop: 10 * em },
+  buttonGroup: { flex: 1, flexDirection: 'column-reverse', marginBottom: 30 * em, marginTop: 45 * em },
 };
 
 export default LoginMenuScreen;

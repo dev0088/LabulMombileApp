@@ -1,11 +1,7 @@
 import React from 'react';
 import { View, Image, TouchableOpacity } from 'react-native';
 import { em } from 'view/common/const';
-import CommonButton from 'view/components/CommonButton';
-import CommonText from 'view/components/CommonText';
-import TitleText from 'view/components/TitleText';
-import { Actions } from 'react-native-router-flux';
-import CommentText from 'view/components/CommentText';
+import CommentText from 'view/components/text/CommentText';
 import SmallText from 'view/components/text/SmallText';
 import TinyText from 'view/components/text/TinyText';
 

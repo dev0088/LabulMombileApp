@@ -1,10 +1,9 @@
 import React from 'react';
-import { View } from 'react-native';
 import { em, WIDTH, HEIGHT } from 'view/common/const';
-import ProfileModalHeader from 'view/components/ProfileModalHeader';
+import ProfileModalHeader from 'view/components/header/ProfileModalHeader';
 import Modal from 'react-native-modal';
 import ProfileCommonTextInput from './ProfileCommonTextInput';
-import CommonText from './CommonText';
+import CommonText from 'view/components/text/CommonText';
 import SearchBox from './SearchBox';
 import CommonCheckBox from './CommonCheckBox';
 import {
@@ -18,13 +17,11 @@ import {
   Helpful,
   GoodNeighbor,
   GoodHost,
-  GoodLife,
   HandHeart,
   Hypersociable,
   Resourceful,
   WellLiving,
   SwissKnife,
-  CheckBlue,
 } from 'assets/svg/icons';
 
 const iconSize = { width: 34 * em, height: 34 * em };
@@ -114,7 +111,7 @@ const ProfileCommonModal = (props) => {
     props.itemKey === 8 ? (
       <>
         <SearchBox style={{ marginBottom: 15 * em }} />
-        {options.map((option, index) => {
+        {options.map((option) => {
           return <CommonCheckBox text={option.title} isChecked={options.checked} style={styles.listItem} />;
         })}
       </>
@@ -176,18 +173,9 @@ const styles = {
     flex: 1,
     justifyContent: 'flex-start',
   },
-  header: {
-    marginBottom: 10 * em,
-    marginTop: 27 * em,
-  },
-  input: {
-    marginTop: 25 * em,
-  },
-  forgotPsswd: {
-    lineHeight: 18 * em,
-    marginTop: 78 * em,
-    textAlign: 'center',
-  },
+  header: { marginBottom: 10 * em, marginTop: 27 * em },
+  input: { marginTop: 25 * em, height: 62 * em },
+  forgotPsswd: { lineHeight: 18 * em, marginTop: 78 * em, textAlign: 'center' },
   comment: { fontSize: 12 * em, lineHeight: 20 * em, marginTop: 15 * em },
   listItem: { paddingHorizontal: 10 * em, marginBottom: 35 * em },
 };

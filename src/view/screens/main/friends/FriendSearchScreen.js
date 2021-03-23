@@ -3,8 +3,8 @@ import { View } from 'react-native';
 import { em, hm } from 'view/common/const';
 import SearchBox from 'view/components/SearchBox';
 import { FlatList } from 'react-native-gesture-handler';
-import SearchCommonListItem from 'view/components/SearchCommonListItem';
-import FriendCommonHeader from 'view/components/FriendCommonHeader';
+import SearchCommonListItem from 'view/components/adapter/SearchCommonListItem';
+import FriendCommonHeader from 'view/components/header/FriendCommonHeader';
 
 const FriendsSearchScreen = () => {
   const [searchedUsers, getSearchResult] = useState(true);
@@ -66,11 +66,7 @@ const styles = {
     marginLeft: 30 * em,
     marginBottom: 35 * hm,
   },
-  searchbox: {
-    width: 315 * em,
-    marginLeft: 30 * em,
-    marginRight: 30 * em,
-  },
+  searchbox: { height: 44 * em, width: 315 * em, marginLeft: 30 * em, marginRight: 30 * em },
   listItem: {
     height: 42 * hm,
     marginTop: 35 * hm,

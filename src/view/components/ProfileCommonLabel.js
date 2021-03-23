@@ -1,42 +1,21 @@
 import React from 'react';
 import { View, Image, Text } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import { em } from 'view/common/const';
-import CommonText from 'view/components/CommonText';
+import CommonText from 'view/components/text/CommonText';
 
 const ProfileCommonLabel = (props) => {
-  var icDisplay = 'flex';
-  if (props.icon == null || props.icon === undefined) {
-    icDisplay = 'none';
-  }
   return (
     <View style={styles.container}>
-      <Image source={props.icon} style={[styles.icon, { display: icDisplay }]} />
+      {props.icon && props.icon}
       <TitleText text={props.number} style={styles.numberTxt} />
       <Text style={styles.nameTxt}>{props.name}</Text>
     </View>
   );
 };
 const styles = {
-  container: {
-    alignItems: 'center',
-  },
-  icon: {
-    width: 48 * em,
-    height: 48 * em,
-    resizeMode: 'contain',
-    marginBottom: 9 * em,
-  },
-  numberTxt: {
-    marginBottom: 6 * em,
-    fontSize: 20 * em,
-    lineHeight: 25 * em,
-    fontWeight: 'bold',
-  },
-  nameTxt: {
-    fontSize: 13 * em,
-    color: '#A0AEB8',
-    fontWeight: '200',
-  },
+  container: { alignItems: 'center', paddingTop: 9 * em },
+  numberTxt: { marginTop: 10 * em, marginBottom: 6 * em, fontSize: 20 * em, lineHeight: 25 * em, fontWeight: 'bold' },
+  nameTxt: { fontFamily: 'Lato-Bold', fontSize: 13 * em, color: '#A0AEB8', fontWeight: '200' },
 };
 export default ProfileCommonLabel;

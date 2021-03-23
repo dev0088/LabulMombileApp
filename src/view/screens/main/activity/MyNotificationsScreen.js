@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { View, Image, TouchableOpacity, FlatList } from 'react-native';
 import { em, hm } from 'view/common/const';
-import CommonText from 'view/components/CommonText';
+import CommonText from 'view/components/text/CommonText';
 import CircleDraw from 'view/components/CircleDraw';
-import CommentText from 'view/components/CommentText';
-import TitleText from 'view/components/TitleText';
+import CommentText from 'view/components/text/CommentText';
+import TitleText from 'view/components/text/TitleText';
 import { Actions } from 'react-native-router-flux';
 import { navigationRef } from 'view/screens/main/RootNavigation';
-import CommonListItem from 'view/components/CommonListItem';
+import CommonListItem from 'view/components/adapter/CommonListItem';
 import AvatarWithBadge from 'view/components/AvatarWithBadge';
+import { NotificationGray } from 'assets/svg/icons';
+import { NotificationBlue } from 'assets/svg/icons';
 
 const notificationUsers = [
   {
@@ -41,17 +43,15 @@ const MyNotificationsScreen = (props) => {
 
   const emptyView = (
     <TouchableOpacity style={styles.emptyView} onPress={() => setIsEmpty(!isEmpty)}>
-      <CircleDraw
-        radius={17.31 * em}
-        color="#A0AEB8"
-        style={{ opacity: 0.4, position: 'absolute', left: 103.85 * em }}
-      />
-      <CircleDraw
-        radius={8.31 * em}
-        color="#A0AEB8"
-        style={{ opacity: 0.4, position: 'absolute', top: 17.31 * em, left: 190.35 * em }}
-      />
-      <Image style={styles.msgIcon} />
+      <View style={{ position: 'absolute', left: 103.85 * em, transform: [{ rotate: '45deg' }] }}>
+        <NotificationGray width={17.31 * em} height={17.31 * em} />
+      </View>
+      <View style={{ position: 'absolute', top: 17.31 * em, left: 190.35 * em, transform: [{ rotate: '-45deg' }] }}>
+        <NotificationGray width={8.31 * em} height={8.31 * em} />
+      </View>
+      <View style={styles.msgIcon}>
+        <NotificationGray width={37 * em} height={37 * em} />
+      </View>
       <CommonText text={'Tu n’as pas encore de notifications'} color={'#6A8596'} style={styles.msgTxt} />
       <CommentText
         text={'Bientôt tu vas recevoir des propositions autour de toi'}
@@ -92,7 +92,9 @@ const MyNotificationsScreen = (props) => {
             onPress={() => {
               navigationRef.current.navigate('Activity');
             }}>
-            <Image source={require('assets/images/ic_notification_green.png')} style={styles.notificationBtn} />
+            <View style={styles.notificationBtn}>
+              <NotificationBlue width={19 * em} height={22 * em} />
+            </View>
           </TouchableOpacity>
         </View>
         <TitleText text={'Mes notifications'} style={styles.title} />
@@ -115,18 +117,11 @@ const styles = {
     marginTop: 0,
     marginBottom: 10 * em,
   },
-  notificationBtn: {
-    width: 19 * em,
-    height: 22 * em,
-    alignSelf: 'flex-end',
-    marginRight: 30 * em,
-    marginTop: 39 * em,
-  },
+  notificationBtn: { alignSelf: 'flex-end', marginRight: 30 * em, marginTop: 39 * em },
   title: {
     fontSize: 34 * em,
     lineHeight: 38 * em,
     height: 40 * em,
-    fontWeight: 'bold',
     textAlign: 'left',
     marginLeft: 30 * em,
     marginTop: 20 * em,
@@ -145,19 +140,11 @@ const styles = {
     height: 148.15 * em,
     alignSelf: 'center',
   },
-  msgIcon: {
-    width: 37 * em,
-    height: 37 * em,
-    backgroundColor: '#A0AEB8',
-    opacity: 0.4,
-    marginTop: 13.15 * em,
-    alignSelf: 'center',
-    borderRadius: 19.5 * em,
-  },
+  msgIcon: { marginTop: 13.15 * em, alignSelf: 'center' },
   msgTxt: {
     marginTop: 15 * em,
     textAlign: 'center',
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Black',
     lineHeight: 23 * em,
   },
   explainTxt: {
@@ -171,7 +158,7 @@ const styles = {
     marginBottom: 35 * em,
     width: '100%',
   },
-  listItemUserName: { color: '#1E2D60', lineHeight: 21 * hm, fontWeight: 'bold' },
+  listItemUserName: { color: '#1E2D60', lineHeight: 21 * hm, fontFamily: 'Lato-Black' },
   listItemComment: { color: '#A0AEB8', lineHeight: 18 * hm },
   listItemDate: { color: '#A0AEB8', fontSize: 13 * em, textAlign: 'right' },
   listItemNotification: { marginLeft: 55 * em, textAlign: 'left', color: '#1E2D60' },

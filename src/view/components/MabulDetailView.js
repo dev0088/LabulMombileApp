@@ -1,24 +1,17 @@
 import React, { useState } from 'react';
 import { View, Image, TouchableOpacity, ScrollView } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import { em, hexToRGB } from 'view/common/const';
-import CommonText from 'view/components/CommonText';
-import CommentText from 'view/components/CommentText';
-import CommonButton from 'view/components/CommonButton';
-import ServiceType from 'model/service/ServiceType';
+import CommonText from 'view/components/text/CommonText';
+import CommentText from 'view/components/text/CommentText';
+import CommonButton from 'view/components/button/CommonButton';
+import CommonBackButton from 'view/components/button/CommonBackButton';
+
 import { Actions } from 'react-native-router-flux';
-import NeedService from 'model/service/NeedService';
-import NeedServiceType from 'model/service/NeedServiceType';
-import GiveService from 'model/service/GiveService';
-import SellService from 'model/service/SellService';
-import SellServiceType from 'model/service/SellServiceType';
-import OrganizeService from 'model/service/OrganizeService';
-import User from 'model/User';
-import OrganizeServiceType from 'model/service/OrganizeServiceType';
 import AvatarWithBadge from 'view/components/AvatarWithBadge';
 import FriendInvitePopupScreen from 'view/screens/main/friends/FriendInvitePopupScreen';
 import { getUserBadge } from 'view/common/icons';
-import CommonListItem from './CommonListItem';
+import CommonListItem from 'view/components/adapter/CommonListItem';
 
 const MabulDetailView = (props) => {
   const [invitePopupVisible, setInvitePopupVisible] = useState(false);
@@ -46,11 +39,12 @@ const MabulDetailView = (props) => {
       <ScrollView style={styles.scrollView}>
         <Image source={data.coverImage} style={styles.cover} />
         <View style={styles.body}>
-          <CommonText text={'04 Fév · 08h00'} style={styles.timeTxt} />
+          <CommonText text={'04 Fév · 08h00'} style={styles.timeTxt} color="#6A8596" />
           <CommonListItem
             style={styles.userInfo}
             icon={
               <AvatarWithBadge
+                style={{ marginRight: 21 * em }}
                 avatar={data.user.photo}
                 badge={userBadge}
                 avatarDiameter={35 * em}
@@ -61,7 +55,7 @@ const MabulDetailView = (props) => {
             title={data.user.name}
             titleStyle={styles.userName}
             subTitle={data.relationship && 'Mon ami/ ma famille'}
-            subTitleStyle={styles.userName}
+            subTitleStyle={{ color: '#A0AEB8' }}
           />
 
           <CommentText style={styles.comment} text={data.title} color={'#1E2D60'} />
@@ -83,9 +77,7 @@ const MabulDetailView = (props) => {
           <View style={{ height: 130 * em }} />
         </View>
       </ScrollView>
-      <TouchableOpacity onPress={() => Actions.pop()} style={styles.backBtnView}>
-        <Image style={styles.backBtn} source={require('assets/images/btn_back_wrap.png')} />
-      </TouchableOpacity>
+      <CommonBackButton dark style={styles.backBtnView} />
 
       <FriendInvitePopupScreen visible={invitePopupVisible} onPress={() => setInvitePopupVisible(false)} />
     </>
@@ -97,14 +89,7 @@ const styles = {
     flex: 1,
     backgroundColor: 'transparent',
   },
-  backBtnView: {
-    zIndex: 1,
-    width: 44 * em,
-    height: 44 * em,
-    position: 'absolute',
-    left: 15 * em,
-    top: 27 * em,
-  },
+  backBtnView: { backgroundColor: '#ffffff', position: 'absolute', left: 15 * em, top: 27 * em },
   backBtn: { width: 44 * em, height: 44 * em, resizeMode: 'contain', zIndex: 1 },
   cover: {
     width: '100%',
@@ -118,6 +103,7 @@ const styles = {
     width: '100%',
   },
   timeTxt: {
+    fontFamily: 'Lato-Bold',
     lineHeight: 19 * em,
     paddingLeft: 30 * em,
     paddingRight: 30 * em,
@@ -125,7 +111,7 @@ const styles = {
     paddingBottom: 11 * em,
     marginTop: -17 * em,
     backgroundColor: '#ffffff',
-    width: 167 * em,
+    alignSelf: 'baseline',
     borderTopRightRadius: 15 * em,
     borderBottomRightRadius: 15 * em,
   },
@@ -146,20 +132,20 @@ const styles = {
     borderColor: '#ffffff',
   },
   userName: {
-    marginLeft: 21 * em,
+    fontFamily: 'Lato-Bold',
+
     textAlign: 'left',
     textAlignVertical: 'center',
     color: '#1E2D60',
   },
   comment: { lineHeight: 15 * em, fontSize: 13 * em, textAlign: 'left', marginLeft: 30 * em, marginTop: 21 * em },
   title: {
-    height: 28 * em,
     lineHeight: 30 * em,
     fontSize: 24 * em,
     textAlign: 'left',
     marginLeft: 30 * em,
     marginTop: 5 * em,
-    fontWeight: 'bold',
+    fontFamily: 'Lato-Black',
   },
   contentBox: {
     flexDirection: 'row',
@@ -167,7 +153,7 @@ const styles = {
   },
   content: { lineHeight: 25 * em, textAlign: 'left', marginTop: 3 * em },
   quizBtn: { marginLeft: 30 * em, marginTop: 25 * em, backgroundColor: hexToRGB('#41D0E2', 0.2) },
-  inviteBtn: { marginLeft: 30 * em, marginTop: 15 * em, backgroundColor: 'transparent', color: '#41D0E2' },
+  inviteBtn: { marginLeft: 30 * em, marginTop: 15 * em, backgroundColor: 'transparent' },
 
   btnBox: {
     paddingLeft: 26 * em,

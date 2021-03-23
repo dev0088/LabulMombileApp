@@ -1,19 +1,21 @@
 import React from 'react';
-import { View, Image } from 'react-native';
+import { View } from 'react-native';
 import { em } from 'view/common/const';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import CommonTextInput from 'view/components/CommonTextInput';
-import CommonButton from 'view/components/CommonButton';
-import CommentText from 'view/components/CommentText';
-import AccountCommonHeader from 'view/components/AccountCommonHeader';
-
+import CommonButton from 'view/components/button/CommonButton';
+import CommentText from 'view/components/text/CommentText';
+import AccountCommonHeader from 'view/components/header/AccountCommonHeader';
+import { Key } from 'assets/svg/icons';
 const ForgotPasswordScreen = () => {
   return (
     <View style={styles.container}>
       <AccountCommonHeader style={styles.header} />
       <View style={styles.popupView}>
         <View style={styles.popupTopView}>
-          <Image source={require('assets/images/ic_password.png')} style={styles.icon} />
+          <View style={styles.icon}>
+            <Key width={30 * em} heigh={30 * em} />
+          </View>
           <TitleText text={'Demander un nouveau mot de passe'} style={styles.titleText} />
           <CommentText text="Entrez votre adresse e-mail pour réinitialiser votre mot de passe" />
           <CommonTextInput text={'Saisis ton email'} isPasswordInput={false} style={styles.commonInput} />
@@ -25,11 +27,7 @@ const ForgotPasswordScreen = () => {
 };
 
 const styles = {
-  container: {
-    flex: 1,
-    backgroundColor: '#40CDDE',
-    alignItems: 'center',
-  },
+  container: { flex: 1, backgroundColor: '#40CDDE', alignItems: 'center' },
   header: {
     height: '12%',
   },
@@ -47,20 +45,10 @@ const styles = {
     borderRadius: 28 * em,
     justifyContent: 'space-between',
   },
-  popupTopView: {
-    alignItems: 'center',
-    width: '80%',
-  },
-  titleText: {
-    marginBottom: 10 * em,
-  },
-  btnNext: {
-    marginTop: 15 * em,
-  },
-  commonInput: {
-    width: '100%',
-    height: 59 * em,
-  },
+  popupTopView: { alignItems: 'center', width: '80%' },
+  titleText: { marginBottom: 10 * em },
+  btnNext: { marginTop: 15 * em },
+  commonInput: { width: '100%', marginTop: 26 * em, height: 52 * em },
 };
 
 export default ForgotPasswordScreen;

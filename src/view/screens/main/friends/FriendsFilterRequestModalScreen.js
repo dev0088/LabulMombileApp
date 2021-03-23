@@ -1,15 +1,14 @@
 import React from 'react';
 import { View } from 'react-native';
-import TitleText from 'view/components/TitleText';
 import { em, WIDTH, hm } from 'view/common/const';
-import CommonBackButton from 'view/components/CommonBackButton';
-import CommentText from 'view/components/CommentText';
+import CommonBackButton from 'view/components/button/CommonBackButton';
+import CommentText from 'view/components/text/CommentText';
 import { FlatList } from 'react-native-gesture-handler';
-import CommonButton from 'view/components/CommonButton';
+import CommonButton from 'view/components/button/CommonButton';
 import CommonCheckBox from 'view/components/CommonCheckBox';
 
 import Modal from 'react-native-modal';
-import CommonText from '../../../components/CommonText';
+import CommonText from 'view/components/text/CommonText';
 import { Actions } from 'react-native-router-flux';
 
 const options = [
@@ -21,7 +20,6 @@ const options = [
 ];
 const FriendsFilterRequestModalScreen = (props) => {
   const renderFlatList = ({ item }) => <CommonCheckBox text={item.option} style={styles.listItem} shape="rectangle" />;
-  console.log(props);
   return (
     <Modal
       isVisible={props.visible}
@@ -80,10 +78,11 @@ const styles = {
     alignItems: 'center',
   },
   title: {
+    fontFamily: 'Lato-Black',
     fontSize: 18 * em,
     lineHeight: 23 * hm,
     textAlign: 'left',
-    fontWeight: 'bold',
+
     textAlignVertical: 'center',
     alignSelf: 'center',
     marginLeft: 15 * em,

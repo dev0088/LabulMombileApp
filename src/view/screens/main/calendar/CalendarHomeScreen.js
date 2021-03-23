@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, FlatList, TouchableOpacity } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import { em, WIDTH } from 'view/common/const';
 import CalendarStrip from 'view/components/calendar/CalendarStrip';
 import { NextIcon, PrevIcon } from 'assets/svg/icons';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TouchableOpacity, Image } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import { em } from 'view/common/const';
 import CommonTabBar from 'view/components/CommonTabBar';
 import { navigationRef } from 'view/screens/main/RootNavigation';

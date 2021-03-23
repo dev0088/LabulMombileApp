@@ -1,12 +1,12 @@
 import React from 'react';
 import { View } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import { em, HEIGHT, WIDTH } from 'view/common/const';
 import { FlatList } from 'react-native';
-import MabulCommonListItem from 'view/components/MabulCommonListItem';
-import MabulCommonHeader from 'view/components/MabulCommonHeader';
+import MabulCommonListItem from 'view/components/adapter/MabulCommonListItem';
+import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
 import { Actions } from 'react-native-router-flux';
-import {Apero, Meet,Meal,Show,Party,WorkshpIcon} from 'assets/svg/icons';
+import { Apero, Meet, Meal, Show, Party, WorkshpIcon } from 'assets/svg/icons';
 const iconSize = { width: 38 * em, height: 38 * em };
 
 const themeData = [
@@ -46,6 +46,7 @@ const styles = {
   },
   header: {
     height: '10.3%',
+    marginTop: 16 * em,
   },
   body: {
     flex: 1,
@@ -57,9 +58,9 @@ const styles = {
     marginBottom: 18 * em,
   },
   listItem: {
-    height: HEIGHT * 0.09,
+    height: 80 * em,
     width: WIDTH * 0.92,
-    marginTop: 25 * em,
+    marginTop: 4 * em,
   },
 };
 

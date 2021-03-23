@@ -1,21 +1,12 @@
 import React, { useState } from 'react';
-import { View, Image, TouchableOpacity, ScrollView } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import { View } from 'react-native';
 import { em, hexToRGB } from 'view/common/const';
-import CommonText from 'view/components/CommonText';
-import CommentText from 'view/components/CommentText';
-import CommonButton from 'view/components/CommonButton';
+import CommonButton from 'view/components/button/CommonButton';
 import { Actions } from 'react-native-router-flux';
 import FriendInvitePopupScreen from './FriendInvitePopupScreen';
-import ServiceType from 'model/service/ServiceType';
 import NeedService from 'model/service/NeedService';
 import NeedServiceType from 'model/service/NeedServiceType';
-import GiveService from 'model/service/GiveService';
-import SellService from 'model/service/SellService';
-import SellServiceType from 'model/service/SellServiceType';
-import OrganizeService from 'model/service/OrganizeService';
 import User from 'model/User';
-import OrganizeServiceType from 'model/service/OrganizeServiceType';
 import MabulDetailView from '../../../components/MabulDetailView';
 import { Send, Option } from 'assets/svg/icons';
 import FriendCancelParticipatePopupScreen from './FriendCancelParticipatePopupScreen';
@@ -32,7 +23,6 @@ const needData = Object.assign(
   { status: 'participated', relationship: 'Mon ami/ma familie' }
 );
 const FriendNeedScreen = (props) => {
-  console.log(props.data);
   const [invitePopupVisible, setInvitePopupVisible] = useState(false);
   const [cancelParticipatePopupVisible, setcancelParticipatePopupVisible] = useState(false);
 
@@ -44,8 +34,8 @@ const FriendNeedScreen = (props) => {
   const ParticipationButton = (
     <CommonButton
       onPress={() => setcancelParticipatePopupVisible(true)}
-      rightIcon={<View />}
-      leftIcon={Option({ width: 4 * em, height: 18 * em })}
+      leftIcon={<View />}
+      rightIcon={Option({ width: 4 * em, height: 18 * em })}
       iconStyle={{ marginRight: 20 * em }}
       text={'Je participe'}
       textStyle={{ color: '#1BD39A' }}
@@ -58,8 +48,8 @@ const FriendNeedScreen = (props) => {
   const WaitingButton = (
     <CommonButton
       onPress={() => setStatus('inProgress')}
-      rightIcon={Send({ width: 13 * em, height: 13 * em })}
-      iconStyle={{ marginRight: 10 * em }}
+      leftIcon={Send({ width: 13 * em, height: 13 * em })}
+      iconStyle={{ margin: 10 * em }}
       text={'Demande de participation envoyé'}
       textStyle={{ color: '#22D39A' }}
       style={[styles.partBtn, { backgroundColor: '#F0F5F7' }]}

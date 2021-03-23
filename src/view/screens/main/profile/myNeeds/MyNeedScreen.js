@@ -1,22 +1,9 @@
 import React, { useState } from 'react';
-import { View, Image, TouchableOpacity, ScrollView } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import { View } from 'react-native';
 import { em, hexToRGB } from 'view/common/const';
-import CommonText from 'view/components/CommonText';
-import CommentText from 'view/components/CommentText';
-import CommonButton from 'view/components/CommonButton';
-import ServiceType from 'model/service/ServiceType';
-import { Actions } from 'react-native-router-flux';
 import NeedService from 'model/service/NeedService';
 import NeedServiceType from 'model/service/NeedServiceType';
-import GiveService from 'model/service/GiveService';
-import SellService from 'model/service/SellService';
-import SellServiceType from 'model/service/SellServiceType';
-import OrganizeService from 'model/service/OrganizeService';
 import User from 'model/User';
-import OrganizeServiceType from 'model/service/OrganizeServiceType';
-import AvatarWithBadge from 'view/components/AvatarWithBadge';
-import FriendInvitePopupScreen from 'view/screens/main/friends/FriendInvitePopupScreen';
 import MabulDetailView from '../../../../components/MabulDetailView';
 
 const needData = new NeedService(
@@ -30,7 +17,7 @@ const needData = new NeedService(
 );
 
 const MyNeedScreen = () => {
-  const [invitePopupVisible, setInvitePopupVisible] = useState(false);
+  const [] = useState(false);
   const [data] = useState(needData);
   return (
     <View style={styles.container}>

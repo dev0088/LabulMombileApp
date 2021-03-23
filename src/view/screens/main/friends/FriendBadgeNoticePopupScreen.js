@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
-import { View, FlatList } from 'react-native';
+import React from 'react';
+import { View } from 'react-native';
 import { em } from 'view/common/const';
-import CommonText from '../../../components/CommonText';
-import TitleText from '../../../components/TitleText';
-import SearchBox from '../../../components/SearchBox';
-import SearchCommonListItem from '../../../components/SearchCommonListItem';
+import CommonText from 'view/components/text/CommonText';
+import TitleText from 'view/components/text/TitleText';
 import Modal from 'react-native-modal';
-import CommonBackButton from '../../../components/CommonBackButton';
-import CommonTextInput from '../../../components/CommonTextInput';
-import CommonButton from '../../../components/CommonButton';
+import CommonBackButton from 'view/components/button/CommonBackButton';
+import CommonTextInput from 'view/components/CommonTextInput';
+import CommonButton from 'view/components/button/CommonButton';
 
 const FriendBadgeNoticePopupScreen = (props) => {
   return (
@@ -21,7 +19,6 @@ const FriendBadgeNoticePopupScreen = (props) => {
       onBackButtonPress={() => props.onPress()}>
       <View style={styles.body}>
         <CommonBackButton dark style={{ marginLeft: -15 * em }} />
-
         <View style={styles.iconView}>
           <View style={styles.circleContainer}>{props.selected[0].icon}</View>
           <View style={[styles.circleContainer, { marginTop: -18 * em }]}>{props.selected[1].icon}</View>
@@ -74,7 +71,7 @@ const styles = {
     paddingHorizontal: 43 * em,
   },
   input: { height: 52 * em },
-  title: { marginBottom: 10 * em, alignSelf: 'flex-start', alignSelf: 'center' },
+  title: { marginBottom: 10 * em, alignSelf: 'flex-start', },
   comment: { marginBottom: 16 * em, alignSelf: 'center' },
   listItem: { marginBottom: 35 * em },
 };

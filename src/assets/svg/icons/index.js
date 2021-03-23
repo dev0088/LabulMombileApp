@@ -91,6 +91,7 @@ import SelectionOn from 'assets/svg/icons/navigation/SelectionOn.svg';
 import SelectionOff from 'assets/svg/icons/navigation/SelectionOff.svg';
 import CheckOff from 'assets/svg/icons/navigation/CheckOff.svg';
 import CheckRed from 'assets/svg/icons/navigation/CheckRed.svg';
+
 import LocationBlue from 'assets/svg/icons/navigation/LocationBlue.svg';
 import MabulGive from 'assets/svg/icons/navigation/MabulGive.svg';
 import MabulNeed from 'assets/svg/icons/navigation/MabulNeed.svg';
@@ -100,14 +101,100 @@ import MabulCancel from 'assets/svg/icons/navigation/MabulCancel.svg';
 import NotificationYellow from 'assets/svg/icons/navigation/NotificationYellow.svg';
 import CrossGray from 'assets/svg/icons/navigation/CrossGray.svg';
 import CrossCircle from 'assets/svg/icons/navigation/CrossCircle.svg';
-import LeftArrow from 'assets/svg/icons/navigation/LeftArrow.svg';
+import Community from 'assets/svg/icons/navigation/Community.svg';
+import Facebook from 'assets/svg/icons/navigation/Facebook.svg';
+import Google from 'assets/svg/icons/navigation/Google.svg';
 
-export{MabulCancel,MabulOrganize,MabulSell,MabulNeed,MabulGive,LeftArrow,NotificationYellow,CrossGray,CrossCircle}
+import Invisible from 'assets/svg/icons/navigation/Invisible.svg';
+import Password from 'assets/svg/icons/navigation/Password.svg';
+import LeftArrow from 'assets/svg/icons/navigation/LeftArrow.svg';
+import BackArrowBlack from 'assets/svg/icons/navigation/BackArrowBlack.svg';
+import BackArrowWhite from 'assets/svg/icons/navigation/BackArrowWhite.svg';
+import Key from 'assets/svg/icons/navigation/Key.svg';
+import Email from 'assets/svg/icons/navigation/Email.svg';
+import EmailBlue from 'assets/svg/icons/navigation/EmailBlue.svg';
+
+import Mobile from 'assets/svg/icons/navigation/Mobile.svg';
+import MobileBlue from 'assets/svg/icons/navigation/MobileBlue.svg';
+import TabMessageOn from 'assets/svg/icons/navigation/TabMessageOn.svg';
+import TabMessageOff from 'assets/svg/icons/navigation/TabMessageOff.svg';
+import TabCardOn from 'assets/svg/icons/navigation/TabCardOn.svg';
+import TabCardOff from 'assets/svg/icons/navigation/TabCardOff.svg';
+import TabCalendarOn from 'assets/svg/icons/navigation/TabCalendarOn.svg';
+import TabCalendarOff from 'assets/svg/icons/navigation/TabCalendarOff.svg';
+import TabPlus from 'assets/svg/icons/navigation/TabPlus.svg';
+
+export { TabPlus, TabCalendarOff, TabCalendarOn, TabCardOff, TabCardOn, TabMessageOff, TabMessageOn };
+
+export {EmailBlue,
+  MobileBlue,
+  Mobile,
+  Email,
+  Key,
+  BackArrowWhite,
+  BackArrowBlack,
+  Community,
+  Facebook,
+  Google,
+  Invisible,
+  Password,
+  MabulCancel,
+  MabulOrganize,
+  MabulSell,
+  MabulNeed,
+  MabulGive,
+  LeftArrow,
+  NotificationYellow,
+  CrossGray,
+  CrossCircle,
+};
 
 import Setting from 'assets/svg/icons/profile/Setting.svg';
 import MyNeeds from 'assets/svg/icons/profile/MyNeeds.svg';
 import Circles from 'assets/svg/icons/profile/Circles.svg';
 import Information from 'assets/svg/icons/profile/Information.svg';
+import LocationRed from 'assets/svg/icons/navigation/LocationRed.svg';
+import LocationGray from 'assets/svg/icons/navigation/LocationGray.svg';
+
+import MessageGray from 'assets/svg/icons/navigation/MessageGray.svg';
+import MessageBackground from 'assets/svg/icons/navigation/MessageBackground.svg';
+import Magnifier from 'assets/svg/icons/navigation/Magnifier.svg';
+import Cancel from 'assets/svg/icons/navigation/Cancel.svg';
+import NotificationGray from 'assets/svg/icons/navigation/NotificationGray.svg';
+import NotificationBlue from 'assets/svg/icons/navigation/NotificationBlue.svg';
+import NotificationOutline from 'assets/svg/icons/navigation/NotificationOutline.svg';
+import TelephoneWhite from 'assets/svg/icons/navigation/TelephoneWhite.svg';
+import Block from 'assets/svg/icons/navigation/Block.svg';
+import CheckedWhite from 'assets/svg/icons/navigation/CheckedWhite.svg';
+import CheckedBlue from 'assets/svg/icons/navigation/CheckedBlue.svg';
+import ArrowRightWhite from 'assets/svg/icons/navigation/ArrowRightWhite.svg';
+import AddressBlue from 'assets/svg/icons/navigation/AddressBlue.svg';
+import OptionGray from 'assets/svg/icons/navigation/OptionGray.svg';
+
+export {
+  AddressBlue,
+  OptionGray,
+  LocationRed,
+  ArrowRightWhite,
+  CheckedWhite,
+  CheckedBlue,
+  Block,
+  TelephoneWhite,
+  MessageBackground,
+  MessageGray,
+  Magnifier,
+  Cancel,
+  NotificationGray,
+  NotificationBlue,
+  NotificationOutline,
+  LocationGray,
+};
+
+import NoteInlineRed from 'assets/svg/icons/create/NoteInlineRed.svg';
+import AlertWhite from 'assets/svg/icons/create/AlertWhite.svg';
+
+export { NoteInlineRed, AlertWhite };
+
 import Friend from 'assets/svg/icons/profile/Friend.svg';
 import Neighbor from 'assets/svg/icons/profile/Neighbor.svg';
 import Family from 'assets/svg/icons/profile/Family.svg';
@@ -118,10 +205,56 @@ import AvatarBg from 'assets/svg/icons/profile/AvatarBg.svg';
 import ProAvatarBg from 'assets/svg/icons/profile/ProAvatarBg.svg';
 import ProNeeds from 'assets/svg/icons/profile/ProNeeds.svg';
 
+import AddFamily from 'assets/svg/icons/profile/AddFamily.svg';
+import AddFriend from 'assets/svg/icons/profile/AddFriend.svg';
+import FamilyGroup from 'assets/svg/icons/profile/FamilyGroup.svg';
+import AddNeighbor from 'assets/svg/icons/profile/AddNeighbor.svg';
+import FriendGroup from 'assets/svg/icons/profile/FriendGroup.svg';
+import NeigborGroup from 'assets/svg/icons/profile/NeigborGroup.svg';
+import Association from 'assets/svg/icons/profile/Association.svg';
+import Enterprise from 'assets/svg/icons/profile/Enterprise.svg';
+import InstitutionInner from 'assets/svg/icons/profile/InstitutionInner.svg';
+import AssociationInner from 'assets/svg/icons/profile/AssociationInner.svg';
+
+import EnterpriseInner from 'assets/svg/icons/profile/EnterpriseInner.svg';
+
+import Institution from 'assets/svg/icons/profile/Institution.svg';
+import Events from 'assets/svg/icons/profile/Events.svg';
+import Tips from 'assets/svg/icons/profile/Tips.svg';
+import Promotion from 'assets/svg/icons/profile/Promotion.svg';
+
+export {Promotion,Tips,Events,
+  EnterpriseInner,
+  AssociationInner,
+  InstitutionInner,
+  AddFriend,
+  AddFamily,
+  FamilyGroup,
+  FriendGroup,
+  NeigborGroup,
+  AddNeighbor,
+  Association,
+  Enterprise,
+  Institution,
+};
+
 import AddPhotoBlue from 'assets/svg/icons/post/AddPhotoBlue.svg';
 import AddPhotoGreen from 'assets/svg/icons/post/AddPhotoGreen.svg';
 
-export{ProAvatarBg,AvatarBg,Setting,MyNeeds,Circles,Information,ProNeeds,AddPhotoBlue,AddPhotoGreen,AddGroup,DeleteRed,ProAddCover}
+export {
+  ProAvatarBg,
+  AvatarBg,
+  Setting,
+  MyNeeds,
+  Circles,
+  Information,
+  ProNeeds,
+  AddPhotoBlue,
+  AddPhotoGreen,
+  AddGroup,
+  DeleteRed,
+  ProAddCover,
+};
 export { NextIcon, PrevIcon, LocationPink, Alert };
 export {
   ComputerIcon,
@@ -189,3 +322,24 @@ import Path from 'assets/svg/icons/navigation/Path.svg';
 import Return2Point from 'assets/svg/icons/navigation/Return2Point.svg';
 
 export { Animals, Bricolage, HomeCare, Interview, Workshop, Path, Return2Point };
+
+import Edit from 'assets/svg/icons/post/Edit.svg';
+import Edit1 from 'assets/svg/icons/post/Edit1.svg';
+import Edit2 from 'assets/svg/icons/post/Edit2.svg';
+import Edit3 from 'assets/svg/icons/post/EditButton3.svg';
+import Document from 'assets/svg/icons/post/Document.svg';
+import Document1 from 'assets/svg/icons/post/Document1.svg';
+import Document2 from 'assets/svg/icons/post/Document2.svg';
+import Document3 from 'assets/svg/icons/post/Document3.svg';
+
+export { Edit, Edit1, Edit2, Edit3, Document, Document1, Document2, Document3 };
+
+import Aliments from 'assets/svg/icons/category/Aliments.svg';
+import Education from 'assets/svg/icons/category/Education.svg';
+import HighTech from 'assets/svg/icons/category/HighTech.svg';
+import Mebule from 'assets/svg/icons/category/Mebule.svg';
+import ObjetDrivers from 'assets/svg/icons/category/ObjetDrivers.svg';
+import Repas from 'assets/svg/icons/category/Repas.svg';
+import Vetements from 'assets/svg/icons/category/Vetements.svg';
+
+export { Aliments, Education, HighTech, Mebule, ObjetDrivers, Repas, Vetements };

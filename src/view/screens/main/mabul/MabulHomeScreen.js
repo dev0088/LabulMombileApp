@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, Image, TouchableOpacity } from 'react-native';
 import { em } from 'view/common/const';
-import CircularButton from 'view/components/CircularButton';
+import CircularButton from 'view/components/button/CircularButton';
 import { Actions } from 'react-native-router-flux';
+import { MabulCancel } from 'assets/svg/icons';
 
 const MabulHomeScreen = (props) => {
   return (
@@ -44,7 +45,7 @@ const MabulHomeScreen = (props) => {
           />
         </View>
         <TouchableOpacity onPress={props.onClosePress}>
-          <Image source={require('assets/images/btn_mabul_close.png')} style={styles.closeButton} />
+          <MabulCancel style={styles.closeButton} />
         </TouchableOpacity>
       </View>
     </View>

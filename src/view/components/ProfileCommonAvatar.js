@@ -2,16 +2,8 @@ import React from 'react';
 import { Image, Text, ImageBackground, View } from 'react-native';
 import { em } from 'view/common/const';
 import { AvatarBg, ProAvatarBg } from 'assets/svg/icons';
-function hexToRGB(hex, alpha) {
-  var r = parseInt(hex.slice(1, 3), 16),
-    g = parseInt(hex.slice(3, 5), 16),
-    b = parseInt(hex.slice(5, 7), 16);
-  if (alpha) {
-    return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + alpha + ')';
-  } else {
-    return 'rgb(' + r + ', ' + g + ', ' + b + ')';
-  }
-}
+import TitleText from 'view/components/text/TitleText';
+
 var getInitials = function (string) {
   var names = string.split(' '),
     initials = names[0].substring(0, 1).toUpperCase();
@@ -21,19 +13,17 @@ var getInitials = function (string) {
   return initials;
 };
 const ProfileCommonAvatar = (props) => {
-  console.log(props.style.pro);
   if (!props.icon) {
     return (
       <View
         style={[
           props.style,
           styles.imgWrapper,
-          // {
-          //   width: props.style.width + 6 * em,
-          //   height: props.style.width + 6 * em,
-          //   borderRadius: (props.style.width + 8 * em) / 2,
-          //   borderWidth: props.borderWidth,
-          // },
+          {
+            width: props.style.width + 6 * em,
+            height: props.style.width + 6 * em,
+            borderRadius: (props.style.width + 6 * em) / 2,
+          },
         ]}>
         {props.pro
           ? ProAvatarBg({
@@ -45,9 +35,10 @@ const ProfileCommonAvatar = (props) => {
               height: props.style.width + 6 * em,
             })}
         {/* <AvatarBg width={props.style.width+ 10* em} height={props.style.width+ 10 * em} /> */}
-        <Text style={[styles.txtInitial, { color: !props.pro ? '#40CDDE' : '#6784DA' }]}>
-          {getInitials(props.fullName)}
-        </Text>
+        <TitleText
+          style={[styles.txtInitial, { color: !props.pro ? '#40CDDE' : '#6784DA' }]}
+          text={getInitials(props.fullName)}
+        />
       </View>
     );
   } else {
@@ -60,7 +51,7 @@ const ProfileCommonAvatar = (props) => {
             width: props.style.width + 6 * em,
             height: props.style.width + 6 * em,
             borderRadius: (props.style.width + 6 * em) / 2,
-            borderWidth: props.borderWidth,
+            borderWidth: 3 * em,
           },
         ]}>
         <Image style={{ width: props.style.width, height: props.style.width }} source={props.icon} />
@@ -92,7 +83,8 @@ const styles = {
   imgWrapper: {
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: hexToRGB('#ffffff', 0.5),
+    backgroundColor: '#ffffff33',
+    borderColor:'#ffffff33'
   },
 };
 export default ProfileCommonAvatar;

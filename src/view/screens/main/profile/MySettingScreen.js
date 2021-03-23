@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { View, Image, Text } from 'react-native';
-import { em, WIDTH, HEIGHT } from 'view/common/const';
-import CommonHeader from 'view/components/CommonHeader';
-import TitleText from 'view/components/TitleText';
-import CommentText from 'view/components/CommentText';
+import React from 'react';
+import { View } from 'react-native';
+import { em } from 'view/common/const';
+import CommonHeader from 'view/components/header/CommonHeader';
 import Switch from 'view/components/Switch';
-import CommonListItem from 'view/components/CommonListItem';
+import CommonListItem from 'view/components/adapter/CommonListItem';
 import { Address, NotificationYellow } from 'assets/svg/icons';
 const MySettingScreen = () => {
   return (
@@ -57,7 +55,7 @@ const MySettingScreen = () => {
             switchBackgroundColor="#40CDDE"
             btnBorderColor="red"
             btnBackgroundColor="#FFFFFF"
-            initialValue={1}
+            initialValue={0}
             style={styles.switch}
           />
         }
@@ -103,6 +101,7 @@ const styles = {
     justifyContent: 'space-between',
   },
   listTitle: {
+    fontFamily: 'Lato-Black',
     fontSize: 18 * em,
     lineHeight: 23 * em,
     textAlign: 'left',

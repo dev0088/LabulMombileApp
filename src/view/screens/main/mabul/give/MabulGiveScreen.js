@@ -1,19 +1,22 @@
 import React from 'react';
 import { View } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import { em, HEIGHT, WIDTH } from 'view/common/const';
 import { FlatList } from 'react-native';
-import MabulCommonListItem from 'view/components/MabulCommonListItem';
-import MabulCommonHeader from 'view/components/MabulCommonHeader';
+import MabulCommonListItem from 'view/components/adapter/MabulCommonListItem';
+import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
 import { Actions } from 'react-native-router-flux';
+import { Aliments, Education, HighTech, Mebule, ObjetDrivers, Repas, Vetements } from 'assets/svg/icons';
+
+const iconSize = { width: 38 * em, height: 38 * em };
 const giveItems = [
-  { id: 0, itemName: 'Objet divers', icon: require('assets/images/btn_mabul_give.png') },
-  { id: 1, itemName: 'Meuble', icon: require('assets/images/btn_mabul_give.png') },
-  { id: 2, itemName: 'High Tech', icon: require('assets/images/btn_mabul_give.png') },
-  { id: 3, itemName: 'Education', icon: require('assets/images/btn_mabul_give.png') },
-  { id: 4, itemName: 'Vêtements', icon: require('assets/images/btn_mabul_give.png') },
-  { id: 5, itemName: 'Repas', icon: require('assets/images/btn_mabul_give.png') },
-  { id: 6, itemName: 'Aliments', icon: require('assets/images/btn_mabul_give.png') },
+  { id: 0, itemName: 'Objet divers', icon: ObjetDrivers(iconSize) },
+  { id: 1, itemName: 'Meuble', icon: Mebule(iconSize) },
+  { id: 2, itemName: 'High Tech', icon: HighTech(iconSize) },
+  { id: 3, itemName: 'Education', icon: Education(iconSize) },
+  { id: 4, itemName: 'Vêtements', icon: Vetements(iconSize) },
+  { id: 5, itemName: 'Repas', icon: Repas(iconSize) },
+  { id: 6, itemName: 'Aliments', icon: Aliments(iconSize) },
 ];
 const MabulGiveScreen = () => {
   const renderFlatList = ({ item }) => (
@@ -41,6 +44,7 @@ const styles = {
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
+    marginTop: 16 * em,
   },
   header: {
     height: '10.3%',
@@ -54,7 +58,6 @@ const styles = {
   },
   body: {
     flex: 1,
-
     alignItems: 'flex-start',
     backgroundColor: '#F0F5F7',
   },
@@ -64,9 +67,9 @@ const styles = {
     marginBottom: HEIGHT * 0.1,
   },
   listItem: {
-    height: HEIGHT * 0.09,
+    height: 80 * em,
     width: WIDTH * 0.92,
-    marginTop: 25 * em,
+    marginTop: 4 * em,
   },
 };
 

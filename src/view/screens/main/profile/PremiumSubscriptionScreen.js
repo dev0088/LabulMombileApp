@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { View, ScrollView, Text, Image, TouchableOpacity } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import { em } from 'view/common/const';
-import CommonButton from 'view/components/CommonButton';
-import CommonBackButton from 'view/components/CommonBackButton';
-import PurchaseMenuCard from 'view/components/PurchaseMenuCard';
+import CommonButton from 'view/components/button/CommonButton';
+import CommonBackButton from 'view/components/button/CommonBackButton';
+import PurchaseMenuCard from 'view/components/adapter/PurchaseMenuCard';
 import Modal from 'react-native-modal';
 import { Actions } from 'react-native-router-flux';
 

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, FlatList, Image } from 'react-native';
 import { em } from 'view/common/const';
-import CommonText from 'view/components/CommonText';
-import TitleText from 'view/components/TitleText';
-import CommonButton from 'view/components/CommonButton';
+import CommonText from 'view/components/text/CommonText';
+import TitleText from 'view/components/text/TitleText';
+import CommonButton from 'view/components/button/CommonButton';
 import CheckBox from 'view/components/CheckBox';
 
 import Modal from 'react-native-modal';
@@ -76,7 +76,8 @@ const styles = {
     textDecorationStyle: 'solid',
     width: 260 * em,
     textAlign: 'left',
+    fontFamily: 'Lato-Bold',
   },
-  itemText: { width: 260 * em, textAlign: 'left' },
+  itemText: { width: 260 * em, textAlign: 'left', fontFamily: 'Lato-Bold' },
 };
 export default FriendParticipatePopupScreen;

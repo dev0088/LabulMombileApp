@@ -1,58 +1,40 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { View, TouchableOpacity, Image, ScrollView } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import { em } from 'view/common/const';
-import SwitchButton from 'view/components/SwitchButton';
-import CommonText from 'view/components/CommonText';
-import CommentText from 'view/components/CommentText';
+import SwitchButton from 'view/components/button/SwitchButton';
+import CommonText from 'view/components/text/CommonText';
+import CommentText from 'view/components/text/CommentText';
 import CircleDraw from 'view/components/CircleDraw';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import MyInviationsTabScreen from './MyInviationsTabScreen';
 import { navigationRef } from 'view/screens/main/RootNavigation';
 import MyNeedsTabScreen from './MyNeedsTabScreen';
-
+import { NotificationOutline } from 'assets/svg/icons';
+import { NavigationContainer } from '@react-navigation/native';
+import CommonTabBar from 'view/components/CommonTabBar';
 const Tab = createMaterialTopTabNavigator();
 
 const MyActivityHomeScreen = (props) => {
-  const [activeTab, setActiveTab] = React.useState(1);
-
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.containerTxtBtn}>
-          <TouchableOpacity onPress={() => navigationRef.current.navigate('MyNotifictions')}>
-            <Image source={require('assets/images/ic_notification.png')} style={styles.notificationBtn} />
-          </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigationRef.current.navigate('MyNotifictions')}>
+        <View style={styles.notificationBtn}>
+          <NotificationOutline width={19 * em} height={22 * em} />
         </View>
-        <TitleText text={'Mon activité'} style={styles.title} />
-        <SwitchButton
-          onValueChange={(val) => {
-            setActiveTab(val);
-            console.log(props.navigation);
-            if (val === 1) {
-              props.navigation.jumpTo('Demandes');
-            } else {
-              props.navigation.jumpTo('Invitations');
-            }
-          }}
-          text1="Mes demandes"
-          text2="Mes invitations"
-          switchWidth={264 * em}
-          switchHeight={37 * em}
-          switchdirection="ltr"
-          switchBorderColor="transparent"
-          switchBackgroundColor="transparent"
-          btnBorderColor="#ffffff"
-          btnBackgroundColor="#40CDDE"
-          fontColor="#6A8596"
-          activeFontColor="#FFFFFF"
-          style={{ marginTop: 6 * em }}
+      </TouchableOpacity>
+      <TitleText text={'Mon activité'} style={styles.title} />
+      <Tab.Navigator tabBar={(props) => <CommonTabBar {...props} />} swipeEnabled={false} initialRouteName="families">
+        <Tab.Screen
+          name="needs"
+          options={{ title: 'Mes demandes', tabColor: '#40CDDE' }}
+          component={MyNeedsTabScreen}
         />
-      </View>
-      <Tab.Navigator tabBar={() => null} swipeEnabled={false}>
-        <Tab.Screen name="Demandes" component={MyNeedsTabScreen} />
-        <Tab.Screen name="Invitations" component={MyInviationsTabScreen} />
+        <Tab.Screen
+          name="invitations"
+          options={{ title: 'Mes invitations', tabColor: '#40CDDE' }}
+          component={MyInviationsTabScreen}
+        />
       </Tab.Navigator>
     </View>
   );
@@ -61,7 +43,7 @@ const MyActivityHomeScreen = (props) => {
 const styles = {
   container: {
     flex: 1,
-    backgroundColor: '#EDF2F5',
+    backgroundColor: '#FFFFFF',
   },
   header: {
     height: 181 * em,
@@ -70,23 +52,17 @@ const styles = {
     marginTop: 0,
     marginBottom: 10 * em,
   },
-  notificationBtn: {
-    width: 19 * em,
-    height: 22 * em,
-    alignSelf: 'flex-end',
-    marginRight: 30 * em,
-    marginTop: 39 * em,
-  },
   title: {
     fontSize: 34 * em,
     lineHeight: 38 * em,
     height: 40 * em,
-    fontWeight: 'bold',
     textAlign: 'left',
     marginLeft: 30 * em,
     marginTop: 20 * em,
     marginBottom: 14 * em,
   },
+
+  notificationBtn: { alignSelf: 'flex-end', marginRight: 30 * em, marginTop: 39 * em },
 };
 
 export default MyActivityHomeScreen;

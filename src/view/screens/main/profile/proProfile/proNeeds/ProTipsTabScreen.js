@@ -2,13 +2,8 @@ import React from 'react';
 import { View } from 'react-native';
 import { em, hm } from 'view/common/const';
 import { FlatList } from 'react-native';
-import ProfileCommonNeedCard from 'view/components/ProfileCommonNeedCard';
+import ProfileCommonNeedCard from 'view/components/adapter/ProfileCommonNeedCard';
 import { Actions } from 'react-native-router-flux';
-import NeedService from 'model/service/NeedService';
-import NeedServiceType from 'model/service/NeedServiceType';
-import OrganizeService from 'model/service/OrganizeService';
-import User from 'model/User';
-import OrganizeServiceType from 'model/service/OrganizeServiceType';
 import SellServiceType from 'model/service/SellServiceType';
 import SellService from 'model/service/SellService';
 

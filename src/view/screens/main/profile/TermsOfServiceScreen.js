@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, Image, ScrollView } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import { em } from 'view/common/const';
 import Accordion from 'react-native-collapsible/Accordion';
-import CommentText from 'view/components/CommentText';
-import FriendCommonHeader from 'view/components/FriendCommonHeader';
-import CommonHeader from 'view/components/CommonHeader';
+import CommentText from 'view/components/text/CommentText';
+import CommonHeader from 'view/components/header/CommonHeader';
 import { RightArrow, LeftArrow } from 'assets/svg/icons';
 
 const sections = [
@@ -59,7 +58,7 @@ const TermsOfServiceScreen = () => {
   };
   return (
     <ScrollView style={styles.container}>
-      <CommonHeader dark={true} />
+      <CommonHeader dark style={{ martinTop: 27 * em }} />
       <TitleText text="Conditions générales d’utilisation" style={styles.title} />
       <View style={styles.line} />
 

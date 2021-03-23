@@ -4,8 +4,8 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { em } from 'view/common/const';
 import FriendsListScreen from './FriendsListScreen';
 import FriendsMenuScreen from './FriendsMenuScreen';
-import CommonBlueHeader from 'view/components/CommonBlueHeader';
-import SwitchButton from 'view/components/SwitchButton';
+import CommonBlueHeader from 'view/components/header/CommonBlueHeader';
+import SwitchButton from 'view/components/button/SwitchButton';
 import { Actions } from 'react-native-router-flux';
 import { BoxShadow } from 'react-native-shadow';
 

@@ -1,42 +1,44 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, ScrollView, Text, Image, ActionSheetIOS } from 'react-native';
-import TitleText from 'view/components/TitleText';
-import CommentText from 'view/components/CommentText';
+import TitleText from 'view/components/text/TitleText';
+import CommentText from 'view/components/text/CommentText';
 import { em, WIDTH, HEIGHT } from 'view/common/const';
 import { Actions } from 'react-native-router-flux';
 import ProfileCommonAvatar from 'view/components/ProfileCommonAvatar';
-import ProfileCommonCard from 'view/components/ProfileCommonCard';
-import ProfileCommonListItem from 'view/components/ProfileCommonListItem';
-import CommonButton from 'view/components/CommonButton';
+import ProfileCommonCard from 'view/components/adapter/ProfileCommonCard';
+import ProfileCommonListItem from 'view/components/adapter/ProfileCommonListItem';
+import CommonButton from 'view/components/button/CommonButton';
 import AccountChangeMenu from './AccountChangeMenu';
-import {MyNeeds, Circles, Information, Setting} from 'assets/svg/icons'
+import { MyNeeds, Circles, Information, Setting, AddressBlue } from 'assets/svg/icons';
 const originalMyProfile = {
   avatar: '',
-  fullName: 'Mathieu Torin1',
+  fullName: 'Mathieu Torin',
   circles: { families: 0, friends: 0, neighbours: 0 },
   needs: { helps: 0, donations: 0, events: 0 },
 };
+const iconSize = { width: 38 * em, height: 38 * em };
 const ProfileHomeScreen = (props) => {
   const [userProfile] = useState(props.userProfile ? props.userProfile : originalMyProfile);
-  console.log(props.route.params.userProfile)
   return (
     <ScrollView style={styles.scrollView}>
-      <AccountChangeMenu style={styles.dropDown} type="my" visible={(props.route.params.userProfile||props.userProfile) ? true : false} />
-
+      <AccountChangeMenu
+        style={styles.dropDown}
+        type="my"
+        visible={props.route.params.userProfile || props.userProfile ? true : false}
+      />
       <View style={styles.topView}>
         <ProfileCommonAvatar style={styles.avatar} fullName={userProfile.fullName} />
         <TouchableOpacity onPress={() => Actions.profileOverview({ userProfile: userProfile })}>
-          <Text style={styles.txtFullName}>{userProfile.fullName}</Text>
-          <Text style={styles.txtGoToProfile}>Aller sur mon profil</Text>
+          <TitleText style={styles.txtFullName} text={userProfile.fullName} />
+          <CommentText style={styles.txtGoToProfile} text="Aller sur mon profil" />
         </TouchableOpacity>
       </View>
-
       <View style={styles.bottomView}>
         <View style={styles.cardContainer}>
           <ProfileCommonCard
             caption={'Mes demandes'}
             style={styles.cardStyle}
-            icon={MyNeeds({width:38*em, height:38*em,})}
+            icon={MyNeeds(iconSize)}
             onPress={() => {
               Actions.myNeedsHome();
             }}
@@ -44,7 +46,7 @@ const ProfileHomeScreen = (props) => {
           <ProfileCommonCard
             caption={'Mes cercles'}
             style={styles.cardStyle}
-            icon={Circles({width:38*em, height:38*em,})}
+            icon={Circles(iconSize)}
             onPress={() => {
               Actions.myCirclesHome();
             }}
@@ -55,7 +57,7 @@ const ProfileHomeScreen = (props) => {
           <ProfileCommonListItem
             text={'Mes informations'}
             style={styles.listItem}
-            icon={require('assets/images/ic_info.png')}
+            icon={Information(iconSize)}
             onPress={() => {
               Actions.myInformation();
             }}
@@ -64,7 +66,7 @@ const ProfileHomeScreen = (props) => {
           <ProfileCommonListItem
             text={'Mes réglages'}
             style={styles.listItem}
-            icon={require('assets/images/ic_settings.png')}
+            icon={Setting(iconSize)}
             onPress={() => {
               Actions.mySetting();
             }}
@@ -77,7 +79,19 @@ const ProfileHomeScreen = (props) => {
           <ProfileCommonListItem
             text={'Abonnement Premim'}
             subText={'En savoir plus'}
-            icon={require('assets/images/ic_location.png')}
+            icon={
+              <View
+                style={{
+                  width: 38 * em,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  height: 38 * em,
+                  borderRadius: 19 * em,
+                  backgroundColor: 'rgba(115, 152, 253, 0.2)',
+                }}>
+                {AddressBlue({ width: 20 * em, height: 22 * em })}
+              </View>
+            }
             style={styles.listItem}
             onPress={() => {
               Actions.premiumSubscription({ profileType: 'my' });
@@ -95,7 +109,6 @@ const ProfileHomeScreen = (props) => {
               onPress={() => Actions.createAccountMenu()}
             />
           </View>
-
           <View>
             <Image style={styles.imgBg} source={require('assets/images/profie_banner.png')} />
           </View>
@@ -138,7 +151,7 @@ const styles = {
 
   topView: { height: HEIGHT * 0.45, backgroundColor: '#40CDDE', alignItems: 'center' },
   avatar: { marginTop: 89 * em, height: 70 * em, width: 70 * em },
-  txtFullName: { marginTop: 15 * em, fontSize: 20 * em, color: '#FFFFFF', fontWeight: 'bold', textAlign: 'center' },
+  txtFullName: { marginTop: 15 * em, fontSize: 20 * em, color: '#FFFFFF', textAlign: 'center' },
   txtGoToProfile: { marginTop: 5 * em, fontSize: 14 * em, color: '#FFFFFF', textAlign: 'center' },
   scrollView: { width: WIDTH, backgroundColor: '#ffffff' },
   bottomView: {

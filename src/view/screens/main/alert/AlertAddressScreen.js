@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { View, Image, FlatList, Text } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import { View, Image, FlatList } from 'react-native';
+import TitleText from 'view/components/text/TitleText';
 import { em, hm } from 'view/common/const';
-import CommonHeader from 'view/components/CommonHeader';
 import SearchBox from 'view/components/SearchBox';
-import CommentText from 'view/components/CommentText';
-import SearchCommonListItem from 'view/components/SearchCommonListItem';
-import MabulCommonHeader from 'view/components/MabulCommonHeader';
-import MabulNextButton from 'view/components/MabulNextButton';
+import CommentText from 'view/components/text/CommentText';
+import SearchCommonListItem from 'view/components/adapter/SearchCommonListItem';
+import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
+import MabulNextButton from 'view/components/button/MabulNextButton';
 import { Actions } from 'react-native-router-flux';
+import { LocationRed } from 'assets/svg/icons';
 
-const AlertAddressScreen = () => {
+const AlertAddressScreen = (props) => {
   const conceptColor = '#F9547B';
 
   const [searchedUsers, getSearchResult] = useState('');
@@ -20,14 +20,14 @@ const AlertAddressScreen = () => {
   );
   return (
     <View style={styles.container}>
-      <MabulCommonHeader style={styles.header} percent={24} progressBarColor={conceptColor} />
+      <MabulCommonHeader style={styles.header} percent={props.process} progressBarColor={conceptColor} />
       <View style={styles.body}>
         <TitleText text={'Où ?'} style={styles.title} />
 
         <SearchBox
           style={styles.searchBox}
           comment="Rechercher par ville"
-          onChangeText={(text) => {
+          onChangeText={() => {
             getSearchResult([
               {
                 id: 0,
@@ -50,8 +50,8 @@ const AlertAddressScreen = () => {
           }}
         />
         <View style={[styles.location, { display: locationViewVisible }]}>
-          <Image style={styles.locationIcon} source={require('assets/images/ic_map_annotation.png')} />
-          <CommentText text={'Utiliser ma position'} color="#F9547B" />
+          <LocationRed width={16 * em} height={19 * em} />
+          <CommentText text={'Utiliser ma position'} color="#F9547B" style={{ marginLeft: 10 * em }} />
         </View>
 
         <FlatList
@@ -64,7 +64,7 @@ const AlertAddressScreen = () => {
           color={conceptColor}
           style={[styles.btn, { backgroundColor: conceptColor }]}
           text="Suivant"
-          onPress={() => Actions.alertAddNote()}
+          onPress={() => Actions.alertAddNote({ process: 60 })}
         />
       </View>
     </View>
@@ -72,50 +72,15 @@ const AlertAddressScreen = () => {
 };
 
 const styles = {
-  container: {
-    flex: 1,
-    alignItems: 'flex-start',
-    backgroundColor: '#ffffff',
-  },
-  header: {
-    height: '10.3%',
-  },
-  body: {
-    flex: 1,
-    width: '100%',
-    paddingHorizontal: 30 * em,
-    justifyContent: 'space-between',
-  },
+  container: { flex: 1, alignItems: 'flex-start', backgroundColor: '#ffffff' },
+  header: { height: '10.3%' },
+  body: { flex: 1, width: '100%', paddingHorizontal: 30 * em, justifyContent: 'space-between' },
   commonHeader: { marginTop: 27 * em },
-  title: {
-    textAlign: 'left',
-    marginTop: 35 * em,
-    lineHeight: 38 * em,
-  },
+  title: { textAlign: 'left', marginTop: 35 * em, lineHeight: 38 * em },
   searchBox: { marginTop: 35 * em },
-  location: {
-    alignSelf: 'center',
-    marginTop: 15 * em,
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
-  locationIcon: {
-    width: 16 * em,
-    height: 19 * em,
-    resizeMode: 'contain',
-    marginBottom: 5 * em,
-    marginRight: 10 * em,
-  },
-  listItem: {
-    height: 38 * hm,
-    marginTop: 35 * hm,
-  },
-  btn: {
-    width: 163 * em,
-    alignSelf: 'flex-end',
-    marginBottom: 30 * em,
-    backgroundColor: '#38C2FF',
-  },
+  location: { alignSelf: 'center', marginTop: 15 * em, alignItems: 'center', flexDirection: 'row' },
+  listItem: { height: 38 * hm, marginTop: 35 * hm },
+  btn: { width: 163 * em, alignSelf: 'flex-end', marginBottom: 30 * em, backgroundColor: '#38C2FF' },
 };
 
 export default AlertAddressScreen;

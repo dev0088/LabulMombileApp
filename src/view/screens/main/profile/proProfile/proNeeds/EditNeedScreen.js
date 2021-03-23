@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
-import { View, ScrollView, Text, TouchableOpacity, ImageBackground, Image } from 'react-native';
+import { View, ScrollView, ImageBackground, Image } from 'react-native';
 import { em, hexToRGB } from 'view/common/const';
-import ProfileInformationListItem from 'view/components/ProfileInformationListItem';
-import CommonText from 'view/components/CommonText';
-import ProfileCommonHeader from 'view/components/ProfileCommonHeader';
-import ProfileCommonModal from 'view/components/ProfileCommonModal';
-import CommonButton from 'view/components/CommonButton';
-import ProfileCommonAvatar from 'view/components/ProfileCommonAvatar';
-import CommentText from 'view/components/CommentText';
+import ProfileInformationListItem from 'view/components/adapter/ProfileInformationListItem';
+import ProfileCommonHeader from 'view/components/header/ProfileCommonHeader';
+import CommonButton from 'view/components/button/CommonButton';
+import CommentText from 'view/components/text/CommentText';
 import { Actions } from 'react-native-router-flux';
-import Modal from 'react-native-modal';
 
 const updateUserPrfile = {
   avatar: require('assets/images/avatar_curology.png'),
@@ -22,8 +18,8 @@ const updateUserPrfile = {
   presentation:
     'Des soins de la peau personnalisés pour les besoins uniques de votre peau. Maintenant disponible dans un ensemble avec nettoyant et hydratant!',
 };
-const EditNeedScreen = (props) => {
-  const [userProfile, setUserProfileOnChanged] = useState(updateUserPrfile);
+const EditNeedScreen = () => {
+  const [userProfile] = useState(updateUserPrfile);
   return (
     <View>
       <ScrollView style={styles.container}>

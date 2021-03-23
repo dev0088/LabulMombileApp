@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, TouchableOpacity, Image } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import { em } from 'view/common/const';
 import CommonTabBar from 'view/components/CommonTabBar';
 import { navigationRef } from 'view/screens/main/RootNavigation';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import MyCirclesTabScreen from './MyCirclesTabScreen';
-import CommonBackButton from '../../../../components/CommonBackButton';
+import CommonBackButton from 'view/components/button/CommonBackButton';
 import { Actions } from 'react-native-router-flux';
 
 const Tab = createMaterialTopTabNavigator();
@@ -59,7 +59,6 @@ const styles = {
     fontSize: 34 * em,
     lineHeight: 38 * em,
     height: 40 * em,
-    fontWeight: 'bold',
     textAlign: 'left',
     marginLeft: 30 * em,
     marginTop: 20 * em,

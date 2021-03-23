@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { View, FlatList } from 'react-native';
 import { em } from 'view/common/const';
-import CommonText from 'view/components/CommonText';
-import TitleText from 'view/components/TitleText';
+import CommonText from 'view/components/text/CommonText';
+import TitleText from 'view/components/text/TitleText';
 import SearchBox from 'view/components/SearchBox';
-import SearchCommonListItem from 'view/components/SearchCommonListItem';
+import SearchCommonListItem from 'view/components/adapter/SearchCommonListItem';
 import Modal from 'react-native-modal';
 
 const FriendInvitePopupScreen = (props) => {
@@ -84,8 +84,8 @@ const styles = {
   },
   header: { marginRight: 30 * em, marginBottom: 18 * em, marginTop: 25 * em, alignSelf: 'flex-end' },
   body: { marginLeft: 30 * em, marginRight: 30 * em },
-  title: { marginBottom: 17 * em, alignSelf: 'flex-start', fontWeight: 'bold' },
-  searchbox: { marginBottom: 29 * em, paddingTop: 18 * em },
+  title: { marginBottom: 17 * em, alignSelf: 'flex-start' },
+  searchbox: { marginBottom: 29 * em, height: 34 * em },
   listItem: { marginBottom: 35 * em },
 };
 export default FriendInvitePopupScreen;

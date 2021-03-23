@@ -1,17 +1,16 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { em } from 'view/common/const';
+import SmallText from 'view/components/text/SmallText';
 
 const ProfileCommonSpecView = (props) => {
-  return <Text style={[styles.view, props.style]}>{props.text}</Text>;
+  return <SmallText style={[styles.view, props.style]} text={props.text} color="#6A8596" />;
 };
 
 const styles = {
   view: {
-    fontSize: 12 * em,
+    fontFamily: 'Lato-Italic',
     backgroundColor: '#F0F5F7',
     lineHeight: 14 * em,
-    color: '#6A8596',
     paddingVertical: 5 * em,
     paddingHorizontal: 10 * em,
     textAlign: 'center',

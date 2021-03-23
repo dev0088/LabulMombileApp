@@ -1,21 +1,11 @@
-import React, { useState } from 'react';
-import { View, Image } from 'react-native';
+import React from 'react';
+import { View } from 'react-native';
 import { em, hm } from 'view/common/const';
-import CommonText from 'view/components/CommonText';
-import CircleDraw from 'view/components/CircleDraw';
-import CommentText from 'view/components/CommentText';
-import { FlatList, TouchableOpacity } from 'react-native';
-import CommonListItem from 'view/components/CommonListItem';
-import ProfileCommonNeedCard from 'view/components/ProfileCommonNeedCard';
-import ServiceType from 'model/service/ServiceType';
+import { FlatList } from 'react-native';
+import ProfileCommonNeedCard from 'view/components/adapter/ProfileCommonNeedCard';
 import { Actions } from 'react-native-router-flux';
-import NeedService from 'model/service/NeedService';
-import NeedServiceType from 'model/service/NeedServiceType';
-import GiveService from 'model/service/GiveService';
 import SellService from 'model/service/SellService';
 import SellServiceType from 'model/service/SellServiceType';
-import OrganizeService from 'model/service/OrganizeService';
-import User from 'model/User';
 
 const paricipationLists = [
   new SellService(

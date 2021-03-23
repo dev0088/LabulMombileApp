@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { View, ScrollView, Text } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import { View, ScrollView } from 'react-native';
+import TitleText from 'view/components/text/TitleText';
 import { em, WIDTH } from 'view/common/const';
-import CommonText from 'view/components/CommonText';
+import CommonText from 'view/components/text/CommonText';
 import ProfileCommonLabel from 'view/components/ProfileCommonLabel';
-import CommonHeader from 'view/components/CommonHeader';
+import CommonHeader from 'view/components/header/CommonHeader';
 import ProfileCommonAvatar from 'view/components/ProfileCommonAvatar';
 import { Actions } from 'react-native-router-flux';
-import CommentText from 'view/components/CommentText';
+import CommentText from 'view/components/text/CommentText';
 import ProfileCommonSpecView from 'view/components/ProfileCommonSpecView';
+import { Family, Friend, Neighbor } from 'assets/svg/icons';
 
+const iconSize = { width: 48 * em, height: 48 * em };
 const ProfileOverviewScreen = (props) => {
   const [userProfile] = useState(props.userProfile);
   const badgesView = userProfile.badges ? (
@@ -24,7 +26,6 @@ const ProfileOverviewScreen = (props) => {
       <CommonText text={'Crée des demandes pour avoir des badges'} style={styles.requestText} />
     </>
   );
-  console.log(badgesView);
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scrollView}>
@@ -54,24 +55,16 @@ const ProfileOverviewScreen = (props) => {
           <View style={styles.circlesView}>
             <View style={styles.labelView}>
               <ProfileCommonLabel
-                icon={require('assets/images/ic_neighbour.png')}
+                icon={Neighbor(iconSize)}
                 number={userProfile.circles.neighbours}
                 name={'Mes voisins'}
               />
             </View>
             <View style={styles.labelView}>
-              <ProfileCommonLabel
-                icon={require('assets/images/ic_friends.png')}
-                number={userProfile.circles.friends}
-                name={'Mes amis'}
-              />
+              <ProfileCommonLabel icon={Friend(iconSize)} number={userProfile.circles.friends} name={'Mes amis'} />
             </View>
             <View style={styles.labelView}>
-              <ProfileCommonLabel
-                icon={require('assets/images/ic_family.png')}
-                number={userProfile.circles.families}
-                name={'Ma famille'}
-              />
+              <ProfileCommonLabel icon={Family(iconSize)} number={userProfile.circles.families} name={'Ma famille'} />
             </View>
           </View>
         </View>
@@ -121,10 +114,7 @@ const styles = {
     marginTop: 15 * em,
     paddingBottom: 54 * em,
   },
-  noticeText: {
-    marginBottom: 10 * em,
-    fontWeight: 'bold',
-  },
+  noticeText: { fontFamily: 'Lato-Black', marginBottom: 10 * em },
   requestText: { fontSize: 14 * em, marginBottom: 65 * em },
   badgeIcon: {
     width: 60 * em,

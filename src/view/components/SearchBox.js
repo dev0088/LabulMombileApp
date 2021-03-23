@@ -1,26 +1,28 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, Image } from 'react-native';
 import { em } from 'view/common/const';
-
+import { Magnifier, CrossCircle } from 'assets/svg/icons';
+import CommonText from 'view/components/text/CommonText';
 const SearchBox = (props) => {
   const [onFocus, setOnFocus] = useState(false);
 
   if (onFocus) {
     return (
-      <View style={[styles.containerFocusOn, props.style, { paddingTop: 0 }]}>
-        {props.comment && <Text style={styles.commentTextFocusOn}>{props.comment}</Text>}
-        <View style={styles.containerBottom}>
+      <View style={[styles.containerFocusOn, props.style]}>
+        <View style={styles.containerTop}>
+          <View style={styles.imgBtnSearch}>
+            <Magnifier width={20 * em} height={20 * em} />
+          </View>
           <TextInput
+            onFocus={() => setOnFocus(true)}
+            onBlur={() => setOnFocus(false)}
             style={styles.textInput}
             onChangeText={(text) => {
               props.onChangeText(text);
             }}
-            onFocus={() => setOnFocus(true)}
-            onBlur={() => setOnFocus(false)}
+            selectionColor="#40CDDE"
           />
-          <TouchableOpacity>
-            <Image style={styles.imgBtnDelete} source={require('assets/images/ic_close.png')} />
-          </TouchableOpacity>
+          <CrossCircle width={17 * em} height={17 * em} />
         </View>
       </View>
     );
@@ -28,8 +30,10 @@ const SearchBox = (props) => {
     return (
       <View style={[styles.containerFocusOff, props.style]}>
         <View style={styles.containerTop}>
-          <Image style={styles.imgBtnSearch} source={require('assets/images/ic_close.png')} />
-          <Text style={styles.commentTextFocusOff}>Rechercher un contact</Text>
+          <View style={styles.imgBtnSearch}>
+            <Magnifier width={20 * em} height={20 * em} />
+          </View>
+          <CommonText color="#A0AEB8" text="Rechercher un contact" />
         </View>
         <View>
           <TextInput onFocus={() => setOnFocus(true)} onBlur={() => setOnFocus(false)} />
@@ -41,54 +45,18 @@ const SearchBox = (props) => {
 
 export default SearchBox;
 const styles = {
-  containerFocusOn: {
-    height: 52 * em,
-    flexDirection: 'column',
-    borderBottomColor: '#41D0E2',
-    borderBottomWidth: 2 * em,
-  },
-  containerBottom: {
-    width: '100%',
-    height: 18 * em,
-    flexDirection: 'row',
-    marginTop: 2 * em,
-  },
-  containerFocusOff: {
-    borderBottomColor: '#BFCDDB',
-    height: 52 * em,
-    paddingTop: 8 * em,
-    borderBottomWidth: 1 * em,
-    fontFamily: 'Lato-Regular',
-  },
-  commentTextFocusOn: {
-    fontSize: 12 * em,
-    color: '#A0AEB8',
-    fontFamily: 'Lato-Regular',
-  },
-  commentTextFocusOff: {
-    fontSize: 16 * em,
-    color: '#A0AEB8',
-  },
-  containerTop: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
+  containerFocusOn: { flexDirection: 'column', borderBottomColor: '#41D0E2', borderBottomWidth: 2 * em },
+  containerFocusOff: { borderBottomColor: '#BFCDDB', borderBottomWidth: 1 * em, justifyContent: 'flex-start' },
+  containerTop: { flexDirection: 'row', alignItems: 'center' },
   textInput: {
-    color: '#1E2D60',
-    fontSize: 12 * em,
+    color: '#A0AEB8',
+    fontSize: 16 * em,
     paddingVertical: 2,
     paddingHorizontal: 0,
     flex: 1,
     selectionColor: '',
     fontFamily: 'Lato-Regular',
   },
-  imgBtnDelete: {
-    width: 17 * em,
-    height: 17 * em,
-  },
-  imgBtnSearch: {
-    width: 20 * em,
-    height: 20 * em,
-    marginRight: 15 * em,
-  },
+
+  imgBtnSearch: { marginRight: 15 * em },
 };

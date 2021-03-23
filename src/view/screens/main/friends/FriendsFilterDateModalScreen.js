@@ -1,11 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import { em, WIDTH, hm } from 'view/common/const';
-import CommonBackButton from 'view/components/CommonBackButton';
-import CommentText from 'view/components/CommentText';
+import CommonBackButton from 'view/components/button/CommonBackButton';
 import { FlatList } from 'react-native-gesture-handler';
-import CommonButton from 'view/components/CommonButton';
+import CommonButton from 'view/components/button/CommonButton';
 import CommonCheckBox from 'view/components/CommonCheckBox';
 
 import Modal from 'react-native-modal';

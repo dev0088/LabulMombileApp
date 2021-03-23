@@ -1,11 +1,12 @@
 import React from 'react';
 import { em } from 'view/common/const';
-import { View, Image } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import { View } from 'react-native';
+import TitleText from 'view/components/text/TitleText';
 import CommonTextInput from 'view/components/CommonTextInput';
-import CommonButton from 'view/components/CommonButton';
+import CommonButton from 'view/components/button/CommonButton';
 import { Actions } from 'react-native-router-flux';
-import AccountCommonHeader from 'view/components/AccountCommonHeader';
+import AccountCommonHeader from 'view/components/header/AccountCommonHeader';
+import { Email } from 'assets/svg/icons';
 
 const RegisterEmailScreen = () => {
   return (
@@ -13,12 +14,14 @@ const RegisterEmailScreen = () => {
       <AccountCommonHeader style={styles.header} />
       <View style={styles.popupView}>
         <View style={styles.popupTopView}>
-          <Image source={require('assets/images/ic_email.png')} style={styles.icon} />
+          <View style={styles.icon}>
+            <Email width={30 * em} heigh={27 * em} />
+          </View>
           <TitleText text={'Mon Email'} style={styles.titleText} />
           <CommonTextInput text={'Saisis to email'} isPasswordInput={false} style={styles.commonInput} />
         </View>
         <View style={styles.popupBottomView}>
-          <CommonButton text={'Suivant'} onPress={() => Actions.registerName()} style={styles.btnNext} />
+          <CommonButton text={'Suivant'} onPress={() => Actions.registerFamilyName()} style={styles.btnNext} />
         </View>
       </View>
     </View>
@@ -26,20 +29,9 @@ const RegisterEmailScreen = () => {
 };
 
 const styles = {
-  container: {
-    flex: 1,
-    backgroundColor: '#40CDDE',
-    alignItems: 'center',
-  },
-  header: {
-    height: '12%',
-  },
-  icon: {
-    width: 30 * em,
-    height: 27 * em,
-    marginTop: 40 * em,
-    marginBottom: 13 * em,
-  },
+  container: { flex: 1, backgroundColor: '#40CDDE', alignItems: 'center' },
+  header: { height: '12%' },
+  icon: { marginTop: 40 * em, marginBottom: 13 * em },
   popupView: {
     flex: 1,
     height: '88%',
@@ -50,20 +42,10 @@ const styles = {
     borderTopRightRadius: 28 * em,
     justifyContent: 'space-between',
   },
-  popupTopView: {
-    alignItems: 'center',
-    width: '80%',
-  },
-  titleText: {
-    marginBottom: 35 * em,
-  },
-  btnNext: {
-    marginBottom: 30 * em,
-  },
-  commonInput: {
-    width: '100%',
-    height: 52 * em,
-  },
+  popupTopView: { alignItems: 'center', width: '80%' },
+  titleText: { marginBottom: 35 * em },
+  btnNext: { backgroundColor: 'rgba(64, 205, 222, 0.5)', marginBottom: 30 * em },
+  commonInput: { width: '100%', height: 52 * em },
 };
 
 export default RegisterEmailScreen;

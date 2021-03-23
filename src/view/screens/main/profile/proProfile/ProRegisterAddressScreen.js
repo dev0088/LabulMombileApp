@@ -1,12 +1,13 @@
 import React from 'react';
 import { em } from 'view/common/const';
 import { View, Image } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import CommonTextInput from 'view/components/CommonTextInput';
-import CommonButton from 'view/components/CommonButton';
+import CommonButton from 'view/components/button/CommonButton';
 import { Actions } from 'react-native-router-flux';
-import CommonText from 'view/components/CommonText';
-import AccountCommonHeader from 'view/components/AccountCommonHeader';
+import CommonText from 'view/components/text/CommonText';
+import AccountCommonHeader from 'view/components/header/AccountCommonHeader';
+import { AddressBlue } from 'assets/svg/icons';
 
 const ProRegisterAddressScreen = () => {
   return (
@@ -14,7 +15,7 @@ const ProRegisterAddressScreen = () => {
       <AccountCommonHeader style={styles.header} />
       <View style={styles.popupView}>
         <View style={styles.popupTopView}>
-          <Image source={require('assets/images/ic_location_blue.png')} style={styles.icon} />
+          <AddressBlue width={21 * em} height={25.5 * em} />
           <TitleText text={'Mon adresse'} style={styles.titleText} />
           <CommonTextInput text={'Saisis ton adresse complète'} isPasswordInput={false} style={styles.commonInput} />
           <View style={styles.viewText}>
@@ -52,13 +53,8 @@ const styles = {
     borderTopRightRadius: 28 * em,
     justifyContent: 'space-between',
   },
-  popupTopView: {
-    alignItems: 'center',
-    width: '80%',
-  },
-  titleText: {
-    marginBottom: 35 * em,
-  },
+  popupTopView: { paddingTop: 39 * em, alignItems: 'center', width: '80%' },
+  titleText: { marginTop: 15.5 * em, marginBottom: 35 * em },
   btnNext: { backgroundColor: '#7398FD', marginBottom: 30 * em },
   viewText: {
     marginTop: 25 * em,

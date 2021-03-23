@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Image } from 'react-native';
 import { em, hm } from 'view/common/const';
 import { FlatList } from 'react-native';
-import CommonListItem from 'view/components/CommonListItem';
+import CommonListItem from 'view/components/adapter/CommonListItem';
 import { Actions } from 'react-native-router-flux';
 
 const alertList = [{ name: 'Alerte travaux', comment: 'Route de Mare Gaillard Guadeloupe' }];

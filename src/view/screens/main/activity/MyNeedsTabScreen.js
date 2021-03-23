@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { View, Image } from 'react-native';
 import { em, hm } from 'view/common/const';
-import CommonText from 'view/components/CommonText';
+import CommonText from 'view/components/text/CommonText';
 import CircleDraw from 'view/components/CircleDraw';
-import CommentText from 'view/components/CommentText';
+import CommentText from 'view/components/text/CommentText';
 import { FlatList, TouchableOpacity } from 'react-native';
-import CommonListItem from 'view/components/CommonListItem';
+import CommonListItem from 'view/components/adapter/CommonListItem';
 import AvatarWithBadge from 'view/components/AvatarWithBadge';
 import { Actions } from 'react-native-router-flux';
-
+import { MessageBackground, MessageGray } from 'assets/svg/icons';
 const needsUsers = [
   {
     id: 0,
@@ -45,17 +45,16 @@ const MyNeedsTabScreen = () => {
   const [isEmpty, setIsEmpty] = useState(true);
   const emptyView = (
     <TouchableOpacity style={styles.emptyView} onPress={() => setIsEmpty(!isEmpty)}>
-      <CircleDraw
-        radius={17.31 * em}
-        color="#A0AEB8"
-        style={{ opacity: 0.4, position: 'absolute', left: 103.85 * em }}
-      />
-      <CircleDraw
-        radius={8.31 * em}
-        color="#A0AEB8"
-        style={{ opacity: 0.4, position: 'absolute', top: 17.31 * em, left: 190.35 * em }}
-      />
-      <Image style={styles.msgIcon} />
+      <View style={{ position: 'absolute', left: 103.85 * em }}>
+        <MessageBackground width={17.31 * em} height={17.31 * em} />
+      </View>
+      <View style={{ position: 'absolute', top: 17.31 * em, left: 190.35 * em, transform: [{ rotate: '270deg' }] }}>
+        <MessageBackground width={8.31 * em} height={8.31 * em} />
+      </View>
+
+      <View style={styles.msgIcon}>
+        <MessageGray width={37 * em} height={37 * em} />
+      </View>
       <CommonText text={'Tu n’as pas de messages'} color={'#6A8596'} style={styles.msgTxt} />
       <CommentText
         text={'Parle que si tu participes dans une demande sur Labul, la messagerie est dédiée qu’au demandes'}
@@ -92,38 +91,29 @@ const MyNeedsTabScreen = () => {
           </View>
         )
       }
-      onPress={() => Actions.activityMessage()}
+      onPress={() => Actions.activityMessage({ activityType: 'needs', user: item })}
     />
   );
   const listView = <FlatList data={needsUsers} renderItem={renderFlatList} keyExtractor={(i) => i.id} />;
-  return <View style={styles.container}>{isEmpty ? emptyView : listView}</View>;
+  return (
+    <View style={styles.container}>
+      <View style={styles.view}>{isEmpty ? emptyView : listView}</View>
+    </View>
+  );
 };
 
 const styles = {
-  container: {
-    flex: 1,
-    alignItems: 'flex-start',
-    backgroundColor: '#ffffff',
-    paddingHorizontal: 30 * em,
-    paddingTop: 25 * hm,
-  },
-
+  container: { flex: 1, alignItems: 'flex-start', backgroundColor: '#F0F5F7', paddingTop: 10 * hm },
+  view: { flex: 1, backgroundColor: '#ffff', width: '100%', paddingTop: 25 * em, paddingHorizontal: 30 * em },
   emptyView: {
     marginTop: 74 * hm,
     width: 315 * em,
     height: 148.15 * hm,
     alignSelf: 'center',
   },
-  msgIcon: {
-    width: 37 * em,
-    height: 37 * hm,
-    backgroundColor: '#A0AEB8',
-    opacity: 0.4,
-    marginTop: 13.15 * em,
-    alignSelf: 'center',
-    borderRadius: 19.5 * em,
-  },
+  msgIcon: { marginTop: 13.15 * em, alignSelf: 'center' },
   msgTxt: {
+    fontFamily: 'Lato-Black',
     marginTop: 15 * em,
     textAlign: 'center',
     fontWeight: 'bold',
@@ -141,7 +131,7 @@ const styles = {
     marginBottom: 35 * em,
     width: '100%',
   },
-  listItemUserName: { color: '#1E2D60', lineHeight: 21 * hm, fontWeight: 'bold' },
+  listItemUserName: { color: '#1E2D60', lineHeight: 21 * hm, fontFamily: 'Lato-Black' },
   listItemComment: { color: '#A0AEB8', lineHeight: 18 * hm },
   listItemDate: { color: '#A0AEB8', fontSize: 13 * em, textAlign: 'right' },
   listItemLastText: { marginTop: 6 * hm, marginLeft: 55 * em, textAlign: 'left' },

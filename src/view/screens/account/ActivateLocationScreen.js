@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { em } from 'view/common/const';
-import CommonButton from 'view/components/CommonButton';
-import CommonText from 'view/components/CommonText';
-import TitleText from 'view/components/TitleText';
+import CommonButton from 'view/components/button/CommonButton';
+import CommonText from 'view/components/text/CommonText';
+import TitleText from 'view/components/text/TitleText';
 import { Actions } from 'react-native-router-flux';
-import CommentText from 'view/components/CommentText';
+import CommentText from 'view/components/text/CommentText';
 
 const ActivateLocationScreen = () => {
   return (
@@ -41,14 +41,14 @@ const styles = {
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#fafaff',
+    backgroundColor: '#F0F5F7',
   },
   behindImage: { flex: 0.45, resizeMode: 'contain' },
   popupView: {
     flex: 0.55,
     backgroundColor: '#ffffff',
-    borderTopStartRadius: 25 * em,
-    borderTopEndRadius: 25 * em,
+    borderTopStartRadius: 28 * em,
+    borderTopEndRadius: 28 * em,
     marginTop: 10 * em,
     width: '100%',
     alignItems: 'center',

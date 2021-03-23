@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { em, HEIGHT, WIDTH } from 'view/common/const';
-import CommonButton from 'view/components/CommonButton';
-import CommonText from 'view/components/CommonText';
+import CommonButton from 'view/components/button/CommonButton';
+import CommonText from 'view/components/text/CommonText';
 import { Actions } from 'react-native-router-flux';
-import CommentText from 'view/components/CommentText';
+import CommentText from 'view/components/text/CommentText';
 
 const ActivityDialScreen = () => {
   return (

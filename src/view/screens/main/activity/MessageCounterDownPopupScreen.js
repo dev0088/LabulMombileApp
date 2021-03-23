@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text } from 'react-native';
 import { em, HEIGHT, hm } from 'view/common/const';
-import CommonButton from 'view/components/CommonButton';
-import CommonText from 'view/components/CommonText';
+import CommonButton from 'view/components/button/CommonButton';
+import CommonText from 'view/components/text/CommonText';
 import Modal from 'react-native-modal';
 import ClockDraw from 'view/components/ClockDraw';
 

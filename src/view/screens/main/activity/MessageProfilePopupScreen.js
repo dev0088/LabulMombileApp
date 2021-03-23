@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
-import { View, FlatList, Image } from 'react-native';
+import React from 'react';
+import { View, Image } from 'react-native';
 import { em } from 'view/common/const';
-import CommonText from 'view/components/CommonText';
-import TitleText from 'view/components/TitleText';
-import SearchBox from 'view/components/SearchBox';
-import SearchCommonListItem from 'view/components/SearchCommonListItem';
+import CommonText from 'view/components/text/CommonText';
 import Modal from 'react-native-modal';
-import CommonListItem from 'view/components/CommonListItem';
-import CommonButton from 'view/components/CommonButton';
-
+import CommonListItem from 'view/components/adapter/CommonListItem';
+import CommonButton from 'view/components/button/CommonButton';
+import { Delete, ReportProblem, Block } from 'assets/svg/icons';
 const MessageProfilePopupScreen = (props) => {
   return (
     <Modal
@@ -25,56 +22,34 @@ const MessageProfilePopupScreen = (props) => {
           style={styles.listItem}
           title="Supprimer conversation"
           titleStyle={{ color: '#6A8596' }}
-          rightView={
-            <Image
-              style={{ width: 18 * em, height: 20 * em, resizeMode: 'contain' }}
-              source={require('assets/images/img_close.png')}
-            />
-          }
+          rightView={Delete({ width: 18 * em, height: 20 * em })}
         />
         <CommonListItem
           style={styles.listItem}
           title="Signaler profil"
           titleStyle={{ color: '#F9547B' }}
-          rightView={
-            <Image
-              style={{ width: 20 * em, height: 20 * em, resizeMode: 'contain' }}
-              source={require('assets/images/img_close.png')}
-            />
-          }
+          rightView={ReportProblem({ width: 20 * em, height: 20 * em })}
         />
         <CommonListItem
           style={styles.listItem}
           title="Bloquer"
           titleStyle={{ color: '#F9547B' }}
-          rightView={
-            <Image
-              style={{ width: 20 * em, height: 20 * em, resizeMode: 'contain' }}
-              source={require('assets/images/img_close.png')}
-            />
-          }
+          rightView={Block({ width: 20 * em, height: 20 * em })}
         />
       </View>
-      <CommonButton text="Annuler" style={styles.cancelBtn} onPress={() => props.onPress()} />
+      <CommonButton
+        text="Annuler"
+        style={styles.cancelBtn}
+        textStyle={{ color: '#1E2D60' }}
+        onPress={() => props.onPress()}
+      />
     </Modal>
   );
 };
 const styles = {
-  container: {
-    margin: 0,
-    flex: 1,
-    justifyContent: 'flex-end',
-  },
-  avatar: {
-    width: 54 * em,
-    height: 54 * em,
-    marginTop: 29 * em,
-  },
-  userName: {
-    color: '#1E2D60',
-    marginBottom: 23 * em,
-    marginTop: 10 * em,
-  },
+  container: { margin: 0, flex: 1, justifyContent: 'flex-end' },
+  avatar: { width: 54 * em, height: 54 * em, marginTop: 29 * em },
+  userName: { fontFamily: 'Lato-Bold', color: '#1E2D60', marginBottom: 23 * em, marginTop: 10 * em },
 
   body: {
     paddingHorizontal: 25 * em,
@@ -92,13 +67,6 @@ const styles = {
     borderColor: '#B3C6CF33',
     width: '100%',
   },
-  cancelBtn: {
-    marginTop: 35 * em,
-    backgroundColor: '#ffffff',
-    color: '#1E2D60',
-    alignSelf: 'center',
-    width: 315 * em,
-    marginBottom: 23 * em,
-  },
+  cancelBtn: { marginTop: 35 * em, backgroundColor: '#ffffff', alignSelf: 'center', marginBottom: 23 * em },
 };
 export default MessageProfilePopupScreen;

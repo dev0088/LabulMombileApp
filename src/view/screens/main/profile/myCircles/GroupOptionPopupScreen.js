@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 import { em } from 'view/common/const';
-import CommonText from 'view/components/CommonText';
+import CommonText from 'view/components/text/CommonText';
 import Modal from 'react-native-modal';
-import CommonListItem from 'view/components/CommonListItem';
-import CommonButton from 'view/components/CommonButton';
+import CommonListItem from 'view/components/adapter/CommonListItem';
+import CommonButton from 'view/components/button/CommonButton';
 import { DeleteRed } from 'assets/svg/icons';
 const GroupOptionPopupScreen = (props) => {
   return (
@@ -50,7 +50,7 @@ const GroupOptionPopupScreen = (props) => {
 const styles = {
   container: { margin: 0, flex: 1, justifyContent: 'flex-end' },
   avatar: { width: 54 * em, height: 54 * em, marginTop: 29 * em },
-  userName: { color: '#1E2D60', marginBottom: 5 * em, marginTop: 5 * em },
+  userName: { color: '#1E2D60', marginBottom: 5 * em, marginTop: 5 * em, fontFamily: 'Lato-Black' },
   body: {
     paddingHorizontal: 25 * em,
     paddingBotom: 12 * em,

@@ -1,11 +1,19 @@
 import React from 'react';
 import { em, hexToRGB } from 'view/common/const';
 import { View, Image } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import CommonTextInput from 'view/components/CommonTextInput';
-import CommonButton from 'view/components/CommonButton';
+import CommonButton from 'view/components/button/CommonButton';
 import { Actions } from 'react-native-router-flux';
-import AccountCommonHeader from 'view/components/AccountCommonHeader';
+import AccountCommonHeader from 'view/components/header/AccountCommonHeader';
+import { FamilyGroup, NeigborGroup, FriendGroup } from 'assets/svg/icons';
+const addIconSize = { width: 42 * em, height: 30 * em };
+
+const themeButton = {
+  families: FamilyGroup(addIconSize),
+  friends: NeigborGroup(addIconSize),
+  neighbours: FriendGroup(addIconSize),
+};
 
 const NameGroupScreen = (props) => {
   return (
@@ -13,7 +21,7 @@ const NameGroupScreen = (props) => {
       <AccountCommonHeader style={styles.header} />
       <View style={styles.popupView}>
         <View style={styles.popupTopView}>
-          <Image source={require('assets/images/ic_email_blue.png')} style={styles.icon} />
+          <View style={styles.icon}>{themeButton.friends}</View>
           <TitleText text={'Nom du groupe'} style={styles.titleText} />
           <CommonTextInput text={'Donne un nom à ton groupe'} isPasswordInput={false} style={styles.commonInput} />
         </View>

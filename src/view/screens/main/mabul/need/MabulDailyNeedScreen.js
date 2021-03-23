@@ -1,10 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
-import TitleText from 'view/components/TitleText';
+import TitleText from 'view/components/text/TitleText';
 import { em, HEIGHT, WIDTH } from 'view/common/const';
 import { FlatList } from 'react-native';
-import MabulCommonListItem from 'view/components/MabulCommonListItem';
-import MabulCommonHeader from 'view/components/MabulCommonHeader';
+import MabulCommonListItem from 'view/components/adapter/MabulCommonListItem';
+import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
 import { Actions } from 'react-native-router-flux';
 import {
   HouseWork,

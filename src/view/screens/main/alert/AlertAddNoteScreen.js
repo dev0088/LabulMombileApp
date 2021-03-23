@@ -1,22 +1,29 @@
 import React from 'react';
-import { View, Image } from 'react-native';
-import TitleText from 'view/components/TitleText';
-import { em, HEIGHT, WIDTH, mabulColors } from 'view/common/const';
-import CommentText from 'view/components/CommentText';
-import MabulCommonHeader from 'view/components/MabulCommonHeader';
-import MabulCommonListItem from 'view/components/MabulCommonListItem';
+import { View } from 'react-native';
+import TitleText from 'view/components/text/TitleText';
+import { em } from 'view/common/const';
+import CommentText from 'view/components/text/CommentText';
+import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
 import { Actions } from 'react-native-router-flux';
-import MabulNextButton from 'view/components/MabulNextButton';
-import CommonListItem from 'view/components/CommonListItem';
+import MabulNextButton from 'view/components/button/MabulNextButton';
+import CommonListItem from 'view/components/adapter/CommonListItem';
+import { NoteInlineRed } from 'assets/svg/icons';
 
 const AlertAddNoteScreen = (props) => {
   const conceptColor = '#F9547B';
   var iconEdit = (
-    <Image style={[styles.icon, { tintColor: conceptColor }]} source={require('assets/images/ic_edit.png')} />
+    <View style={{ marginRight: 19 * em }}>
+      <NoteInlineRed width={20 * em} height={22 * em} />
+    </View>
   );
   return (
     <View style={styles.container}>
-      <MabulCommonHeader style={styles.header} percent={24} isNoBackBtn={true} progressBarColor={conceptColor} />
+      <MabulCommonHeader
+        style={styles.header}
+        percent={props.process}
+        isNoBackBtn={true}
+        progressBarColor={conceptColor}
+      />
       <View style={styles.body}>
         <View>
           <TitleText text="Ajoute une note" style={styles.title} />
@@ -35,7 +42,11 @@ const AlertAddNoteScreen = (props) => {
           />
           <View style={styles.line} />
         </View>
-        <MabulNextButton color={conceptColor} style={styles.nextBtn} onPress={() => Actions.alertShare()} />
+        <MabulNextButton
+          color={conceptColor}
+          style={styles.nextBtn}
+          onPress={() => Actions.alertShare({ process: 94 })}
+        />
       </View>
     </View>
   );
