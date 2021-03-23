@@ -39,6 +39,7 @@ const styles = {
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
+    marginTop: 16 * em,
   },
   header: {
     height: '10.3%',

@@ -148,7 +148,7 @@ const CalendarHomeScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <TitleText text="Mon calendrier" textAlign="left" />
+        <TitleText text="Mon calendrier" textAlign="left" style={styles.titleText} />
       </View>
       <View style={styles.calendarContainer}>
         {showCalendarStrip && (
@@ -220,6 +220,7 @@ const styles = {
     flex: 1,
   },
   titleContainer: { paddingLeft: 30 * em, paddingTop: 30 * em, paddingBottom: 36 * em, backgroundColor: '#fff' },
+  titleText: { marginTop: 16 * em },
   calendarContainer: {
     alignItems: 'center',
     backgroundColor: '#ffffff',

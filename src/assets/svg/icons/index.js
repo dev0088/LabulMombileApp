@@ -126,7 +126,8 @@ import TabPlus from 'assets/svg/icons/navigation/TabPlus.svg';
 
 export { TabPlus, TabCalendarOff, TabCalendarOn, TabCardOff, TabCardOn, TabMessageOff, TabMessageOn };
 
-export {EmailBlue,
+export {
+  EmailBlue,
   MobileBlue,
   Mobile,
   Email,
@@ -223,7 +224,10 @@ import Events from 'assets/svg/icons/profile/Events.svg';
 import Tips from 'assets/svg/icons/profile/Tips.svg';
 import Promotion from 'assets/svg/icons/profile/Promotion.svg';
 
-export {Promotion,Tips,Events,
+export {
+  Promotion,
+  Tips,
+  Events,
   EnterpriseInner,
   AssociationInner,
   InstitutionInner,
@@ -238,23 +242,7 @@ export {Promotion,Tips,Events,
   Institution,
 };
 
-import AddPhotoBlue from 'assets/svg/icons/post/AddPhotoBlue.svg';
-import AddPhotoGreen from 'assets/svg/icons/post/AddPhotoGreen.svg';
-
-export {
-  ProAvatarBg,
-  AvatarBg,
-  Setting,
-  MyNeeds,
-  Circles,
-  Information,
-  ProNeeds,
-  AddPhotoBlue,
-  AddPhotoGreen,
-  AddGroup,
-  DeleteRed,
-  ProAddCover,
-};
+export { ProAvatarBg, AvatarBg, Setting, MyNeeds, Circles, Information, ProNeeds, AddGroup, DeleteRed, ProAddCover };
 export { NextIcon, PrevIcon, LocationPink, Alert };
 export {
   ComputerIcon,
@@ -331,8 +319,25 @@ import Document from 'assets/svg/icons/post/Document.svg';
 import Document1 from 'assets/svg/icons/post/Document1.svg';
 import Document2 from 'assets/svg/icons/post/Document2.svg';
 import Document3 from 'assets/svg/icons/post/Document3.svg';
+import AddPhotoBlue from 'assets/svg/icons/post/AddPhotoBlue.svg';
+import AddPhotoGreen from 'assets/svg/icons/post/AddPhotoGreen.svg';
+import AddPhotoPurple from 'assets/svg/icons/post/AddPhotoPurple.svg';
+import AddPhotoYellow from 'assets/svg/icons/post/AddPhotoYellow.svg';
 
-export { Edit, Edit1, Edit2, Edit3, Document, Document1, Document2, Document3 };
+export {
+  Edit,
+  Edit1,
+  Edit2,
+  Edit3,
+  Document,
+  Document1,
+  Document2,
+  Document3,
+  AddPhotoBlue,
+  AddPhotoGreen,
+  AddPhotoPurple,
+  AddPhotoYellow,
+};
 
 import Aliments from 'assets/svg/icons/category/Aliments.svg';
 import Education from 'assets/svg/icons/category/Education.svg';

@@ -15,7 +15,7 @@ const needItems = [
     subName: 'Enfants/ Soutien scolaire/Aide aux personnes âgées/ Animaux de compagnie/ Informatique…',
     icon: NeedFamily(iconSize),
     onPress: () => {
-      Actions.mabulFamilyNeed({process:15});
+      Actions.mabulFamilyNeed({ process: 15 });
     },
   },
   {
@@ -24,7 +24,7 @@ const needItems = [
     subName: 'Maison/ Livraison/ Repas/ Repassage/ Achats de Courses/ Transport/ Co-voiturage/ Soins…',
     icon: NeedDaily(iconSize),
     onPress: () => {
-      Actions.mabulDailyNeed({process:15});
+      Actions.mabulDailyNeed({ process: 15 });
     },
   },
 ];
@@ -47,7 +47,7 @@ const MabulNeedSortScreen = (props) => {
         progressBarColor={'#38C2FF'}
       />
       <View style={styles.body}>
-        <TitleText text={'J’ai besoin '+props.title} style={styles.title} />
+        <TitleText text={'J’ai besoin ' + props.title} style={styles.title} />
         <View style={styles.popView}>
           <FlatList data={needItems} renderItem={renderFlatList} keyExtractor={(i) => i.id} />
         </View>
@@ -60,6 +60,7 @@ const styles = {
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
+    marginTop: 16 * em,
   },
   header: {
     height: '10.3%',

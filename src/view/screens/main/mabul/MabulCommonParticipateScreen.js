@@ -26,8 +26,7 @@ const MabulCommonParticipateScreen = (props) => {
             if (props.mabulService === 'sell') {
               Actions.mabulCommonAddPhoto({ mabulService: props.mabulService });
             } else {
-              Actions.mabulCommonShare({ mabulService: props.mabulService })
-
+              Actions.mabulCommonShare({ mabulService: props.mabulService });
             }
           }}
         />
@@ -40,6 +39,7 @@ const styles = {
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
+    marginTop: 16 * em,
   },
   header: {
     height: '10.3%',
