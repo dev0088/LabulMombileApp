@@ -13,7 +13,7 @@ const EditProfileScreen = (props) => {
   const [inputItemKey, setInputItemKey] = useState(1);
   const [modalVisible, setModalVisible] = useState(false);
   const [userProfile, setUserProfileOnChanged] = useState(props.userProfile);
-  console.log(userProfile);
+  console.log(userProfile.availability);
   return (
     <View>
       <ScrollView style={styles.container}>
@@ -37,8 +37,8 @@ const EditProfileScreen = (props) => {
         />
         <ProfileInformationListItem
           caption={'Ma disponibilité'}
-          placeholder={userProfile.availability === '' ? true : false}
-          value={userProfile.availability === '' ? 'Ajoute ta disponiblité' : userProfile.availability}
+          placeholder={!userProfile.availability ? true : false}
+          value={userProfile.availability || 'Ajoute ta disponiblité'}
           style={styles.listItem}
           onPress={() => {
             setInputItemKey(6);
@@ -47,11 +47,10 @@ const EditProfileScreen = (props) => {
         />
         <ProfileInformationListItem
           caption={'Ma présentation'}
-          placeholder={userProfile.presentation === '' ? true : false}
+          placeholder={!userProfile.presentation ? true : false}
           value={
-            userProfile.presentation === ''
-              ? 'Salut ! Je suis … Présente toi ici. Ce texte sera affiché pour vous invitations et apparaitra sur ta page profil. Soit court, avent et efficace. Vivons ensemble !'
-              : userProfile.presentation
+            userProfile.presentation ||
+            'Salut ! Je suis … Présente toi ici. Ce texte sera affiché pour vous invitations et apparaitra sur ta page profil. Soit court, avent et efficace. Vivons ensemble !'
           }
           commentText={
             userProfile.presentation === '' ? null : 'Les 100 premiers caractères feront office de ta présentation.'

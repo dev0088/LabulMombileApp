@@ -7,6 +7,7 @@ import CommonButton from 'view/components/button/CommonButton';
 import { Actions } from 'react-native-router-flux';
 import AccountCommonHeader from 'view/components/header/AccountCommonHeader';
 import { FamilyGroup, NeigborGroup, FriendGroup } from 'assets/svg/icons';
+import CommonHeader from '../../../../components/header/CommonHeader';
 const addIconSize = { width: 42 * em, height: 30 * em };
 
 const themeButton = {
@@ -18,7 +19,7 @@ const themeButton = {
 const NameGroupScreen = (props) => {
   return (
     <View style={[styles.container, { backgroundColor: props.themeColor }]}>
-      <AccountCommonHeader style={styles.header} />
+      <CommonHeader dark={false} rightTxt={'Annuler'} style={styles.header} />
       <View style={styles.popupView}>
         <View style={styles.popupTopView}>
           <View style={styles.icon}>{themeButton.friends}</View>
@@ -43,9 +44,7 @@ const styles = {
     backgroundColor: '#7398FD',
     alignItems: 'center',
   },
-  header: {
-    height: '12%',
-  },
+  header: { marginBottom: 10 * em, marginTop: 27 * em },
   icon: {
     width: 30 * em,
     height: 27 * em,

@@ -7,7 +7,8 @@ import CommonButton from 'view/components/button/CommonButton';
 import { Actions } from 'react-native-router-flux';
 import AccountCommonHeader from 'view/components/header/AccountCommonHeader';
 import { MobileBlue } from 'assets/svg/icons';
-const ProRegisterMobilScreen = () => {
+const ProRegisterMobilScreen = (props) => {  console.log(props.accountType)
+
   return (
     <View style={styles.container}>
       <AccountCommonHeader style={styles.header} />
@@ -22,7 +23,7 @@ const ProRegisterMobilScreen = () => {
           />
         </View>
         <View style={styles.popupBottomView}>
-          <CommonButton text={'Suivant'} onPress={() => Actions.proRegisterAddress()} style={styles.btnNext} />
+          <CommonButton text={'Suivant'} onPress={() => Actions.proRegisterAddress({accountType:props.accountType})} style={styles.btnNext} />
         </View>
       </View>
     </View>

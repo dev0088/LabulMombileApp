@@ -25,17 +25,19 @@ const PurchaseMenuCard = (props) => {
         <Text style={styles.comment}>{props.commentRadius}</Text>
         <Text style={styles.comment}>{props.comment}</Text>
       </View>
-      <Text
-        style={[
-          styles.addTxt,
-          {
-            color: props.name === 'Pro' ? '#7398FD' : '#41D0E2',
-            marginTop: psStyle.marginTop,
-            marginBottom: psStyle.marginBottom,
-          },
-        ]}>
-        En savoir plus
-      </Text>
+      {!props.moreBtn && (
+        <Text
+          style={[
+            styles.addTxt,
+            {
+              color: props.name === 'Pro' ? '#7398FD' : '#41D0E2',
+              marginTop: psStyle.marginTop,
+              marginBottom: psStyle.marginBottom,
+            },
+          ]}>
+          En savoir plus
+        </Text>
+      )}
     </View>
   );
 };
@@ -45,6 +47,7 @@ const styles = {
     backgroundColor: '#ffffff',
     borderRadius: 18 * em,
     borderWidth: 3 * em,
+    elevation: 2,
     alignItems: 'center',
   },
   title: {
@@ -62,21 +65,9 @@ const styles = {
     borderColor: 'transparent',
   },
   price: { marginTop: 25 * em, fontSize: 25 * em, lineHeight: 30 * em },
-  containerTxt: {
-    width: 120 * em,
-    height: 30 * em,
-  },
-  comment: {
-    fontSize: 9 * em,
-    lineHeight: 14 * em,
-    textAlign: 'center',
-    color: '#1E2D60',
-  },
-  addTxt: {
-    color: '#40CDDE',
-    fontSize: 12 * em,
-    lineHeight: 14 * em,
-  },
+  containerTxt: { width: 120 * em, height: 30 * em },
+  comment: { fontSize: 9 * em, lineHeight: 14 * em, textAlign: 'center', color: '#1E2D60', fontFamily: 'Lato-Regular' },
+  addTxt: { color: '#40CDDE', fontSize: 12 * em, lineHeight: 14 * em },
 };
 
 export default PurchaseMenuCard;

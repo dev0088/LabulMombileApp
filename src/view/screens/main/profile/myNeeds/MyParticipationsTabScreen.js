@@ -6,7 +6,7 @@ import ProfileCommonNeedCard from 'view/components/adapter/ProfileCommonNeedCard
 import { Actions } from 'react-native-router-flux';
 import NeedService from 'model/service/NeedService';
 import NeedServiceType from 'model/service/NeedServiceType';
-import User from 'model/User';
+import User from 'model/user/User';
 import OrganizeServiceType from 'model/service/OrganizeServiceType';
 
 const paricipationLists = [
@@ -26,7 +26,7 @@ const paricipationLists = [
     new NeedService(
       new User('Mathieu Torin', require('assets/images/tab_profile_off.png'), 'anton@gmail.com'),
       'J’organise atelier',
-      'Photographie vintageaaaaaaaaaaaaaaaaaaaaaa',
+      'Photographie vintage',
       new Date(),
       require('assets/images/sample_cover_1.png'),
       1,

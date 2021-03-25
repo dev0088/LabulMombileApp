@@ -19,15 +19,15 @@ const ProNeedsHomeScreen = () => {
         <CommonBackButton dark style={styles.backButton} />
         <TitleText text={'Mes demandes'} style={styles.title} />
         <Tab.Navigator tabBar={(props) => <CommonTabBar {...props} />} swipeEnabled={false} initialRouteName="tips">
-          <Tab.Screen name="tips" options={{ title: 'Bons plans', tabColor: '#7398FD' }} component={ProTipsTabScreen} />
+          <Tab.Screen name="tips" options={{ title: 'Bons plans', tabColor: '#40CDDE' }} component={ProTipsTabScreen} />
           <Tab.Screen
             name="promotions"
-            options={{ title: 'Promotions', tabColor: '#7398FD' }}
+            options={{ title: 'Promotions', tabColor: '#40CDDE' }}
             component={ProPromotionsTabScreen}
           />
           <Tab.Screen
             name="events"
-            options={{ title: 'Évènements', tabColor: '#7398FD' }}
+            options={{ title: 'Évènements', tabColor: '#40CDDE' }}
             component={ProEventsTabScreen}
           />
         </Tab.Navigator>

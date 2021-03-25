@@ -7,7 +7,8 @@ import CommonButton from 'view/components/button/CommonButton';
 import { Actions } from 'react-native-router-flux';
 import AccountCommonHeader from 'view/components/header/AccountCommonHeader';
 import { EmailBlue } from 'assets/svg/icons';
-const ProRegisterEmailScreen = () => {
+const ProRegisterEmailScreen = (props) => {  console.log(props.accountType)
+
   return (
     <View style={styles.container}>
       <AccountCommonHeader style={styles.header} />
@@ -18,7 +19,7 @@ const ProRegisterEmailScreen = () => {
           <CommonTextInput text={'Saisis to email'} isPasswordInput={false} style={styles.commonInput} />
         </View>
         <View style={styles.popupBottomView}>
-          <CommonButton text={'Suivant'} style={styles.btnNext} onPress={() => Actions.proProfileHome()} />
+          <CommonButton text={'Suivant'} style={styles.btnNext} onPress={() => Actions.main({tabNav:'ProProfile',accountType:props.accountType})} />
         </View>
       </View>
     </View>

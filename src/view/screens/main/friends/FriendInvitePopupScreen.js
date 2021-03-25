@@ -6,7 +6,20 @@ import TitleText from 'view/components/text/TitleText';
 import SearchBox from 'view/components/other/SearchBox';
 import SearchCommonListItem from 'view/components/adapter/SearchCommonListItem';
 import Modal from 'react-native-modal';
-
+import User from 'model/user/User';
+import RelationshipType from 'model/user/RelationshipType';
+const users = [
+  new User(
+    'Amandine Bernard',
+    require('assets/images/avatar.png'),
+    [RelationshipType.FRIEND, RelationshipType.NEIGHBOR],
+    'user@labul.com'
+  ),
+  new User('Amélie Petit', require('assets/images/avatar.png'), [RelationshipType.NEIGHBOR], 'user@labul.com'),
+  new User('Antoine Durand', require('assets/images/avatar.png'), [RelationshipType.NEIGHBOR], 'user@labul.com'),
+  new User('Robert Dupont', require('assets/images/avatar.png'), '', 'user@labul.com'),
+  new User('Julien Girar', require('assets/images/avatar.png'), '', 'user@labul.com'),
+];
 const FriendInvitePopupScreen = (props) => {
   const [searchedUsers, getSearchResult] = useState([
     {

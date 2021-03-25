@@ -10,6 +10,7 @@ import { Actions } from 'react-native-router-flux';
 const MyInformationScreen = () => {
   const [inputItemKey, setInputItemKey] = useState(1);
   const [modalVisible, setModalVisible] = useState(false);
+  const [userProfile, setUserProfile] = useState();
   return (
     <View>
       <ScrollView style={styles.container}>
@@ -46,10 +47,10 @@ const MyInformationScreen = () => {
         <CommonText text="Localisation" style={styles.itemTitle} />
         <ProfileInformationListItem
           caption={'Mon dresse'}
-          value={'ABYMES 97139 Guadeloupe'}
+          value={'ABYMES 97139\nGuadeloupe'}
           style={styles.listItem}
           onPress={() => {
-            setInputItemKey(3);
+            setInputItemKey(4);
             setModalVisible(!modalVisible);
           }}
         />
@@ -66,6 +67,7 @@ const MyInformationScreen = () => {
         onPress={() => {
           setModalVisible(false);
         }}
+        onChange={(profile) => setUserProfile(profile)}
       />
     </View>
   );

@@ -123,8 +123,9 @@ import TabCardOff from 'assets/svg/icons/navigation/TabCardOff.svg';
 import TabCalendarOn from 'assets/svg/icons/navigation/TabCalendarOn.svg';
 import TabCalendarOff from 'assets/svg/icons/navigation/TabCalendarOff.svg';
 import TabPlus from 'assets/svg/icons/navigation/TabPlus.svg';
+import PurchasedPremium from 'assets/svg/icons/navigation/PurchasedPremium.svg';
 
-export { TabPlus, TabCalendarOff, TabCalendarOn, TabCardOff, TabCardOn, TabMessageOff, TabMessageOn };
+export {PurchasedPremium, TabPlus, TabCalendarOff, TabCalendarOn, TabCardOff, TabCardOn, TabMessageOff, TabMessageOn };
 
 export {
   EmailBlue,
@@ -223,8 +224,11 @@ import Institution from 'assets/svg/icons/profile/Institution.svg';
 import Events from 'assets/svg/icons/profile/Events.svg';
 import Tips from 'assets/svg/icons/profile/Tips.svg';
 import Promotion from 'assets/svg/icons/profile/Promotion.svg';
+import AssociationInformation from 'assets/svg/icons/profile/AssociationInformation.svg';
+import EnterpriseInformation from 'assets/svg/icons/profile/EnterpriseInformation.svg';
+import InstitutionInformation from 'assets/svg/icons/profile/InstitutionInformation.svg';
 
-export {
+export {AssociationInformation,EnterpriseInformation,InstitutionInformation,
   Promotion,
   Tips,
   Events,

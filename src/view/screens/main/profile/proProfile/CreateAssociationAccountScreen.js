@@ -8,7 +8,7 @@ import CommonButton from 'view/components/button/CommonButton';
 import { Actions } from 'react-native-router-flux';
 import AccountCommonHeader from 'view/components/header/AccountCommonHeader';
 import { AssociationInner } from 'assets/svg/icons';
-const CreateAssociationAccountScreen = () => {
+const CreateAssociationAccountScreen = (props) => {
   return (
     <View style={styles.container}>
       <AccountCommonHeader style={styles.header} rightTxt="Annuler" />
@@ -26,7 +26,7 @@ const CreateAssociationAccountScreen = () => {
           <CommonButton
             color="#7398FC"
             text={'Suivant'}
-            onPress={() => Actions.proRegisterMobile()}
+            onPress={() => Actions.proRegisterMobile({accountType:props.accountType})}
             style={styles.btnNext}
           />
         </View>

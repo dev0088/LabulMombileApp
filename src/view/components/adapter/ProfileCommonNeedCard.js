@@ -4,6 +4,7 @@ import { em } from 'view/common/const';
 import CommentText from 'view/components/text/CommentText';
 import ServiceType from 'model/service/ServiceType';
 import SellServiceType from 'model/service/SellServiceType';
+import SmallText from 'view/components/text/SmallText';
 
 const ProfileCommonNeedCard = (props) => {
   const { data } = props;
@@ -14,15 +15,21 @@ const ProfileCommonNeedCard = (props) => {
         <View style={[styles.container, props.style]}>
           <Image source={data.coverImage} style={styles.cover} />
           <View style={styles.textView}>
-            <CommentText text={data.slogan} style={styles.title} color={'#1E2D60'} />
+            <SmallText text={data.slogan} style={{ marginBottom: 5 * em }} color={'#1E2D60'} />
             <CommentText text={data.comment} style={styles.organName} color={'#1E2D60'} />
             <View style={{ flexDirection: 'row' }}>
-              <CommentText text={data.price} style={styles.organName} color={'#1E2D60'} />
-              <CommentText text={data.discountPrice} style={styles.organName} color={'#1E2D60'} />
+              <CommentText text={data.price} style={{ fontFamily: 'Lato-Bold' }} color={'#1E2D60'} />
+              <CommentText
+                text={data.discountPrice}
+                style={{ marginLeft: 10 * em, textDecorationLine: 'line-through', textDecorationStyle: 'solid' }}
+                color={'#A0AEB8'}
+              />
             </View>
-            <CommentText text={data.discountInfo} style={styles.organName} color={'#1E2D60'} />
+            {data.discountInfo && (
+              <SmallText text={data.discountInfo} style={{ marginTop: 15 * em }} color={'#A0AEB8'} />
+            )}
             {data.subType === SellServiceType.EVENT && (
-              <CommentText text={'06 Fév · 14h00'} style={styles.organName} color={'#1E2D60'} />
+              <SmallText text={'06 Fév · 14h00'} style={{ marginTop: 15 * em }} color={'#A0AEB8'} />
             )}
           </View>
         </View>
@@ -34,8 +41,8 @@ const ProfileCommonNeedCard = (props) => {
       <View style={[styles.container, props.style]}>
         <Image source={data.coverImage} style={styles.cover} />
         <View style={styles.textView}>
-          <CommentText text={'06 Fév · 14h00'} style={styles.date} color="#6A8596" />
-          <CommentText text={data.title} style={styles.title} color={'#1E2D60'} />
+          <SmallText text={'06 Fév · 14h00'} style={styles.date} color="#6A8596" />
+          <SmallText text={data.title} style={styles.title} color={'#1E2D60'} />
           <CommentText text={data.organName} style={styles.organName} color={'#1E2D60'} />
           <StatusView text={data.status} style={styles.status} />
         </View>
@@ -47,9 +54,9 @@ const styles = {
   container: { flexDirection: 'row' },
   cover: { width: 95 * em, height: 141 * em, borderRadius: 18 * em },
   textView: { marginLeft: 15 * em, paddingTop: 15 * em, alignItems: 'flex-start', width: 205 * em },
-  date: { fontSize: 12 * em, lineHeight: 14 * em },
-  title: { fontSize: 12 * em, lineHeight: 16 * em, marginTop: 10 * em, marinBottom: 5 * em, textAlign: 'left' },
-  organName: { lineHeight: 21 * em, textAlign: 'left', fontFamily: 'Lato-Black' ,marginBottom:15*em,},
+  date: { lineHeight: 14 * em },
+  title: { lineHeight: 16 * em, marginTop: 10 * em, marginBottom: 5 * em, textAlign: 'left' },
+  organName: { lineHeight: 21 * em, textAlign: 'left', fontFamily: 'Lato-Black', marginBottom: 15 * em },
   status: { marginTop: 15 * em },
   statusView: { fontSize: 12 * em, borderRadius: 15 * em, paddingVertical: 4 * em, paddingHorizontal: 8 * em },
 };

@@ -174,6 +174,7 @@ const styles = {
     width: 'auto',
     fontSize: 12 * em,
     lineHeight: 15 * em,
+    borderRadius: 12 * em,
   },
   badgeIcon: {
     width: 60 * em,

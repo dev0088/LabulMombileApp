@@ -5,11 +5,31 @@ import SearchBox from 'view/components/other/SearchBox';
 import { FlatList } from 'react-native-gesture-handler';
 import SearchCommonListItem from 'view/components/adapter/SearchCommonListItem';
 import FriendCommonHeader from 'view/components/header/FriendCommonHeader';
+import User from 'model/user/User';
+import RelationshipType from 'model/user/RelationshipType';
+
+const users = [
+  new User(
+    'Amandine Bernard',
+    require('assets/images/avatar.png'),
+    [RelationshipType.FRIEND, RelationshipType.NEIGHBOR],
+    'user@labul.com'
+  ),
+  new User('Amélie Petit', require('assets/images/avatar.png'), [RelationshipType.NEIGHBOR], 'user@labul.com'),
+  new User('Antoine Durand', require('assets/images/avatar.png'), [RelationshipType.NEIGHBOR], 'user@labul.com'),
+  new User('Robert Dupont', require('assets/images/avatar.png'), '', 'user@labul.com'),
+  new User('Julien Girar', require('assets/images/avatar.png'), '', 'user@labul.com'),
+];
 
 const FriendsSearchScreen = () => {
   const [searchedUsers, getSearchResult] = useState(true);
   const renderFlatList = ({ item }) => (
-    <SearchCommonListItem text={item.userName} subText={item.relationship} icon={item.avatar} style={styles.listItem} />
+    <SearchCommonListItem
+      text={item.name}
+      subText={item.relationship ? item.relationship.join('/') : undefined}
+      icon={item.photo}
+      style={styles.listItem}
+    />
   );
 
   return (
@@ -19,36 +39,7 @@ const FriendsSearchScreen = () => {
         style={styles.searchbox}
         comment={'Saisissez votre email'}
         onChangeText={(text) => {
-          getSearchResult([
-            {
-              id: 0,
-              userName: 'Amandine Bernard',
-              relationship: 'Mon ami/ mon voisin',
-              avatar: require('assets/images/avatar.png'),
-            },
-            {
-              id: 1,
-              userName: 'Amélie Petit',
-              relationship: 'Mon voisin',
-              avatar: require('assets/images/avatar.png'),
-            },
-            {
-              id: 2,
-              userName: 'Antoine Durand',
-              relationship: 'Mon voisin',
-              avatar: require('assets/images/avatar.png'),
-            },
-            {
-              id: 3,
-              userName: 'Robert Dupont',
-              avatar: require('assets/images/avatar.png'),
-            },
-            {
-              id: 4,
-              userName: 'Julien Girard',
-              avatar: require('assets/images/avatar.png'),
-            },
-          ]);
+          getSearchResult(users);
         }}
       />
       <FlatList data={searchedUsers} renderItem={renderFlatList} keyExtractor={(i) => i.id} />

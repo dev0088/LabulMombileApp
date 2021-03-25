@@ -9,7 +9,7 @@ import { Actions } from 'react-native-router-flux';
 import AccountCommonHeader from 'view/components/header/AccountCommonHeader';
 import { EnterpriseInner } from 'assets/svg/icons';
 
-const CreateProfessionalAccountScreen = () => {
+const CreateProfessionalAccountScreen = (props) => {
   return (
     <View style={styles.container}>
       <AccountCommonHeader style={styles.header} rightTxt="Annuler" />
@@ -23,7 +23,11 @@ const CreateProfessionalAccountScreen = () => {
           />
         </View>
         <View style={styles.popupBottomView}>
-          <CommonButton text={'Suivant'} onPress={() => Actions.proRegisterMobile()} style={styles.btnNext} />
+          <CommonButton
+            text={'Suivant'}
+            onPress={() => Actions.proRegisterMobile({ accountType: props.accountType })}
+            style={styles.btnNext}
+          />
         </View>
       </View>
     </View>

@@ -6,6 +6,5 @@ export default class Service {
     this.date = date;
     this.location = location;
     this.coverImage = coverImage;
-    
   }
 }

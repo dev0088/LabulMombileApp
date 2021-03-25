@@ -5,8 +5,9 @@ import { em, hexToRGB } from 'view/common/const';
 import CommentText from 'view/components/text/CommentText';
 import CommonButton from 'view/components/button/CommonButton';
 import CommonBackButton from 'view/components/button/CommonBackButton';
-import FriendInvitePopupScreen from 'view/screens/main/friends/FriendInvitePopupScreen'
+import FriendInvitePopupScreen from 'view/screens/main/friends/FriendInvitePopupScreen';
 import { Actions } from 'react-native-router-flux';
+import NeedStatusType from '../../../../model/service/NeedStatusType';
 
 const FriendSellScreen = () => {
   const [invitePopupVisible, setInvitePopupVisible] = useState(false);
@@ -32,7 +33,11 @@ const FriendSellScreen = () => {
               <CommentText text={'Continuer à lire'} color={'#40CDDE'} style={styles.content} />
             </View>
           </View>
-          <CommonButton style={styles.quizBtn} text="Je suis intéresse" />
+          <CommonButton
+            style={styles.quizBtn}
+            text="Je suis intéresse"
+            onPress={() => Actions.friendNeed({ status: NeedStatusType.WAITING })}
+          />
 
           <CommonButton
             style={styles.inviteBtn}

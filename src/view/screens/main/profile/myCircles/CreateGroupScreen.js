@@ -120,7 +120,7 @@ const CreateGroupScreen = (props) => {
     <View style={styles.container}>
       <CommonText style={styles.header} text="Annuler" color="#6A8596" onPress={() => Actions.pop()} />
       <TitleText text="Nouveau groupe" style={styles.title} />
-      <SearchBox comment="Rechercher un contact" />
+      <SearchBox comment="Rechercher un contact" style={{height:34*em}}/>
       <View style={{ height: 90 * em, marginTop: 15 * em, marginBottom: 25 * em }}>
         <FlatList horizontal={true} data={selectedList} renderItem={renderSelectedList} keyExtractor={(i) => i.id} />
       </View>

@@ -12,6 +12,7 @@ import AvatarWithBadge from 'view/components/view/AvatarWithBadge';
 import FriendInvitePopupScreen from 'view/screens/main/friends/FriendInvitePopupScreen';
 import { getUserBadge } from 'view/common/icons';
 import CommonListItem from 'view/components/adapter/CommonListItem';
+import NeedStatusType from '../../../model/service/NeedStatusType';
 
 const MabulDetailView = (props) => {
   const [invitePopupVisible, setInvitePopupVisible] = useState(false);
@@ -40,7 +41,11 @@ const MabulDetailView = (props) => {
       <ScrollView style={styles.scrollView}>
         <Image source={data.coverImage} style={styles.cover} />
         <View style={styles.body}>
-          <CommonText text={'04 Fév · 08h00'} style={styles.timeTxt} color="#6A8596" />
+          <CommonText
+            text={data.status === NeedStatusType.CANCELED ? 'Terminé' : '04 Fév · 08h00'}
+            style={styles.timeTxt}
+            color="#6A8596"
+          />
           <CommonListItem
             style={styles.userInfo}
             icon={

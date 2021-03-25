@@ -57,7 +57,7 @@ const styles = {
   },
   header: { marginRight: 30 * em, marginBottom: 18 * em, marginTop: 25 * em, alignSelf: 'flex-end' },
   body: { marginLeft: 30 * em, marginRight: 30 * em, alignItems: 'center', flex: 1 },
-  title: { marginTop: 15 * em, fontWeight: 'bold' },
+  title: { marginTop: 15 * em,fontFamily:'Lato-Black'},
   titleImg: {
     width: 58 * em,
     height: 58 * em,

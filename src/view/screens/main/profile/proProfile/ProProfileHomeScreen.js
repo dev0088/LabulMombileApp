@@ -7,7 +7,15 @@ import ProfileCommonAvatar from 'view/components/view/ProfileCommonAvatar';
 import ProfileCommonCard from 'view/components/adapter/ProfileCommonCard';
 import ProfileCommonListItem from 'view/components/adapter/ProfileCommonListItem';
 import AccountChangeMenu from '../AccountChangeMenu';
-import { ProNeeds, Information, Setting, AddressBlue } from 'assets/svg/icons';
+import {
+  ProNeeds,
+  Information,
+  Setting,
+  PurchasedPremium,
+  AssociationInformation,
+  EnterpriseInformation,
+  InstitutionInformation,
+} from 'assets/svg/icons';
 const iconSize = { width: 38 * em, height: 38 * em };
 
 const originalProProfile = {
@@ -15,15 +23,26 @@ const originalProProfile = {
   name: 'Curology',
   type: 'Professional',
   publications: { tips: 0, promotions: 0, events: 0 },
+  cover: require('assets/images/img_curology.png'),
 };
+
+const informationIcon = {
+  enterprise: EnterpriseInformation(iconSize),
+  association: AssociationInformation(iconSize),
+  institution: InstitutionInformation(iconSize),
+};
+
 const ProProfileHomeScreen = (props) => {
   const [userProfile] = useState(props.userProfile ? props.userProfile : originalProProfile);
-
+  console.log(props.accountType)
   return (
     <View>
-      <AccountChangeMenu style={styles.dropDown} type="pro" visible={props.userProfile ? true : false} />
+      <AccountChangeMenu style={styles.dropDown} type="pro" visible={true} />
       <ScrollView style={styles.scrollView}>
-        <ImageBackground style={styles.topView} source={userProfile.cover} blurRadius={8}>
+        <ImageBackground
+          style={styles.topView}
+          source={props.route.params.purchased ? userProfile.cover : undefined}
+          blurRadius={8}>
           <View
             style={{
               backgroundColor: userProfile.cover ? 'rgba(30, 45, 96, 0.64)' : '#7398FD',
@@ -43,7 +62,7 @@ const ProProfileHomeScreen = (props) => {
             <ProfileCommonCard
               caption={'Mes demandes'}
               style={styles.cardStyle}
-              icon={ProNeeds({width:38*em, height:38*em,})}
+              icon={ProNeeds(iconSize)}
               onPress={() => {
                 Actions.proNeedsHome();
               }}
@@ -54,7 +73,7 @@ const ProProfileHomeScreen = (props) => {
             <ProfileCommonListItem
               text={'Mes informations'}
               style={styles.listItem}
-              icon={Information(iconSize)}
+              icon={informationIcon[props.route.params.accountType] || informationIcon.enterprise}
               onPress={() => {
                 Actions.myProInformation();
               }}
@@ -76,21 +95,12 @@ const ProProfileHomeScreen = (props) => {
             <ProfileCommonListItem
               text={'Abonnement Premim'}
               subText={'En savoir plus'}
-              icon={
-                <View
-                  style={{
-                    width: 38 * em,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    height: 38 * em,
-                    borderRadius: 19 * em,
-                    backgroundColor: 'rgba(115, 152, 253, 0.2)',
-                  }}>
-                  {AddressBlue({ width: 20 * em, height: 22 * em })}
-                </View>
-              }              style={styles.listItem}
+              icon={PurchasedPremium(iconSize)}
+              style={styles.listItem}
               onPress={() => {
-                Actions.premiumSubscription({ profileType: 'pro' });
+                props.route.params.purchased
+                  ? Actions.premiumPurchased({ profileType: 'pro' })
+                  : Actions.premiumSubscription({ profileType: 'pro' });
               }}
             />
           </View>

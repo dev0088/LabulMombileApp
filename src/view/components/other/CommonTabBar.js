@@ -52,7 +52,7 @@ export default class CommonTabBar extends Component {
       position: 'absolute',
     };
     return (
-      <View style={{ marginBottom: 25 * em, paddingLeft: 20 * em }}>
+      <View style={{ marginBottom: 15 * em, paddingLeft: 20 * em }}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} ref={(view) => (this.tabContainer = view)}>
           <View style={{ flexDirection: 'row' }}>
             <Animated.View style={{ transform: [{ translateX: this.state.pos }] }}>

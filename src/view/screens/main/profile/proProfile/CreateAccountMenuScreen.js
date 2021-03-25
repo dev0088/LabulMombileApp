@@ -5,8 +5,8 @@ import { em, hexToRGB } from 'view/common/const';
 import ProfileCommonListItem from 'view/components/adapter/ProfileCommonListItem';
 import { Actions } from 'react-native-router-flux';
 import CommonText from 'view/components/text/CommonText';
-import {Enterprise,Association,Institution } from 'assets/svg/icons'
-const iconSize={width:30*em, height:30*em}
+import { Enterprise, Association, Institution } from 'assets/svg/icons';
+const iconSize = { width: 30 * em, height: 30 * em };
 const CreateAccountMenuScreen = () => {
   return (
     <View style={styles.container}>
@@ -19,7 +19,7 @@ const CreateAccountMenuScreen = () => {
           text="Professional"
           icon={Enterprise(iconSize)}
           iconColor={hexToRGB('#7398FD', 0.24)}
-          onPress={() => Actions.createProfessionalAccount()}
+          onPress={() => Actions.createProfessionalAccount({ accountType: 'enterprise' })}
         />
         <View style={styles.line} />
 
@@ -28,7 +28,7 @@ const CreateAccountMenuScreen = () => {
           text="Association"
           icon={Association(iconSize)}
           iconColor={hexToRGB('#7398FD', 0.24)}
-          onPress={() => Actions.createAssociationAccount()}
+          onPress={() => Actions.createAssociationAccount({ accountType: 'association' })}
         />
         <View style={styles.line} />
 
@@ -37,7 +37,7 @@ const CreateAccountMenuScreen = () => {
           text="Collectivité/ institutionnel"
           icon={Institution(iconSize)}
           iconColor={hexToRGB('#7398FD', 0.24)}
-          onPress={() => Actions.createCommunityAccount()}
+          onPress={() => Actions.createCommunityAccount({ accountType: 'institution' })}
         />
         <View style={styles.line} />
       </View>

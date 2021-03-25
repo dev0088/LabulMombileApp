@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View } from 'react-native';
 import { em, WIDTH, hm } from 'view/common/const';
 import CommonBackButton from 'view/components/button/CommonBackButton';
@@ -19,7 +19,16 @@ const options = [
   { key: '4', option: 'Je vends' },
 ];
 const FriendsFilterRequestModalScreen = (props) => {
-  const renderFlatList = ({ item }) => <CommonCheckBox text={item.option} style={styles.listItem} shape="rectangle" />;
+  const [selectedOption, getSelectedOptions] = useState([]);
+  const renderFlatList = ({ item }) => (
+    <CommonCheckBox
+      // onChecked={(result) => getSelectedOptions((oldOptions) => [...oldOptions, result])}
+      text={item.option}
+      style={styles.listItem}
+      shape="rectangle"
+    />
+  );
+  console.log(selectedOption)
   return (
     <Modal
       isVisible={props.visible}

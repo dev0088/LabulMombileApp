@@ -167,11 +167,7 @@ const ActivityMessageScreen = (props) => {
 };
 
 const styles = {
-  container: {
-    flex: 1,
-    alignItems: 'flex-start',
-    backgroundColor: '#40CDDE',
-  },
+  container: { flex: 1, alignItems: 'flex-start', backgroundColor: '#40CDDE' },
   header: {
     width: '100%',
     height: 81 * em,
@@ -217,7 +213,6 @@ const styles = {
   },
   popupHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   titleView: { flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' },
-
   titleIcon: { width: 28 * em, height: 28 * em, borderRadius: 14 * em, marginRight: 10 * em },
   popupBody: { flexDirection: 'column-reverse', alignItems: 'center', flex: 1 },
   popupFooter: { flexDirection: 'row', alignItems: 'center', marginTop: 25 * em },

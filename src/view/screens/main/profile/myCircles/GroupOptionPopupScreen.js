@@ -6,6 +6,9 @@ import Modal from 'react-native-modal';
 import CommonListItem from 'view/components/adapter/CommonListItem';
 import CommonButton from 'view/components/button/CommonButton';
 import { DeleteRed } from 'assets/svg/icons';
+import { AddFamily, AddFriend, AddNeighbor } from 'assets/svg/icons';
+import { Friend, Family, Neighbor, OptionGray } from 'assets/svg/icons';
+
 const GroupOptionPopupScreen = (props) => {
   return (
     <Modal
@@ -16,7 +19,9 @@ const GroupOptionPopupScreen = (props) => {
       swipeDirection={'up'}
       onBackButtonPress={() => props.onPress()}>
       <View style={styles.body}>
-        <Image source={require('assets/images/avatar.png')} style={styles.avatar} />
+        <View style={styles.avatar}>
+          <Friend height={40 * em} width={40 * em} />
+        </View>
         <CommonText text="Cousins" style={styles.userName} />
         <CommonText text="8 membres" color="#A0AEB8" />
 

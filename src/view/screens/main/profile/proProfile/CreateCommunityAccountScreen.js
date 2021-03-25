@@ -8,7 +8,8 @@ import CommonButton from 'view/components/button/CommonButton';
 import { Actions } from 'react-native-router-flux';
 import AccountCommonHeader from 'view/components/header/AccountCommonHeader';
 import { InstitutionInner } from 'assets/svg/icons';
-const CreateCommunityAccountScreen = () => {
+const CreateCommunityAccountScreen = (props) => {
+  console.log(props.type1)
   return (
     <View style={styles.container}>
       <AccountCommonHeader style={styles.header} rightTxt="Annuler" />
@@ -23,7 +24,7 @@ const CreateCommunityAccountScreen = () => {
           />
         </View>
         <View style={styles.popupBottomView}>
-          <CommonButton text={'Suivant'} onPress={() => Actions.proRegisterMobile()} style={styles.btnNext} />
+          <CommonButton text={'Suivant'} onPress={() => Actions.proRegisterMobile({accountType:props.accountType})} style={styles.btnNext} />
         </View>
       </View>
     </View>

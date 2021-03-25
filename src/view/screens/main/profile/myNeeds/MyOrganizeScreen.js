@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 import { em, hexToRGB } from 'view/common/const';
 import OrganizeService from 'model/service/OrganizeService';
-import User from 'model/User';
+import User from 'model/user/User';
 import OrganizeServiceType from 'model/service/OrganizeServiceType';
 import MabulDetailView from 'view/components/view/MabulDetailView';
 

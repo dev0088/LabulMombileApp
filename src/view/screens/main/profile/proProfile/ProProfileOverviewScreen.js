@@ -47,7 +47,7 @@ const ProProfileOverviewScreen = (props) => {
         <CommonHeader
           rightTxt={'Modifier mon profil'}
           style={styles.header}
-          onLeftPress={() => Actions.main({ tabNav: 'ProProfile', userProfile: userProfile })}
+          onLeftPress={() => Actions.main({ tabNav: 'ProProfile'})}
           onRightPress={() => Actions.editProProfile({ userProfile: userProfile })}
         />
         {userProfile.cover && (

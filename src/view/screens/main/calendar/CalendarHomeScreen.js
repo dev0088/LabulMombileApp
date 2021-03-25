@@ -6,7 +6,7 @@ import CalendarStrip from 'view/components/calendar/CalendarStrip';
 import { NextIcon, PrevIcon } from 'assets/svg/icons';
 import NeedService from 'model/service/NeedService';
 import NeedServiceType from 'model/service/NeedServiceType';
-import User from 'model/User';
+import User from 'model/user/User';
 import ScheduleCard from './ScheduleCard';
 import CalendarListView from './CalendarListView';
 import moment from 'moment';

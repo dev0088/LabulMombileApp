@@ -6,7 +6,7 @@ import CommonButton from 'view/components/button/CommonButton';
 import { Actions } from 'react-native-router-flux';
 import NeedService from 'model/service/NeedService';
 import NeedServiceType from 'model/service/NeedServiceType';
-import User from 'model/User';
+import User from 'model/user/User';
 import AvatarWithBadge from 'view/components/view/AvatarWithBadge';
 import FriendInvitePopupScreen from 'view/screens/main/friends/FriendInvitePopupScreen';
 import { LocationPink, Alert } from 'assets/svg/icons/index.js';

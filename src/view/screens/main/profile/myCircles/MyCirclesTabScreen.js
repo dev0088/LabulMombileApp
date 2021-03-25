@@ -146,7 +146,7 @@ const MyCirclesTabScreen = (props) => {
       />
       <TouchableOpacity
         style={{ position: 'absolute', bottom: 30 * em, right: 30 * em }}
-        onPress={() => Actions.createGroup({ themeColor: themeColors[sort],sort:sort })}>
+        onPress={() => Actions.createGroup({ themeColor: themeColors[sort] })}>
         {themeButton[sort]}
       </TouchableOpacity>
       <UserOptionPopupScreen visible={userOptionVisible} onPress={() => setUserOptionVisible(false)} />

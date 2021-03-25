@@ -2,7 +2,7 @@ import React from 'react';
 import { View, FlatList } from 'react-native';
 import { em } from 'view/common/const';
 import OrganizeService from 'model/service/OrganizeService';
-import User from 'model/User';
+import User from 'model/user/User';
 import OrganizeServiceType from 'model/service/OrganizeServiceType';
 import FriendListCard from 'view/components/adapter/FriendListCard';
 import ServiceType from 'model/service/ServiceType';
@@ -12,6 +12,7 @@ import NeedServiceType from 'model/service/NeedServiceType';
 import GiveService from 'model/service/GiveService';
 import SellService from 'model/service/SellService';
 import SellServiceType from 'model/service/SellServiceType';
+import NeedStatusType from '../../../../model/service/NeedStatusType';
 
 const friends = [
   new NeedService(
@@ -97,12 +98,12 @@ const FriendsListScreen = () => {
       data={item}
       onPress={() => {
         if (item.type === ServiceType.ORGANIZE) {
-          Actions.friendOrganize();
+          Actions.friendOrganize({ detail: item });
         } else {
           if (item.type === ServiceType.NEED) {
-            Actions.friendNeed();
+            Actions.friendNeed({ detail: item });
           } else {
-            Actions.friendSell();
+            Actions.friendSell({ detail: item });
           }
         }
       }}

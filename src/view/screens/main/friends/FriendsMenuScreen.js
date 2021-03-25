@@ -2,7 +2,7 @@ import React from 'react';
 import { View, ImageBackground, DeviceEventEmitter, Image, TouchableOpacity } from 'react-native';
 import { em } from '../../../common/const';
 import { Actions } from 'react-native-router-flux';
-import { Animals, Bricolage, HomeCare, Interview, Workshop, Path, Return2Point } from 'assets/svg/icons';
+import { Animals, Bricolage, HomeCare, Interview, Workshop, Path, Return2Point, Alert } from 'assets/svg/icons';
 const servicIconSize = { width: 18 * em, height: 18 * em };
 const locationList = [
   {
@@ -59,16 +59,20 @@ const FriendsMenuScreen = () => {
   return (
     <View style={styles.container}>
       <ImageBackground style={styles.TabControlContainer} source={require('assets/images/bg_map.png')} />
-      <TouchableOpacity style={styles.alertImg} onPress={() => Actions.alertCircles()}>
-        <Image source={require('assets/images/ic_alert.png')} />
-      </TouchableOpacity>
+
       <View style={{ position: 'absolute', top: 203 * em, left: 34 * em }}>
         <Path width={76 * em} height={48 * em} />
-      </View>
+      </View><View
+        style={{
+          position: 'absolute',
+          top: 213 * em,
+          left: 309 * em,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
       <Image
-        style={{ position: 'absolute', top: 212 * em, left: 318 * em }}
         source={require('assets/images/img_alert.png')}
-      />
+      /></View>
       {locationList.map((location) => PositionView(location))}
       <View
         style={{
@@ -105,6 +109,29 @@ const FriendsMenuScreen = () => {
         }}>
         {Return2Point(servicIconSize)}
       </View>
+      <TouchableOpacity
+        onPress={() => Actions.alertCircles()}
+        style={{
+          position: 'absolute',
+          top: 463 * em,
+          width: 46 * em,
+          height: 46 * em,
+          left: 309 * em,
+          borderRadius: 23 * em,
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: '#ffffff',
+          borderColor: '#ffffff',
+          borderWidth: 2 * em,
+          elevation: 3,
+        }}>
+        {Alert({ width: 26.45 * em, height: 22.31 * em })}
+      </TouchableOpacity>
+      <Image
+        source={require('assets/images/img_navigator.png')}
+        style={{ postion: 'absolute', top: 316 * em, zIndex: 0 }}
+      />
       <View
         style={{
           position: 'absolute',
@@ -129,32 +156,26 @@ const FriendsMenuScreen = () => {
 
 const PositionView = ({ top, left, avatar, serviceIcon, bgColor, id }) => (
   <>
-    <View style={{ position: 'absolute', top: top - 2 * em, left: left - 2 * em }} key={id}>
+    <View style={{ position: 'absolute', top: top - 2 * em, left: left - 2 * em, zIndex: 1 }} key={id}>
       <Path width={76 * em} height={48 * em} />
     </View>
-    <View
-      style={{
-        position: 'absolute',
-        top: top,
-        left: left,
-        width: 72 * em,
-        height: 36 * em,
-        borderRadius: 18 * em,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        backgroundColor: bgColor,
-      }}>
+    <View key={id + 'also'} style={[styles.tagInView, { top: top, left: left, backgroundColor: bgColor }]}>
       <Image source={avatar} style={{ width: 36 * em, height: 36 * em }} />
       <View style={{ marginRight: 8.83 * em }}>{serviceIcon}</View>
     </View>
   </>
 );
 const styles = {
-  container: {
-    flex: 1,
+  container: { flex: 1, alignItems: 'center', backgroundColor: '#F0F5F7' },
+  tagInView: {
+    zIndex: 1,
+    position: 'absolute',
+    width: 72 * em,
+    height: 36 * em,
+    borderRadius: 18 * em,
+    flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F0F5F7',
+    justifyContent: 'space-between',
   },
   TabControlContainer: { position: 'absolute', flex: 1, width: '100%', height: '100%', backgroundColor: '#ff0000' },
   alertImg: {

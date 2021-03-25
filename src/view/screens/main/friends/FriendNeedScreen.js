@@ -6,10 +6,11 @@ import { Actions } from 'react-native-router-flux';
 import FriendInvitePopupScreen from './FriendInvitePopupScreen';
 import NeedService from 'model/service/NeedService';
 import NeedServiceType from 'model/service/NeedServiceType';
-import User from 'model/User';
+import User from 'model/user/User';
 import MabulDetailView from 'view/components/view/MabulDetailView';
 import { Send, Option } from 'assets/svg/icons';
 import FriendCancelParticipatePopupScreen from './FriendCancelParticipatePopupScreen';
+import NeedStatusType from '../../../../model/service/NeedStatusType';
 const needData = Object.assign(
   new NeedService(
     new User('Amandine Bernard', require('assets/images/sample_user_1.png'), 'anton@gmail.com'),
@@ -20,16 +21,14 @@ const needData = Object.assign(
     3,
     NeedServiceType.REPAIR
   ),
-  { status: 'participated', relationship: 'Mon ami/ma familie' }
+  { status: null, relationship: 'Mon ami/ma familie' }
 );
 const FriendNeedScreen = (props) => {
-  const [invitePopupVisible, setInvitePopupVisible] = useState(false);
   const [cancelParticipatePopupVisible, setcancelParticipatePopupVisible] = useState(false);
-
-  const [data] = useState(props.data ? props.data : needData);
-  const [status, setStatus] = useState(data.status);
+  const [data] = useState(props.detail ? props.detail : needData);
+  const [status, setStatus] = useState(props.status || data.status);
   const RequestButton = (
-    <CommonButton text={'Participer'} style={styles.partBtn} onPress={() => setStatus('waiting')} />
+    <CommonButton text={'Participer'} style={styles.partBtn} onPress={() => setStatus(NeedStatusType.WAITING)} />
   );
   const ParticipationButton = (
     <CommonButton
@@ -47,7 +46,7 @@ const FriendNeedScreen = (props) => {
   );
   const WaitingButton = (
     <CommonButton
-      onPress={() => setStatus('inProgress')}
+      onPress={() => setStatus(NeedStatusType.INPROGRESS)}
       leftIcon={Send({ width: 13 * em, height: 13 * em })}
       iconStyle={{ margin: 10 * em }}
       text={'Demande de participation envoyé'}
@@ -57,13 +56,13 @@ const FriendNeedScreen = (props) => {
   );
   var mainButton;
   switch (status) {
-    case 'inProgress':
+    case NeedStatusType.INPROGRESS:
       mainButton = ParticipationButton;
       break;
-    case 'canceled':
+    case NeedStatusType.CANCELED:
       mainButton = OpinionButton;
       break;
-    case 'waiting':
+    case NeedStatusType.WAITING:
       mainButton = WaitingButton;
       break;
     default:
@@ -72,9 +71,8 @@ const FriendNeedScreen = (props) => {
   }
   return (
     <View style={styles.container}>
-      <MabulDetailView data={data} />
+      <MabulDetailView data={Object.assign(data, { status: status })} />
       <View style={styles.btnBox}>{mainButton}</View>
-      <FriendInvitePopupScreen visible={invitePopupVisible} onPress={() => setInvitePopupVisible(false)} />
       <FriendCancelParticipatePopupScreen
         visible={cancelParticipatePopupVisible}
         onPress={() => setcancelParticipatePopupVisible(false)}

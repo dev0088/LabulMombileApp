@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet, TouchableOpacity, Image, ImageBackground, StatusBar } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FriendsNavigator from './friends/FriendsNavigator';
@@ -46,6 +46,10 @@ export default function MainScreen(props) {
   if (selectedTab === 4) {
     profileImage = require('assets/images/tab_profile_on.png');
   }
+  let proProfileImage = require('assets/images/avatar_curology.png');
+  if (selectedTab === 4) {
+    proProfileImage = require('assets/images/avatar_curology.png');
+  }
 
   return (
     <View style={styles.TabBarMainContainer}>
@@ -59,13 +63,13 @@ export default function MainScreen(props) {
             name="Profile"
             component={ProfileHomeScreen}
             options={{ tabBarVisible: false }}
-            initialParams={{ userProfile: props.userProfile }}
+            initialParams={{ purchased: props.purchased }}
           />
           <Tab.Screen
             name="ProProfile"
             component={ProProfileHomeScreen}
             options={{ tabBarVisible: false }}
-            initialParams={{ userProfile: props.userProfile }}
+            initialParams={{ accountType: props.accountType, purchased: props.purchased }}
           />
         </Tab.Navigator>
       </NavigationContainer>
@@ -113,14 +117,10 @@ export default function MainScreen(props) {
             setSelectedTab(4);
           }}
           style={styles.TapImageWrapper}>
-          <Image source={profileImage} style={styles.TapImage} />
+          <Image source={props.tabNav === 'ProProfie' ? proProfileImage : profileImage} style={styles.TapImage} />
         </TouchableOpacity>
       </ImageBackground>
-      <Modal
-        backdropColor={'transparent'}
-        statusBarTranslucent={true}
-        style={styles.modalStyle}
-        isVisible={mabulVisible}>
+      <Modal backdropColor={'transparent'} style={styles.modalStyle} isVisible={mabulVisible}>
         <MabulHomeScreeen
           onClosePress={() => {
             setMabulVisible(false);
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
   TabBarMainContainer: {
     flex: 1,
   },
-  modalStyle: { margin: 0, height: HEIGHT },
+  modalStyle: { margin: 0 },
   VirtualTabButtons: {
     flex: 1,
     width: '100%',

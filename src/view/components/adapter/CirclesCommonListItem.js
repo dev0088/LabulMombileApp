@@ -77,10 +77,7 @@ const styles = {
     resizeMode: 'contain',
     marginRight: 15 * em,
   },
-  userNameStyle: {fontFamily:'Lato-Black',
-    color: '#1E2D60',
-    textAlign: 'left',
-  },
+  userNameStyle: { fontFamily: 'Lato-Black', color: '#1E2D60', textAlign: 'left' },
   relationshipStyle: {
     fontSize: 16 * em,
     color: '#A0AEB8',

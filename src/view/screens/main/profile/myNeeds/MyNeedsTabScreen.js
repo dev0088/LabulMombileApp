@@ -7,7 +7,7 @@ import { Actions } from 'react-native-router-flux';
 import NeedService from 'model/service/NeedService';
 import NeedServiceType from 'model/service/NeedServiceType';
 import OrganizeService from 'model/service/OrganizeService';
-import User from 'model/User';
+import User from 'model/user/User';
 import OrganizeServiceType from 'model/service/OrganizeServiceType';
 import ServiceType from 'model/service/ServiceType';
 

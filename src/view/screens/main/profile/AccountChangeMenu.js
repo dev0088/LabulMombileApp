@@ -15,14 +15,14 @@ const AccountChangeMenu = (props) => {
   const [menuVisible, setMenuVisible] = useState(false);
   return (
     <View style={{ display: props.visible ? 'flex' : 'none' }}>
-      <DropDownButton style={props.style} icon={props.type} onPress={() => setMenuVisible(true)} />
+      <DropDownButton style={props.style} type={props.type} onPress={() => setMenuVisible(true)} />
       <Modal
         isVisible={menuVisible}
         backdropOpacity={0.9}
         style={styles.modal}
         backdropColor={'#1E2D60'}
         swipeDirection={'up'}>
-        <DropDownButton style={props.style} icon={props.type} onPress={() => setMenuVisible(true)} modal />
+        <DropDownButton style={props.style} type={props.type} onPress={() => setMenuVisible(true)} modal />
         <View style={styles.menu}>
           <CommonListItem
             onPress={() => setMenuVisible(false)}
@@ -42,7 +42,9 @@ const AccountChangeMenu = (props) => {
             }
             onPress={() => {
               setMenuVisible(false);
-              props.type !== 'my' ? Actions.main({ tabNav: 'Profile' }) : Actions.main({ tabNav: 'ProProfile' });
+              props.type !== 'my'
+                ? Actions.main({ tabNav: 'Profile', purchased: 'light' })
+                : Actions.main({ tabNav: 'ProProfile', purchased: 'light' });
             }}
           />
         </View>
@@ -117,7 +119,10 @@ const DropDownButton = (props) => (
     onPress={() => props.onPress()}>
     <View style={styles.iconView}>
       <Image style={styles.leaveIcon} />
-      <Image style={styles.accountIcon} source={profileTypes[props.icon].avatar} />
+      <Image
+        style={styles.accountIcon}
+        source={props.type !== 'my' ? profileTypes.my.avatar : profileTypes.pro.avatar}
+      />
     </View>
     <Image style={styles.arrowDown} />
   </TouchableOpacity>

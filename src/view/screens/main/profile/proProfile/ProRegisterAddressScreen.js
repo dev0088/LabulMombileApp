@@ -9,7 +9,8 @@ import CommonText from 'view/components/text/CommonText';
 import AccountCommonHeader from 'view/components/header/AccountCommonHeader';
 import { AddressBlue } from 'assets/svg/icons';
 
-const ProRegisterAddressScreen = () => {
+const ProRegisterAddressScreen = (props) => {  console.log(props.accountType)
+
   return (
     <View style={styles.container}>
       <AccountCommonHeader style={styles.header} />
@@ -23,7 +24,11 @@ const ProRegisterAddressScreen = () => {
           </View>
         </View>
         <View style={styles.popupBottomView}>
-          <CommonButton text={'Contiuer'} onPress={() => Actions.proRegisterEmail()} style={styles.btnNext} />
+          <CommonButton
+            text={'Contiuer'}
+            onPress={() => Actions.proRegisterEmail({ accountType: props.accountType })}
+            style={styles.btnNext}
+          />
         </View>
       </View>
     </View>

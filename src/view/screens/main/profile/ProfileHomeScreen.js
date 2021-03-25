@@ -9,7 +9,7 @@ import ProfileCommonCard from 'view/components/adapter/ProfileCommonCard';
 import ProfileCommonListItem from 'view/components/adapter/ProfileCommonListItem';
 import CommonButton from 'view/components/button/CommonButton';
 import AccountChangeMenu from './AccountChangeMenu';
-import { MyNeeds, Circles, Information, Setting, AddressBlue } from 'assets/svg/icons';
+import { MyNeeds, Circles, Information, Setting, PurchasedPremium } from 'assets/svg/icons';
 const originalMyProfile = {
   avatar: '',
   fullName: 'Mathieu Torin',
@@ -24,7 +24,7 @@ const ProfileHomeScreen = (props) => {
       <AccountChangeMenu
         style={styles.dropDown}
         type="my"
-        visible={props.route.params.userProfile || props.userProfile ? true : false}
+        visible={props.route.params.purchased || props.userProfile ? true : false}
       />
       <View style={styles.topView}>
         <ProfileCommonAvatar style={styles.avatar} fullName={userProfile.fullName} />
@@ -79,41 +79,32 @@ const ProfileHomeScreen = (props) => {
           <ProfileCommonListItem
             text={'Abonnement Premim'}
             subText={'En savoir plus'}
-            icon={
-              <View
-                style={{
-                  width: 38 * em,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  height: 38 * em,
-                  borderRadius: 19 * em,
-                  backgroundColor: 'rgba(115, 152, 253, 0.2)',
-                }}>
-                {AddressBlue({ width: 20 * em, height: 22 * em })}
-              </View>
-            }
+            icon={PurchasedPremium(iconSize)}
             style={styles.listItem}
             onPress={() => {
-              Actions.premiumSubscription({ profileType: 'my' });
+              props.route.params.purchased
+                ? Actions.premiumPurchased({ profileType: 'my' })
+                : Actions.premiumSubscription({ profileType: 'my' });
             }}
           />
         </View>
-        <View style={styles.rowContainer}>
-          <View style={styles.imgBg}>
-            <TitleText text={'Créer un compte'} style={styles.imageTextMain} />
-            <TitleText text={'Pro/ Association/ institutionnel'} style={styles.imageTextSub} />
-            <CommonButton
-              style={styles.proBtn}
-              textStyle={{ fontSize: 12 * em }}
-              text={'Créer maintenant'}
-              onPress={() => Actions.createAccountMenu()}
-            />
+        {!props.route.params.purchased && (
+          <View style={styles.rowContainer}>
+            <View style={styles.imgBg}>
+              <TitleText text={'Créer un compte'} style={styles.imageTextMain} />
+              <TitleText text={'Pro/ Association/ institutionnel'} style={styles.imageTextSub} />
+              <CommonButton
+                style={styles.proBtn}
+                textStyle={{ fontSize: 12 * em }}
+                text={'Créer maintenant'}
+                onPress={() => Actions.createAccountMenu()}
+              />
+            </View>
+            <View>
+              <Image style={styles.imgBg} source={require('assets/images/profie_banner.png')} />
+            </View>
           </View>
-          <View>
-            <Image style={styles.imgBg} source={require('assets/images/profie_banner.png')} />
-          </View>
-        </View>
-
+        )}
         <View style={styles.listBox}>
           <CommentText text={'À propos'} style={styles.caption} />
           <ProfileCommonListItem
@@ -189,11 +180,16 @@ const styles = {
     flexDirection: 'column',
   },
   imageTextMain: { marginTop: 25 * em, fontSize: 20 * em, marginLeft: 18 * em },
-  imageTextSub: { fontSize: 15 * em, marginLeft: 18 * em, marginRight: -58 * em, marginBottom: 10 * em },
+  imageTextSub: {
+    fontFamily: 'Lato-Bold',
+    fontSize: 15 * em,
+    marginLeft: 18 * em,
+    marginRight: -58 * em,
+    marginBottom: 10 * em,
+  },
   proBtn: {
     borderRadius: 9 * em,
     width: 126 * em,
-    height: 33 * em,
     paddingVertical: 9 * em,
     marginLeft: 15 * em,
   },

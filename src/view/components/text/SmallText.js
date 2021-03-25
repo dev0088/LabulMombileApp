@@ -11,7 +11,7 @@ const renderText = (props) => {
   if (props.align) {
     textAlignProp = props.align;
   }
-  const textStyle = { fontSize: 12 * em, color: color, fontFamily: 'Lato-Bold', textAlign: textAlignProp };
+  const textStyle = { fontSize: 12 * em, color: color, fontFamily: 'Lato-Regular', textAlign: textAlignProp };
   return <Text style={[textStyle, props.style]}>{props.text}</Text>;
 };
 

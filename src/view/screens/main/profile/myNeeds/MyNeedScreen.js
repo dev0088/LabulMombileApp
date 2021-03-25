@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { em, hexToRGB } from 'view/common/const';
 import NeedService from 'model/service/NeedService';
 import NeedServiceType from 'model/service/NeedServiceType';
-import User from 'model/User';
+import User from 'model/user/User';
 import MabulDetailView from 'view/components/view/MabulDetailView';
 
 const needData = new NeedService(

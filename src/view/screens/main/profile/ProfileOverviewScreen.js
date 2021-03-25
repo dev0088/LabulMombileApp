@@ -32,7 +32,7 @@ const ProfileOverviewScreen = (props) => {
         <CommonHeader
           rightTxt={'Modifier mon profil'}
           style={styles.header}
-          onLeftPress={() => Actions.main({ tabNav: 'Profile', userProfile: userProfile })}
+          onLeftPress={() => Actions.main({ tabNav: 'Profile'})}
           onRightPress={() => Actions.editProfile({ userProfile: userProfile })}
         />
         <View style={styles.firstPopView}>

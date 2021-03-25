@@ -55,7 +55,7 @@ const insertInformations = [
   },
   { title: 'Mon mobile', inputTexts: [{ commentInput: 'Mon mobile', value: '+590 6 90 874 258' }] },
 
-  { title: 'Ma localisation', inputTexts: [{ commentInput: 'Mon dresse', value: 'ABYMES 97139 Guadeloupe' }] },
+  { title: 'Ma localisation', inputTexts: [{ commentInput: 'Mon dresse', value: 'ABYMES 97139\nGuadeloupe' }] },
 
   {
     title: 'Mon nom',
@@ -111,9 +111,16 @@ const ProfileCommonModal = (props) => {
   var modalBody =
     props.itemKey === 8 ? (
       <>
-        <SearchBox style={{ marginBottom: 15 * em }} />
+        <SearchBox style={{ marginBottom: 15 * em, height: 44 * em, marginTop: 40 * em }} />
         {options.map((option) => {
-          return <CommonCheckBox text={option.title} isChecked={options.checked} style={styles.listItem} />;
+          return (
+            <CommonCheckBox
+              text={option.title}
+              isChecked={options.checked}
+              style={styles.listItem}
+              onChecked={() => {}}
+            />
+          );
         })}
       </>
     ) : (
@@ -175,7 +182,7 @@ const styles = {
     justifyContent: 'flex-start',
   },
   header: { marginBottom: 10 * em, marginTop: 27 * em },
-  input: { marginTop: 25 * em, height: 62 * em },
+  input: { marginTop: 25 * em },
   forgotPsswd: { lineHeight: 18 * em, marginTop: 78 * em, textAlign: 'center' },
   comment: { fontSize: 12 * em, lineHeight: 20 * em, marginTop: 15 * em },
   listItem: { paddingHorizontal: 10 * em, marginBottom: 35 * em },
