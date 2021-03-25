@@ -1,21 +1,16 @@
 import React from 'react';
-import { View, TouchableOpacity, Image, ScrollView } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
 import { em } from 'view/common/const';
-import SwitchButton from 'view/components/button/SwitchButton';
-import CommonText from 'view/components/text/CommonText';
-import CommentText from 'view/components/text/CommentText';
-import CircleDraw from 'view/components/CircleDraw';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import MyInviationsTabScreen from './MyInviationsTabScreen';
 import { navigationRef } from 'view/screens/main/RootNavigation';
 import MyNeedsTabScreen from './MyNeedsTabScreen';
 import { NotificationOutline } from 'assets/svg/icons';
-import { NavigationContainer } from '@react-navigation/native';
-import CommonTabBar from 'view/components/CommonTabBar';
+import CommonTabBar from 'view/components/other/CommonTabBar';
 const Tab = createMaterialTopTabNavigator();
 
-const MyActivityHomeScreen = (props) => {
+const MyActivityHomeScreen = () => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigationRef.current.navigate('MyNotifictions')}>

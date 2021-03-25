@@ -4,7 +4,7 @@ import { em, hexToRGB } from 'view/common/const';
 import OrganizeService from 'model/service/OrganizeService';
 import User from 'model/User';
 import OrganizeServiceType from 'model/service/OrganizeServiceType';
-import MabulDetailView from '../../../../components/MabulDetailView';
+import MabulDetailView from 'view/components/view/MabulDetailView';
 
 const organizeData = Object.assign(
   new OrganizeService(

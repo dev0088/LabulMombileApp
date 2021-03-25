@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { View, Image } from 'react-native';
 import { em, hm } from 'view/common/const';
 import CommonText from 'view/components/text/CommonText';
-import CircleDraw from 'view/components/CircleDraw';
 import CommentText from 'view/components/text/CommentText';
 import { FlatList, TouchableOpacity } from 'react-native';
 import CommonListItem from 'view/components/adapter/CommonListItem';
-import AvatarWithBadge from 'view/components/AvatarWithBadge';
+import AvatarWithBadge from 'view/components/view/AvatarWithBadge';
 import { Actions } from 'react-native-router-flux';
 import { MessageBackground, MessageGray } from 'assets/svg/icons';
 const needsUsers = [

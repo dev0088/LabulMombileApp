@@ -5,7 +5,7 @@ import CommonText from 'view/components/text/CommonText';
 import TitleText from 'view/components/text/TitleText';
 import Modal from 'react-native-modal';
 import CommonBackButton from 'view/components/button/CommonBackButton';
-import CommonTextInput from 'view/components/CommonTextInput';
+import CommonTextInput from 'view/components/textInput/CommonTextInput';
 import CommonButton from 'view/components/button/CommonButton';
 
 const FriendBadgeNoticePopupScreen = (props) => {

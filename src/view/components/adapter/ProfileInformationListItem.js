@@ -2,7 +2,7 @@ import { View, Image } from 'react-native';
 import React from 'react';
 import { em } from 'view/common/const';
 import CommonListItem from './CommonListItem';
-import ProfileCommonSpecView from '../ProfileCommonSpecView';
+import ProfileCommonSpecView from 'profile/components/view/ProfileCommonSpecView';
 
 const ProfileInformationListItem = (props) => {
   console.log(props.options);

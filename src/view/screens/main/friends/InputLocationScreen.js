@@ -3,7 +3,7 @@ import { View, FlatList } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
 import { em, hm } from 'view/common/const';
 import CommonHeader from 'view/components/header/CommonHeader';
-import SearchBox from 'view/components/SearchBox';
+import SearchBox from 'view/components/other/SearchBox';
 import CommentText from 'view/components/text/CommentText';
 import SearchCommonListItem from 'view/components/adapter/SearchCommonListItem';
 import { LocationBlue } from 'assets/svg/icons';

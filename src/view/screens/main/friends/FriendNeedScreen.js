@@ -7,7 +7,7 @@ import FriendInvitePopupScreen from './FriendInvitePopupScreen';
 import NeedService from 'model/service/NeedService';
 import NeedServiceType from 'model/service/NeedServiceType';
 import User from 'model/User';
-import MabulDetailView from '../../../components/MabulDetailView';
+import MabulDetailView from 'view/components/view/MabulDetailView';
 import { Send, Option } from 'assets/svg/icons';
 import FriendCancelParticipatePopupScreen from './FriendCancelParticipatePopupScreen';
 const needData = Object.assign(

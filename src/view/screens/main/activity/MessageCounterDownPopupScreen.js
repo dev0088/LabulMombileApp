@@ -4,7 +4,7 @@ import { em, HEIGHT, hm } from 'view/common/const';
 import CommonButton from 'view/components/button/CommonButton';
 import CommonText from 'view/components/text/CommonText';
 import Modal from 'react-native-modal';
-import ClockDraw from 'view/components/ClockDraw';
+import ClockDraw from 'view/components/view/ClockDraw';
 
 const MessageCounterDownPopupScreen = (props) => {
   const [seconds, setSeconds] = useState(30);

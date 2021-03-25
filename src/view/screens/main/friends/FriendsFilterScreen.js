@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { em, hm } from 'view/common/const';
 import FriendsFilterListItem from 'view/components/adapter/FriendsFilterListItem';
 import CommonText from 'view/components/text/CommonText';
-import Switch from 'view/components/Switch';
+import Switch from 'view/components/other/Switch';
 import { Actions } from 'react-native-router-flux';
 import FriendsFilterRequestModalScreen from './FriendsFilterRequestModalScreen';
 import FriendsFilterDateModalScreen from './FriendsFilterDateModalScreen';

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
 import { em, hm } from 'view/common/const';
-import SearchBox from 'view/components/SearchBox';
+import SearchBox from 'view/components/other/SearchBox';
 import { FlatList } from 'react-native-gesture-handler';
 import SearchCommonListItem from 'view/components/adapter/SearchCommonListItem';
 import FriendCommonHeader from 'view/components/header/FriendCommonHeader';

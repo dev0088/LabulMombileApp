@@ -7,7 +7,7 @@ import FriendInvitePopupScreen from './FriendInvitePopupScreen';
 import OrganizeServiceType from 'model/service/OrganizeServiceType';
 import OrganizeService from 'model/service/OrganizeService';
 import User from 'model/User';
-import MabulDetailView from '../../../components/MabulDetailView';
+import MabulDetailView from 'view/components/view/MabulDetailView';
 
 const organizeData = Object.assign(
   new OrganizeService(

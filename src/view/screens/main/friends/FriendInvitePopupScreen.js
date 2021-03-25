@@ -3,7 +3,7 @@ import { View, FlatList } from 'react-native';
 import { em } from 'view/common/const';
 import CommonText from 'view/components/text/CommonText';
 import TitleText from 'view/components/text/TitleText';
-import SearchBox from 'view/components/SearchBox';
+import SearchBox from 'view/components/other/SearchBox';
 import SearchCommonListItem from 'view/components/adapter/SearchCommonListItem';
 import Modal from 'react-native-modal';
 

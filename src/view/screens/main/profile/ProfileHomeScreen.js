@@ -4,7 +4,7 @@ import TitleText from 'view/components/text/TitleText';
 import CommentText from 'view/components/text/CommentText';
 import { em, WIDTH, HEIGHT } from 'view/common/const';
 import { Actions } from 'react-native-router-flux';
-import ProfileCommonAvatar from 'view/components/ProfileCommonAvatar';
+import ProfileCommonAvatar from 'view/components/view/ProfileCommonAvatar';
 import ProfileCommonCard from 'view/components/adapter/ProfileCommonCard';
 import ProfileCommonListItem from 'view/components/adapter/ProfileCommonListItem';
 import CommonButton from 'view/components/button/CommonButton';

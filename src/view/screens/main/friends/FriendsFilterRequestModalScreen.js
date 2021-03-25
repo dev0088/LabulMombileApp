@@ -5,7 +5,7 @@ import CommonBackButton from 'view/components/button/CommonBackButton';
 import CommentText from 'view/components/text/CommentText';
 import { FlatList } from 'react-native-gesture-handler';
 import CommonButton from 'view/components/button/CommonButton';
-import CommonCheckBox from 'view/components/CommonCheckBox';
+import CommonCheckBox from 'view/components/checkbox/CommonCheckBox';
 
 import Modal from 'react-native-modal';
 import CommonText from 'view/components/text/CommonText';

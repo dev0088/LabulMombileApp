@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Image, ScrollView, Text } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
 import { em, WIDTH } from 'view/common/const';
-import ProfileCommonLabel from 'view/components/ProfileCommonLabel';
+import ProfileCommonLabel from 'view/components/other/ProfileCommonLabel';
 import CommonBackButton from 'view/components/button/CommonBackButton';
-import ProfileCommonSpecView from 'view/components/ProfileCommonSpecView';
+import ProfileCommonSpecView from 'view/components/view/ProfileCommonSpecView';
 
-import ProfileCommonAvatar from 'view/components/ProfileCommonAvatar';
+import ProfileCommonAvatar from 'view/components/view/ProfileCommonAvatar';
 import CommentText from 'view/components/text/CommentText';
 import CommonButton from 'view/components/button/CommonButton';
 import {
@@ -28,7 +28,6 @@ import {
   Resourceful,
   WellLiving,
   SwissKnife,
-  CheckBlue,
 } from 'assets/svg/icons';
 
 const iconSize = { width: 33 * em, height: 33 * em };

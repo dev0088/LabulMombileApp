@@ -1,9 +1,8 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { View } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
 import { em } from 'view/common/const';
-import CommonTabBar from 'view/components/CommonTabBar';
+import CommonTabBar from 'view/components/other/CommonTabBar';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import MyNeedsTabScreen from './MyNeedsTabScreen';
 import { NavigationContainer } from '@react-navigation/native';

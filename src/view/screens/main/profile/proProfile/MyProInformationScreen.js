@@ -4,7 +4,7 @@ import { em } from 'view/common/const';
 import ProfileInformationListItem from 'view/components/adapter/ProfileInformationListItem';
 import CommonText from 'view/components/text/CommonText';
 import ProfileCommonHeader from 'view/components/header/ProfileCommonHeader';
-import ProfileCommonModal from 'view/components/ProfileCommonModal';
+import ProfileCommonModal from 'view/components/other/ProfileCommonModal';
 import { Actions } from 'react-native-router-flux';
 
 const MyProInformationScreen = () => {
@@ -13,7 +13,7 @@ const MyProInformationScreen = () => {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <ProfileCommonHeader title="Mes informations" onCancel={()=>Actions.pop()}/>
+        <ProfileCommonHeader title="Mes informations" onCancel={() => Actions.pop()} />
         <CommonText text="Contact" style={styles.itemTitle} />
         <ProfileInformationListItem
           caption={'Mon téléphone'}

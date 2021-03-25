@@ -3,7 +3,7 @@ import { View, ScrollView, TouchableOpacity } from 'react-native';
 import { em, WIDTH } from 'view/common/const';
 import CommonText from 'view/components/text/CommonText';
 import TitleText from 'view/components/text/TitleText';
-import ProfileCommonAvatar from 'view/components/ProfileCommonAvatar';
+import ProfileCommonAvatar from 'view/components/view/ProfileCommonAvatar';
 import CommentText from 'view/components/text/CommentText';
 import CommonButton from 'view/components/button/CommonButton';
 import FriendBadgeNoticePopupScreen from './FriendBadgeNoticePopupScreen';

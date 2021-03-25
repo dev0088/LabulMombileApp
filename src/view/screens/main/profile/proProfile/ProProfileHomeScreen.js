@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, ScrollView, Text, Image, ActionSheetIOS, ImageBackground } from 'react-native';
+import { View, TouchableOpacity, ScrollView, Text, Image, ImageBackground } from 'react-native';
 import CommentText from 'view/components/text/CommentText';
 import { em, WIDTH, HEIGHT } from 'view/common/const';
 import { Actions } from 'react-native-router-flux';
-import ProfileCommonAvatar from 'view/components/ProfileCommonAvatar';
+import ProfileCommonAvatar from 'view/components/view/ProfileCommonAvatar';
 import ProfileCommonCard from 'view/components/adapter/ProfileCommonCard';
 import ProfileCommonListItem from 'view/components/adapter/ProfileCommonListItem';
 import AccountChangeMenu from '../AccountChangeMenu';
-import { ProNeeds,MyNeeds, Circles, Information, Setting, AddressBlue } from 'assets/svg/icons';
+import { ProNeeds, Information, Setting, AddressBlue } from 'assets/svg/icons';
 const iconSize = { width: 38 * em, height: 38 * em };
 
 const originalProProfile = {

@@ -5,7 +5,7 @@ import { em } from 'view/common/const';
 import CommonText from 'view/components/text/CommonText';
 import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
 import { Actions } from 'react-native-router-flux';
-import CheckBox from 'view/components/CheckBox';
+import CheckBox from 'view/components/checkbox/CheckBox';
 import MabulNextButton from 'view/components/button/MabulNextButton';
 import { FlatList } from 'react-native-gesture-handler';
 import { Neighbor } from 'assets/svg/icons';

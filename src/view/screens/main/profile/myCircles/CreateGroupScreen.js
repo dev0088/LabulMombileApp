@@ -4,10 +4,10 @@ import TitleText from 'view/components/text/TitleText';
 import { em } from 'view/common/const';
 import { Actions } from 'react-native-router-flux';
 import CommonText from 'view/components/text/CommonText';
-import SearchBox from 'view/components/SearchBox';
+import SearchBox from 'view/components/other/SearchBox';
 import CommentText from 'view/components/text/CommentText';
 import CommonListItem from 'view/components/adapter/CommonListItem';
-import CheckBox from 'view/components/CheckBox';
+import CheckBox from 'view/components/checkbox/CheckBox';
 import CommonButton from 'view/components/button/CommonButton';
 import { Cancel } from 'assets/svg/icons';
 const usersData = [

@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
 import { em } from 'view/common/const';
-import CommonTabBar from 'view/components/CommonTabBar';
+import CommonTabBar from 'view/components/other/CommonTabBar';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import CommonBackButton from 'view/components/button/CommonBackButton';
@@ -16,7 +16,7 @@ const ProNeedsHomeScreen = () => {
   return (
     <NavigationContainer>
       <View style={styles.container}>
-        <CommonBackButton dark style={{marginTop:27*em, marginLeft: 15 * em }} />
+        <CommonBackButton dark style={styles.backButton} />
         <TitleText text={'Mes demandes'} style={styles.title} />
         <Tab.Navigator tabBar={(props) => <CommonTabBar {...props} />} swipeEnabled={false} initialRouteName="tips">
           <Tab.Screen name="tips" options={{ title: 'Bons plans', tabColor: '#7398FD' }} component={ProTipsTabScreen} />
@@ -41,6 +41,7 @@ const styles = {
     flex: 1,
     backgroundColor: '#FFFFFF',
   },
+  backButton: { marginTop: 27 * em, marginLeft: 15 * em },
   header: {
     height: 181 * em,
     width: '100%',

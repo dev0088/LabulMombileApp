@@ -3,12 +3,12 @@ import { View, ScrollView, Image, ImageBackground } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
 import { em, WIDTH } from 'view/common/const';
 import CommonText from 'view/components/text/CommonText';
-import ProfileCommonLabel from 'view/components/ProfileCommonLabel';
+import ProfileCommonLabel from 'view/components/other/ProfileCommonLabel';
 import CommonHeader from 'view/components/header/CommonHeader';
-import ProfileCommonAvatar from 'view/components/ProfileCommonAvatar';
+import ProfileCommonAvatar from 'view/components/view/ProfileCommonAvatar';
 import { Actions } from 'react-native-router-flux';
 import CommentText from 'view/components/text/CommentText';
-import ProfileCommonSpecView from 'view/components/ProfileCommonSpecView';
+import ProfileCommonSpecView from 'view/components/view/ProfileCommonSpecView';
 import { Events, Promotion, Tips } from 'assets/svg/icons';
 const ProProfileOverviewScreen = (props) => {
   const iconSize = { width: 33 * em, height: 33 * em };

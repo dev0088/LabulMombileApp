@@ -4,7 +4,7 @@ import { em } from 'view/common/const';
 import CommonText from 'view/components/text/CommonText';
 import TitleText from 'view/components/text/TitleText';
 import CommonButton from 'view/components/button/CommonButton';
-import CheckBox from 'view/components/CheckBox';
+import CheckBox from 'view/components/checkbox/CheckBox';
 
 import Modal from 'react-native-modal';
 const FriendParticipatePopupScreen = (props) => {

@@ -5,7 +5,7 @@ import { em, WIDTH, hm } from 'view/common/const';
 import CommonBackButton from 'view/components/button/CommonBackButton';
 import { FlatList } from 'react-native-gesture-handler';
 import CommonButton from 'view/components/button/CommonButton';
-import CommonCheckBox from 'view/components/CommonCheckBox';
+import CommonCheckBox from 'view/components/checkbox/CommonCheckBox';
 
 import Modal from 'react-native-modal';
 import { Actions } from 'react-native-router-flux';

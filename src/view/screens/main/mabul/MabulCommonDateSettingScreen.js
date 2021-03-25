@@ -7,7 +7,7 @@ import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
 import { Actions } from 'react-native-router-flux';
 import MabulNextButton from 'view/components/button/MabulNextButton';
 import CommonListItem from 'view/components/adapter/CommonListItem';
-import Switch from 'view/components/Switch';
+import Switch from 'view/components/other/Switch';
 
 const MabulCommonDateSettingScreen = (props) => {
   const conceptColor = mabulColors[props.mabulService];

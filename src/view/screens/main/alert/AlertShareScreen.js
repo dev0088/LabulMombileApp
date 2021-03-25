@@ -2,7 +2,7 @@ import React from 'react';
 import { View, FlatList } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
 import { em, hm } from 'view/common/const';
-import SearchBox from 'view/components/SearchBox';
+import SearchBox from 'view/components/other/SearchBox';
 import SearchCommonListItem from 'view/components/adapter/SearchCommonListItem';
 import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
 import CommonButton from 'view/components/button/CommonButton';

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { em } from 'view/common/const';
 import InviteButton from 'view/components/button/InviteButton';
 import CommonListItem from './CommonListItem';
-import CheckBox from '../CheckBox';
+import CheckBox from 'view/components/checkbox/CheckBox';
 import { LocationGray } from 'assets/svg/icons';
 const SearchCommonListItem = (props) => {
   var inviteBtn = props.inviteBtn && <InviteButton invited={props.invited} />;

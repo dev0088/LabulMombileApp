@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import { View, Image, TouchableOpacity, FlatList } from 'react-native';
+import { View, TouchableOpacity, FlatList } from 'react-native';
 import { em, hm } from 'view/common/const';
 import CommonText from 'view/components/text/CommonText';
-import CircleDraw from 'view/components/CircleDraw';
 import CommentText from 'view/components/text/CommentText';
 import TitleText from 'view/components/text/TitleText';
-import { Actions } from 'react-native-router-flux';
 import { navigationRef } from 'view/screens/main/RootNavigation';
 import CommonListItem from 'view/components/adapter/CommonListItem';
-import AvatarWithBadge from 'view/components/AvatarWithBadge';
+import AvatarWithBadge from 'view/components/view/AvatarWithBadge';
 import { NotificationGray } from 'assets/svg/icons';
 import { NotificationBlue } from 'assets/svg/icons';
 
@@ -38,15 +36,15 @@ const notificationUsers = [
     notification: 'Réparer une chaise',
   },
 ];
-const MyNotificationsScreen = (props) => {
+const MyNotificationsScreen = () => {
   const [isEmpty, setIsEmpty] = useState(true);
 
   const emptyView = (
     <TouchableOpacity style={styles.emptyView} onPress={() => setIsEmpty(!isEmpty)}>
-      <View style={{ position: 'absolute', left: 103.85 * em, transform: [{ rotate: '45deg' }] }}>
+      <View style={styles.notificationIcon1}>
         <NotificationGray width={17.31 * em} height={17.31 * em} />
       </View>
-      <View style={{ position: 'absolute', top: 17.31 * em, left: 190.35 * em, transform: [{ rotate: '-45deg' }] }}>
+      <View style={styles.notificationIcon2}>
         <NotificationGray width={8.31 * em} height={8.31 * em} />
       </View>
       <View style={styles.msgIcon}>
@@ -110,6 +108,8 @@ const styles = {
     alignItems: 'flex-start',
     backgroundColor: '#EDF2F5',
   },
+  notificationIcon1: { position: 'absolute', left: 103.85 * em, transform: [{ rotate: '45deg' }] },
+  notificationIcon2: { position: 'absolute', top: 17.31 * em, left: 190.35 * em, transform: [{ rotate: '-45deg' }] },
   header: {
     height: 146 * em,
     width: '100%',

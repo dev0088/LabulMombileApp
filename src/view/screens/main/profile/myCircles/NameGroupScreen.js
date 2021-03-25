@@ -2,7 +2,7 @@ import React from 'react';
 import { em, hexToRGB } from 'view/common/const';
 import { View, Image } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
-import CommonTextInput from 'view/components/CommonTextInput';
+import CommonTextInput from 'view/components/textInput/CommonTextInput';
 import CommonButton from 'view/components/button/CommonButton';
 import { Actions } from 'react-native-router-flux';
 import AccountCommonHeader from 'view/components/header/AccountCommonHeader';

@@ -5,7 +5,7 @@ import CommonButton from 'view/components/button/CommonButton';
 import { Actions } from 'react-native-router-flux';
 import AccountCommonHeader from 'view/components/header/AccountCommonHeader';
 import TitleText from 'view/components/text/TitleText';
-import CommonTextInput from 'view/components/CommonTextInput';
+import CommonTextInput from 'view/components/textInput/CommonTextInput';
 import CommonText from 'view/components/text/CommonText';
 
 const LoginScreen = () => {

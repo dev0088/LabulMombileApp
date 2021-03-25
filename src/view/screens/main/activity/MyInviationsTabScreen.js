@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { View, Image, TouchableOpacity, FlatList } from 'react-native';
 import { em, hm } from 'view/common/const';
 import CommonText from 'view/components/text/CommonText';
-import CircleDraw from 'view/components/CircleDraw';
+import CircleDraw from 'view/components/view/CircleDraw';
 import CommentText from 'view/components/text/CommentText';
 import { Actions } from 'react-native-router-flux';
-import AvatarWithBadge from 'view/components/AvatarWithBadge';
+import AvatarWithBadge from 'view/components/view/AvatarWithBadge';
 import CommonListItem from 'view/components/adapter/CommonListItem';
 
 const invitationUsers = [

@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { em } from 'view/common/const';
 import CommonHeader from 'view/components/header/CommonHeader';
-import Switch from 'view/components/Switch';
+import Switch from 'view/components/other/Switch';
 import CommonListItem from 'view/components/adapter/CommonListItem';
 import { Address, NotificationYellow } from 'assets/svg/icons';
 const MySettingScreen = () => {

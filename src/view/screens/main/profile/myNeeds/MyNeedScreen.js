@@ -4,7 +4,7 @@ import { em, hexToRGB } from 'view/common/const';
 import NeedService from 'model/service/NeedService';
 import NeedServiceType from 'model/service/NeedServiceType';
 import User from 'model/User';
-import MabulDetailView from '../../../../components/MabulDetailView';
+import MabulDetailView from 'view/components/view/MabulDetailView';
 
 const needData = new NeedService(
   new User('Mathieu Torin', require('assets/images/tab_profile_off.png'), 'anton@gmail.com'),

@@ -3,9 +3,9 @@ import { View, ScrollView } from 'react-native';
 import { em } from 'view/common/const';
 import ProfileInformationListItem from 'view/components/adapter/ProfileInformationListItem';
 import ProfileCommonHeader from 'view/components/header/ProfileCommonHeader';
-import ProfileCommonModal from 'view/components/ProfileCommonModal';
+import ProfileCommonModal from 'view/components/other/ProfileCommonModal';
 import CommonButton from 'view/components/button/CommonButton';
-import ProfileCommonAvatar from 'view/components/ProfileCommonAvatar';
+import ProfileCommonAvatar from 'view/components/view/ProfileCommonAvatar';
 import CommentText from 'view/components/text/CommentText';
 import { Actions } from 'react-native-router-flux';
 

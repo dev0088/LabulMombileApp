@@ -5,7 +5,7 @@ import CommentText from 'view/components/text/CommentText';
 import ServiceType from 'model/service/ServiceType';
 import { getUserBadge } from 'view/common/icons';
 import CommonListItem from 'view/components/adapter/CommonListItem';
-import AvatarWithBadge from 'view/components/AvatarWithBadge';
+import AvatarWithBadge from 'view/components/view/AvatarWithBadge';
 import { CrossGray } from 'assets/svg/icons';
 const coverImageMargin = 24 * em;
 const horizontalMagin = 22 * em;
