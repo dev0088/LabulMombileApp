@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, ScrollView, Text, Image, TouchableOpacity } from 'react-native';
+import { View, ScrollView, Text, Image, TouchableOpacity, StatusBar } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
 import { em } from 'view/common/const';
 import CommonButton from 'view/components/button/CommonButton';
@@ -73,6 +73,7 @@ const PremiumSubscriptionScreen = (props) => {
         backdropColor={'#1E2D60'}
         swipeDirection={'up'}>
         <View>
+          <StatusBar backgroundColor="rgba(30, 45, 96, 0.8)" barStyle="light-content" />
           <View style={styles.modalHeader}>
             <Text style={styles.modalName}>Payer</Text>
             <TouchableOpacity onPress={() => setModalVisible(false)}>

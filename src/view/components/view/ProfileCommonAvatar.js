@@ -20,23 +20,26 @@ const ProfileCommonAvatar = (props) => {
           props.style,
           styles.imgWrapper,
           {
-            width: props.style.width + 6 * em,
-            height: props.style.width + 6 * em,
-            borderRadius: (props.style.width + 6 * em) / 2,
+            width: props.style.width - 10 * em,
+            height: props.style.width - 10 * em,
+            borderRadius: (props.style.width - 10 * em) / 2,
+            backgroundColor: '#ffffff33',
           },
         ]}>
         {props.pro
           ? ProAvatarBg({
-              width: props.style.width + 6 * em,
-              height: props.style.width + 6 * em,
+              width: props.style.width+16*em,
+              height: props.style.width+16*em,
             })
           : AvatarBg({
-              width: props.style.width + 6 * em,
-              height: props.style.width + 6 * em,
+              width: props.style.width+16*em,
+              height: props.style.width+16*em,
             })}
-        {/* <AvatarBg width={props.style.width+ 10* em} height={props.style.width+ 10 * em} /> */}
         <TitleText
-          style={[styles.txtInitial, { color: !props.pro ? '#40CDDE' : '#6784DA' }]}
+          style={[
+            styles.txtInitial,
+            { color: !props.pro ? '#40CDDE' : '#6784DA', fontSize: props.initialSize || 28 * em },
+          ]}
           text={getInitials(props.fullName)}
         />
       </View>
@@ -51,7 +54,7 @@ const ProfileCommonAvatar = (props) => {
             width: props.style.width + 6 * em,
             height: props.style.width + 6 * em,
             borderRadius: (props.style.width + 6 * em) / 2,
-            borderWidth: 3 * em,
+            // borderWidth: props.borderWidth,
           },
         ]}>
         <Image style={{ width: props.style.width, height: props.style.width }} source={props.icon} />
@@ -71,20 +74,12 @@ const styles = {
   avatarImg: {
     resizeMode: 'contain',
   },
-  txtInitial: {
-    fontSize: 28 * em,
-
-    lineHeight: 31 * em,
-    fontWeight: 'bold',
-    position: 'absolute',
-    textAlign: 'center',
-    textAlignVertical: 'center',
-  },
+  txtInitial: { opacity:0.8, fontSize: 28 * em, position: 'absolute', textAlign: 'center', textAlignVertical: 'center' },
   imgWrapper: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ffffff33',
-    borderColor:'#ffffff33'
+    // backgroundColor: '#ffffff33',
+    borderColor: 'red',
   },
 };
 export default ProfileCommonAvatar;

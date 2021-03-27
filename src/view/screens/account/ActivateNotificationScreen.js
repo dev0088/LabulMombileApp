@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Image } from 'react-native';
 import { em } from 'view/common/const';
 import CommonButton from 'view/components/button/CommonButton';
 import CommonText from 'view/components/text/CommonText';

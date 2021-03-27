@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Image, ImageBackground, FlatList } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
 import { em } from 'view/common/const';
@@ -106,21 +106,37 @@ const SelectedAvatarView = ({ avatar, userName }) => (
 );
 
 const CreateGroupScreen = (props) => {
+  console.log(props.sort);
+  const [checked, setChecked] = useState(false);
   const renderSelectedList = ({ item }) => <SelectedAvatarView avatar={item.avatar} userName={item.userName} />;
-  const renderCircleList = ({ item }) => (
-    <CommonListItem
-      icon={<Image source={item.avatar} style={{ width: 40 * em, height: 40 * em, marginRight: 15 * em }} />}
-      title={item.userName}
-      titleStyle={{ color: '#1E2D60',fontFamily:'Lato-Black' }}
-      rightView={<CheckBox oval red bgColor="#EF88B9" />}
-      style={styles.listItem}
-    />
-  );
+  const renderCircleList = ({ item }) => {
+    return (
+      <CommonListItem
+        icon={<Image source={item.avatar} style={{ width: 40 * em, height: 40 * em, marginRight: 15 * em }} />}
+        title={item.userName}
+        titleStyle={{ color: '#1E2D60', fontFamily: 'Lato-Black' }}
+        rightView={
+          <CheckBox
+            oval
+            pink={props.sort === 'families' ? true : false}
+            blue={props.sort === 'friends' ? true : false}
+            bgColor="#EF88B9"
+            isChecked={checked}
+            // onClick={() => {
+            //   setChecked(!checked);
+            //   // props.onChecked(checked ? props.text : null);
+            // }}
+          />
+        }
+        style={styles.listItem}
+      />
+    );
+  };
   return (
     <View style={styles.container}>
       <CommonText style={styles.header} text="Annuler" color="#6A8596" onPress={() => Actions.pop()} />
       <TitleText text="Nouveau groupe" style={styles.title} />
-      <SearchBox comment="Rechercher un contact" style={{height:34*em}}/>
+      <SearchBox comment="Rechercher un contact" style={{ height: 34 * em }} />
       <View style={{ height: 90 * em, marginTop: 15 * em, marginBottom: 25 * em }}>
         <FlatList horizontal={true} data={selectedList} renderItem={renderSelectedList} keyExtractor={(i) => i.id} />
       </View>
@@ -128,7 +144,7 @@ const CreateGroupScreen = (props) => {
       <CommonButton
         text="Continuer"
         style={{ backgroundColor: props.themeColor, marginBottom: 30 * em }}
-        onPress={() => Actions.nameGroup({ themeColor: props.themeColor,sort:props.sort })}
+        onPress={() => Actions.nameGroup({ themeColor: props.themeColor, sort: props.sort })}
       />
     </View>
   );

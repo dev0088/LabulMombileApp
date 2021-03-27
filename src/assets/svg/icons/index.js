@@ -157,7 +157,11 @@ import Circles from 'assets/svg/icons/profile/Circles.svg';
 import Information from 'assets/svg/icons/profile/Information.svg';
 import LocationRed from 'assets/svg/icons/navigation/LocationRed.svg';
 import LocationGray from 'assets/svg/icons/navigation/LocationGray.svg';
+import CreateGroupNeighbor from 'assets/svg/icons/profile/CreateGroupNeighbor.svg';
+import CreateGroupFriend from 'assets/svg/icons/profile/CreateGroupFriend.svg';
+import CreateGroupFamily from 'assets/svg/icons/profile/CreateGroupFamily.svg';
 
+import Filter from 'assets/svg/icons/navigation/Filter.svg';
 import MessageGray from 'assets/svg/icons/navigation/MessageGray.svg';
 import MessageBackground from 'assets/svg/icons/navigation/MessageBackground.svg';
 import Magnifier from 'assets/svg/icons/navigation/Magnifier.svg';
@@ -172,9 +176,15 @@ import CheckedBlue from 'assets/svg/icons/navigation/CheckedBlue.svg';
 import ArrowRightWhite from 'assets/svg/icons/navigation/ArrowRightWhite.svg';
 import AddressBlue from 'assets/svg/icons/navigation/AddressBlue.svg';
 import OptionGray from 'assets/svg/icons/navigation/OptionGray.svg';
+import CheckPink from 'assets/svg/icons/navigation/CheckPink.svg';
+import CheckDarkBlue from 'assets/svg/icons/navigation/CheckDarkBlue.svg';
+import MagnifierBlue from 'assets/svg/icons/navigation/MagnifierBlue.svg';
+import ArrowDownBlack from 'assets/svg/icons/navigation/ArrowDownBlack.svg';
+import ArrowUpWhite from 'assets/svg/icons/navigation/ArrowUpWhite.svg';
 
-export {
-  AddressBlue,
+
+export {ArrowUpWhite,ArrowDownBlack,CreateGroupFamily,CreateGroupFriend,CreateGroupNeighbor,
+  AddressBlue,CheckDarkBlue,CheckPink,
   OptionGray,
   LocationRed,
   ArrowRightWhite,
@@ -189,13 +199,13 @@ export {
   NotificationGray,
   NotificationBlue,
   NotificationOutline,
-  LocationGray,
+  LocationGray,Filter
 };
 
 import NoteInlineRed from 'assets/svg/icons/create/NoteInlineRed.svg';
 import AlertWhite from 'assets/svg/icons/create/AlertWhite.svg';
 
-export { NoteInlineRed, AlertWhite };
+export { NoteInlineRed, AlertWhite ,MagnifierBlue};
 
 import Friend from 'assets/svg/icons/profile/Friend.svg';
 import Neighbor from 'assets/svg/icons/profile/Neighbor.svg';
@@ -351,4 +361,6 @@ import ObjetDrivers from 'assets/svg/icons/category/ObjetDrivers.svg';
 import Repas from 'assets/svg/icons/category/Repas.svg';
 import Vetements from 'assets/svg/icons/category/Vetements.svg';
 
-export { Aliments, Education, HighTech, Mebule, ObjetDrivers, Repas, Vetements };
+export { Aliments, Education, HighTech, Mebule, ObjetDrivers, Repas, Vetements,Clock };
+
+import Clock from 'assets/svg/images/Clock.svg';

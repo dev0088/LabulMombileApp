@@ -50,7 +50,7 @@ const feedbackIcons = [
 ];
 const UserProfileScreen = () => {
   const badgeView = (
-    <ScrollView horizontal={true} style={{ marginLeft: 30 * em }}>
+    <ScrollView horizontal={true} style={{ marginTop: 20 * em, marginLeft: 30 * em }}>
       <View style={styles.badgeIcon}>{feedbackIcons[0].icon}</View>
       <View style={styles.badgeIcon}>{feedbackIcons[1].icon}</View>
       <View style={styles.badgeIcon}>{feedbackIcons[2].icon}</View>
@@ -80,10 +80,18 @@ const UserProfileScreen = () => {
             style={{ marginBottom: 20 * em }}
           />
           <CommentText
-            text="En plus d’être quelqu’un de sympa je suis un grand bricoleur, je suis passionné par le bricolage et dans tout le type de petits tr… Continuer à lire"
+            text={'En plus d’être quelqu’un de sympa je suis un\ngrand bricoleur, je suis passionné par le bricolage'}
             color="#6A8596"
             style={{ lineHeight: 24 * em }}
           />
+          <View style={{ flexDirection: 'row' }}>
+            <CommentText text={'et dans tout le type de petits tr…'} color="#6A8596" style={{ lineHeight: 24 * em }} />
+            <CommentText
+              text={' Continuer à lire'}
+              color="#40CDDE"
+              style={{ lineHeight: 24 * em, fontFamily: 'Lato-Bold' }}
+            />
+          </View>
           <View style={{ flexDirection: 'row', marginTop: 10 * em, marginBottom: 20 * em }}>
             <ProfileCommonSpecView text={'Bricolage'} />
             <ProfileCommonSpecView text={'Jardinage'} />
@@ -133,18 +141,31 @@ const UserProfileScreen = () => {
 
 const styles = {
   container: { flex: 1, backgroundColor: 'transparent' },
-  backBtn: { position: 'absolute', zIndex: 1, backgroundColor: '#ffffff', top: 27 * em, left: 15 * em },
+  backBtn: {
+    shadowColor: '#B3C6CF33',
+    shadowOffset: {
+      width: 0,
+      height: 20 * em,
+    },
+    shadowRadius: 40 * em,
+    elevation: 10,
+    position: 'absolute',
+    zIndex: 1,
+    backgroundColor: '#ffffff',
+    top: 27 * em,
+    left: 15 * em,
+  },
   scrollView: { backgroundColor: '#40CDDE', paddingBottom: 16 * em },
   header: { marginTop: 27 * em },
   firstPopView: {
     alignItems: 'center',
     backgroundColor: '#ffffff',
     borderRadius: 20 * em,
-    marginTop: 76 * em,
+    marginTop: 98 * em,
     paddingHorizontal: 30 * em,
     paddingBottom: 35 * em,
   },
-  avatar: { marginTop: -54 * em, width: 108 * em, height: 108 * em },
+  avatar: { marginTop: -17 * em, width: 108 * em, height: 108 * em },
   fullNameText: { marginTop: 15 * em, marginBottom: 10 * em },
   title: { marginTop: 35 * em, marginBottom: 11 * em, fontSize: 21 * em },
   circlesView: { flexDirection: 'row', marginLeft: 0.072 * WIDTH, marginRight: 0.072 * WIDTH },
@@ -177,10 +198,16 @@ const styles = {
     borderRadius: 12 * em,
   },
   badgeIcon: {
+    shadowColor: '#254D5612',
+    shadowOffset: {
+      width: 0,
+      height: 8 * em,
+    },
+    shadowRadius: 20 * em,
     width: 60 * em,
     height: 60 * em,
     borderRadius: 30 * em,
-    elevation: 1,
+    elevation: 3,
     marginRight: 18 * em,
     alignItems: 'center',
     justifyContent: 'center',

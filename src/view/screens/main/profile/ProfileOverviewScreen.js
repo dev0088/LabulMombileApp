@@ -32,7 +32,7 @@ const ProfileOverviewScreen = (props) => {
         <CommonHeader
           rightTxt={'Modifier mon profil'}
           style={styles.header}
-          onLeftPress={() => Actions.main({ tabNav: 'Profile'})}
+          onLeftPress={() => Actions.main({ tabNav: 'Profile' })}
           onRightPress={() => Actions.editProfile({ userProfile: userProfile })}
         />
         <View style={styles.firstPopView}>
@@ -101,7 +101,7 @@ const styles = {
     paddingHorizontal: 30 * em,
     paddingBottom: 35 * em,
   },
-  avatar: { marginTop: -54 * em, width: 108 * em, height: 108 * em },
+  avatar: { marginTop: -57 * em, width: 114 * em, height: 114 * em },
   fullNameText: { marginTop: 15 * em, marginBottom: 10 * em, fontWeight: 'bold' },
   title: { marginTop: 35 * em, marginBottom: 20 * em, fontSize: 21 * em, fontWeight: 'bold' },
   circlesView: { flexDirection: 'row', marginLeft: 0.072 * WIDTH, marginRight: 0.072 * WIDTH },

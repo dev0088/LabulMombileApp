@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { em } from 'view/common/const';
+import { em,hm } from 'view/common/const';
 import CommonHeader from 'view/components/header/CommonHeader';
 import Switch from 'view/components/other/Switch';
 import CommonListItem from 'view/components/adapter/CommonListItem';
@@ -14,7 +14,7 @@ const MySettingScreen = () => {
         style={styles.listItem}
         icon={
           <View style={[styles.icon, { backgroundColor: 'rgba(64, 205, 222, 0.15)' }]}>
-            <Address height={22 * em} width={15 * em} />
+            <Address height={22 * hm} width={15 * em} />
           </View>
         }
         title="Localisation"
@@ -23,7 +23,7 @@ const MySettingScreen = () => {
         rightView={
           <Switch
             switchWidth={49 * em}
-            switchHeight={27 * em}
+            switchHeight={27 * hm}
             switchdirection="rtl"
             switchBorderColor="#ffffff"
             switchBackgroundColor="#40CDDE"
@@ -33,7 +33,7 @@ const MySettingScreen = () => {
             style={styles.switch}
           />
         }
-        subTitle="Vous êtes visibles dans la carte Labul"
+        subTitle="Ma localisation est activé"
       />
       <View style={styles.line} />
       <CommonListItem
@@ -49,7 +49,7 @@ const MySettingScreen = () => {
         rightView={
           <Switch
             switchWidth={49 * em}
-            switchHeight={27 * em}
+            switchHeight={27 * hm}
             switchdirection="rtl"
             switchBorderColor="#ffffff"
             switchBackgroundColor="#40CDDE"
@@ -70,11 +70,11 @@ const styles = {
     backgroundColor: '#FFFFFF',
   },
   header: {
-    marginTop: 9.5 * em,
-    marginBottom: 10 * em,
+    marginTop: 27 * hm,
+    marginBottom: 10 * hm,
   },
   line: {
-    height: 10 * em,
+    height: 10 * hm,
     backgroundColor: '#F0F5F7',
   },
   listItem: {
@@ -83,16 +83,16 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    height: 45 * em,
-    marginTop: 25 * em,
-    marginBottom: 25 * em,
+    height: 45 * hm,
+    marginTop: 25 * hm,
+    marginBottom: 25 * hm,
   },
   icon: {
     marginRight: 15 * em,
     alignItems: 'center',
     justifyContent: 'center',
     width: 39 * em,
-    height: 39 * em,
+    height: 39 * hm,
     borderRadius: 20 * em,
   },
   containerTxt: {
@@ -103,17 +103,17 @@ const styles = {
   listTitle: {
     fontFamily: 'Lato-Black',
     fontSize: 18 * em,
-    lineHeight: 23 * em,
+    lineHeight: 23 * hm,
     textAlign: 'left',
     color: 'rgba(30, 45, 96, 1)',
   },
   listComment: {
-    lineHeight: 16 * em,
+    lineHeight: 16 * hm,
     textAlign: 'left',
     width: 170 * em,
   },
   switch: {
-    marginTop: 6 * em,
+    marginTop: 6 * hm,
   },
 };
 

@@ -12,7 +12,7 @@ import AvatarWithBadge from 'view/components/view/AvatarWithBadge';
 import FriendInvitePopupScreen from 'view/screens/main/friends/FriendInvitePopupScreen';
 import { getUserBadge } from 'view/common/icons';
 import CommonListItem from 'view/components/adapter/CommonListItem';
-import NeedStatusType from '../../../model/service/NeedStatusType';
+import NeedStatusType from 'model/service/NeedStatusType';
 
 const MabulDetailView = (props) => {
   const [invitePopupVisible, setInvitePopupVisible] = useState(false);
@@ -78,8 +78,8 @@ const MabulDetailView = (props) => {
               <CommentText text={'Continuer à lire'} color={'#40CDDE'} style={styles.content} />
             </View>
           </View>
-          {data.status === 'canceled' ? <></> : data.relationship ? AskButton : ModifyButton}
-          {data.status !== 'canceled' && InviteButton}
+          {data.status === NeedStatusType.CANCELED ? <></> : data.relationship ? AskButton : ModifyButton}
+          {data.status !== NeedStatusType.CANCELED && InviteButton}
           <View style={{ height: 130 * em }} />
         </View>
       </ScrollView>
@@ -95,7 +95,19 @@ const styles = {
     flex: 1,
     backgroundColor: 'transparent',
   },
-  backBtnView: { backgroundColor: '#ffffff', position: 'absolute', left: 15 * em, top: 27 * em },
+  backBtnView: {
+    shadowColor: '#B3C6CF33',
+    shadowOffset: {
+      width: 0,
+      height: 20 * em,
+    },
+    shadowRadius: 40 * em,
+    elevation: 3,
+    backgroundColor: '#ffffff',
+    position: 'absolute',
+    left: 15 * em,
+    top: 27 * em,
+  },
   backBtn: { width: 44 * em, height: 44 * em, resizeMode: 'contain', zIndex: 1 },
   cover: {
     width: '100%',

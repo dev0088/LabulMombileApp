@@ -15,8 +15,8 @@ const locationList = [
   },
   {
     id: '1',
-    top: 183 * em,
-    left: 166 * em,
+    top: 164 * em,
+    left: 181 * em,
     avatar: require('assets/images/sample_ic_plant.png'),
     serviceIcon: Interview(servicIconSize),
     bgColor: 'rgba(170, 135, 229, 0.2)',
@@ -62,17 +62,24 @@ const FriendsMenuScreen = () => {
 
       <View style={{ position: 'absolute', top: 203 * em, left: 34 * em }}>
         <Path width={76 * em} height={48 * em} />
-      </View><View
+      </View>
+      <View
         style={{
           position: 'absolute',
           top: 213 * em,
           left: 309 * em,
           alignItems: 'center',
           justifyContent: 'center',
+          elevation: 3,
+          shadowColor: '#254D5612',
+          shadowOffset: {
+            width: 0,
+            height: 5 * em,
+          },
+          shadowRadius: 9 * em,
         }}>
-      <Image
-        source={require('assets/images/img_alert.png')}
-      /></View>
+        <Image source={require('assets/images/img_alert.png')} />
+      </View>
       {locationList.map((location) => PositionView(location))}
       <View
         style={{
@@ -88,8 +95,15 @@ const FriendsMenuScreen = () => {
           backgroundColor: 'rgba(238, 231, 250, 1)',
           borderColor: '#ffffff',
           borderWidth: 2 * em,
+          elevation: 3,
+          shadowColor: '#254D5612',
+          shadowOffset: {
+            width: 0,
+            height: 10 * em,
+          },
+          shadowRadius: 12 * em,
         }}>
-        {HomeCare(servicIconSize)}
+        {Interview(servicIconSize)}
       </View>
       <View
         style={{
@@ -106,6 +120,12 @@ const FriendsMenuScreen = () => {
           borderColor: '#ffffff',
           borderWidth: 2 * em,
           elevation: 3,
+          shadowColor: '#254D5612',
+          shadowOffset: {
+            width: 0,
+            height: 10 * em,
+          },
+          shadowRadius: 12 * em,
         }}>
         {Return2Point(servicIconSize)}
       </View>
@@ -125,12 +145,18 @@ const FriendsMenuScreen = () => {
           borderColor: '#ffffff',
           borderWidth: 2 * em,
           elevation: 3,
+          shadowColor: '#254D5612',
+          shadowOffset: {
+            width: 0,
+            height: 10 * em,
+          },
+          shadowRadius: 12 * em,
         }}>
         {Alert({ width: 26.45 * em, height: 22.31 * em })}
       </TouchableOpacity>
-      <Image
+      <Image        
         source={require('assets/images/img_navigator.png')}
-        style={{ postion: 'absolute', top: 316 * em, zIndex: 0 }}
+        style={{ postion: 'absolute', top: 316 * em, zIndex: 0,opacity:1 }}
       />
       <View
         style={{
@@ -147,6 +173,12 @@ const FriendsMenuScreen = () => {
           borderColor: '#ffffff',
           borderWidth: 2 * em,
           elevation: 3,
+          shadowColor: '#254D5612',
+          shadowOffset: {
+            width: 0,
+            height: 10 * em,
+          },
+          shadowRadius: 12 * em,
         }}>
         {Workshop(servicIconSize)}
       </View>

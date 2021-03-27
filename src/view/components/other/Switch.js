@@ -99,6 +99,13 @@ export default class Switch extends Component {
                       borderRadius: this.props.switchHeight / 2,
                       elevation: 1,
                       margin: 0,
+                      elevation: 5,
+                      shadowColor: '#254D5612',
+                      shadowOffset: {
+                        width: 0,
+                        height: 12 * em,
+                      },
+                      shadowRadius: 25 * em,
                       backgroundColor: this.props.btnBackgroundColor || '#A0AEB8',
                     },
                   ]}

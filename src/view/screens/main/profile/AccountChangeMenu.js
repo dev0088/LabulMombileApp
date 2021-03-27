@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, Image } from 'react-native';
+import { View, TouchableOpacity, Image, StatusBar } from 'react-native';
 import { em, hexToRGB } from 'view/common/const';
 import Modal from 'react-native-modal';
 import CommonListItem from 'view/components/adapter/CommonListItem';
 import CommonText from 'view/components/text/CommonText';
 import { Actions } from 'react-native-router-flux';
+import { ArrowUpWhite, ArrowDownBlack } from 'assets/svg/icons';
 
 const profileTypes = {
   my: { avatar: require('assets/images/tab_profile_off.png'), name: 'Mathieu Torin' },
@@ -15,13 +16,14 @@ const AccountChangeMenu = (props) => {
   const [menuVisible, setMenuVisible] = useState(false);
   return (
     <View style={{ display: props.visible ? 'flex' : 'none' }}>
-      <DropDownButton style={props.style} type={props.type} onPress={() => setMenuVisible(true)} />
+      <DropDownButton style={props.style} type={props.type} down onPress={() => setMenuVisible(true)} />
       <Modal
         isVisible={menuVisible}
         backdropOpacity={0.9}
         style={styles.modal}
         backdropColor={'#1E2D60'}
         swipeDirection={'up'}>
+        <StatusBar backgroundColor="rgba(30, 45, 96, 0.8)" barStyle="light-content" />
         <DropDownButton style={props.style} type={props.type} onPress={() => setMenuVisible(true)} modal />
         <View style={styles.menu}>
           <CommonListItem
@@ -60,6 +62,13 @@ const styles = {
     padding: 9 * em,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    // elevation: 5,
+    shadowColor: '#254D5612',
+    shadowOffset: {
+      width: 0,
+      height: 16 * em,
+    },
+    shadowRadius: 24 * em,
   },
   iconView: { flexDirection: 'row' },
   leaveIcon: {
@@ -78,9 +87,8 @@ const styles = {
     marginLeft: -10 * em,
   },
   arrowDown: {
-    height: 6.4 * em,
-    width: 8.8 * em,
-    backgroundColor: 'black',
+    height: 10 * em,
+    width: 12 * em,
     marginRight: 2.1 * em,
     alignSelf: 'center',
   },
@@ -111,7 +119,7 @@ const DropDownButton = (props) => (
       styles.dropdownBtn,
       props.style,
       {
-        borderWidth: 1 * em,
+        borderWidth: props.modal ? 1 * em : 0,
         borderColor: '#FFFFFF',
         backgroundColor: props.modal ? 'transparent' : hexToRGB('#FFFFFF', 0.5),
       },
@@ -124,7 +132,13 @@ const DropDownButton = (props) => (
         source={props.type !== 'my' ? profileTypes.my.avatar : profileTypes.pro.avatar}
       />
     </View>
-    <Image style={styles.arrowDown} />
+    <Image
+      style={[
+        styles.arrowDown,
+        { tintColor: props.down ? '#000' : '#fff', transform: [{ rotate: props.down ? '0deg' : '180deg' }] },
+      ]}
+      source={require('assets/images/arrow-point-to-down.png')}
+    />
   </TouchableOpacity>
 );
 export default AccountChangeMenu;

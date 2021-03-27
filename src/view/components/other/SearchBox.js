@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { View, TextInput } from 'react-native';
 import { em } from 'view/common/const';
 import { Magnifier, CrossCircle } from 'assets/svg/icons';
-import CommonText from 'view/components/text/CommonText';
 const SearchBox = (props) => {
   const [onFocus, setOnFocus] = useState(false);
   return (

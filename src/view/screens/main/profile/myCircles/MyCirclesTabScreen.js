@@ -145,8 +145,19 @@ const MyCirclesTabScreen = (props) => {
         keyExtractor={(i) => i.id}
       />
       <TouchableOpacity
-        style={{ position: 'absolute', bottom: 30 * em, right: 30 * em }}
-        onPress={() => Actions.createGroup({ themeColor: themeColors[sort] })}>
+        style={{
+          position: 'absolute',
+          bottom: 30 * em,
+          right: 30 * em,
+          shadowColor: '#254D5612',
+          shadowOffset: {
+            width: 0,
+            height: 12 * em,
+          },
+          shadowRadius: 25 * em,
+          elevation: 3 * em,
+        }}
+        onPress={() => Actions.createGroup({ themeColor: themeColors[sort],sort:sort })}>
         {themeButton[sort]}
       </TouchableOpacity>
       <UserOptionPopupScreen visible={userOptionVisible} onPress={() => setUserOptionVisible(false)} />

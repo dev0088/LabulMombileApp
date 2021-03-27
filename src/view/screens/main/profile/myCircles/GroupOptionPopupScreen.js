@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, StatusBar } from 'react-native';
 import { em } from 'view/common/const';
 import CommonText from 'view/components/text/CommonText';
 import Modal from 'react-native-modal';
@@ -18,6 +18,7 @@ const GroupOptionPopupScreen = (props) => {
       backdropColor={'#1E2D60'}
       swipeDirection={'up'}
       onBackButtonPress={() => props.onPress()}>
+      <StatusBar backgroundColor="rgba(30, 45, 96, 0.8)" barStyle="light-content" />
       <View style={styles.body}>
         <View style={styles.avatar}>
           <Friend height={40 * em} width={40 * em} />

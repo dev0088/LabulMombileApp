@@ -29,6 +29,13 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'transparent',
+    // elevation: 3,
+    shadowColor: '#B3C6CF33',
+    shadowOffset: {
+      width: 0,
+      height: 20 * em,
+    },
+    shadowRadius: 40 * em,
   },
   backButton: {
     width: 20 * em,

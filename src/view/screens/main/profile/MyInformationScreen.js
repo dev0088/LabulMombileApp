@@ -80,7 +80,7 @@ const styles = {
   itemTitle: {
     height: 18 * em,
     lineHeight: 18 * em,
-    marginLeft: 30 * em,
+    marginLeft: 25 * em,
     marginTop: 25 * em,
   },
   listItem: {
@@ -97,6 +97,7 @@ const styles = {
     lineHeight: 17 * em,
     marginLeft: 30 * em,
     marginRight: 30 * em,
+    marginBottom: 65*em,
   },
 };
 

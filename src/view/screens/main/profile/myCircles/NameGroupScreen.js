@@ -6,23 +6,28 @@ import CommonTextInput from 'view/components/textInput/CommonTextInput';
 import CommonButton from 'view/components/button/CommonButton';
 import { Actions } from 'react-native-router-flux';
 import AccountCommonHeader from 'view/components/header/AccountCommonHeader';
-import { FamilyGroup, NeigborGroup, FriendGroup } from 'assets/svg/icons';
+import { CreateGroupNeighbor, CreateGroupFamily, CreateGroupFriend } from 'assets/svg/icons';
 import CommonHeader from '../../../../components/header/CommonHeader';
 const addIconSize = { width: 42 * em, height: 30 * em };
 
 const themeButton = {
-  families: FamilyGroup(addIconSize),
-  friends: NeigborGroup(addIconSize),
-  neighbours: FriendGroup(addIconSize),
+  families: CreateGroupFamily(addIconSize),
+  friends: CreateGroupFriend(addIconSize),
+  neighbours: CreateGroupNeighbor(addIconSize),
 };
 
 const NameGroupScreen = (props) => {
   return (
     <View style={[styles.container, { backgroundColor: props.themeColor }]}>
-      <CommonHeader dark={false} rightTxt={'Annuler'} style={styles.header} />
+      <CommonHeader
+        dark={false}
+        rightTxt={'Annuler'}
+        style={styles.header}
+        onRightPress={() => Actions.myCirclesHome()}
+      />
       <View style={styles.popupView}>
         <View style={styles.popupTopView}>
-          <View style={styles.icon}>{themeButton.friends}</View>
+          <View style={styles.icon}>{themeButton[props.sort]}</View>
           <TitleText text={'Nom du groupe'} style={styles.titleText} />
           <CommonTextInput text={'Donne un nom à ton groupe'} isPasswordInput={false} style={styles.commonInput} />
         </View>

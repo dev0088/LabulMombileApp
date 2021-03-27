@@ -11,11 +11,11 @@ const CommonCheckBox = (props) => {
     <View style={[styles.container, props.style]}>
       <CommonText text={props.text} style={styles.title} color="#1E2D60" />
       <CheckBox
-        isChecked={checked}
-        onClick={() => {
-          setChecked(!checked);
-          props.onChecked(checked ? props.text : null);
-        }}
+        // isChecked={checked}
+        // onClick={() => {
+        //   setChecked(!checked);
+        //   // props.onChecked(checked ? props.text : null);
+        // }}
         oval={props.oval}
       />
     </View>

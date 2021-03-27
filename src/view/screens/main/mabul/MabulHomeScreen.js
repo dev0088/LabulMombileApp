@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, TouchableOpacity } from 'react-native';
+import { View, Image, TouchableOpacity, StatusBar } from 'react-native';
 import { em } from 'view/common/const';
 import CircularButton from 'view/components/button/CircularButton';
 import { Actions } from 'react-native-router-flux';
@@ -8,6 +8,7 @@ import { MabulCancel } from 'assets/svg/icons';
 const MabulHomeScreen = (props) => {
   return (
     <View style={styles.container}>
+      <StatusBar backgroundColor="#40cdde" barStyle="light-content" />
       <View style={styles.logoContainer}>
         <Image source={require('assets/images/img_mabul_logo.png')} style={styles.logoImage} />
         <Image source={require('assets/images/img_mabul_label.png')} style={styles.logoLabel} />

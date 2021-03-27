@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, FlatList, Image } from 'react-native';
+import { View, FlatList, Image, StatusBar } from 'react-native';
 import { em } from 'view/common/const';
 import CommonText from 'view/components/text/CommonText';
 import TitleText from 'view/components/text/TitleText';
@@ -16,6 +16,7 @@ const FriendParticipatePopupScreen = (props) => {
       backdropColor={'#1E2D60'}
       swipeDirection={'up'}
       onBackButtonPress={() => props.onPress()}>
+      <StatusBar opa backgroundColor="rgba(30, 45, 96, 0.8)" barStyle="light-content" />
       <CommonText text="Passer" style={styles.header} onPress={() => props.onPress()} />
       <View style={styles.body}>
         <Image source={require('assets/images/sample_cover_1.png')} style={styles.titleImg} />
@@ -57,7 +58,7 @@ const styles = {
   },
   header: { marginRight: 30 * em, marginBottom: 18 * em, marginTop: 25 * em, alignSelf: 'flex-end' },
   body: { marginLeft: 30 * em, marginRight: 30 * em, alignItems: 'center', flex: 1 },
-  title: { marginTop: 15 * em,fontFamily:'Lato-Black'},
+  title: { marginTop: 15 * em, fontFamily: 'Lato-Black' },
   titleImg: {
     width: 58 * em,
     height: 58 * em,

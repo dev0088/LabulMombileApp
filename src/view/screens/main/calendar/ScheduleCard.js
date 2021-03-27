@@ -20,10 +20,8 @@ const renderService = (data, onPressSee) => {
             <TinyText text={data.service.date} style={styles.largeTopPadding} />
             <SmallText text={data.service.organName} style={styles.smallTopPadding} />
           </View>
-          <TouchableOpacity onPress={onPressSee}>
-            <View style={styles.colReverse}>
-              <TinyText text="Voir>" color="#40CDDE" style={styles.largeTopPadding} />
-            </View>
+          <TouchableOpacity onPress={onPressSee} style={styles.colReverse}>
+            <TinyText text="Voir>" color="#40CDDE" style={styles.largeTopPadding} />
           </TouchableOpacity>
         </View>
       </View>
@@ -56,11 +54,18 @@ const styles = {
     padding: 12 * em,
     borderRadius: 16 * em,
     marginLeft: 10 * em,
+    elevation: 3,
+    shadowColor: '#254D5612',
+    shadowOffset: {
+      width: 0,
+      height: 12 * em,
+    },
+    shadowRadius: 25 * em,
   },
   serviceInfoContainer: { flex: 1, flexDirection: 'row', justifyContent: 'space-between' },
-  colReverse: { flexDirection: 'column-reverse' },
+  colReverse: { flexDirection: 'column-reverse', marginRight: 9 * em },
   smallTopPadding: { marginTop: 4 * em },
-  largeTopPadding: { marginTop: 24 * em },
+  largeTopPadding: { marginTop: 24 * em, fontFamily: 'Lato-Bold' },
   serviceSubContainer: { flex: 1, paddingLeft: 10 * em },
   itemMargin: { marginLeft: 10 * em },
   separator: { flex: 1, height: em, backgroundColor: '#A0A4B7', alignSelf: 'center', marginLeft: 10 * em },

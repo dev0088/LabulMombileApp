@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import { em } from 'view/common/const';
 import CommonText from 'view/components/text/CommonText';
 import TitleText from 'view/components/text/TitleText';
@@ -18,6 +18,7 @@ const FriendBadgeNoticePopupScreen = (props) => {
       swipeDirection={'up'}
       onBackButtonPress={() => props.onPress()}>
       <View style={styles.body}>
+        <StatusBar opa backgroundColor="rgba(30, 45, 96, 0.8)" barStyle="light-content" />
         <CommonBackButton dark style={{ marginLeft: -15 * em }} />
         <View style={styles.iconView}>
           <View style={styles.circleContainer}>{props.selected[0].icon}</View>
@@ -25,7 +26,7 @@ const FriendBadgeNoticePopupScreen = (props) => {
           <View style={styles.circleContainer}>{props.selected[2].icon}</View>
         </View>
         <TitleText text="Super !" style={styles.title} />
-        <CommonText text="Tu veux laisser un commentaire ?" style={styles.comment} />
+        <CommonText text="Tu veux laisser un commentaire ?" color="#1E2D60" style={styles.comment} />
         <CommonTextInput text={'Écrit ici'} isPasswordInput={false} style={styles.input} />
       </View>
       <CommonButton
@@ -71,7 +72,7 @@ const styles = {
     paddingHorizontal: 43 * em,
   },
   input: { height: 52 * em },
-  title: { marginBottom: 10 * em, alignSelf: 'flex-start', },
+  title: { marginBottom: 10 * em, alignSelf: 'center' },
   comment: { marginBottom: 16 * em, alignSelf: 'center' },
   listItem: { marginBottom: 35 * em },
 };

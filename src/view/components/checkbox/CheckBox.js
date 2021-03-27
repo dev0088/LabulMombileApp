@@ -2,7 +2,16 @@ import React, { Component } from 'react';
 import { StyleSheet, View, TouchableHighlight, ViewPropTypes as RNViewPropTypes, Animated } from 'react-native';
 import PropTypes from 'prop-types';
 import { em } from 'view/common/const';
-import { SelectionOn, SelectionOff, CheckBlue, CheckOff, CheckRed } from 'assets/svg/icons';
+import {
+  SelectionOn,
+  SelectionOff,
+  CheckBlue,
+  CheckOff,
+  CheckRed,
+  CheckedWhite,
+  CheckDarkBlue,
+  CheckPink,
+} from 'assets/svg/icons';
 const ViewPropTypes = RNViewPropTypes || View.propTypes;
 
 const checkShapeSize = { width: 26 * em, height: 26 * em };
@@ -40,19 +49,23 @@ export default class CheckBox extends Component {
     });
   }
   onClick() {
-    this.props.onClick();
+    this.props.onClick ? this.props.onClick() : this.setState({ isChecked: !this.state.isChecked });
     // this.setState({ isChecked: !this.state.isChecked });
     this.fadeOut;
   }
 
   genShape() {
     const CheckFalse = this.props.oval ? CheckOff(checkShapeSize) : SelectionOff(checkShapeSize);
-    const CheckTrue = this.props.oval
+    var CheckTrue = this.props.oval
       ? this.props.red
         ? CheckRed(checkShapeSize)
+        : this.props.blue
+        ? CheckDarkBlue(checkShapeSize)
+        : this.props.pink
+        ? CheckPink(checkShapeSize)
         : CheckBlue(checkShapeSize)
       : SelectionOn(checkShapeSize);
-    return this.props.isChecked ? CheckTrue : CheckFalse;
+    return( this.state.isChecked) ? CheckTrue : CheckFalse;
   }
 
   render() {

@@ -3,7 +3,6 @@ import React from 'react';
 import { em } from 'view/common/const';
 import CommonListItem from './CommonListItem';
 import ProfileCommonSpecView from 'view/components/view/ProfileCommonSpecView';
-import { RightArrow } from 'assets/svg/icons';
 const ProfileInformationListItem = (props) => {
   console.log(props.options);
   const optionView = props.options && (

@@ -37,7 +37,24 @@ export default function MainScreen(props) {
   if (selectedTab === 1) {
     calendarImage = TabCalendarOn(styles.TapImage);
   }
-  let addImage = TabPlus(styles.AddImage);
+  let addImage = (
+    <View
+      style={{
+        width: 46 * em,
+        height: 46 * em,
+        backgroundColor: '#fffff',
+        borderRadius: 23 * em,
+        elevation: 5,
+        shadowColor: '#254D5612',
+        shadowOffset: {
+          width: 0,
+          height: 16 * em,
+        },
+        shadowRadius: 24 * em,
+      }}>
+      {TabPlus(styles.AddImage)}
+    </View>
+  );
   let chatImage = TabMessageOff(styles.TapImage);
   if (selectedTab === 3) {
     chatImage = TabMessageOn(styles.TapImage);
@@ -144,6 +161,7 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     flexDirection: 'row',
+    // backgroundColor:'gray',elevation:10,
   },
   TabBackground: {
     flex: 1,

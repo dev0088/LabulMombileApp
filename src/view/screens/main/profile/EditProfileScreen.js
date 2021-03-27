@@ -23,7 +23,12 @@ const EditProfileScreen = (props) => {
           onFinish={() => Actions.profileOverview({ userProfile: userProfile })}
         />
         <View style={styles.listItem}>
-          <ProfileCommonAvatar fullName="Mathieu Torin" style={styles.avatar} icon={userProfile.avatar} />
+          <ProfileCommonAvatar
+            initialSize={36 * em}
+            fullName="Mathieu Torin"
+            style={styles.avatar}
+            icon={userProfile.avatar}
+          />
           <CommentText text="Changer ma photo de profil" style={styles.addPhotoBtn} color="#40CDDE" />
         </View>
         <ProfileInformationListItem

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import { em, HEIGHT, hm } from 'view/common/const';
 import CommonButton from 'view/components/button/CommonButton';
 import CommonText from 'view/components/text/CommonText';
 import Modal from 'react-native-modal';
 import ClockDraw from 'view/components/view/ClockDraw';
-
+import { Clock } from 'assets/svg/icons';
 const MessageCounterDownPopupScreen = (props) => {
   const [seconds, setSeconds] = useState(30);
 
@@ -18,7 +18,7 @@ const MessageCounterDownPopupScreen = (props) => {
         //assign interval to a variable to clear it.
         setSeconds(seconds - 1);
       }, 1000);
-      if (seconds < 0) {
+      if (seconds <= 0) {
         return clearInterval(intervalId);
       }
       return () => clearInterval(intervalId); //This is important
@@ -34,15 +34,21 @@ const MessageCounterDownPopupScreen = (props) => {
       backdropColor="#1E2D60"
       swipeDirection={'up'}
       onBackButtonPress={() => props.onPress()}>
+      <StatusBar backgroundColor="rgba(30, 45, 96, 0.8)" barStyle="light-content" />
       <View style={styles.container}>
-        <View style={styles.circle1} />
+        {/* <View style={styles.circle1} />
         <View style={styles.circle2} />
         <View style={styles.circle3} />
         <View style={styles.circle4} />
         <View style={styles.circle5} />
         <View style={styles.topView}>
           <ClockDraw height={52 * em} seconds={seconds} />
+        </View> */}
+        <View style={{ flex: 0.46, flexDirection: 'column-reverse', alignSelf: 'center' }}>
+          <CommonText text={seconds + 's'} color="rgba(249, 84, 123, 1)" style={styles.secondsTxt} />
+          <Clock width={184 * em} height={120 * em} />
         </View>
+
         <View style={styles.bottomView}>
           <View style={styles.textBox}>
             <CommonText text={'le temps alloué à la rédaction des'} style={styles.notice} color={'#ffffff'} />
@@ -73,6 +79,7 @@ const styles = {
     borderTopRightRadius: 10 * em,
     borderTopLeftRadius: 10 * em,
     flex: 1,
+    alignItems: 'center',
     justifyContent: 'flex-start',
   },
   container: {
@@ -102,11 +109,13 @@ const styles = {
     justifyContent: 'space-between',
   },
   secondsTxt: {
-    color: '#F9547B',
+    fontFamily: 'Lato-Bold',
     fontSize: 27 * em,
-    textAlign: 'left',
-    marginLeft: 20 * em,
-    textAlignVertical: 'center',
+    lineHeight: 38 * em,
+    zIndex: 1,
+    position: 'absolute',
+    left: 50 * em,
+    bottom: 9 * em,
   },
   textBox: {
     marginTop: 0.087 * HEIGHT,

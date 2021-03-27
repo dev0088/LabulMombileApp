@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
 import { em, WIDTH, hm } from 'view/common/const';
 import CommonBackButton from 'view/components/button/CommonBackButton';
@@ -26,6 +26,7 @@ const FriendsFilterDateModalScreen = (props) => {
       style={styles.container}
       backdropColor={'#1E2D60'}
       swipeDirection={'up'}>
+        <StatusBar backgroundColor="rgba(30, 45, 96, 0.8)" barStyle="light-content" />
       <View style={styles.line} />
 
       <View style={styles.header}>

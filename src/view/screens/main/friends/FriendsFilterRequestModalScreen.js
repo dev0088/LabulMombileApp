@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import { em, WIDTH, hm } from 'view/common/const';
 import CommonBackButton from 'view/components/button/CommonBackButton';
 import CommentText from 'view/components/text/CommentText';
@@ -20,9 +20,10 @@ const options = [
 ];
 const FriendsFilterRequestModalScreen = (props) => {
   const [selectedOption, getSelectedOptions] = useState([]);
+  console.log(selectedOption)
   const renderFlatList = ({ item }) => (
     <CommonCheckBox
-      // onChecked={(result) => getSelectedOptions((oldOptions) => [...oldOptions, result])}
+      onChecked={(result) => getSelectedOptions((oldOptions) => [...oldOptions, result])}
       text={item.option}
       style={styles.listItem}
       shape="rectangle"
@@ -36,6 +37,7 @@ const FriendsFilterRequestModalScreen = (props) => {
       style={styles.container}
       backdropColor={'#1E2D60'}
       swipeDirection={'up'}>
+        <StatusBar backgroundColor="rgba(30, 45, 96, 0.8)" barStyle="light-content" />
       <View style={styles.line} />
       <View style={styles.header}>
         <View style={{ flexDirection: 'row' }}>

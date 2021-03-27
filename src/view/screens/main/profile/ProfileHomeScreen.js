@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, TouchableOpacity, ScrollView, Text, Image, ActionSheetIOS } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
 import CommentText from 'view/components/text/CommentText';
-import { em, WIDTH, HEIGHT } from 'view/common/const';
+import { em, WIDTH, HEIGHT, hm } from 'view/common/const';
 import { Actions } from 'react-native-router-flux';
 import ProfileCommonAvatar from 'view/components/view/ProfileCommonAvatar';
 import ProfileCommonCard from 'view/components/adapter/ProfileCommonCard';
@@ -10,6 +10,8 @@ import ProfileCommonListItem from 'view/components/adapter/ProfileCommonListItem
 import CommonButton from 'view/components/button/CommonButton';
 import AccountChangeMenu from './AccountChangeMenu';
 import { MyNeeds, Circles, Information, Setting, PurchasedPremium } from 'assets/svg/icons';
+import { ArrowUpWhite, ArrowDownBlack } from 'assets/svg/icons';
+
 const originalMyProfile = {
   avatar: '',
   fullName: 'Mathieu Torin',
@@ -27,7 +29,12 @@ const ProfileHomeScreen = (props) => {
         visible={props.route.params.purchased || props.userProfile ? true : false}
       />
       <View style={styles.topView}>
-        <ProfileCommonAvatar style={styles.avatar} fullName={userProfile.fullName} />
+        <ProfileCommonAvatar
+          style={styles.avatar}
+          fullName={userProfile.fullName}
+          icon={props.route.params.purchased ? require('assets/images/tab_profile_off.png') : undefined}
+          borderwidth={3 * em}
+        />
         <TouchableOpacity onPress={() => Actions.profileOverview({ userProfile: userProfile })}>
           <TitleText style={styles.txtFullName} text={userProfile.fullName} />
           <CommentText style={styles.txtGoToProfile} text="Aller sur mon profil" />
@@ -72,8 +79,7 @@ const ProfileHomeScreen = (props) => {
             }}
           />
         </View>
-        <View style={styles.line2} />
-
+        {!props.route.params.purchased && <View style={styles.line2} />}
         <View style={styles.listBox}>
           <CommentText text={'Mon abonnement'} style={styles.caption} />
           <ProfileCommonListItem
@@ -105,6 +111,8 @@ const ProfileHomeScreen = (props) => {
             </View>
           </View>
         )}
+        <View style={styles.line2} />
+
         <View style={styles.listBox}>
           <CommentText text={'À propos'} style={styles.caption} />
           <ProfileCommonListItem
@@ -158,7 +166,16 @@ const styles = {
     marginTop: -HEIGHT * 0.07,
     marginBottom: 30 * em,
   },
-  cardStyle: { width: 150 * em },
+  cardStyle: {
+    shadowColor: '#254D5612',
+    shadowOffset: {
+      width: 0,
+      height: 12 * em,
+    },
+    shadowRadius: 25 * em,
+    width: 150 * em,
+    elevation: 5,
+  },
   listBox: { marginTop: 15 * em },
   caption: {
     width: '100%',
@@ -168,8 +185,14 @@ const styles = {
     marginBottom: 20 * em,
   },
   listItem: { marginLeft: 30 * em, marginRight: 30 * em },
-  line1: { marginLeft: 83 * em, marginBottom: 25 * em, marginTop: 15 * em, height: 0.5, backgroundColor: '#F0F5F7' },
-  line2: { marginBottom: 19 * em, marginTop: 16 * em, height: 0.5, backgroundColor: '#F0F5F7' },
+  line1: {
+    marginLeft: 83 * em,
+    marginBottom: 25 * em,
+    marginTop: 15 * em,
+    height: 1 * em,
+    backgroundColor: '#B3C6CF33',
+  },
+  line2: { marginBottom: 19 * em, marginTop: 16 * em, height: 1 * em, backgroundColor: '#B3C6CF33' },
   imgBg: {
     height: HEIGHT * 0.21,
     flex: 1,
@@ -193,7 +216,13 @@ const styles = {
     paddingVertical: 9 * em,
     marginLeft: 15 * em,
   },
-  line3: { marginLeft: 30 * em, marginBottom: 25 * em, marginTop: 25 * em, height: 0.5, backgroundColor: '#F0F5F7' },
+  line3: {
+    marginLeft: 30 * em,
+    marginBottom: 25 * em,
+    marginTop: 25 * em,
+    height: 1 * em,
+    backgroundColor: '#B3C6CF33',
+  },
   imgContainer: {
     flexDirection: 'row',
     justifyContent: 'center',

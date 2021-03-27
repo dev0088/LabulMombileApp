@@ -69,9 +69,10 @@ const FriendNeedScreen = (props) => {
       mainButton = RequestButton;
       break;
   }
+  console.log(data.relationship);
   return (
     <View style={styles.container}>
-      <MabulDetailView data={Object.assign(data, { status: status })} />
+      <MabulDetailView data={Object.assign(data, { status: status, relationship: needData.relationship })} />
       <View style={styles.btnBox}>{mainButton}</View>
       <FriendCancelParticipatePopupScreen
         visible={cancelParticipatePopupVisible}

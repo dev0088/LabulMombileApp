@@ -1,5 +1,5 @@
 import React from 'react';
-import { em, WIDTH, HEIGHT } from 'view/common/const';
+import { em, WIDTH, hm } from 'view/common/const';
 import ProfileModalHeader from 'view/components/header/ProfileModalHeader';
 import Modal from 'react-native-modal';
 import ProfileCommonTextInput from 'view/components/textInput/ProfileCommonTextInput';
@@ -23,6 +23,7 @@ import {
   WellLiving,
   SwissKnife,
 } from 'assets/svg/icons';
+import { StatusBar, View, Text } from 'react-native';
 
 const iconSize = { width: 34 * em, height: 34 * em };
 const feedbackIcons = [
@@ -152,9 +153,21 @@ const ProfileCommonModal = (props) => {
       style={styles.container}
       backdropColor={'#1E2D60'}
       swipeDirection={'up'}
-      deviceWidth={WIDTH}
-      deviceHeight={HEIGHT}
       onBackButtonPress={() => props.onPress()}>
+      <StatusBar backgroundColor="rgba(30, 45, 96, 0.8)" barStyle="light-content" />
+      <View
+        style={{
+          width: 349 * em,
+          height: 20 * hm,
+          marginTop: -10 * hm,
+          alignSelf: 'center',
+          position:'absolute',
+          backgroundColor: '#FFFFFF',
+          borderTopLeftRadius: 20 * em,
+          borderTopRightRadius: 20 * em,
+        }}
+        opacity={0.5}
+      />
       <ProfileModalHeader
         title={insertInfo.title}
         style={styles.header}
@@ -171,20 +184,20 @@ const ProfileCommonModal = (props) => {
 const styles = {
   container: {
     backgroundColor: 'white',
-    marginTop: 20.5 * em,
+    marginTop: 20.5 * hm,
     marginRight: 0,
     marginLeft: 0,
     marginBottom: 0,
     paddingHorizontal: 30 * em,
-    borderTopRightRadius: 10 * em,
-    borderTopLeftRadius: 10 * em,
+    borderTopRightRadius: 20 * em,
+    borderTopLeftRadius: 20 * em,
     flex: 1,
     justifyContent: 'flex-start',
   },
-  header: { marginBottom: 10 * em, marginTop: 27 * em },
-  input: { marginTop: 25 * em },
-  forgotPsswd: { lineHeight: 18 * em, marginTop: 78 * em, textAlign: 'center' },
-  comment: { fontSize: 12 * em, lineHeight: 20 * em, marginTop: 15 * em },
-  listItem: { paddingHorizontal: 10 * em, marginBottom: 35 * em },
+  header: { marginBottom: 10 * hm, marginTop: 27 * hm },
+  input: { marginTop: 25 * hm },
+  forgotPsswd: { lineHeight: 18 * hm, marginTop: 78 * hm, textAlign: 'center' },
+  comment: { fontSize: 12 * em, lineHeight: 20 * hm, marginTop: 15 * hm },
+  listItem: { paddingHorizontal: 10 * em, marginBottom: 35 * hm },
 };
 export default ProfileCommonModal;

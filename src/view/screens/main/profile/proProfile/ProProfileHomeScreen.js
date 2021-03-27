@@ -34,7 +34,7 @@ const informationIcon = {
 
 const ProProfileHomeScreen = (props) => {
   const [userProfile] = useState(props.userProfile ? props.userProfile : originalProProfile);
-  console.log(props.accountType)
+  console.log(props.accountType);
   return (
     <View>
       <AccountChangeMenu style={styles.dropDown} type="pro" visible={true} />
@@ -45,7 +45,7 @@ const ProProfileHomeScreen = (props) => {
           blurRadius={8}>
           <View
             style={{
-              backgroundColor: userProfile.cover ? 'rgba(30, 45, 96, 0.64)' : '#7398FD',
+              backgroundColor:'#7398FD',
               flex: 1,
               width: '100%',
               alignItems: 'center',
@@ -153,7 +153,17 @@ const styles = {
     paddingHorizontal: 30 * em,
   },
   cardContainer: { flexDirection: 'row', justifyContent: 'center', marginTop: -HEIGHT * 0.07, marginBottom: 30 * em },
-  cardStyle: { flexGrow: 1 },
+  cardStyle: {
+    shadowColor: '#254D5612',
+    shadowOffset: {
+      width: 0,
+      height: 12 * em,
+    },
+    shadowRadius: 25 * em,
+    width: 150 * em,
+    elevation: 5,
+    flexGrow: 1,
+  },
   listBox: { marginTop: 15 * em },
   caption: { width: '100%', textAlign: 'left', fontWeight: '300', marginBottom: 20 * em },
   listItem: {},

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
-import { em } from 'view/common/const';
+import { em,hm } from 'view/common/const';
 import CommonText from 'view/components/text/CommonText';
 import TitleText from 'view/components/text/TitleText';
 
@@ -37,9 +37,7 @@ const styles = {
   },
   title: {
     marginLeft: 30 * em,
-
-    lineHeight: 38 * em,
-    height: 33 * em,
+    lineHeight: 38 * hm,
     backgroundColor: '#ffffff',
     marginTop: 15 * em,
     marginBottom: 25 * em,

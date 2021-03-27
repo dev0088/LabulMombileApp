@@ -18,7 +18,7 @@ export default class SwitchButton extends Component {
 
     this.state = {
       activeSwitch: 1,
-      sbWidth: 100,
+      sbWidth: 80 * em,
       sbHeight: 44 * em,
       direction: 'ltr',
       offsetX: new Animated.Value(0),
@@ -51,7 +51,7 @@ export default class SwitchButton extends Component {
       this.setState({ activeSwitch: 2 }, () => onValueChange(this.state.activeSwitch));
 
       Animated.timing(this.state.offsetX, {
-        toValue: ((this.props.switchWidth || this.state.sbWidth) / 2 - 14 * em) * dirsign,
+        toValue: ((this.props.switchWidth || this.state.sbWidth) / 2 - 12 * em) * dirsign,
         duration: this.props.switchSpeedChange || 200,
         useNativeDriver: true,
       }).start();
@@ -125,6 +125,7 @@ export default class SwitchButton extends Component {
                     this.state.activeSwitch === 1
                       ? { color: this.props.activeFontColor || '#fff' }
                       : { color: this.props.fontColor || '#b1b1b1' },
+                    switchStyles.tabFont,
                   ]}>
                   {this.props.text1 || 'ON'}
                 </Text>
@@ -145,6 +146,7 @@ export default class SwitchButton extends Component {
                     this.state.activeSwitch === 2
                       ? { color: this.props.activeFontColor || '#fff' }
                       : { color: this.props.fontColor || '#b1b1b1' },
+                    switchStyles.tabFont,
                   ]}>
                   {this.props.text2 || 'OFF'}
                 </Text>
@@ -165,6 +167,7 @@ const switchStyles = StyleSheet.create({
     alignItems: 'center',
     fontSize: 16 * em,
   },
+  tabFont: { fontSize: 14 * em },
   rtl: {
     flexDirection: 'row-reverse',
   },

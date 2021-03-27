@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet, Image, ImageBackground } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { em } from 'view/common/const';
 import FriendsListScreen from './FriendsListScreen';
@@ -8,7 +8,7 @@ import CommonBlueHeader from 'view/components/header/CommonBlueHeader';
 import SwitchButton from 'view/components/button/SwitchButton';
 import { Actions } from 'react-native-router-flux';
 import { BoxShadow } from 'react-native-shadow';
-
+import { MagnifierBlue, Filter } from 'assets/svg/icons';
 const Tab = createMaterialTopTabNavigator();
 
 export default function FriendsNavigator(props) {
@@ -23,51 +23,42 @@ export default function FriendsNavigator(props) {
         <CommonBlueHeader />
         <View style={styles.TabButtonContainer}>
           <TouchableOpacity
+            style={styles.functionBtn}
             onPress={() => {
               Actions.friendsSearch();
             }}>
-            <Image source={require('assets/images/ic_search.png')} style={{ width: 84 * em, height: 84 * em }} />
+            <MagnifierBlue width={20 * em} height={20 * em} />
           </TouchableOpacity>
-          <BoxShadow
-            blurRadius={25 * em}
-            setting={{
-              width: 140 * em,
-              height: 43 * em,
-              color: '#254D56',
-              radius: 21.5 * em,
-              opacity: 0.072,
-              x: 0,
-              y: 12 * em,
-            }}>
-            <SwitchButton
-              onValueChange={(val) => {
-                setActiveTab(val);
-                console.log(props.navigation);
-                if (val === 1) {
-                  props.navigation.jumpTo('Carte');
-                } else {
-                  props.navigation.jumpTo('Liste');
-                }
-              }}
-              text1="Carte"
-              text2="Liste"
-              switchWidth={140 * em}
-              switchHeight={43 * em}
-              switchdirection="ltr"
-              switchBorderColor="#ffffff"
-              switchBackgroundColor="#fff"
-              btnBorderColor="#ffffff"
-              btnBackgroundColor="#1E2D60"
-              fontColor="#6A8596"
-              activeFontColor="#fff"
-              style={{ marginTop: 6 * em }}
-            />
-          </BoxShadow>
+
+          <SwitchButton
+            onValueChange={(val) => {
+              setActiveTab(val);
+              console.log(props.navigation);
+              if (val === 1) {
+                props.navigation.jumpTo('Carte');
+              } else {
+                props.navigation.jumpTo('Liste');
+              }
+            }}
+            text1="Carte"
+            text2="Liste"
+            switchWidth={134 * em}
+            switchHeight={46 * em}
+            switchdirection="ltr"
+            switchBorderColor="#ffffff"
+            switchBackgroundColor="#fff"
+            btnBorderColor="#ffffff"
+            btnBackgroundColor="#1E2D60"
+            fontColor="#6A8596"
+            activeFontColor="#fff"
+            style={styles.switch}
+          />
           <TouchableOpacity
+            style={styles.functionBtn}
             onPress={() => {
               Actions.friendsFilter();
             }}>
-            <Image source={require('assets/images/ic_filter.png')} style={{ width: 84 * em, height: 84 * em }} />
+            <Filter width={20 * em} height={16 * em} />
           </TouchableOpacity>
         </View>
       </View>
@@ -79,6 +70,37 @@ const styles = StyleSheet.create({
   TabBarMainContainer: {
     flex: 1,
   },
+  functionBtn: {
+    width: 46 * em,
+    height: 46 * em,
+    borderRadius: 23 * em,
+    backgroundColor: '#ffffff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 5,
+    shadowColor: '#254D5612',
+    shadowOffset: {
+      width: 0,
+      height: 16 * em,
+    },
+    shadowRadius: 24 * em,
+  },
   TabControlContainer: { position: 'absolute', flex: 1, width: '100%' },
-  TabButtonContainer: { width: '100%', justifyContent: 'space-between', flexDirection: 'row', marginTop: 6 * em },
+  TabButtonContainer: {
+    alignItems: 'center',
+    paddingHorizontal: 20 * em,
+    width: '100%',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    marginTop: 15 * em,
+  },
+  switch: {
+    elevation: 5,
+    shadowColor: '#254D5612',
+    shadowOffset: {
+      width: 0,
+      height: 12 * em,
+    },
+    shadowRadius: 25 * em,
+  },
 });
