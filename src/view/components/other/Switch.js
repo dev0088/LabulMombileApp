@@ -17,7 +17,7 @@ export default class Switch extends Component {
 
     this.state = {
       activeSwitch: props.value,
-      sbWidth: 100,
+      sbWidth: 50 * em,
       sbHeight: 28 * em,
       direction: 'ltr',
       offsetX: new Animated.Value(0),
@@ -51,7 +51,7 @@ export default class Switch extends Component {
       this.setState({ activeSwitch: 2 }, () => onValueChange(this.state.activeSwitch));
 
       Animated.timing(this.state.offsetX, {
-        toValue: ((this.props.switchWidth || this.state.sbWidth) / 2 - 3 * em) * dirsign,
+        toValue: (this.props.switchWidth - this.props.switchHeight) * dirsign,
         duration: this.props.switchSpeedChange || 200,
         useNativeDriver: true,
       }).start();
@@ -83,7 +83,7 @@ export default class Switch extends Component {
                 padding: 0,
                 borderWidth: 0,
                 elevation: 1,
-                backgroundColor: this.state.activeSwitch === 1 ? '#40CDDE' : '#A0AEB8',
+                backgroundColor: this.state.activeSwitch === 2 ? '#40CDDE' : '#A0AEB8',
               },
               this.props.style,
             ]}>
@@ -97,15 +97,6 @@ export default class Switch extends Component {
                       width: this.props.switchHeight - 6 * em,
                       height: this.props.switchHeight - 6 * em,
                       borderRadius: this.props.switchHeight / 2,
-                      elevation: 1,
-                      margin: 0,
-                      elevation: 5,
-                      shadowColor: '#254D5612',
-                      shadowOffset: {
-                        width: 0,
-                        height: 12 * em,
-                      },
-                      shadowRadius: 25 * em,
                       backgroundColor: this.props.btnBackgroundColor || '#A0AEB8',
                     },
                   ]}
@@ -134,6 +125,14 @@ const switchStyles = StyleSheet.create({
     flexDirection: 'row',
   },
   wayBtnActive: {
+    elevation: 1,
+    margin: 0,
+    shadowColor: '#254D5612',
+    shadowOffset: {
+      width: 0,
+      height: 3 * em,
+    },
+    shadowRadius: 6 * em,
     marginTop: 3 * em,
     marginLeft: 3 * em,
     marginRight: 3 * em,

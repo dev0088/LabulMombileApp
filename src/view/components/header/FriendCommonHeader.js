@@ -18,8 +18,7 @@ const styles = {
   commonHeader: { marginTop: 27 * hm },
   title: {
     fontSize: 34 * em,
-    lineHeight: 38 * hm,
-    height: 40 * hm,
+    lineHeight: 38 * em,
     textAlign: 'left',
     marginLeft: 30 * em,
     marginTop: 10 * hm,

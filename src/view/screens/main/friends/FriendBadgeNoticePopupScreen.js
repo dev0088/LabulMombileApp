@@ -7,6 +7,7 @@ import Modal from 'react-native-modal';
 import CommonBackButton from 'view/components/button/CommonBackButton';
 import CommonTextInput from 'view/components/textInput/CommonTextInput';
 import CommonButton from 'view/components/button/CommonButton';
+import { Actions } from 'react-native-router-flux';
 
 const FriendBadgeNoticePopupScreen = (props) => {
   return (
@@ -33,7 +34,10 @@ const FriendBadgeNoticePopupScreen = (props) => {
         style={styles.btn}
         textStyle={{ color: '#40CDDE' }}
         text="Continuer sans commentaire"
-        onPress={props.onPress}
+        onPress={() => {
+          props.onPress();
+          Actions.myNeedsHome({ tabNav: 'participations' });
+        }}
       />
     </Modal>
   );

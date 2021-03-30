@@ -22,7 +22,7 @@ const FriendSellScreen = () => {
           <CommentText style={styles.itemName} text="Arbre de vie" color={'#1E2D60'} />
           <CommentText style={styles.comment} text="Je vends Objet Entretien de la maison" color={'#1E2D60'} />
           <TitleText text={'Spray cuisine 100% Bio'} style={styles.title} />
-          <CommentText text={'5,00 €'} style={styles.price} />
+          <CommentText text={'5,00 €'} style={styles.price} color="#1E2D60" />
 
           <View style={{ marginLeft: 30 * em }}>
             <CommentText text={'Lorem ipsum dolor sit amet, consetetur '} style={styles.content} />

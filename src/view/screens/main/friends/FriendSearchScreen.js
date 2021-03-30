@@ -37,9 +37,12 @@ const FriendsSearchScreen = () => {
       <FriendCommonHeader title="Rechercher" />
       <SearchBox
         style={styles.searchbox}
-        comment={'Saisissez votre email'}
         onChangeText={(text) => {
-          getSearchResult(users);
+          if (text) {
+            getSearchResult(users);
+          } else {
+            getSearchResult([]);
+          }
         }}
       />
       <FlatList data={searchedUsers} renderItem={renderFlatList} keyExtractor={(i) => i.id} />
@@ -57,12 +60,11 @@ const styles = {
     marginLeft: 30 * em,
     marginBottom: 35 * hm,
   },
-  searchbox: { height: 44 * em, width: 315 * em, marginLeft: 30 * em, marginRight: 30 * em },
+  searchbox: { height: 44 * hm, width: 315 * em, marginLeft: 30 * em, marginRight: 30 * em },
   listItem: {
     height: 42 * hm,
     marginTop: 35 * hm,
-    marginLeft: 30 * em,
-    marginRight: 30 * em,
+    paddingHorizontal: 30 * em,
     width: 315 * em,
   },
 };

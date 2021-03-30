@@ -31,6 +31,7 @@ const ProfileOverviewScreen = (props) => {
       <ScrollView style={styles.scrollView}>
         <CommonHeader
           rightTxt={'Modifier mon profil'}
+          rightAlign={'center'}
           style={styles.header}
           onLeftPress={() => Actions.main({ tabNav: 'Profile' })}
           onRightPress={() => Actions.editProfile({ userProfile: userProfile })}
@@ -40,6 +41,7 @@ const ProfileOverviewScreen = (props) => {
             icon={require('assets/images/tab_profile_off.png')}
             style={styles.avatar}
             logoVisible={false}
+            borderWidth={3 * em}
           />
           <TitleText text={userProfile.fullName} style={styles.fullNameText} />
           {userProfile.availability && <CommentText text={userProfile.availability} color="#1E2D60" />}

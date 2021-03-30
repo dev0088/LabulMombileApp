@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Image, ImageBackground } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import FriendsListScreen from './FriendsListScreen';
 import FriendsMenuScreen from './FriendsMenuScreen';
 import CommonBlueHeader from 'view/components/header/CommonBlueHeader';
 import SwitchButton from 'view/components/button/SwitchButton';
 import { Actions } from 'react-native-router-flux';
-import { BoxShadow } from 'react-native-shadow';
 import { MagnifierBlue, Filter } from 'assets/svg/icons';
 const Tab = createMaterialTopTabNavigator();
 
@@ -15,7 +14,10 @@ export default function FriendsNavigator(props) {
   const [activeTab, setActiveTab] = React.useState(1);
   return (
     <View style={styles.TabBarMainContainer}>
-      <Tab.Navigator tabBar={() => null} swipeEnabled={false}>
+      <Tab.Navigator
+        tabBar={() => null}
+        swipeEnabled={false}
+        initialRouteName={props.route.params.friendNav || 'Carte'}>
         <Tab.Screen name="Carte" component={FriendsMenuScreen} />
         <Tab.Screen name="Liste" component={FriendsListScreen} />
       </Tab.Navigator>
@@ -33,7 +35,7 @@ export default function FriendsNavigator(props) {
           <SwitchButton
             onValueChange={(val) => {
               setActiveTab(val);
-              console.log(props.navigation);
+              // console.log(props.navigation);
               if (val === 1) {
                 props.navigation.jumpTo('Carte');
               } else {
@@ -67,9 +69,7 @@ export default function FriendsNavigator(props) {
 }
 
 const styles = StyleSheet.create({
-  TabBarMainContainer: {
-    flex: 1,
-  },
+  TabBarMainContainer: {  flex: 1 },
   functionBtn: {
     width: 46 * em,
     height: 46 * em,
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     shadowColor: '#254D5612',
     shadowOffset: {
       width: 0,
-      height: 16 * em,
+      height: 16 * hm,
     },
     shadowRadius: 24 * em,
   },
@@ -92,14 +92,14 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'space-between',
     flexDirection: 'row',
-    marginTop: 15 * em,
+    marginTop: 15 * hm,
   },
   switch: {
     elevation: 5,
     shadowColor: '#254D5612',
     shadowOffset: {
       width: 0,
-      height: 12 * em,
+      height: 12 * hm,
     },
     shadowRadius: 25 * em,
   },

@@ -3,8 +3,9 @@ import React from 'react';
 import { em } from 'view/common/const';
 import CommonListItem from './CommonListItem';
 import ProfileCommonSpecView from 'view/components/view/ProfileCommonSpecView';
+import { RightArrow } from 'assets/svg/icons';
 const ProfileInformationListItem = (props) => {
-  console.log(props.options);
+  console.log(props.circleText);
   const optionView = props.options && (
     <>
       {props.options.map((option, index) => (
@@ -17,7 +18,7 @@ const ProfileInformationListItem = (props) => {
       style={[styles.container, props.style]}
       onPress={props.onPress}
       title={props.caption}
-      titleStyle={styles.textTitle}
+      titleStyle={[styles.textTitle, { textTransform: props.titleUpperCase ? 'uppercase' : 'capitalize' }]}
       subTitle={props.value}
       subTitleStyle={
         props.placeholder
@@ -31,6 +32,7 @@ const ProfileInformationListItem = (props) => {
           <RightArrow width={11 * em} height={18 * em} />
         </View>
       }
+      textAddView={props.circleText}
       commentView={optionView}
     />
   );

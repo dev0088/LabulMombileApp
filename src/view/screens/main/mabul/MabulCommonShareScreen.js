@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, TouchableOpacity } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
 import { em, mabulColors } from 'view/common/const';
 import CommonText from 'view/components/text/CommonText';
@@ -7,45 +7,44 @@ import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
 import CommonButton from 'view/components/button/CommonButton';
 import { Family, Friend, Neighbor, All } from 'assets/svg/icons';
 import { Actions } from 'react-native-router-flux';
-const MabulCommonShareScreen = (props) => {
-  const conceptColor = mabulColors[props.mabulService];
-
+const MabulCommonShareScreen = ({ mabulService, process }) => {
+  const conceptColor = mabulColors[mabulService];
   return (
     <View style={styles.container}>
-      <MabulCommonHeader style={styles.header} percent={24} isNoBackBtn={true} progressBarColor={conceptColor} />
+      <MabulCommonHeader style={styles.header} percent={process} isNoBackBtn={true} progressBarColor={conceptColor} />
       <View style={styles.body}>
         <View>
           <TitleText text={'Je partage avec'} style={styles.title} />
           <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-            <View style={styles.iconView}>
-              <Family width={48 * em} height={48 * em} />
-              <CommonText text="mes voisins" color="#6A8596" style={{ marginTop: 15 * em }} />
-            </View>
-            <View style={styles.iconView}>
-              <Friend width={48 * em} height={48 * em} />
-              <CommonText text="mes voisins" color="#6A8596" style={{ marginTop: 15 * em }} />
-            </View>
-          </View>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-            <View style={styles.iconView}>
+            <TouchableOpacity style={styles.iconView}>
               <Neighbor width={48 * em} height={48 * em} />
               <CommonText text="mes voisins" color="#6A8596" style={{ marginTop: 15 * em }} />
-            </View>
-            <View style={styles.iconView}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.iconView}>
+              <Friend width={48 * em} height={48 * em} />
+              <CommonText text="mes amis" color="#6A8596" style={{ marginTop: 15 * em }} />
+            </TouchableOpacity>
+          </View>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            <TouchableOpacity style={styles.iconView}>
+              <Family width={48 * em} height={48 * em} />
+              <CommonText text="mes famille" color="#6A8596" style={{ marginTop: 15 * em }} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.iconView}>
               <All width={48 * em} height={48 * em} />
-              <CommonText text="mes voisins" color="#6A8596" style={{ marginTop: 15 * em }} />
-            </View>
+              <CommonText text="tous" color="#6A8596" style={{ marginTop: 15 * em }} />
+            </TouchableOpacity>
           </View>
         </View>
         <CommonButton
           style={[styles.btn, { backgroundColor: conceptColor }]}
           text="Publier"
           onPress={() => {
-            if (props.mabulService === 'organize') {
-              Actions.myOrganize();
-            } else {
-              Actions.myNeed();
-            }
+            mabulService === 'organize'
+              ? Actions.myOrganize()
+              : mabulService === 'give'
+              ? Actions.main()
+              : Actions.myNeed();
           }}
         />
       </View>

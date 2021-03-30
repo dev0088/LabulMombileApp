@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
-import { em, HEIGHT, WIDTH } from 'view/common/const';
+import { em, hm, WIDTH } from 'view/common/const';
 import { FlatList } from 'react-native';
 import MabulCommonListItem from 'view/components/adapter/MabulCommonListItem';
 import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
@@ -39,7 +39,7 @@ const styles = {
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
-    marginTop: 16 * em,
+    marginTop: 16 * hm,
   },
   header: {
     height: '10.3%',
@@ -50,14 +50,11 @@ const styles = {
     alignItems: 'flex-start',
   },
   title: {
-    marginTop: 35 * em,
-    marginBottom: 18 * em,
+    marginTop: 35 * hm,
+    marginBottom: 18 * hm,
   },
-  listItem: {
-    height: HEIGHT * 0.09,
-    width: WIDTH * 0.92,
-    marginTop: 25 * em,
-  },
+  listItem: { width: 345 * em, marginTop: 25 * hm },
+
 };
 
 export default MabulNeedScreen;

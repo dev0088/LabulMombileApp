@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput } from 'react-native';
-import { em } from 'view/common/const';
+import { hm } from 'view/common/const';
 import SmallText from 'view/components/text/SmallText';
 
 const ProfileCommonTextInput = (props) => {
@@ -13,7 +13,7 @@ const ProfileCommonTextInput = (props) => {
         color={'#A0AEB8'}
       />
       <TextInput
-        style={[styles.textInput, { marginBottom: onFocus ? 25 * em : 7 * em }]}
+        style={[styles.textInput, { marginBottom: onFocus ? 25 * hm : 7 * hm }]}
         onFocus={() => setOnFocus(true)}
         onBlur={() => setOnFocus(false)}
         multiline={true}
@@ -57,19 +57,19 @@ export default ProfileCommonTextInput;
 const styles = {
   containerFocusOn: {
     borderBottomColor: '#41D0E2',
-    borderBottomWidth: 2 * em,
+    borderBottomWidth: 2 * hm,
     justifyContent: 'flex-end',
   },
-  containerFocusOff: { borderBottomColor: '#BFCDDB', borderBottomWidth: 1 * em, justifyContent: 'flex-end' },
+  containerFocusOff: { borderBottomColor: '#BFCDDB', borderBottomWidth: 1 * hm, justifyContent: 'flex-end' },
   textInput: {
     fontFamily: 'Lato-Regular',
     color: '#1E2D60',
-    lineHeight: 18 * em,
-    fontSize: 16 * em,
+    lineHeight: 18 * hm,
+    fontSize: 16 * hm,
     paddingHorizontal: 0,
     paddingVertical: 0,
     textAlignVertical: 'center',
   },
-  commentTextFocusOn: { lineHeight: 14 * em, marginBottom: 5 * em },
-  commentTextFocusOff: { fontSize: 16 * em, lineHeight: 18 * em },
+  commentTextFocusOn: { lineHeight: 14 * hm, marginBottom: 5 * hm },
+  commentTextFocusOff: { fontSize: 16 * hm, lineHeight: 18 * hm },
 };

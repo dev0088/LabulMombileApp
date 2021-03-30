@@ -86,34 +86,25 @@ const styles = {
     paddingHorizontal: 30 * em,
     justifyContent: 'space-between',
   },
-  commonHeader: { marginTop: 27 * em },
+  commonHeader: { marginTop: 27 * hm },
   title: {
     textAlign: 'left',
-    marginTop: 35 * em,
+    marginTop: 35 * hm,
     lineHeight: 38 * em,
   },
-  searchBox: { marginTop: 35 * em },
+  searchBox: { marginTop: 35 * hm },
   location: {
     alignSelf: 'center',
-    marginTop: 15 * em,
+    marginTop: 15 * hm,
     alignItems: 'center',
     flexDirection: 'row',
   },
-  locationIcon: {
-    width: 16 * em,
-    height: 19 * em,
-    resizeMode: 'contain',
-    marginBottom: 5 * em,
-    marginRight: 10 * em,
-  },
-  listItem: {
-    height: 38 * hm,
-    marginTop: 35 * hm,
-  },
+
+  listItem: { marginTop: 35 * hm },
   btn: {
     width: 315 * em,
     alignSelf: 'center',
-    marginBottom: 30 * em,
+    marginBottom: 30 * hm,
   },
 };
 

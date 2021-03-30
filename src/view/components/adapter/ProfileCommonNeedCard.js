@@ -5,7 +5,7 @@ import CommentText from 'view/components/text/CommentText';
 import ServiceType from 'model/service/ServiceType';
 import SellServiceType from 'model/service/SellServiceType';
 import SmallText from 'view/components/text/SmallText';
-
+import NeedStatusType from 'model/service/NeedStatusType'
 const ProfileCommonNeedCard = (props) => {
   const { data } = props;
   console.log(data.status);

@@ -7,13 +7,20 @@ import CheckBox from 'view/components/checkbox/CheckBox';
 
 const CommonCheckBox = (props) => {
   const [checked, setChecked] = useState(false);
+  // console.log(props)
   return (
     <View style={[styles.container, props.style]}>
       <CommonText text={props.text} style={styles.title} color="#1E2D60" />
       <CheckBox
-        // isChecked={checked}
-        // onClick={() => {
-        //   setChecked(!checked);
+        isChecked={checked}
+        onClick={() => {
+          // console.log(checked)
+          // if (value) {
+          //   console.log(props.index)
+          //   props.onChecked(props.index);
+          // }
+          setChecked(!checked);
+        }}
         //   // props.onChecked(checked ? props.text : null);
         // }}
         oval={props.oval}
@@ -24,6 +31,7 @@ const CommonCheckBox = (props) => {
 
 const styles = {
   container: {
+    // backgroundColor:'red',
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',

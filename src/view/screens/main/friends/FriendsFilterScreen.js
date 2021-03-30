@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 import { em, hm } from 'view/common/const';
 import FriendsFilterListItem from 'view/components/adapter/FriendsFilterListItem';
+import CommonListItem from 'view/components/adapter/CommonListItem';
 import CommonText from 'view/components/text/CommonText';
 import Switch from 'view/components/other/Switch';
 import { Actions } from 'react-native-router-flux';
 import FriendsFilterRequestModalScreen from './FriendsFilterRequestModalScreen';
 import FriendsFilterDateModalScreen from './FriendsFilterDateModalScreen';
 import FriendCommonHeader from 'view/components/header/FriendCommonHeader';
+import { Calendar, TypeRequest, Address } from 'assets/svg/icons';
 const FriendsFilterScreen = () => {
   const [filterRequestModalVisible, setfilterRequestModalVisible] = useState(false);
   const [filterDateModalVisible, setfilterDateModalVisible] = useState(false);
@@ -20,7 +22,7 @@ const FriendsFilterScreen = () => {
           title={'Type de demande'}
           defaultSetting={'Tous'}
           style={styles.listItem}
-          icon={require('assets/images/ic_request.png')}
+          icon={<View style={{ width: 20 * em }}>{TypeRequest({ width: 20 * em, height: 20 * em })}</View>}
           onPress={() => {
             setfilterRequestModalVisible(true);
           }}
@@ -30,7 +32,7 @@ const FriendsFilterScreen = () => {
           title={'Date'}
           defaultSetting={'Tous'}
           style={styles.listItem}
-          icon={require('assets/images/ic_date.png')}
+          icon={<View style={{ width: 20 * em }}>{Calendar({ width: 18 * em, height: 20 * em })}</View>}
           onPress={() => {
             setfilterDateModalVisible(true);
           }}
@@ -40,27 +42,28 @@ const FriendsFilterScreen = () => {
           title={'Lieu'}
           defaultSetting={'Autour de moi'}
           style={styles.listItem}
-          icon={require('assets/images/ic_location_green.png')}
+          icon={<View style={{ width: 20 * em }}>{Address({ width: 16 * em, height: 20 * em })}</View>}
           onPress={() => {
             Actions.inputLocation();
           }}
         />
         <View style={[styles.line, { marginLeft: 0 }]} />
-        <View style={styles.switchContainer}>
-          <View style={styles.txtSwitchBox}>
-            <CommonText text={'Voir les demandes des pro et '} color={'#1E2D60'} style={styles.textSwitch} />
-            <CommonText text={'particuliers'} color={'#1E2D60'} style={styles.textSwitch} />
-          </View>
-          <Switch
-            switchWidth={50 * em}
-            switchHeight={28 * hm}
-            switchdirection="ltr"
-            switchBorderColor="#ffffff"
-            switchBackgroundColor="#40CDDE"
-            btnBorderColor="red"
-            btnBackgroundColor="#FFFFFF"
-          />
-        </View>
+        <CommonListItem
+          style={styles.switchContainer}
+          title="Voir les demandes des pro et particuliers"
+          titleStyle={styles.textSwitch}
+          rightView={
+            <Switch
+              style={styles.switch}
+              switchWidth={50 * em}
+              switchHeight={28 * em}
+              switchdirection="ltr"
+              switchBorderColor="#ffffff"
+              switchBackgroundColor="#40CDDE"
+              btnBackgroundColor="#FFFFFF"
+            />
+          }
+        />
       </View>
       <View />
 
@@ -100,21 +103,15 @@ const styles = {
     height: 1 * hm,
     marginLeft: 65 * em,
     backgroundColor: '#F0F5F7',
-    marginTop: 25 * hm,
+    marginTop: 25 * em,
     marginBottom: 25 * hm,
   },
-  switchContainer: {
-    marginLeft: 30 * em,
-    marginRight: 30 * em,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  textSwitch: {
-    lineHeight: 21 * hm,
-  },
+  switchContainer: { marginLeft: 30 * em, marginRight: 30 * em },
+  textSwitch: { fontFamily: 'Lato-Bold', marginRight: 40 * em, color: '#1E2D60', lineHeight: 21 * em },
   txtSwitchBox: {
     justifyContent: 'center',
   },
+  switch: { marginTop: 5 * hm },
 };
 
 export default FriendsFilterScreen;

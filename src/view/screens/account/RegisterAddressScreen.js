@@ -1,5 +1,5 @@
 import React from 'react';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import { View } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
 import CommonTextInput from 'view/components/textInput/CommonTextInput';
@@ -21,7 +21,7 @@ const RegisterAddressScreen = () => {
           <TitleText text={'Mon adresse'} style={styles.titleText} />
           <CommonTextInput text={'Saisis ton adresse complète'} isPasswordInput={false} style={styles.commonInput} />
           <View style={styles.viewText}>
-            <CommentText color={'#40CDDE'} text={'Me géolocalisers'} />
+            <CommentText color={'#40CDDE'} text={'Me géolocaliser'} />
           </View>
         </View>
         <View style={styles.popupBottomView}>
@@ -37,14 +37,11 @@ const styles = {
     flex: 1,
     backgroundColor: '#40CDDE',
   },
-  header: {
-    height: '12%',
-  },
   icon: {
     width: 21 * em,
-    height: 30 * em,
-    marginTop: 39 * em,
-    marginBottom: 11 * em,
+    height: 30 * hm,
+    marginTop: 39 * hm,
+    marginBottom: 11 * hm,
   },
   popupView: {
     flex: 1,
@@ -60,16 +57,13 @@ const styles = {
     width: '80%',
   },
   titleText: {
-    marginBottom: 35 * em,
+    marginBottom: 35 * hm,
   },
-  btnNext: { backgroundColor: 'rgba(64, 205, 222, 0.5)', marginBottom: 30 * em },
+  btnNext: { backgroundColor: 'rgba(64, 205, 222, 0.5)', marginBottom: 30 * hm },
   viewText: {
-    marginTop: 15 * em,
+    marginTop: 15 * hm,
   },
-  commonInput: {
-    width: '100%',
-    height: 52 * em,
-  },
+  commonInput: { width: '100%', height: 52 * em },
 };
 
 export default RegisterAddressScreen;

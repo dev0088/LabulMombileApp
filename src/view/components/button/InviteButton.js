@@ -1,24 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { em } from 'view/common/const';
 import CommentText from 'view/components/text/CommentText';
 
 const InviteButton = (props) => {
-  var caption;
-  props.invited ? (caption = 'Inviter') : (caption = 'Invité(e)');
-  var bgColor;
-  !props.invited ? (bgColor = '#F2F5F8') : (bgColor = '#40CDDE');
-  var fontColor;
-  !props.invited ? (fontColor = '#A0AEB8') : (fontColor = '#FFFFFF');
-  var width;
-  !props.invited ? (width = 79 * em) : (width = 68 * em);
-
+  const [invited, setInvited] = useState(props.invited);
   return (
-    <TouchableOpacity onPress={props.onPress} disabled={!props.invited}>
+    <TouchableOpacity onPress={() => setInvited(!invited)}>
       <CommentText
-        style={[styles.buttonStyle, props.style, { backgroundColor: bgColor, width: width }]}
-        text={caption}
-        color={fontColor}
+        style={[
+          styles.buttonStyle,
+          props.style,
+          { backgroundColor: !invited ? '#F2F5F8' : '#40CDDE', width: !invited ? 79 * em : 68 * em },
+        ]}
+        text={invited ? 'Inviter' : 'Invité(e)'}
+        color={!invited ? '#A0AEB8' : '#FFFFFF'}
       />
     </TouchableOpacity>
   );

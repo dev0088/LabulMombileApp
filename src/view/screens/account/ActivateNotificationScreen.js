@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Image } from 'react-native';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import CommonButton from 'view/components/button/CommonButton';
 import CommonText from 'view/components/text/CommonText';
 import TitleText from 'view/components/text/TitleText';
@@ -12,10 +12,10 @@ const ActivateNotificationScreen = () => {
     <View style={styles.container}>
       <Image style={styles.behindImage} source={require('assets/images/bg_active_notification.png')} />
       <View style={styles.popupView}>
-        <TitleText text={'Activer\nles notifications'} style={{ marginTop: 24 * em }} />
+        <TitleText text={'Activer\nles notifications'} style={{ marginTop: 24 * hm }} />
         <CommentText
           text={'Active les notifications pour recevoir l’activité de\n tes amis, ta famille et tes voisins.'}
-          style={{ marginTop: 12 * em }}
+          style={{ marginTop: 12 * hm, paddingHorizontal: 29 * em }}
         />
         <View style={styles.buttonsContainer}>
           <View style={styles.fakeContainer} />
@@ -45,13 +45,13 @@ const styles = {
     alignItems: 'center',
     backgroundColor: '#F0F5F7',
   },
-  behindImage: { flex: 0.45, resizeMode: 'contain' },
+  behindImage: { flex: 0.45, width: 356 * hm },
   popupView: {
     flex: 0.55,
     backgroundColor: '#ffffff',
     borderTopStartRadius: 25 * em,
     borderTopEndRadius: 25 * em,
-    marginTop: 10 * em,
+    marginTop: 10 * hm,
     width: '100%',
     alignItems: 'center',
   },
@@ -60,7 +60,7 @@ const styles = {
     width: '100%',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 12 * em,
+    marginBottom: 12 * hm,
   },
   fakeContainer: { flex: 1 },
   bottomButtonContainer: { flex: 1, justifyContent: 'center' },

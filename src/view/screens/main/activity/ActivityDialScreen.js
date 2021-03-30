@@ -9,7 +9,7 @@ import CommentText from 'view/components/text/CommentText';
 const ActivityDialScreen = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.popup}>
+      <View style={styles.popup} >
         <Image source={require('assets/images/avatar.png')} style={styles.avatar} />
         <CommonText text="Amandine Bernard" style={styles.userName} color="#ffffff" />
         <CommentText text="Ça sonne…" style={styles.comment} />
@@ -41,13 +41,13 @@ const ActivityDialScreen = () => {
 const styles = {
   container: {
     flex: 1,
-    backgroundColor: '#1F2E5F4D',
-    opacity: 0.9,
+    backgroundColor: '#1F2E61',
+    // opacity: 0.9,
     flexDirection: 'column',
     postion: 'absolute',
   },
   popup: {
-    backgroundColor: '#1F2E61',
+    backgroundColor: 'rgba(31, 46, 97, 0.1)',
     borderBottomRightRadius: 29 * em,
     borderBottomLeftRadius: 29 * em,
     flex: 1,
@@ -64,7 +64,7 @@ const styles = {
     marginTop: 10 * em,
     color: '#FFFFFF',
   },
-  controlView: {
+  controlView: {backgroundColor:'#1F2E61',
     height: 166 * em,
     flexDirection: 'row',
     paddingHorizontal: 20 * em,

@@ -12,13 +12,16 @@ import CommonBackButton from 'view/components/button/CommonBackButton';
 
 const Tab = createMaterialTopTabNavigator();
 
-const MyNeedsHomeScreen = () => {
+const MyNeedsHomeScreen = ({ tabNav }) => {
   return (
     <NavigationContainer>
       <View style={styles.container}>
         <CommonBackButton dark style={{ marginLeft: 15 * em }} />
         <TitleText text={'Mes demandes'} style={styles.title} />
-        <Tab.Navigator tabBar={(props) => <CommonTabBar {...props} />} swipeEnabled={false} initialRouteName="families">
+        <Tab.Navigator
+          tabBar={(props) => <CommonTabBar {...props} />}
+          swipeEnabled={false}
+          initialRouteName={tabNav || 'families'}>
           <Tab.Screen
             name="needs"
             options={{ title: 'Mes demandes', tabColor: '#40CDDE' }}
@@ -42,7 +45,7 @@ const MyNeedsHomeScreen = () => {
 
 const styles = {
   container: {
-    paddingTop:27*em,
+    paddingTop: 27 * em,
     flex: 1,
     backgroundColor: '#FFFFFF',
   },

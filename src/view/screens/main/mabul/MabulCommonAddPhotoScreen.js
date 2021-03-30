@@ -7,12 +7,12 @@ import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
 import { Actions } from 'react-native-router-flux';
 import MabulNextButton from 'view/components/button/MabulNextButton';
 
-const MabulCommonAddPhotoScreen = (props) => {
-  const conceptColor = mabulColors[props.mabulService];
+const MabulCommonAddPhotoScreen = ({ mabulService, process }) => {
+  const conceptColor = mabulColors[mabulService];
 
   return (
     <View style={styles.container}>
-      <MabulCommonHeader style={styles.header} percent={24} isNoBackBtn={true} progressBarColor={conceptColor} />
+      <MabulCommonHeader style={styles.header} percent={process} isNoBackBtn={true} progressBarColor={conceptColor} />
       <View style={styles.body}>
         <View>
           <TitleText text={'Ajoute de photos'} style={styles.title} />
@@ -31,7 +31,12 @@ const MabulCommonAddPhotoScreen = (props) => {
         <MabulNextButton
           color={conceptColor}
           style={styles.nextBtn}
-          onPress={() => Actions.mabulCommonDateSetting({ mabulService: props.mabulService })}
+          onPress={() =>
+            Actions.mabulCommonDateSetting({
+              mabulService: mabulService,
+              process: mabulService === 'need' ? 67 : mabulService === 'organize' ? 60 : 79,
+            })
+          }
         />
       </View>
     </View>
@@ -58,7 +63,7 @@ const styles = {
     marginTop: 35 * em,
     lineHeight: 38 * em,
   },
-  comment: { textAlign: 'left', lineHeight: 20 * em, height: 16 * em, textAlignVertical: 'center', marginTop: 10 * em },
+  comment: { textAlign: 'left', lineHeight: 20 * em, textAlignVertical: 'center', marginTop: 10 * em },
   photoZone: {
     width: 315 * em,
     height: 121 * em,

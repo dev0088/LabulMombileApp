@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Image } from 'react-native';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import CommonButton from 'view/components/button/CommonButton';
 import CommonText from 'view/components/text/CommonText';
 import TitleText from 'view/components/text/TitleText';
@@ -12,9 +12,11 @@ const ActivateLocationScreen = () => {
     <View style={styles.container}>
       <Image style={styles.behindImage} source={require('assets/images/bg_active_location.png')} />
       <View style={styles.popupView}>
-        <TitleText text="Activer ma localisation" style={{ marginTop: 24 * em }} />
-        <CommentText text="Labul a besoin de ta localisation pour te mettre en" style={{ marginTop: 12 * em }} />
-        <CommentText text="contact avec tes proches." />
+        <TitleText text="Activer ma localisation" style={{ marginTop: 24 * hm }} />
+        <CommentText
+          text="Labul a besoin de ta localisation pour te mettre en contact avec tes proches."
+          style={{ marginTop: 12 * hm, paddingHorizontal: 29 * em }}
+        />
         <View style={styles.buttonsContainer}>
           <View style={styles.fakeContainer} />
           <CommonButton
@@ -42,14 +44,15 @@ const styles = {
     flex: 1,
     alignItems: 'center',
     backgroundColor: '#F0F5F7',
+    width: 375 * em,
   },
-  behindImage: { flex: 0.45, resizeMode: 'contain' },
+  behindImage: { flex: 0.45, width: 369 * hm },
   popupView: {
     flex: 0.55,
     backgroundColor: '#ffffff',
     borderTopStartRadius: 28 * em,
     borderTopEndRadius: 28 * em,
-    marginTop: 10 * em,
+    marginTop: 10 * hm,
     width: '100%',
     alignItems: 'center',
   },
@@ -58,7 +61,7 @@ const styles = {
     width: '100%',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 12 * em,
+    marginBottom: 12 * hm,
   },
   fakeContainer: { flex: 1 },
   bottomButtonContainer: { flex: 1, justifyContent: 'center' },

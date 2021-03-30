@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
-import { em, WIDTH } from 'view/common/const';
+import { em, hm, WIDTH } from 'view/common/const';
 import { FlatList } from 'react-native';
 import MabulCommonListItem from 'view/components/adapter/MabulCommonListItem';
 import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
@@ -47,7 +47,7 @@ const MabulNeedSortScreen = (props) => {
         progressBarColor={'#38C2FF'}
       />
       <View style={styles.body}>
-        <TitleText text={'J’ai besoin ' + props.title} style={styles.title} />
+        <TitleText text={'J’ai besoin\n' + props.title} style={styles.title} />
         <View style={styles.popView}>
           <FlatList data={needItems} renderItem={renderFlatList} keyExtractor={(i) => i.id} />
         </View>
@@ -62,37 +62,17 @@ const styles = {
     backgroundColor: '#ffffff',
     marginTop: 16 * em,
   },
-  header: {
-    height: '10.3%',
-  },
+  header: { height: 81 * hm },
   popView: {
-    paddingLeft: WIDTH * 0.08,
+    paddingLeft: 30 * em,
     borderTopLeftRadius: 28 * em,
     borderTopRightRadius: 28 * em,
     backgroundColor: '#ffffff',
-    paddingBottom: 163 * em,
-  },
-  body: {
     flex: 1,
-
-    alignItems: 'flex-start',
-    backgroundColor: '#F0F5F7',
   },
-  title: {
-    marginLeft: 30 * em,
-    marginTop: 35 * em,
-    marginBottom: 35 * em,
-    lineHeight: 35 * em,
-    width: 186 * em,
-    height: 71 * em,
-    fontWeight: 'bold',
-    textAlign: 'left',
-    textAlignVertical: 'center',
-  },
-  listItem: {
-    width: WIDTH * 0.92,
-    marginTop: 25 * em,
-  },
+  body: { flex: 1, alignItems: 'flex-start', backgroundColor: '#F0F5F7' },
+  title: { lineHeight: 38 * em, paddingLeft: 30 * em, marginVertical: 35 * em, textAlign: 'left' },
+  listItem: { width: 345 * em, marginTop: 25 * hm },
 };
 
 export default MabulNeedSortScreen;

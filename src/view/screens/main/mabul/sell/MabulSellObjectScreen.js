@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
-import { em, HEIGHT, WIDTH } from 'view/common/const';
+import { em, HEIGHT, hm } from 'view/common/const';
 import { FlatList } from 'react-native';
 import MabulCommonListItem from 'view/components/adapter/MabulCommonListItem';
 import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
@@ -43,14 +43,19 @@ const MabulSellObjectScreen = (props) => {
       text={item.itemName}
       style={styles.listItem}
       icon={item.icon}
-      onPress={() => Actions.mabulCommonRequestDetail({ mabulService: 'sell' })}
+      onPress={() => Actions.mabulCommonRequestDetail({ mabulService: 'sell', process: 67 })}
     />
   );
   return (
     <View style={styles.container}>
-      <MabulCommonHeader style={styles.header} percent={props.process} isNoBackBtn={true} progressBarColor={'#AA87E5'} />
+      <MabulCommonHeader
+        style={styles.header}
+        percent={props.process}
+        isNoBackBtn={true}
+        progressBarColor={'#AA87E5'}
+      />
       <View style={styles.body}>
-        <TitleText text={'Je vends Objet'} style={styles.title2} />
+        <TitleText text={'Je vends\nObjet'} style={styles.title} />
         <View style={styles.popView}>
           <FlatList data={giveItems} renderItem={renderFlatList} keyExtractor={(i) => i.id} />
         </View>
@@ -63,38 +68,19 @@ const styles = {
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
+    marginTop: 16 * em,
   },
-  header: {
-    height: '10.3%',
-  },
+  header: { height: 81 * hm },
   popView: {
-    paddingLeft: WIDTH * 0.08,
+    paddingLeft: 30 * em,
     borderTopLeftRadius: 28 * em,
     borderTopRightRadius: 28 * em,
     backgroundColor: '#ffffff',
     flex: 1,
   },
-  body: {
-    flex: 1,
-
-    alignItems: 'flex-start',
-    backgroundColor: '#F0F5F7',
-  },
-  title1: {
-    paddingLeft: WIDTH * 0.08,
-    marginTop: 35 * em,
-    fontWeight: 'bold',
-  },
-  title2: {
-    paddingLeft: WIDTH * 0.08,
-    marginBottom: 35 * em,
-    fontWeight: 'bold',
-  },
-  listItem: {
-    height: HEIGHT * 0.09,
-    width: WIDTH * 0.92,
-    marginTop: 25 * em,
-  },
+  body: { flex: 1, alignItems: 'flex-start', backgroundColor: '#F0F5F7' },
+  title: { lineHeight: 38 * em, paddingLeft: 30 * em, marginVertical: 35 * em, textAlign: 'left' },
+  listItem: { width: 345 * em, marginTop: 25 * hm },
 };
 
 export default MabulSellObjectScreen;

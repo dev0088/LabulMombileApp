@@ -7,7 +7,6 @@ import SignupMenuScreen from 'view/screens/account/SignupMenuScreen';
 import MainScreen from 'view/screens/main/MainScreen';
 import LoginScreen from 'view/screens/account/LoginScreen';
 import ForgotPasswordScreen from 'view/screens/account/ForgotPasswordScreen';
-import SignupScreen from 'view/screens/account/SignupScreen';
 import RegisterEmailScreen from 'view/screens/account/RegisterEmailScreen';
 import RegisterNameScreen from 'view/screens/account/RegisterNameScreen';
 import RegisterFamilyNameScreen from 'view/screens/account/RegisterFamilyNameScreen';
@@ -82,6 +81,8 @@ import ProProfileHomeScreen from '../view/screens/main/profile/proProfile/ProPro
 import MyProInformationScreen from '../view/screens/main/profile/proProfile/MyProInformationScreen';
 import MabulNeedSortScreen from '../view/screens/main/mabul/need/MabulNeedSortScreen';
 import NameGroupScreen from '../view/screens/main/profile/myCircles/NameGroupScreen';
+import MabulSellPriceScreen from '../view/screens/main/mabul/sell/MabulSellPriceScreen';
+import MabulOrganizeParticipationScreen from '../view/screens/main/mabul/organize/MabulOrganizeParticipationScreen';
 
 class Routes extends Component {
   render() {
@@ -110,7 +111,6 @@ class Routes extends Component {
           <Scene key="main" hideNavBar component={MainScreen} />
           <Scene key="login" hideNavBar component={LoginScreen} />
           <Scene key="forgotPassword" hideNavBar component={ForgotPasswordScreen} />
-          <Scene key="signup" hideNavBar component={SignupScreen} />
 
           <Scene key="registerEmail" hideNavBar component={RegisterEmailScreen} />
           <Scene key="registerName" hideNavBar component={RegisterNameScreen} />
@@ -124,6 +124,8 @@ class Routes extends Component {
           <Scene key="friendsFilter" hideNavBar component={FriendsFilterScreen} />
           <Scene key="userProfile" hideNavBar component={UserProfileScreen} />
           <Scene key="inputLocation" hideNavBar component={InputLocationScreen} />
+
+          <Scene key="mabulOrganizeParticipation" hideNavBar component={MabulOrganizeParticipationScreen} />
           <Scene key="mabulOrganize" hideNavBar component={MabulOrganizeScreen} />
 
           <Scene key="alertCircles" hideNavBar component={AlertCircleSelectionScreen} />
@@ -136,6 +138,7 @@ class Routes extends Component {
           <Scene key="mabulSellService" hideNavBar component={MabulSellServiceScreen} />
           <Scene key="mabulSellObject" hideNavBar component={MabulSellObjectScreen} />
           <Scene key="mabulSellEnvironment" hideNavBar component={MabulSellEnvironmentScreen} />
+          <Scene key="mabulSellPrice" hideNavBar component={MabulSellPriceScreen} />
 
           <Scene key="mabulNeed" hideNavBar component={MabulNeedScreen} />
           <Scene key="mabulFamilyNeed" hideNavBar component={MabulFamilyNeedScreen} />

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Image } from 'react-native';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import CommonText from 'view/components/text/CommonText';
 import CommentText from 'view/components/text/CommentText';
 import { FlatList, TouchableOpacity, TextInput } from 'react-native';
@@ -33,7 +33,7 @@ var requestMessage = [
     id: 0,
     date: '21:59',
     side: OTHERSIDE,
-    messages: ['Mathieu, pouvez-vous me donner l’adresse de l’endroit à récolter des figues ?'],
+    messages: ['Bonjour Mathieu, je souhaite participer pour Récolter des figues.'],
   },
 ];
 
@@ -41,7 +41,17 @@ const ActivityMessageScreen = (props) => {
   const [messageCounterVisible, setMessageCounterVisible] = useState(false);
   const [messageProfileVisible, setMessageProfileVisible] = useState(false);
   const [accepted, setAccepted] = useState(false);
+  const [refused, setRefused] = useState(false);
+
   const [isAccepted, setIsAccepted] = useState();
+  const [seconds, setSeconds] = useState(20);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      //assign interval to a variable to clear it.
+      setSeconds(seconds - 1);
+    }, 1000);
+  }, []);
+  // console.log(seconds)
   const popupHeader = (
     <View style={styles.popupHeader}>
       <View style={styles.titleView}>
@@ -53,10 +63,10 @@ const ActivityMessageScreen = (props) => {
   );
   const AcceptButton = accepted ? (
     <CommonButton
-      style={[styles.optionBtn, { backgroundColor: 'rgba(64, 205, 222, 0.2)' }]}
-      rightIcon={<CheckedBlue width={12 * em} height={8.79 * em} />}
+      style={styles.optionBtnClicked}
+      leftIcon={<CheckedBlue width={12 * em} height={8.79 * em} />}
       text="Accepter"
-      textStyle={{ fontSize: 14 * em, color: '#40CDDE', marginLeft: 5 * em }}
+      textStyle={{ fontSize: 12 * em, color: '#40CDDE', marginLeft: 5 * em }}
     />
   ) : (
     <CommonButton
@@ -69,23 +79,33 @@ const ActivityMessageScreen = (props) => {
       }}
     />
   );
+  const RefuseButton = refused ? (
+    <CommonButton
+      style={styles.optionBtnClicked}
+      leftIcon={<CheckedBlue width={12 * em} height={8.79 * em} />}
+      text="Refuser"
+      textStyle={{ fontSize: 12 * em, color: '#40CDDE', marginLeft: 5 * em }}
+    />
+  ) : (
+    <CommonButton
+      style={[styles.optionBtn, { backgroundColor: '#F9547B' }]}
+      // rightIcon={}
+      text="Refuser"
+      textStyle={{ fontSize: 14 * em }}
+      onPress={() => {
+        setRefused(true);
+      }}
+    />
+  );
   const optionView = (
     <View style={styles.optionView}>
       {AcceptButton}
-      <CommonButton
-        style={[styles.optionBtn, { backgroundColor: '#F9547B' }]}
-        // rightIcon={}
-        text="Refuser"
-        textStyle={{ fontSize: 14 * em }}
-        onPress={() => {
-          props.activityType === 'invitation' ? {} : setMessageCounterVisible(true);
-        }}
-      />
+      {RefuseButton}
     </View>
   );
   const SuccessToast = (
     <View style={styles.toast}>
-      <View style={{ flexDirection: 'row', marginTop: 27 * em, marginBottom: 15 * em }}>
+      <View style={{ flexDirection: 'row', marginBottom: 15 * hm }}>
         <Image source={require('assets/images/avatar.png')} style={styles.toastAvatar} />
         <View style={styles.avatarCheck}>
           <CheckedBlue wdith={16.67 * em} height={12.2 * em} />
@@ -94,7 +114,7 @@ const ActivityMessageScreen = (props) => {
       <CommentText
         text="Mathieu viens d’accepter la participation d’Amandine"
         color="#1E2D60"
-        style={{ fontFamily: 'Lato-Bold' }}
+        style={{ paddingHorizontal: 30 * em, fontFamily: 'Lato-Bold' }}
       />
     </View>
   );
@@ -153,7 +173,7 @@ const ActivityMessageScreen = (props) => {
         </View>
       </View>
       <MessageCounterDownPopupScreen
-        onAccept={(val) => setIsAccepted(val)}
+        onAccept={() => setIsAccepted(20)}
         visible={messageCounterVisible}
         onPress={() => setMessageCounterVisible(false)}
       />
@@ -177,12 +197,9 @@ const styles = {
     alignItems: 'flex-end',
   },
   toast: {
-    margin: -30 * em,
+    // margin: -30 * em,
     alignItems: 'center',
-    left: 0,
-    top: 8 * em,
-    height: 183 * em,
-    postion: 'absolute',
+    marginLeft: -30 * em,
     width: 375 * em,
     backgroundColor: 'rgba(64, 205, 222, 0.15)',
     paddingHorizontal: 30 * em,
@@ -196,7 +213,7 @@ const styles = {
     borderRadius: 24 * em,
     backgroundColor: '#ffffff',
     marginLeft: -32 * em,
-    marginTop: -5 * em,
+    marginTop: -10 * hm,
   },
   avatarIcon: { width: 28 * em, height: 28 * em, marginLeft: 10 * em, marginRight: 10 * em },
   dialIcon: { width: 20 * em, height: 20 * em, marginRight: 15 * em, tintColor: '#ffffff', marginBottom: 11 * em },
@@ -207,11 +224,16 @@ const styles = {
     borderTopLeftRadius: 20 * em,
     backgroundColor: '#ffffff',
     paddingHorizontal: 30 * em,
-    paddingVertical: 15 * em,
+    // paddingVertical: 15 * em,
     justifyContent: 'space-between',
     flexDirection: 'column',
   },
-  popupHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  popupHeader: {
+    paddingVertical: 15 * hm,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
   titleView: { flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' },
   titleIcon: { width: 28 * em, height: 28 * em, borderRadius: 14 * em, marginRight: 10 * em },
   popupBody: { flexDirection: 'column-reverse', alignItems: 'center', flex: 1 },
@@ -226,16 +248,30 @@ const styles = {
   inputText: { fontSize: 14 * em, lineHeight: 16 * em, color: '#9093A3', padding: 0 },
   imageIcon: { width: 40 * em, height: 40 * em, marginRight: 15 * em },
   optionBtn: {
-    paddingVertical: 12 * em,
-    paddingHorizontal: 15 * em,
+    paddingVertical: 14 * em,
+    paddingHorizontal: 22 * em,
     backgroundColor: '#40CDDE',
     borderRadius: 21 * em,
     alignSelf: 'baseline',
     width: 125 * em,
+    elevation: 2,
+    shadowColor: '#0000001A',
+    shadowOffset: {
+      width: -3 * em,
+      height: 6 * hm,
+    },
+    shadowRadius: 10 * em,
     // flex: 1,
   },
-
+  optionBtnClicked: {
+    paddingVertical: 12 * em,
+    paddingHorizontal: 15 * em,
+    backgroundColor: 'rgba(64, 205, 222, 0.2) ',
+    borderRadius: 21 * em,
+    width: 125 * em,
+  },
   optionView: {
+    alignItems: 'center',
     flexDirection: 'row',
     paddingHorizontal: 29 * em,
     justifyContent: 'space-between',

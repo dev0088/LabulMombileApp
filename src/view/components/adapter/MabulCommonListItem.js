@@ -1,65 +1,48 @@
 import { View, TouchableOpacity, Image, Text } from 'react-native';
 import React from 'react';
 import { em } from 'view/common/const';
-
+import CommonListItem from 'view/components/adapter/CommonListItem';
+import { RightArrow } from 'assets/svg/icons';
 const MabulCommonListItem = (props) => {
   return (
-    <TouchableOpacity onPress={props.onPress}>
-      <View style={[styles.container, props.style]}>
-        <View style={styles.leftView}>
-          {props.icon}
-          <View style={styles.txtView}>
-            <Text style={styles.textTitle}>{props.text}</Text>
-            {props.subText && <Text style={styles.textSubTitle}>{props.subText}</Text>}
+    <>
+      <CommonListItem
+        onPress={props.onPress}
+        style={props.style}
+        icon={<View style={{ marginRight: 10 * em }}>{props.icon}</View>}
+        title={props.text}
+        subTitle={props.subText}
+        titleStyle={styles.textTitle}
+        subTitleStyle={styles.textSubTitle}
+        rightView={
+          <View
+            style={[
+              styles.rightView,
+              { marginTop: props.icon ? 10 * em : 0 * em, justifyContent: props.icon ? 'flex-start' : 'center' },
+            ]}>
+            <RightArrow width={11 * em} height={18 * em} />
           </View>
-        </View>
-        <View style={styles.rightView}>
-          <Image style={styles.arrowIcon} source={require('assets/images/btn_arrow_ltr.png')} />
-        </View>
-      </View>
-    </TouchableOpacity>
+        }
+      />
+      <View style={styles.line} />
+    </>
   );
 };
 export default MabulCommonListItem;
 const styles = {
-  container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  leftView: {
-    flexDirection: 'row',
-    flex: 1,
-    alignItems: 'center',
-  },
-  txtView: {
-    flex: 1,
-    marginLeft: 15 * em,
-    height: '100%',
-    borderBottomWidth: 0.5 * em,
-    borderBottomColor: '#B3C6CF33',
-    justifyContent: 'center',
-  },
   rightView: {
-    flexDirection: 'row-reverse',
-    height: '100%',
+    marginRight: 30 * em,
     borderBottomWidth: 0.5 * em,
     borderBottomColor: '#B3C6CF33',
     alignItems: 'center',
   },
   textTitle: {
+    marginRight: 20 * em,
+    fontFamily: 'Lato-Bold',
     fontSize: 18 * em,
+    lineHeight: 23 * em,
     color: '#1E2D60',
   },
-  textSubTitle: {
-    fontSize: 12 * em,
-    color: '#A0AEB8',
-    lineHeight: 17 * em,
-    width: 205 * em,
-  },
-  arrowIcon: {
-    backgroundColor: 'white',
-    width: 11 * em,
-    height: 18 * em,
-    marginRight: 30 * em,
-  },
+  textSubTitle: { marginRight: 50 * em, color: '#A0AEB8', lineHeight: 16 * em, width: 205 * em },
+  line: { marginTop: 25 * em, marginLeft: 53 * em, backgroundColor: '#B3C6CF33', height: 1 * em },
 };

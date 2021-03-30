@@ -53,20 +53,20 @@ const AlertAddressScreen = (props) => {
           <LocationRed width={16 * em} height={19 * em} />
           <CommentText text={'Utiliser ma position'} color="#F9547B" style={{ marginLeft: 10 * em }} />
         </View>
-
+        {/*
         <FlatList
           data={searchedUsers}
           renderItem={renderFlatList}
           keyExtractor={(i) => i.id}
-          style={{ marginTop: 25 * em }}
-        />
-        <MabulNextButton
-          color={conceptColor}
-          style={[styles.btn, { backgroundColor: conceptColor }]}
-          text="Suivant"
-          onPress={() => Actions.alertAddNote({ process: 60 })}
-        />
+          style={{ marginTop: 25 * hm }}
+        /> */}
       </View>
+      <MabulNextButton
+        color={conceptColor}
+        style={[styles.btn, { backgroundColor: conceptColor }]}
+        text="Suivant"
+        onPress={() => Actions.alertAddNote({ process: 60 })}
+      />
     </View>
   );
 };
@@ -74,13 +74,20 @@ const AlertAddressScreen = (props) => {
 const styles = {
   container: { flex: 1, alignItems: 'flex-start', backgroundColor: '#ffffff' },
   header: { height: '10.3%' },
-  body: { flex: 1, width: '100%', paddingHorizontal: 30 * em, justifyContent: 'space-between' },
-  commonHeader: { marginTop: 27 * em },
-  title: { textAlign: 'left', marginTop: 35 * em, lineHeight: 38 * em },
-  searchBox: { marginTop: 35 * em },
-  location: { alignSelf: 'center', marginTop: 15 * em, alignItems: 'center', flexDirection: 'row' },
+  body: { flex: 1, width: '100%', paddingHorizontal: 30 * em, justifyContent: 'flex-start' },
+  commonHeader: { marginTop: 27 * hm },
+  title: { textAlign: 'left', marginTop: 35 * hm, lineHeight: 38 * em },
+  searchBox: { marginTop: 35 * hm, height: 44 * em },
+  location: { alignSelf: 'center', marginTop: 15 * hm, alignItems: 'center', flexDirection: 'row' },
   listItem: { height: 38 * hm, marginTop: 35 * hm },
-  btn: { width: 163 * em, alignSelf: 'flex-end', marginBottom: 30 * em, backgroundColor: '#38C2FF' },
+  btn: {
+    position: 'absolute',
+    width: 163 * em,
+    alignSelf: 'flex-end',
+    bottom: 30 * hm,
+    right: 30 * em,
+    backgroundColor: '#38C2FF',
+  },
 };
 
 export default AlertAddressScreen;

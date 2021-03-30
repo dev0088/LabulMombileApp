@@ -26,8 +26,8 @@ const needItems = [
   { id: 3, itemName: 'Jardinage/ élagage', icon: Gardening(iconSize) },
   { id: 4, itemName: 'Préparation/ Livraison repas', icon: MealPreparation(iconSize) },
   { id: 5, itemName: 'Repassage', icon: Ironing(iconSize) },
-  { id: 5, itemName: 'Livraison/ Achat de courses', icon: Transport(iconSize) },
-  { id: 5, itemName: 'Transport/ Co-voiturage', icon: Delivery(iconSize) },
+  { id: 5, itemName: 'Livraison/ Achat de courses', icon: Delivery(iconSize) },
+  { id: 5, itemName: 'Transport/ Co-voiturage', icon: Transport(iconSize) },
 
   { id: 5, itemName: 'Soins d’esthétique à domicile', icon: BeautyCare(iconSize) },
 ];
@@ -39,7 +39,7 @@ const MabulDailyNeedScreen = () => {
       style={styles.listItem}
       subText={item.subName}
       icon={item.icon}
-      onPress={() => Actions.mabulCommonRequestDetail({ mabulService: 'need', process: 22.4 })}
+      onPress={() => Actions.mabulCommonRequestDetail({ mabulService: 'need', process: 40 })}
     />
   );
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Image } from 'react-native';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import CommonButton from 'view/components/button/CommonButton';
 import CommonText from 'view/components/text/CommonText';
 import TitleText from 'view/components/text/TitleText';
@@ -41,12 +41,12 @@ const styles = {
     flexDirection: 'column-reverse',
     alignItems: 'center',
     backgroundColor: '#ffffff',
-    paddingBottom: 16 * em,
+    paddingBottom: 16 * hm,
   },
-  registerWrapper: { flexDirection: 'row', alignItems: 'center', paddingVertical: 36 * em },
-  wideMargin: { marginTop: 24 * em },
-  narrowMargin: { marginBottom: 6 * em },
-  topImage: { resizeMode: 'contain', flex: 1, marginBottom: 18 * em },
+  registerWrapper: { flexDirection: 'row', alignItems: 'center', paddingVertical: 36 * hm },
+  wideMargin: { marginTop: 24 * hm },
+  narrowMargin: { marginBottom: 6 * hm },
+  topImage: { flex: 1, marginBottom: 18 * hm },
 };
 
 export default HomeScreen;

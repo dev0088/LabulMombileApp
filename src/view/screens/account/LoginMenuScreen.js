@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Image } from 'react-native';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import CommonButton from 'view/components/button/CommonButton';
 import TitleText from 'view/components/text/TitleText';
 import CommonText from 'view/components/text/CommonText';
@@ -52,9 +52,10 @@ const styles = {
     alignItems: 'center',
     backgroundColor: '#fafaff',
   },
-  buttonMargin: { marginTop: 16 * em, marginBottom: 7 * em },
-  behindImage: { flex: 0.52, resizeMode: 'contain' },
+  buttonMargin: { marginTop: 16 * hm, marginBottom: 7 * hm },
+  behindImage: { width: 616 * hm, height: 387 * hm, marginLeft: 160.5 * hm, marginTop: -37 * hm },
   popupView: {
+    height: 420 * hm,
     flex: 1,
     backgroundColor: '#ffffff',
     borderTopStartRadius: 28 * em,
@@ -64,8 +65,8 @@ const styles = {
     position: 'absolute',
     bottom: 0,
   },
-  commonButtonMargin: { marginTop: 10 * em },
-  buttonGroup: { flex: 1, flexDirection: 'column-reverse', marginBottom: 30 * em, marginTop: 45 * em },
+  commonButtonMargin: { marginTop: 10 * hm },
+  buttonGroup: { flex: 1, flexDirection: 'column-reverse', marginBottom: 30 * hm, marginTop: 45 * hm },
 };
 
 export default LoginMenuScreen;

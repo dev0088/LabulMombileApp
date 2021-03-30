@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
-import { hexToRGB, em, mabulColors } from 'view/common/const';
+import { hexToRGB, em, mabulColors, hm } from 'view/common/const';
 import CommentText from 'view/components/text/CommentText';
 import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
 import { Actions } from 'react-native-router-flux';
@@ -29,10 +29,15 @@ const MabulCommonRequestDetailScreen = (props) => {
     iconEdit = Edit(styles.icon);
     iconDocument = Document(styles.icon);
   }
-
+  const mabulService = props.mabulService;
   return (
     <View style={styles.container}>
-      <MabulCommonHeader style={styles.header} percent={24} isNoBackBtn={true} progressBarColor={conceptColor} />
+      <MabulCommonHeader
+        style={styles.header}
+        percent={props.process}
+        isNoBackBtn={true}
+        progressBarColor={conceptColor}
+      />
       <View style={styles.body}>
         <View>
           <TitleText text={title[props.mabulService]} style={styles.title} />
@@ -62,11 +67,12 @@ const MabulCommonRequestDetailScreen = (props) => {
           color={hexToRGB(conceptColor, 0.5)}
           style={styles.nextBtn}
           onPress={() => {
-            if (props.mabulService === 'sell') {
-              Actions.mabulCommonParticipate({ mabulService: props.mabulService });
-            } else {
-              Actions.mabulCommonAddPhoto({ mabulService: props.mabulService });
-            }
+            mabulService === 'sell'
+              ? Actions.mabulSellPrice({ mabulService: props.mabulService, process: 67 })
+              : Actions.mabulCommonAddPhoto({
+                  mabulService: props.mabulService,
+                  process: mabulService === 'need' ? 53 : mabulService === 'organize' ? 40 : 74,
+                });
           }}
         />
       </View>
@@ -81,7 +87,7 @@ const styles = {
   },
   header: {
     height: '10.3%',
-    marginTop: 16 * em,
+    marginTop: 16 * hm,
   },
   body: {
     flex: 1,
@@ -91,12 +97,12 @@ const styles = {
   title: {
     width: 300 * em,
     textAlign: 'left',
-    marginTop: 35 * em,
+    marginTop: 35 * hm,
     lineHeight: 38 * em,
     fontSize: 28 * em,
     fontWeight: 'bold',
   },
-  comment: { textAlign: 'left', lineHeight: 20 * em, height: 16 * em, textAlignVertical: 'center', marginTop: 10 * em },
+  comment: { textAlign: 'left', lineHeight: 20 * em, textAlignVertical: 'center', marginTop: 10 * hm },
   listItem: {
     height: 43 * em,
     marginTop: 25 * em,
@@ -106,7 +112,7 @@ const styles = {
   listComment: { fontSize: 13 * em, lineHeight: 17 * em, color: '#6A8596' },
   nextBtn: {
     alignSelf: 'flex-end',
-    marginBottom: 30 * em,
+    marginBottom: 30 * hm,
   },
   line: { backgroundColor: '#BFCDDB', height: 1 * em, marginLeft: 39 * em },
 };

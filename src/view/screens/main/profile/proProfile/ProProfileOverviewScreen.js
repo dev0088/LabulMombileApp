@@ -47,7 +47,7 @@ const ProProfileOverviewScreen = (props) => {
         <CommonHeader
           rightTxt={'Modifier mon profil'}
           style={styles.header}
-          onLeftPress={() => Actions.main({ tabNav: 'ProProfile'})}
+          onLeftPress={() => Actions.main({ tabNav: 'ProProfile' })}
           onRightPress={() => Actions.editProProfile({ userProfile: userProfile })}
         />
         {userProfile.cover && (
@@ -61,6 +61,7 @@ const ProProfileOverviewScreen = (props) => {
             style={styles.avatar}
             logoVisible={false}
             pro
+            borderWidth={3 * em}
           />
           <TitleText text={userProfile.name} style={styles.fullNameText} />
           <CommentText text={userProfile.type} color="#1E2D60" />

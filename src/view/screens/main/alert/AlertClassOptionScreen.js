@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, FlatList, TouchableOpacity } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import CommonText from 'view/components/text/CommonText';
 import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
 import { Actions } from 'react-native-router-flux';
 import CheckBox from 'view/components/checkbox/CheckBox';
 import MabulNextButton from 'view/components/button/MabulNextButton';
-import { FlatList } from 'react-native-gesture-handler';
 import { Neighbor } from 'assets/svg/icons';
 const options = [
   { id: 0, title: 'Accident' },
@@ -22,31 +21,32 @@ const AlertClassOptionScreen = (props) => {
     var elevation = !checked ? 0 : 2;
 
     return (
-      <View style={[styles.optionBox, { elevation: elevation }]}>
+      <TouchableOpacity
+        activeOpacity={1}
+        style={[checked ? styles.optionBoxClicked : styles.optionBox, { marginBottom: index === 2 ? 40 * em : 0 }]}
+        onPress={() => setOptionCheck(item.id)}>
         <TitleText style={styles.optionCaption} text={item.title} />
-        <CheckBox oval red isChecked={checked} singleSelection={true} onClick={() => setOptionCheck(item.id)} />
-      </View>
+        <CheckBox oval red single isChecked={checked} singleSelection={true} />
+      </TouchableOpacity>
     );
   };
   return (
     <View style={styles.container}>
       <MabulCommonHeader style={styles.header} percent={props.process} progressBarColor={conceptColor} />
       <View style={styles.body}>
-        <View>
-          <TitleText text={'J’alerte'} style={styles.title} />
-          <View style={styles.circleSortView}>
-            <Neighbor width={31 * em} height={31 * em} />
-            <CommonText text="Mes voisins" style={{ marginLeft: 10 }} />
-          </View>
-          <FlatList data={options} renderItem={renderOptions} keyExtractor={(i) => i.id} />
+        <TitleText text={'J’alerte'} style={styles.title} />
+        <View style={styles.circleSortView}>
+          <Neighbor width={31 * em} height={31 * em} />
+          <CommonText text="Mes voisins" style={{ marginLeft: 10 }} />
         </View>
-        <MabulNextButton
-          color={conceptColor}
-          style={[styles.btn, { backgroundColor: conceptColor }]}
-          text="Suivant"
-          onPress={() => Actions.alertAddress({ process: 40 })}
-        />
+        <FlatList data={options} renderItem={renderOptions} keyExtractor={(i) => i.id} />
       </View>
+      <MabulNextButton
+        color={conceptColor}
+        style={[styles.btn, { backgroundColor: conceptColor }]}
+        text="Suivant"
+        onPress={() => Actions.alertAddress({ process: 40 })}
+      />
     </View>
   );
 };
@@ -59,11 +59,7 @@ const styles = {
   header: {
     height: '10.3%',
   },
-  body: {
-    flex: 1,
-    paddingHorizontal: 30 * em,
-    justifyContent: 'space-between',
-  },
+  body: { flex: 1, paddingHorizontal: 20 * em },
   title: {
     width: 315 * em,
     textAlign: 'left',
@@ -71,19 +67,10 @@ const styles = {
     lineHeight: 38 * em,
   },
   circleSortView: { flexDirection: 'row', alignItems: 'center', marginTop: 10 * em, marginBottom: 19 * em },
-  icon: {
-    width: 38 * em,
-    height: 38 * em,
-    backgroundColor: 'blue',
-    marginRight: 10 * em,
-  },
-  btn: {
-    width: 163 * em,
-    alignSelf: 'flex-end',
-    marginBottom: 30 * em,
-    backgroundColor: '#38C2FF',
-  },
+
+  btn: { position: 'absolute', alignSelf: 'flex-end', bottom: 30 * hm, right: 30 * em, backgroundColor: '#38C2FF' },
   optionBox: {
+    marginHorizontal: 10 * em,
     flexDirection: 'row',
     justifyContent: 'space-between',
     height: 78 * em,
@@ -91,6 +78,23 @@ const styles = {
     marginTop: 10 * em,
     borderRadius: 20 * em,
     paddingHorizontal: 15 * em,
+  },
+  optionBoxClicked: {
+    marginHorizontal: 10 * em,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    height: 78 * em,
+    alignItems: 'center',
+    marginTop: 10 * em,
+    borderRadius: 20 * em,
+    paddingHorizontal: 15 * em,
+    elevation: 1,
+    shadowColor: '#254D5612',
+    shadowOffset: {
+      width: 0,
+      height: 8 * hm,
+    },
+    shadowRadius: 20 * em,
   },
   optionCaption: {
     fontSize: 18 * em,

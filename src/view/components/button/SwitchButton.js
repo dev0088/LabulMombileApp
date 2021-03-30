@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Animated } from 'react-native';
 import PropTypes from 'prop-types';
-import {em} from 'view/common/const'
+import { em } from 'view/common/const';
 
 export default class SwitchButton extends Component {
   static propTypes = {

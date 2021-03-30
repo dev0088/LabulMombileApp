@@ -33,7 +33,7 @@ const ProfileHomeScreen = (props) => {
           style={styles.avatar}
           fullName={userProfile.fullName}
           icon={props.route.params.purchased ? require('assets/images/tab_profile_off.png') : undefined}
-          borderwidth={3 * em}
+          borderWidth={3 * em}
         />
         <TouchableOpacity onPress={() => Actions.profileOverview({ userProfile: userProfile })}>
           <TitleText style={styles.txtFullName} text={userProfile.fullName} />
@@ -146,17 +146,17 @@ const ProfileHomeScreen = (props) => {
 
 const styles = {
   rowContainer: { flexDirection: 'row' },
-  dropDown: { right: 30 * em, top: 33 * em, position: 'absolute', zIndex: 1 },
+  dropDown: { right: 30 * em, top: 33 * hm, position: 'absolute', zIndex: 1 },
 
   topView: { height: HEIGHT * 0.45, backgroundColor: '#40CDDE', alignItems: 'center' },
-  avatar: { marginTop: 89 * em, height: 70 * em, width: 70 * em },
-  txtFullName: { marginTop: 15 * em, fontSize: 20 * em, color: '#FFFFFF', textAlign: 'center' },
-  txtGoToProfile: { marginTop: 5 * em, fontSize: 14 * em, color: '#FFFFFF', textAlign: 'center' },
+  avatar: { marginTop: 89 * hm, height: 70 * em, width: 70 * em },
+  txtFullName: { marginTop: 0 * em, fontSize: 20 * em, color: '#FFFFFF', textAlign: 'center' },
+  txtGoToProfile: { marginTop: 5 * hm, fontSize: 14 * em, color: '#FFFFFF', textAlign: 'center' },
   scrollView: { width: WIDTH, backgroundColor: '#ffffff' },
   bottomView: {
     backgroundColor: '#FFFFFF',
     shadowColor: '#254D5612',
-    shadowOffset: { width: 0, height: 12 * em },
+    shadowOffset: { width: 0, height: 12 * hm },
     shadowRadius: 25 * em,
   },
   cardContainer: {
@@ -164,19 +164,19 @@ const styles = {
     justifyContent: 'space-between',
     flexDirection: 'row',
     marginTop: -HEIGHT * 0.07,
-    marginBottom: 30 * em,
+    marginBottom: 30 * hm,
   },
   cardStyle: {
     shadowColor: '#254D5612',
     shadowOffset: {
       width: 0,
-      height: 12 * em,
+      height: 12 * hm,
     },
     shadowRadius: 25 * em,
     width: 150 * em,
     elevation: 5,
   },
-  listBox: { marginTop: 15 * em },
+  listBox: { marginTop: 15 * hm },
   caption: {
     width: '100%',
     textAlign: 'left',
@@ -187,52 +187,52 @@ const styles = {
   listItem: { marginLeft: 30 * em, marginRight: 30 * em },
   line1: {
     marginLeft: 83 * em,
-    marginBottom: 25 * em,
-    marginTop: 15 * em,
-    height: 1 * em,
+    marginBottom: 25 * hm,
+    marginTop: 15 * hm,
+    height: 1 * hm,
     backgroundColor: '#B3C6CF33',
   },
-  line2: { marginBottom: 19 * em, marginTop: 16 * em, height: 1 * em, backgroundColor: '#B3C6CF33' },
+  line2: { marginBottom: 19 * hm, marginTop: 16 * hm, height: 1 * hm, backgroundColor: '#B3C6CF33' },
   imgBg: {
     height: HEIGHT * 0.21,
     flex: 1,
     backgroundColor: '#40CDDE0C',
-    marginTop: 35 * em,
-    marginBottom: 20 * em,
+    marginTop: 35 * hm,
+    marginBottom: 20 * hm,
     alignItems: 'flex-start',
     flexDirection: 'column',
   },
-  imageTextMain: { marginTop: 25 * em, fontSize: 20 * em, marginLeft: 18 * em },
+  imageTextMain: { marginTop: 25 * hm, fontSize: 20 * em, marginLeft: 18 * em },
   imageTextSub: {
     fontFamily: 'Lato-Bold',
     fontSize: 15 * em,
     marginLeft: 18 * em,
     marginRight: -58 * em,
-    marginBottom: 10 * em,
+    marginBottom: 10 * hm,
   },
   proBtn: {
     borderRadius: 9 * em,
     width: 126 * em,
-    paddingVertical: 9 * em,
+    paddingVertical: 9 * hm,
     marginLeft: 15 * em,
   },
   line3: {
     marginLeft: 30 * em,
-    marginBottom: 25 * em,
-    marginTop: 25 * em,
-    height: 1 * em,
+    marginBottom: 25 * hm,
+    marginTop: 25 * hm,
+    height: 1 * hm,
     backgroundColor: '#B3C6CF33',
   },
   imgContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 50 * em,
-    marginBottom: 15 * em,
+    marginTop: 50 * hm,
+    marginBottom: 15 * hm,
   },
   imgLogo: { height: 26 * em, width: 20 * em, resizeMode: 'contain', marginRight: 10 * em },
   txtLogo: { height: 23 * em, width: 80 * em, resizeMode: 'contain' },
-  txtVersion: { marginBottom: 110 * em },
+  txtVersion: { marginBottom: 110 * hm },
 };
 
 export default ProfileHomeScreen;

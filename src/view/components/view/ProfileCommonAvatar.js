@@ -13,6 +13,8 @@ var getInitials = function (string) {
   return initials;
 };
 const ProfileCommonAvatar = (props) => {
+  const borderWidth = props.borderWidth;
+
   if (!props.icon) {
     return (
       <View
@@ -20,20 +22,20 @@ const ProfileCommonAvatar = (props) => {
           props.style,
           styles.imgWrapper,
           {
-            width: props.style.width - 10 * em,
-            height: props.style.width - 10 * em,
-            borderRadius: (props.style.width - 10 * em) / 2,
+            width: props.style.width + borderWidth,
+            height: props.style.width + borderWidth,
+            borderRadius: (props.style.width + borderWidth) / 2,
             backgroundColor: '#ffffff33',
           },
         ]}>
         {props.pro
           ? ProAvatarBg({
-              width: props.style.width+16*em,
-              height: props.style.width+16*em,
+              width: props.style.width + 16 * em,
+              height: props.style.width + 16 * em,
             })
           : AvatarBg({
-              width: props.style.width+16*em,
-              height: props.style.width+16*em,
+              width: props.style.width + 16 * em,
+              height: props.style.width + 16 * em,
             })}
         <TitleText
           style={[
@@ -51,9 +53,9 @@ const ProfileCommonAvatar = (props) => {
           props.style,
           styles.imgWrapper,
           {
-            width: props.style.width + 6 * em,
-            height: props.style.width + 6 * em,
-            borderRadius: (props.style.width + 6 * em) / 2,
+            width: props.style.width + borderWidth,
+            height: props.style.width + borderWidth,
+            borderRadius: (props.style.width + borderWidth) / 2,
             // borderWidth: props.borderWidth,
           },
         ]}>
@@ -74,7 +76,13 @@ const styles = {
   avatarImg: {
     resizeMode: 'contain',
   },
-  txtInitial: { opacity:0.8, fontSize: 28 * em, position: 'absolute', textAlign: 'center', textAlignVertical: 'center' },
+  txtInitial: {
+    opacity: 0.8,
+    fontSize: 28 * em,
+    position: 'absolute',
+    textAlign: 'center',
+    textAlignVertical: 'center',
+  },
   imgWrapper: {
     justifyContent: 'center',
     alignItems: 'center',

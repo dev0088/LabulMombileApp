@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
-import { em, mabulColors } from 'view/common/const';
+import { em, mabulColors, hm, hexToRGB } from 'view/common/const';
 import CommentText from 'view/components/text/CommentText';
 import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
 import { Actions } from 'react-native-router-flux';
@@ -12,22 +12,23 @@ const MabulCommonParticipateScreen = (props) => {
   const conceptColor = mabulColors[props.mabulService];
   return (
     <View style={styles.container}>
-      <MabulCommonHeader style={styles.header} percent={24} isNoBackBtn={true} progressBarColor={conceptColor} />
+      <MabulCommonHeader
+        style={styles.header}
+        percent={props.process}
+        isNoBackBtn={true}
+        progressBarColor={conceptColor}
+      />
       <View style={styles.body}>
         <View>
           <TitleText text={'Participants'} style={styles.title} />
           <CommentText text="Combien de personnes peuvent participer dans votre demande ?" style={styles.comment} />
-          <TextInput style={styles.input} placeholder="0" />
+          <TextInput style={styles.input} placeholder="0" selectionColor={conceptColor} />
         </View>
         <MabulNextButton
-          color={conceptColor}
+          color={hexToRGB(conceptColor, 0.5)}
           style={styles.nextBtn}
           onPress={() => {
-            if (props.mabulService === 'sell') {
-              Actions.mabulCommonAddPhoto({ mabulService: props.mabulService });
-            } else {
-              Actions.mabulCommonShare({ mabulService: props.mabulService });
-            }
+            Actions.mabulCommonShare({ mabulService: props.mabulService, process: 93 });
           }}
         />
       </View>
@@ -39,7 +40,7 @@ const styles = {
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
-    marginTop: 16 * em,
+    marginTop: 16 * hm,
   },
   header: {
     height: '10.3%',
@@ -52,10 +53,10 @@ const styles = {
   title: {
     width: 315 * em,
     textAlign: 'left',
-    marginTop: 35 * em,
+    marginTop: 35 * hm,
     lineHeight: 38 * em,
   },
-  comment: { width: 315 * em, textAlign: 'left', lineHeight: 20 * em, textAlignVertical: 'center', marginTop: 10 * em },
+  comment: { width: 315 * em, textAlign: 'left', lineHeight: 20 * em, textAlignVertical: 'center', marginTop: 10 * hm },
   photoZone: {
     width: 315 * em,
     height: 121 * em,
@@ -65,7 +66,7 @@ const styles = {
     borderWidth: 2 * em,
     borderColor: '#BFCDDB',
     borderRadius: 20 * em,
-    marginTop: 35 * em,
+    marginTop: 35 * hm,
   },
   commentPhoto: {
     fontSize: 12 * em,
@@ -79,7 +80,7 @@ const styles = {
   nextBtn: {
     alignSelf: 'flex-end',
     marginRight: 30 * em,
-    marginBottom: 30 * em,
+    marginBottom: 30 * hm,
   },
   input: {
     fontSize: 49 * em,

@@ -25,7 +25,11 @@ const ProfileCommonListItem = (props) => {
       title={props.text}
       titleStyle={styles.textTitle}
       subTitle={props.subText}
-      rightView={<RightArrow width={11 * em} height={18 * em} />}
+      rightView={
+        <View style={{ justifyContent: 'center', flex: 1 }}>
+          <RightArrow width={11 * em} height={18 * em} />
+        </View>
+      }
       onPress={props.onPress}
     />
   );

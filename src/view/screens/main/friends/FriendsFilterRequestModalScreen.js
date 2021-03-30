@@ -20,16 +20,15 @@ const options = [
 ];
 const FriendsFilterRequestModalScreen = (props) => {
   const [selectedOption, getSelectedOptions] = useState([]);
-  console.log(selectedOption)
   const renderFlatList = ({ item }) => (
     <CommonCheckBox
       onChecked={(result) => getSelectedOptions((oldOptions) => [...oldOptions, result])}
       text={item.option}
       style={styles.listItem}
-      shape="rectangle"
+      index={item.key}
     />
   );
-  console.log(selectedOption)
+  // console.log(selectedOption);
   return (
     <Modal
       isVisible={props.visible}
@@ -37,7 +36,7 @@ const FriendsFilterRequestModalScreen = (props) => {
       style={styles.container}
       backdropColor={'#1E2D60'}
       swipeDirection={'up'}>
-        <StatusBar backgroundColor="rgba(30, 45, 96, 0.8)" barStyle="light-content" />
+      <StatusBar backgroundColor="rgba(30, 45, 96, 0.8)" barStyle="light-content" />
       <View style={styles.line} />
       <View style={styles.header}>
         <View style={{ flexDirection: 'row' }}>
@@ -51,7 +50,7 @@ const FriendsFilterRequestModalScreen = (props) => {
         text="Voir demandes"
         onPress={() => {
           props.onPress();
-          Actions.main({ tabNav: 'Friends' });
+          Actions.pop();
         }}
       />
     </Modal>
@@ -64,7 +63,7 @@ const styles = {
     marginLeft: 0,
     marginBottom: 0,
     paddingBottom: 30 * hm,
-    marginTop: 159 * hm,
+    marginTop: 131.5 * hm,
     borderTopRightRadius: 28 * em,
     borderTopLeftRadius: 28 * em,
     justifyContent: 'flex-start',
@@ -93,21 +92,12 @@ const styles = {
     fontSize: 18 * em,
     lineHeight: 23 * hm,
     textAlign: 'left',
-
     textAlignVertical: 'center',
     alignSelf: 'center',
     marginLeft: 15 * em,
   },
-  resetBtn: {
-    marginRight: 15 * em,
-    lineHeight: 16 * hm,
-    textAlign: 'right',
-  },
-  listItem: {
-    marginTop: 35 * hm,
-    width: 295 * em,
-    height: 26 * hm,
-  },
+  resetBtn: { marginRight: 15 * em, lineHeight: 16 * hm, textAlign: 'right' },
+  listItem: { width: 295 * em, marginTop: 35 * hm },
 };
 
 export default FriendsFilterRequestModalScreen;

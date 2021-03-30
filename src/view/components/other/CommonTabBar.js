@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, TouchableOpacity, StyleSheet, Animated, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import CommentText from 'view/components/text/CommentText';
 
 export default class CommonTabBar extends Component {
@@ -52,7 +52,7 @@ export default class CommonTabBar extends Component {
       position: 'absolute',
     };
     return (
-      <View style={{ marginBottom: 15 * em, paddingLeft: 20 * em }}>
+      <View style={{ paddingBottom: 15 * em, paddingLeft: 20 * em }}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} ref={(view) => (this.tabContainer = view)}>
           <View style={{ flexDirection: 'row' }}>
             <Animated.View style={{ transform: [{ translateX: this.state.pos }] }}>
@@ -92,6 +92,12 @@ export default class CommonTabBar extends Component {
                       this.setState({
                         btnWidth: e.nativeEvent.layout.width,
                         btnHeight: e.nativeEvent.layout.height,
+                        pos: new Animated.Value(e.nativeEvent.layout.x),
+                      });
+                      this.tabContainer.scrollTo({
+                        x: e.nativeEvent.layout.x,
+                        y: e.nativeEvent.layout.y,
+                        animated: true,
                       });
                     }
                   }}
@@ -99,7 +105,7 @@ export default class CommonTabBar extends Component {
                     switchStyles.textPos,
                     {
                       paddingHorizontal: 14 * em,
-                      paddingVertical: 7 * em,
+                      paddingVertical: 7 * hm,
                       marginLeft: 10 * em,
                     },
                   ]}

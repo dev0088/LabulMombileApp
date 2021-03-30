@@ -18,7 +18,7 @@ const MabulHomeScreen = (props) => {
           <CircularButton
             onPress={() => {
               props.onClosePress();
-              Actions.mabulOrganize();
+              Actions.mabulOrganize({ process: 20 });
             }}
           />
         </View>
@@ -27,14 +27,14 @@ const MabulHomeScreen = (props) => {
             type="give"
             onPress={() => {
               props.onClosePress();
-              Actions.mabulGive();
+              Actions.mabulGive({ process: 25 });
             }}
           />
           <CircularButton
             type="sell"
             onPress={() => {
               props.onClosePress();
-              Actions.mabulSell({ process: 14 });
+              Actions.mabulSell({ process: 26 });
             }}
           />
           <CircularButton

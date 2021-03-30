@@ -56,7 +56,9 @@ const EditProProfileScreen = (props) => {
           </View>
         </ImageBackground>
         <View style={[styles.listItem, { marginTop: 0, paddingVertical: 0 }]}>
-          <ProfileCommonAvatar pro fullName={userProfile.name} style={styles.avatar} icon={userProfile.avatar} />
+          <ProfileCommonAvatar pro
+           borderWidth={3*em}
+          fullName={userProfile.name} style={styles.avatar} icon={userProfile.avatar} />
           <CommentText text="Ajouter mon logo" style={styles.addPhotoBtn} color="#40CDDE" />
         </View>
         <ProfileInformationListItem

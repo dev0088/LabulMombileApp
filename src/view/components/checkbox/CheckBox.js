@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, TouchableHighlight, ViewPropTypes as RNViewPropTypes, Animated } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  TouchableHighlight,
+  ViewPropTypes as RNViewPropTypes,
+  Animated,
+  TouchableOpacity,
+} from 'react-native';
 import PropTypes from 'prop-types';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import {
   SelectionOn,
   SelectionOff,
@@ -14,7 +21,7 @@ import {
 } from 'assets/svg/icons';
 const ViewPropTypes = RNViewPropTypes || View.propTypes;
 
-const checkShapeSize = { width: 26 * em, height: 26 * em };
+const checkShapeSize = { width: 26 * hm, height: 26 * hm };
 export default class CheckBox extends Component {
   static propTypes = {
     ...ViewPropTypes,
@@ -25,7 +32,7 @@ export default class CheckBox extends Component {
     color: PropTypes.string,
   };
   static defaultProps = {
-    isChecked: false,
+    // isChecked: false,
     shape: 'rectangle',
   };
   constructor(props) {
@@ -34,6 +41,7 @@ export default class CheckBox extends Component {
       fadeAnim: new Animated.Value(1), // Initial value for opacity: 0
       isChecked: false,
     };
+    this.onClick = this.onClick.bind(this);
     this.fadeOut = this.fadeOut.bind(this);
   }
   fadeOut() {
@@ -49,65 +57,58 @@ export default class CheckBox extends Component {
     });
   }
   onClick() {
-    this.props.onClick ? this.props.onClick() : this.setState({ isChecked: !this.state.isChecked });
-    // this.setState({ isChecked: !this.state.isChecked });
+    this.props.onClick();
     this.fadeOut;
   }
 
   genShape() {
     const CheckFalse = this.props.oval ? CheckOff(checkShapeSize) : SelectionOff(checkShapeSize);
-    var CheckTrue = this.props.oval
-      ? this.props.red
-        ? CheckRed(checkShapeSize)
-        : this.props.blue
-        ? CheckDarkBlue(checkShapeSize)
-        : this.props.pink
-        ? CheckPink(checkShapeSize)
-        : CheckBlue(checkShapeSize)
-      : SelectionOn(checkShapeSize);
-    return( this.state.isChecked) ? CheckTrue : CheckFalse;
+    var CheckTrue = this.props.oval ? (
+      this.props.single ? (
+        <View
+          style={{
+            width: 26 * em,
+            height: 26 * em,
+            borderRadius: 13 * em,
+            borderWidth: 1 * em,
+            borderColor: '#41D0E280',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <View style={{ width: 14 * em, height: 14 * em, borderRadius: 7 * em, backgroundColor: '#40CDDE' }} />
+        </View>
+      ) : this.props.red ? (
+        CheckRed(checkShapeSize)
+      ) : this.props.blue ? (
+        CheckDarkBlue(checkShapeSize)
+      ) : this.props.pink ? (
+        CheckPink(checkShapeSize)
+      ) : (
+        CheckBlue(checkShapeSize)
+      )
+    ) : (
+      SelectionOn(checkShapeSize)
+    );
+    return this.props.isChecked ? CheckTrue : CheckFalse;
   }
 
   render() {
     let { fadeAnim } = this.state;
 
     return (
-      <TouchableHighlight
+      <TouchableOpacity
+        // activeOpacity={1}
         style={this.props.style}
-        onPress={() => this.onClick()}
+        onPress={this.onClick}
         underlayColor="transparent"
         disabled={this.props.disabled}>
         <View style={styles.container}>
           <Animated.View style={{ ...this.props.style, opacity: fadeAnim }}>{this.genShape()}</Animated.View>
         </View>
-      </TouchableHighlight>
+      </TouchableOpacity>
     );
   }
 }
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  iconCheck: {
-    width: 20 * em,
-    height: 18 * em,
-    resizeMode: 'contain',
-  },
-  checkedShape: {
-    width: 26 * em,
-    height: 26 * em,
-    backgroundColor: '#40CDDE',
-    borderRadius: 8 * em,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  unCheckShape: {
-    width: 26 * em,
-    height: 26 * em,
-    backgroundColor: 'transparent',
-    borderRadius: 8 * em,
-    borderColor: '#A0A4B7',
-    borderWidth: 1 * em,
-  },
+  container: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', width: 26 * em, height: 26 * em },
 });

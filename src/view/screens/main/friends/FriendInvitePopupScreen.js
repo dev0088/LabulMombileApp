@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, FlatList, StatusBar } from 'react-native';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import CommonText from 'view/components/text/CommonText';
 import TitleText from 'view/components/text/TitleText';
 import SearchBox from 'view/components/other/SearchBox';
@@ -56,7 +56,7 @@ const FriendInvitePopupScreen = (props) => {
   const renderFlatList = ({ item }) => (
     <SearchCommonListItem
       text={item.userName}
-      subText={item.relationship}
+      // subText={item.relationship}
       icon={item.avatar}
       style={styles.listItem}
       inviteBtn
@@ -77,7 +77,7 @@ const FriendInvitePopupScreen = (props) => {
         <CommonText text="Fermer" style={styles.header} onPress={() => props.onPress()} />
         <View style={styles.body}>
           <TitleText text="Inviter" style={styles.title} />
-          <SearchBox style={styles.searchbox} />
+          <SearchBox style={styles.searchbox} onChangeText={() => {}} />
           <FlatList data={searchedUsers} renderItem={renderFlatList} keyExtractor={(i) => i.id} />
         </View>
       </View>
@@ -87,7 +87,7 @@ const FriendInvitePopupScreen = (props) => {
 const styles = {
   container: {
     backgroundColor: 'white',
-    marginTop: 38 * em,
+    marginTop: 38 * hm,
     marginRight: 0,
     marginLeft: 0,
     marginBottom: 0,
@@ -96,10 +96,10 @@ const styles = {
     flex: 1,
     justifyContent: 'flex-start',
   },
-  header: { marginRight: 30 * em, marginBottom: 18 * em, marginTop: 25 * em, alignSelf: 'flex-end' },
+  header: { marginRight: 30 * em, marginBottom: 18 * hm, marginTop: 25 * hm, alignSelf: 'flex-end' },
   body: { marginLeft: 30 * em, marginRight: 30 * em },
-  title: { marginBottom: 17 * em, alignSelf: 'flex-start' },
-  searchbox: { marginBottom: 29 * em, height: 34 * em },
-  listItem: { marginBottom: 35 * em },
+  title: { marginBottom: 17 * hm, alignSelf: 'flex-start' },
+  searchbox: { marginBottom: 29 * hm, height: 34 * hm },
+  listItem: { marginBottom: 35 * hm },
 };
 export default FriendInvitePopupScreen;

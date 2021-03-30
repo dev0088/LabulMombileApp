@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Image } from 'react-native';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import CommonBackButton from 'view/components/button/CommonBackButton';
 
 const PopupHeader = (props) => {
@@ -21,7 +21,7 @@ const PopupHeader = (props) => {
 
 const styles = {
   container: {
-    marginTop: 20 * em,
+    marginTop: 20 * hm,
     paddingHorizontal: 15 * em,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -32,17 +32,8 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
   },
-  backButton: {
-    width: 20 * em,
-    height: 18 * em,
-    resizeMode: 'contain',
-  },
   iconWrapper: { flex: 1, alignItems: 'center', justifyContent: 'flex-end' },
-  icon: {
-    width: 20 * em,
-    height: 25 * em,
-    resizeMode: 'contain',
-  },
+  icon: { width: 20 * em, height: 25 * em, resizeMode: 'contain' },
 };
 
 export default PopupHeader;

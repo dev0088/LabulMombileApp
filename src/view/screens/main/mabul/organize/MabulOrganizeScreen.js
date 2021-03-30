@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
-import { em, HEIGHT, WIDTH } from 'view/common/const';
+import { em, hm, WIDTH } from 'view/common/const';
 import { FlatList } from 'react-native';
 import MabulCommonListItem from 'view/components/adapter/MabulCommonListItem';
 import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
@@ -17,20 +17,20 @@ const themeData = [
   { id: 4, icon: Meal(iconSize), themeName: 'Repas' },
   { id: 5, icon: WorkshpIcon(iconSize), themeName: 'Atelier' },
 ];
-const MabulOrganizeScreen = () => {
+const MabulOrganizeScreen = ({ process }) => {
   const renderFlatList = ({ item }) => (
     <MabulCommonListItem
       text={item.themeName}
       style={styles.listItem}
       icon={item.icon}
       onPress={() => {
-        Actions.mabulCommonRequestDetail({ mabulService: 'organize' });
+        Actions.mabulCommonRequestDetail({ mabulService: 'organize', process: 40 });
       }}
     />
   );
   return (
     <View style={styles.container}>
-      <MabulCommonHeader style={styles.header} percent={24} noBackButton progressBarColor={'#FDC641'} />
+      <MabulCommonHeader style={styles.header} percent={process} noBackButton progressBarColor={'#FDC641'} />
       <View style={styles.body}>
         <TitleText text={'J’organise'} style={styles.title} />
         <FlatList data={themeData} renderItem={renderFlatList} keyExtractor={(i) => i.id} />
@@ -43,10 +43,10 @@ const styles = {
   container: {
     flex: 1,
     backgroundColor: '#ffffff',
+    marginTop: 16 * hm,
   },
   header: {
     height: '10.3%',
-    marginTop: 16 * em,
   },
   body: {
     flex: 1,
@@ -54,14 +54,10 @@ const styles = {
     alignItems: 'flex-start',
   },
   title: {
-    marginTop: 35 * em,
-    marginBottom: 18 * em,
+    marginTop: 35 * hm,
+    marginBottom: 18 * hm,
   },
-  listItem: {
-    height: 80 * em,
-    width: WIDTH * 0.92,
-    marginTop: 4 * em,
-  },
+  listItem: { width: 345 * em, marginTop: 25 * hm },
 };
 
 export default MabulOrganizeScreen;

@@ -1,6 +1,6 @@
-import { TouchableOpacity, Image } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import CommonListItem from 'view/components/adapter/CommonListItem';
 import { RightArrow } from 'assets/svg/icons';
 
@@ -13,9 +13,13 @@ const FriendsFilterListItem = (props) => {
         titleStyle={styles.textTitle}
         subTitleStyle={[styles.defaultSetting, { color: props.defaultSetting !== 'Tous' ? '#40CDDE' : '#A0AEB8' }]}
         subTitle={props.defaultSetting}
-        icon={<Image source={props.icon} style={styles.icon} />}
+        icon={<View style={{ marginRight: 17 * em }}>{props.icon}</View>}
         onPress={props.onPress}
-        rightView={<RightArrow width={11 * em} height={18 * em} />}
+        rightView={
+          <View style={{ justifyContent: 'flex-end', marginBottom: 30 * em }}>
+            <RightArrow width={11 * em} height={18 * hm} />
+          </View>
+        }
       />
     </TouchableOpacity>
   );

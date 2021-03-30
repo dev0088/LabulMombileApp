@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, FlatList, Image, StatusBar } from 'react-native';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import CommonText from 'view/components/text/CommonText';
 import TitleText from 'view/components/text/TitleText';
 import CommonButton from 'view/components/button/CommonButton';
@@ -39,7 +39,7 @@ const FriendParticipatePopupScreen = (props) => {
       <CommonButton
         text="Valider"
         onPress={() => props.onPress()}
-        style={{ marginBottom: 30 * em, alignSelf: 'center' }}
+        style={{ marginBottom: 30 * hm, alignSelf: 'center' }}
       />
     </Modal>
   );
@@ -47,7 +47,7 @@ const FriendParticipatePopupScreen = (props) => {
 const styles = {
   container: {
     backgroundColor: 'white',
-    marginTop: 20.5 * em,
+    marginTop: 20.5 * hm,
     marginRight: 0,
     marginLeft: 0,
     marginBottom: 0,
@@ -56,18 +56,13 @@ const styles = {
     flex: 1,
     justifyContent: 'flex-start',
   },
-  header: { marginRight: 30 * em, marginBottom: 18 * em, marginTop: 25 * em, alignSelf: 'flex-end' },
+  header: { marginRight: 30 * em, marginBottom: 18 * em, marginTop: 25 * hm, alignSelf: 'flex-end' },
   body: { marginLeft: 30 * em, marginRight: 30 * em, alignItems: 'center', flex: 1 },
-  title: { marginTop: 15 * em, fontFamily: 'Lato-Black' },
-  titleImg: {
-    width: 58 * em,
-    height: 58 * em,
-    borderRadius: 29 * em,
-    marginTop: 18 * em,
-  },
-  comment: { textAlign: 'center', lineHeight: 23 * em, width: 285 * em, marginTop: 5 * em },
+  title: { marginTop: 15 * hm, fontFamily: 'Lato-Black' },
+  titleImg: { width: 58 * em, height: 58 * em, borderRadius: 29 * em, marginTop: 18 * em },
+  comment: { textAlign: 'center', lineHeight: 23 * em, width: 285 * em, marginTop: 5 * hm },
   listItem: {
-    marginTop: 46 * em,
+    marginTop: 46 * hm,
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',

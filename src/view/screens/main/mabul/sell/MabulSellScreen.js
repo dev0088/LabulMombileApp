@@ -11,21 +11,21 @@ const sellItems = [
     id: 0,
     itemName: 'Service',
     onPress: () => {
-      Actions.mabulSellService({process:26});
+      Actions.mabulSellService({ process: 46 });
     },
   },
   {
     id: 1,
     itemName: 'Object',
     onPress: () => {
-      Actions.mabulSellObject({process:26});
+      Actions.mabulSellObject({ process: 46 });
     },
   },
   {
     id: 2,
     itemName: 'Évènement',
     onPress: () => {
-      Actions.mabulSellEnvironment({process:26});
+      Actions.mabulSellEnvironment({ process: 46 });
     },
   },
 ];
@@ -70,7 +70,6 @@ const styles = {
     marginBottom: 18 * em,
   },
   listItem: {
-    height: HEIGHT * 0.09,
     width: WIDTH * 0.92,
     marginTop: 25 * em,
   },

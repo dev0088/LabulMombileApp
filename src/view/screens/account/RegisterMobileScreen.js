@@ -1,5 +1,5 @@
 import React from 'react';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import { View } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
 import CommonTextInput from 'view/components/textInput/CommonTextInput';
@@ -34,8 +34,8 @@ const RegisterMobileScreen = () => {
 
 const styles = {
   container: { flex: 1, backgroundColor: '#40CDDE' },
-  header: { height: '12%' },
-  icon: { marginTop: 41 * em, marginBottom: 14 * em },
+  // header: { height: 67.5 * hm },
+  icon: { marginTop: 41 * hm, marginBottom: 14 * hm },
   popupView: {
     flex: 1,
     height: '88%',
@@ -50,9 +50,9 @@ const styles = {
     width: '80%',
   },
   titleText: {
-    marginBottom: 35 * em,
+    marginBottom: 35 * hm,
   },
-  btnNext: { backgroundColor: 'rgba(64, 205, 222, 0.5)', marginBottom: 30 * em },
+  btnNext: { backgroundColor: 'rgba(64, 205, 222, 0.5)', marginBottom: 30 * hm },
   commonInput: {
     width: '100%',
     height: 52 * em,

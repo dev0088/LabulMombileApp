@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Image } from 'react-native';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import CommonButton from 'view/components/button/CommonButton';
 import TitleText from 'view/components/text/TitleText';
 import CommonText from 'view/components/text/CommonText';
@@ -15,7 +15,7 @@ const SignupMenuScreen = () => {
       <View style={styles.popupView}>
         <PopupHeader icon={require('assets/images/ic_edit.png')} />
         <TitleText text="Je m’inscris" style={styles.buttonMargin} />
-        <CommonText text="Rejoigns la communauté Labul" />
+        <CommonText text="Rentre dans Labul" />
         <View style={styles.buttonGroup}>
           <CommonButton
             text="Je m'inscris avec mon email"
@@ -53,9 +53,9 @@ const styles = {
     resizeMode: 'contain',
   },
   buttonMargin: {
-    marginTop: 16 * em,
+    marginTop: 16 * hm,
   },
-  behindImage: { flex: 0.5, resizeMode: 'contain' },
+  behindImage: { width: 616 * hm, height: 387 * hm, marginLeft: 160.5 * hm, marginTop: -37 * hm },
   popupView: {
     flex: 0.75,
     backgroundColor: '#ffffff',
@@ -66,8 +66,8 @@ const styles = {
     position: 'absolute',
     bottom: 0,
   },
-  commonButtonMargin: { marginTop: 12 * em },
-  buttonGroup: { flex: 1, flexDirection: 'column-reverse', marginBottom: 36 * em, marginTop: 36 * em  },
+  commonButtonMargin: { marginTop: 12 * hm },
+  buttonGroup: { flex: 1, flexDirection: 'column-reverse', marginBottom: 36 * hm, marginTop: 36 * hm },
 };
 
 export default SignupMenuScreen;

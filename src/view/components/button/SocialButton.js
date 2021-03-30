@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
-import { em, WIDTH } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import CommentText from 'view/components/text/CommentText';
 import { Facebook, Google } from 'assets/svg/icons';
 const SocialButton = (props) => {
@@ -22,13 +22,13 @@ const styles = {
   buttonStyle: {
     flexDirection: 'row',
     backgroundColor: '#F0F5F7',
-    paddingVertical: 21 * em,
+    paddingVertical: 21 * hm,
     paddingHorizontal: 15 * em,
     width: 315 * em,
     borderRadius: 20 * em,
     alignItems: 'center',
   },
-  textStyle: { color: '#1E2D60', fontSize: 14 * em, fontFamily: 'Lato-Bold' },
+  textStyle: { color: '#1E2D60', fontFamily: 'Lato-Bold' },
   imageStyle: { marginRight: 15 * em },
 };
 

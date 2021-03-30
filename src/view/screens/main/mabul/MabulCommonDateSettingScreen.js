@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Image } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
-import { em, mabulColors } from 'view/common/const';
+import { em, hm, hexToRGB, mabulColors } from 'view/common/const';
 import CommentText from 'view/components/text/CommentText';
 import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
 import { Actions } from 'react-native-router-flux';
@@ -9,8 +9,8 @@ import MabulNextButton from 'view/components/button/MabulNextButton';
 import CommonListItem from 'view/components/adapter/CommonListItem';
 import Switch from 'view/components/other/Switch';
 
-const MabulCommonDateSettingScreen = (props) => {
-  const conceptColor = mabulColors[props.mabulService];
+const MabulCommonDateSettingScreen = ({ mabulService, process }) => {
+  const conceptColor = mabulColors[mabulService];
   var iconDate = (
     <Image style={[styles.iconDate, { tintColor: conceptColor }]} source={require('assets/images/ic_date.png')} />
   );
@@ -28,19 +28,18 @@ const MabulCommonDateSettingScreen = (props) => {
   );
   var switchView = (
     <Switch
+      style={styles.switch}
       switchWidth={50 * em}
       switchHeight={28 * em}
-      switchdirection="rtl"
+      switchdirection="ltr"
       switchBorderColor="#ffffff"
       switchBackgroundColor="#40CDDE"
       btnBackgroundColor="#FFFFFF"
-      initialValue={2}
-      value={1}
     />
   );
   return (
     <View style={styles.container}>
-      <MabulCommonHeader style={styles.header} percent={24} isNoBackBtn={true} progressBarColor={conceptColor} />
+      <MabulCommonHeader style={styles.header} percent={process} isNoBackBtn={true} progressBarColor={conceptColor} />
       <View style={styles.body}>
         <View>
           <TitleText text={'Quand ?'} style={styles.title} />
@@ -73,18 +72,16 @@ const MabulCommonDateSettingScreen = (props) => {
           />
         </View>
         <MabulNextButton
-          color={conceptColor}
+          color={hexToRGB(conceptColor, 0.5)}
           style={styles.nextBtn}
           onPress={() => {
-            if (props.mabulService === 'give') {
-              Actions.mabulCommonShare({ mabulService: props.mabulService });
-            } else {
-              if (props.mabulService === 'sell') {
-                Actions.mabulCommonShare({ mabulService: props.mabulService });
-              } else {
-                Actions.mabulCommonParticipate({ mabulService: props.mabulService });
-              }
-            }
+            mabulService === 'give'
+              ? Actions.mabulCommonShare({ mabulService: mabulService, process: 97 })
+              : mabulService === 'sell'
+              ? Actions.mabulCommonShare({ mabulService: mabulService, process: 93 })
+              : mabulService === 'organize'
+              ? Actions.mabulOrganizeParticipation({ mabulService: mabulService, process: 80 })
+              : Actions.mabulCommonParticipate({ mabulService: mabulService, process: 80 });
           }}
         />
       </View>
@@ -107,7 +104,7 @@ const styles = {
   },
   title: {
     textAlign: 'left',
-    marginTop: 35 * em,
+    marginTop: 35 * hm,
     lineHeight: 38 * em,
   },
   comment: { textAlign: 'left', lineHeight: 20 * em, height: 16 * em, textAlignVertical: 'center', marginTop: 10 * em },

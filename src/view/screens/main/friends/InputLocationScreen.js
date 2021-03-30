@@ -28,17 +28,22 @@ const InputLocationScreen = () => {
       <SearchBox
         style={styles.searchBox}
         comment="Rechercher par ville"
-        onChangeText={() => {
-          getSearchResult([
-            { id: 0, userName: 'Le Gosier' },
-            { id: 1, userName: 'Gosier Guadeloupe' },
-            { id: 2, userName: 'Beaumanoir, Le Gosier', address: 'Route de Beaumanoir, Le Gosier' },
-          ]);
-          setlocationViewVisible('none');
+        onChangeText={(text) => {
+          if (text) {
+            getSearchResult([
+              { id: 0, userName: 'Le Gosier' },
+              { id: 1, userName: 'Gosier Guadeloupe' },
+              { id: 2, userName: 'Beaumanoir, Le Gosier', address: 'Route de Beaumanoir, Le Gosier' },
+            ]);
+            setlocationViewVisible('none');
+          } else {
+            getSearchResult([]);
+            setlocationViewVisible('flex');
+          }
         }}
       />
       <View style={[styles.location, { display: locationViewVisible }]}>
-        <LocationBlue width={16 * em} height={19 * em} />
+        {/* <LocationBlue width={16 * hm} height={19 * hm} /> */}
         <CommentText text={'Utiliser ma position'} color="#40CDDE" style={{ marginTop: 5 * em }} />
       </View>
 
@@ -46,7 +51,7 @@ const InputLocationScreen = () => {
         data={searchedUsers}
         renderItem={renderFlatList}
         keyExtractor={(i) => i.id}
-        style={{ marginTop: 25 * em }}
+        style={{ marginTop: 25 * hm }}
       />
     </View>
   );
@@ -58,21 +63,21 @@ const styles = {
     alignItems: 'flex-start',
     backgroundColor: '#ffffff',
   },
-  header: { height: 131 * em },
-  commonHeader: { marginTop: 27 * em },
+  header: { height: 131 * hm },
+  commonHeader: { marginTop: 27 * hm },
   title: {
-    fontSize: 34 * em,
-    lineHeight: 38 * em,
+    fontSize: 34 * hm,
+    lineHeight: 38 * hm,
     textAlign: 'left',
     fontWeight: 'bold',
     marginLeft: 30 * em,
-    height: 40 * em,
-    marginTop: 10 * em,
+    height: 40 * hm,
+    marginTop: 10 * hm,
   },
-  searchBox: { marginTop: 25 * em, width: 315 * em, marginLeft: 30 * em, height: 44 * em },
+  searchBox: { marginTop: 25 * hm, width: 315 * em, marginLeft: 30 * em, height: 44 * hm },
   location: {
     alignSelf: 'center',
-    marginTop: 15 * em,
+    marginTop: 15 * hm,
     alignItems: 'center',
   },
   listItem: {

@@ -31,16 +31,6 @@
 		E13D76A3E1084EA64BAAC62E /* libPods-Labul-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CD2482AC73DFADFED38DB1 /* libPods-Labul-tvOSTests.a */; };
 		F8FB55FD83EAEE59E0E450FB /* libPods-Labul-LabulTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96D42658D87B15B6593614E9 /* libPods-Labul-LabulTests.a */; };
 		FA2E45C825FD562500521B53 /* launch_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2E45C725FD562500521B53 /* launch_screen.png */; };
-		FAA8ECC826087D58006AFB5A /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAA8ECBE26087D56006AFB5A /* Lato-Bold.ttf */; };
-		FAA8ECC926087D58006AFB5A /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAA8ECBF26087D56006AFB5A /* Lato-Thin.ttf */; };
-		FAA8ECCA26087D58006AFB5A /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAA8ECC026087D56006AFB5A /* Lato-Italic.ttf */; };
-		FAA8ECCB26087D58006AFB5A /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAA8ECC126087D56006AFB5A /* Lato-Light.ttf */; };
-		FAA8ECCC26087D58006AFB5A /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAA8ECC226087D57006AFB5A /* Lato-Black.ttf */; };
-		FAA8ECCD26087D58006AFB5A /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAA8ECC326087D57006AFB5A /* Lato-BoldItalic.ttf */; };
-		FAA8ECCE26087D58006AFB5A /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAA8ECC426087D57006AFB5A /* Lato-Regular.ttf */; };
-		FAA8ECCF26087D58006AFB5A /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAA8ECC526087D57006AFB5A /* Lato-ThinItalic.ttf */; };
-		FAA8ECD026087D58006AFB5A /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAA8ECC626087D57006AFB5A /* Lato-LightItalic.ttf */; };
-		FAA8ECD126087D58006AFB5A /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAA8ECC726087D58006AFB5A /* Lato-BlackItalic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -373,7 +363,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1220;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -421,17 +411,7 @@
 			files = (
 				FA2E45C825FD562500521B53 /* launch_screen.png in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				FAA8ECC926087D58006AFB5A /* Lato-Thin.ttf in Resources */,
-				FAA8ECCD26087D58006AFB5A /* Lato-BoldItalic.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				FAA8ECD126087D58006AFB5A /* Lato-BlackItalic.ttf in Resources */,
-				FAA8ECCC26087D58006AFB5A /* Lato-Black.ttf in Resources */,
-				FAA8ECCA26087D58006AFB5A /* Lato-Italic.ttf in Resources */,
-				FAA8ECD026087D58006AFB5A /* Lato-LightItalic.ttf in Resources */,
-				FAA8ECCF26087D58006AFB5A /* Lato-ThinItalic.ttf in Resources */,
-				FAA8ECCE26087D58006AFB5A /* Lato-Regular.ttf in Resources */,
-				FAA8ECC826087D58006AFB5A /* Lato-Bold.ttf in Resources */,
-				FAA8ECCB26087D58006AFB5A /* Lato-Light.ttf in Resources */,
 				8B9A548C614749BDA48FDDC6 /* Lato-Black.ttf in Resources */,
 				5C321643FFF646348C8464BB /* Lato-BlackItalic.ttf in Resources */,
 				6980440A133C4B3C81E50094 /* Lato-Bold.ttf in Resources */,
@@ -755,11 +735,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				ENABLE_BITCODE = NO;
-				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				INFOPLIST_FILE = labul/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -767,6 +747,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = labul;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -779,11 +760,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				ENABLE_BITCODE = YES;
-				"EXCLUDED_ARCHS[sdk=*]" = arm64;
 				INFOPLIST_FILE = labul/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.1;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -792,6 +773,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = labul;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

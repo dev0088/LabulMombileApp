@@ -9,7 +9,7 @@ export default class SellService extends Service {
     this.comment = comment;
     this.subType = subType;
     this.price = price;
-    this.discountPrice=discountPrice;
+    this.discountPrice = discountPrice;
     this.discountInfo = discountInfo;
   }
 }

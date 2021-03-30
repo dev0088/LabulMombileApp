@@ -18,7 +18,6 @@ const options = [
 ];
 const FriendsFilterDateModalScreen = (props) => {
   const renderFlatList = ({ item }) => <CommonCheckBox text={item.option} style={styles.listItem} oval />;
-  console.log(props);
   return (
     <Modal
       isVisible={props.visible}
@@ -26,12 +25,11 @@ const FriendsFilterDateModalScreen = (props) => {
       style={styles.container}
       backdropColor={'#1E2D60'}
       swipeDirection={'up'}>
-        <StatusBar backgroundColor="rgba(30, 45, 96, 0.8)" barStyle="light-content" />
+      <StatusBar backgroundColor="rgba(30, 45, 96, 0.8)" barStyle="light-content" />
       <View style={styles.line} />
-
       <View style={styles.header}>
         <View style={{ flexDirection: 'row' }}>
-          <CommonBackButton dark={true} onPress={props.onPress} />
+          <CommonBackButton dark onPress={props.onPress} />
           <TitleText text="Date" style={styles.title} />
         </View>
       </View>
@@ -49,11 +47,11 @@ const FriendsFilterDateModalScreen = (props) => {
 
 const styles = {
   container: {
+    marginTop: 192 * hm,
     marginRight: 0,
     marginLeft: 0,
     marginBottom: 0,
     paddingBottom: 30 * hm,
-    marginTop: 210 * hm,
     borderTopRightRadius: 28 * em,
     borderTopLeftRadius: 28 * em,
     justifyContent: 'flex-start',
@@ -62,7 +60,7 @@ const styles = {
   },
   line: {
     width: 55 * em,
-    height: 5 * hm,
+    height: 5 * em,
     marginTop: 15 * hm,
     borderRadius: 3 * em,
     backgroundColor: '#BFCDDB',
@@ -71,14 +69,13 @@ const styles = {
   header: {
     width: WIDTH,
     marginTop: 15 * hm,
-    paddingLeft: 15 * em,
-    paddingRight: 15 * em,
+    paddingHorizontal: 15 * em,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
   title: {
-    fontSize: 18 * em,
+    fontSize: 18 * hm,
     lineHeight: 23 * hm,
     textAlign: 'left',
     fontWeight: 'bold',
@@ -91,11 +88,7 @@ const styles = {
     lineHeight: 16 * hm,
     textAlign: 'right',
   },
-  listItem: {
-    marginTop: 35 * hm,
-    width: 295 * em,
-    height: 26 * hm,
-  },
+  listItem: { width: 295 * em, marginTop: 25 * hm },
 };
 
 export default FriendsFilterDateModalScreen;

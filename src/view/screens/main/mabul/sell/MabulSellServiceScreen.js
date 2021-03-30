@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
-import { em, HEIGHT, WIDTH } from 'view/common/const';
+import { em, HEIGHT, WIDTH, hm } from 'view/common/const';
 import { FlatList } from 'react-native';
 import MabulCommonListItem from 'view/components/adapter/MabulCommonListItem';
 import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
@@ -18,13 +18,24 @@ import {
   TransportSell,
   ComputerSell,
   AdministrativeSell,
+  HelpOlderSell,
 } from 'assets/svg/icons';
 const iconSize = { width: 38 * em, height: 38 * em };
 const giveItems = [
   { id: 0, itemName: 'Garde d’enfants/ Baby Sitting', icon: ChildCareSell(iconSize) },
   { id: 1, itemName: 'Soutien scolaire/ cours', icon: SchoolSupportSell(iconSize) },
-  { id: 2, itemName: 'Accompagnement des enfants', icon: SupportChildrenSell(iconSize) },
-  { id: 3, itemName: 'Animaux de compagnie', icon: AnimalSell(iconSize) },
+  {
+    id: 2,
+    itemName: 'Accompagnement des enfants',
+    icon: SupportChildrenSell(iconSize),
+  },
+  {
+    id: 21,
+    itemName: 'Aide aux personnes âgées',
+    comment: '(promenades, transports, actes de la vie courante)',
+    icon: HelpOlderSell(iconSize),
+  },
+  { id: 3, itemName: 'Animaux de compagnie', comment: 'Soins et promenades', icon: AnimalSell(iconSize) },
   { id: 4, itemName: 'Informatique/ Internet', icon: ComputerSell(iconSize) },
   { id: 5, itemName: 'Administrative', icon: AdministrativeSell(iconSize) },
   { id: 6, itemName: 'Entretien de la maison/ travaux ménagers', icon: HouseWorkSell(iconSize) },
@@ -38,15 +49,21 @@ const MabulSellServiceScreen = (props) => {
     <MabulCommonListItem
       text={item.itemName}
       style={styles.listItem}
+      subText={item.comment}
       icon={item.icon}
-      onPress={() => Actions.mabulCommonRequestDetail({ mabulService: 'sell' })}
+      onPress={() => Actions.mabulCommonRequestDetail({ mabulService: 'sell', process: 67 })}
     />
   );
   return (
     <View style={styles.container}>
-      <MabulCommonHeader style={styles.header} percent={props.process} isNoBackBtn={true} progressBarColor={'#AA87E5'} />
+      <MabulCommonHeader
+        style={styles.header}
+        percent={props.process}
+        isNoBackBtn={true}
+        progressBarColor={'#AA87E5'}
+      />
       <View style={styles.body}>
-        <TitleText text={'Je vends Service'} style={styles.title1} />
+        <TitleText text={'Je vends\nService'} style={styles.title} />
         <View style={styles.popView}>
           <FlatList data={giveItems} renderItem={renderFlatList} keyExtractor={(i) => i.id} />
         </View>
@@ -61,37 +78,17 @@ const styles = {
     backgroundColor: '#ffffff',
     marginTop: 16 * em,
   },
-  header: {
-    height: '10.3%',
-  },
+  header: { height: 81 * hm },
   popView: {
-    paddingLeft: WIDTH * 0.08,
+    paddingLeft: 30 * em,
     borderTopLeftRadius: 28 * em,
     borderTopRightRadius: 28 * em,
     backgroundColor: '#ffffff',
     flex: 1,
   },
-  body: {
-    flex: 1,
-
-    alignItems: 'flex-start',
-    backgroundColor: '#F0F5F7',
-  },
-  title1: {
-    paddingLeft: WIDTH * 0.08,
-    marginTop: 35 * em,
-    fontWeight: 'bold',
-  },
-  title2: {
-    paddingLeft: WIDTH * 0.08,
-    marginBottom: 35 * em,
-    fontWeight: 'bold',
-  },
-  listItem: {
-    height: HEIGHT * 0.09,
-    width: WIDTH * 0.92,
-    marginTop: 25 * em,
-  },
+  body: { flex: 1, alignItems: 'flex-start', backgroundColor: '#F0F5F7' },
+  title: { lineHeight: 38 * em, paddingLeft: 30 * em, marginVertical: 35 * em, textAlign: 'left' },
+  listItem: { width: 345 * em, marginTop: 25 * hm },
 };
 
 export default MabulSellServiceScreen;

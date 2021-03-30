@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
-import { em, HEIGHT, WIDTH } from 'view/common/const';
+import { em, hm, WIDTH } from 'view/common/const';
 import { FlatList } from 'react-native';
 import MabulCommonListItem from 'view/components/adapter/MabulCommonListItem';
 import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
@@ -18,18 +18,20 @@ const giveItems = [
   { id: 5, itemName: 'Repas', icon: Repas(iconSize) },
   { id: 6, itemName: 'Aliments', icon: Aliments(iconSize) },
 ];
-const MabulGiveScreen = () => {
+const MabulGiveScreen = (props) => {
   const renderFlatList = ({ item }) => (
     <MabulCommonListItem
       text={item.itemName}
       style={styles.listItem}
       icon={item.icon}
-      onPress={() => Actions.mabulCommonRequestDetail({ mabulService: 'give' })}
+      onPress={() =>
+        Actions.mabulCommonRequestDetail({ mabulService: 'give', process: props.mabulService === 'give' ? 84 : 50 })
+      }
     />
   );
   return (
     <View style={styles.container}>
-      <MabulCommonHeader style={styles.header} percent={24} noBackButton progressBarColor={'#34D9B8'} />
+      <MabulCommonHeader style={styles.header} percent={props.process} noBackButton progressBarColor={'#34D9B8'} />
       <View style={styles.body}>
         <TitleText text={'Je donne'} style={styles.title} />
         <View style={styles.popView}>
@@ -64,13 +66,9 @@ const styles = {
   title: {
     paddingLeft: WIDTH * 0.08,
     marginTop: 35 * em,
-    marginBottom: HEIGHT * 0.1,
+    marginBottom: 73 * hm,
   },
-  listItem: {
-    height: 80 * em,
-    width: WIDTH * 0.92,
-    marginTop: 4 * em,
-  },
+  listItem: { width: 345 * em, marginTop: 25 * hm },
 };
 
 export default MabulGiveScreen;

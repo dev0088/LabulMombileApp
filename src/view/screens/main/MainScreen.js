@@ -7,11 +7,9 @@ import CalendarHomeScreen from './calendar/CalendarHomeScreen';
 import MyActivityHomeScreen from './activity/MyActivityHomeScreen';
 import ProfileHomeScreen from './profile/ProfileHomeScreen';
 import ProProfileHomeScreen from './profile/proProfile/ProProfileHomeScreen';
-
 import MabulHomeScreeen from './mabul/MabulHomeScreen';
-import { em, WIDTH, HEIGHT } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import { navigationRef } from './RootNavigation';
-import { Actions } from 'react-native-router-flux';
 import Modal from 'react-native-modal';
 import MyNotificationsScreen from './activity/MyNotificationsScreen';
 import {
@@ -42,13 +40,13 @@ export default function MainScreen(props) {
       style={{
         width: 46 * em,
         height: 46 * em,
-        backgroundColor: '#fffff',
+        backgroundColor: 'transparent',
         borderRadius: 23 * em,
         elevation: 5,
         shadowColor: '#254D5612',
         shadowOffset: {
           width: 0,
-          height: 16 * em,
+          height: 16 * hm,
         },
         shadowRadius: 24 * em,
       }}>
@@ -72,7 +70,12 @@ export default function MainScreen(props) {
     <View style={styles.TabBarMainContainer}>
       <NavigationContainer ref={navigationRef}>
         <Tab.Navigator initialRouteName={props.tabNav ? props.tabNav : 'Friends'}>
-          <Tab.Screen name="Friends" component={FriendsNavigator} options={{ tabBarVisible: false }} />
+          <Tab.Screen
+            name="Friends"
+            component={FriendsNavigator}
+            options={{ tabBarVisible: false }}
+            initialParams={{ frinedNav: props.friendNav || 'Carte' }}
+          />
           <Tab.Screen name="Calendar" component={CalendarHomeScreen} options={{ tabBarVisible: false }} />
           <Tab.Screen name="Activity" component={MyActivityHomeScreen} options={{ tabBarVisible: false }} />
           <Tab.Screen name="MyNotifictions" component={MyNotificationsScreen} options={{ tabBarVisible: false }} />
@@ -156,7 +159,7 @@ const styles = StyleSheet.create({
   VirtualTabButtons: {
     flex: 1,
     width: '100%',
-    height: 70 * em,
+    height: 70 * hm,
     position: 'absolute',
     left: 0,
     bottom: 0,
@@ -170,7 +173,7 @@ const styles = StyleSheet.create({
   },
   AddImageWrapper: {
     flex: 1,
-    marginTop: 2 * em,
+    marginTop: 2 * hm,
     alignItems: 'center',
   },
   AddImage: {

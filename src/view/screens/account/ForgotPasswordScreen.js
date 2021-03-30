@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import TitleText from 'view/components/text/TitleText';
 import CommonTextInput from 'view/components/textInput/CommonTextInput';
 import CommonButton from 'view/components/button/CommonButton';
@@ -14,7 +14,7 @@ const ForgotPasswordScreen = () => {
       <View style={styles.popupView}>
         <View style={styles.popupTopView}>
           <View style={styles.icon}>
-            <Key width={30 * em} heigh={30 * em} />
+            <Key width={30 * em} height={30 * em} />
           </View>
           <TitleText text={'Demander un nouveau mot de passe'} style={styles.titleText} />
           <CommentText text="Entrez votre adresse e-mail pour réinitialiser votre mot de passe" />
@@ -28,15 +28,8 @@ const ForgotPasswordScreen = () => {
 
 const styles = {
   container: { flex: 1, backgroundColor: '#40CDDE', alignItems: 'center' },
-  header: {
-    height: '12%',
-  },
-  icon: {
-    width: 30 * em,
-    height: 30 * em,
-    marginTop: 40 * em,
-    marginBottom: 10 * em,
-  },
+  // header: { height: 67.5 * hm },
+  icon: { marginTop: 40 * hm, marginBottom: 10 * hm },
   popupView: {
     height: '74%',
     width: '100%',
@@ -46,9 +39,9 @@ const styles = {
     justifyContent: 'space-between',
   },
   popupTopView: { alignItems: 'center', width: '80%' },
-  titleText: { marginBottom: 10 * em },
-  btnNext: { marginTop: 15 * em },
-  commonInput: { width: '100%', marginTop: 26 * em, height: 52 * em },
+  titleText: { marginBottom: 10 * hm },
+  btnNext: { marginTop: 15 * hm },
+  commonInput: { width: '100%', marginTop: 26 * hm, height: 52 * em },
 };
 
 export default ForgotPasswordScreen;

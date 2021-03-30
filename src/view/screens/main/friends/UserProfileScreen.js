@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, ScrollView } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
-import { em, WIDTH } from 'view/common/const';
+import { em, hm, WIDTH } from 'view/common/const';
 import ProfileCommonLabel from 'view/components/other/ProfileCommonLabel';
 import CommonBackButton from 'view/components/button/CommonBackButton';
 import ProfileCommonSpecView from 'view/components/view/ProfileCommonSpecView';
@@ -9,57 +9,27 @@ import ProfileCommonSpecView from 'view/components/view/ProfileCommonSpecView';
 import ProfileCommonAvatar from 'view/components/view/ProfileCommonAvatar';
 import CommentText from 'view/components/text/CommentText';
 import CommonButton from 'view/components/button/CommonButton';
-import {
-  Family,
-  Friend,
-  Neighbor,
-  Ambianceur,
-  Aperitif,
-  Benevolent,
-  Bricologe,
-  Confidence,
-  Discret,
-  Dishes,
-  Helpful,
-  GoodNeighbor,
-  GoodHost,
-  HandHeart,
-  Hypersociable,
-  Resourceful,
-  WellLiving,
-  SwissKnife,
-} from 'assets/svg/icons';
+import { Family, Friend, Neighbor } from 'assets/svg/icons';
+import { feedbackIcons } from 'view/common/icons';
 
-const iconSize = { width: 33 * em, height: 33 * em };
-const feedbackIcons = [
-  { id: 0, name: 'Le discret/ pas intrusif', icon: Discret(iconSize) },
-  { id: 1, name: 'Le pro du bricolage', icon: Bricologe(iconSize) },
-  { id: 2, name: 'Le pro des p’tits plats', icon: Dishes(iconSize) },
-  { id: 3, name: 'Dingue de confiance', icon: Confidence(iconSize) },
-  { id: 4, name: 'Hypersociable', icon: Hypersociable(iconSize) },
-  { id: 5, name: 'Bon hôte', icon: GoodHost(iconSize) },
-  { id: 6, name: 'Pro des Apèros', icon: Aperitif(iconSize) },
-  { id: 7, name: 'La main sur le coeur', icon: HandHeart(iconSize) },
-  { id: 8, name: 'Le débrouillard', icon: Resourceful(iconSize) },
-  { id: 9, name: 'Le bon vivant', icon: WellLiving(iconSize) },
-  { id: 10, name: 'Le bon voisin', icon: GoodNeighbor(iconSize) },
-  { id: 11, name: 'Le serviable', icon: Helpful(iconSize) },
-  { id: 12, name: 'L’ambianceur', icon: Ambianceur(iconSize) },
-  { id: 13, name: 'Le couteau suisse', icon: SwissKnife(iconSize) },
-  { id: 14, name: 'Le bienveillant­­­', icon: Benevolent(iconSize) },
-];
-const UserProfileScreen = () => {
-  const badgeView = (
-    <ScrollView horizontal={true} style={{ marginTop: 20 * em, marginLeft: 30 * em }}>
-      <View style={styles.badgeIcon}>{feedbackIcons[0].icon}</View>
-      <View style={styles.badgeIcon}>{feedbackIcons[1].icon}</View>
-      <View style={styles.badgeIcon}>{feedbackIcons[2].icon}</View>
-      <View style={styles.badgeIcon}>{feedbackIcons[3].icon}</View>
-      <View style={styles.badgeIcon}>{feedbackIcons[4].icon}</View>
-      <View style={styles.badgeIcon}>{feedbackIcons[5].icon}</View>
-      <View style={styles.badgeIcon}>{feedbackIcons[6].icon}</View>
-      <View style={styles.badgeIcon}>{feedbackIcons[7].icon}</View>
-      <View style={styles.badgeIcon}>{feedbackIcons[8].icon}</View>
+const sampleProfile = {
+  avatar: require('assets/images/tab_profile_off.png'),
+  fullName: 'Amandine Bernard',
+  availability: 'Je suis disponible le soir et le week-end',
+  presentation:
+    'En plus d’être quelqu’un de sympa je suis un grand bricoleur, je suis passionné par le bricolage et dans tout le type de petits travaux.',
+  specs: ['Bricoleur', 'Jardinier'],
+  circles: { neighbours: 17, friends: 23, families: 56 },
+  needs: { helps: 24, donations: 6, events: 2 },
+  badges: feedbackIcons,
+};
+const UserProfileScreen = (props) => {
+  const [userProfile] = useState(props.userProfile || sampleProfile);
+  const badgeView = userProfile.badges && (
+    <ScrollView horizontal={true} style={{ marginLeft: 30 * em, height: 80 * hm }}>
+      {userProfile.badges.map((badge, index) => (
+        <View style={styles.badgeIcon}>{badge.icon}</View>
+      ))}
     </ScrollView>
   );
   return (
@@ -73,14 +43,10 @@ const UserProfileScreen = () => {
             style={styles.avatar}
             logoVisible={false}
           />
-          <TitleText text={'Amandine Bernard'} style={styles.fullNameText} />
+          <TitleText text={userProfile.fullName} style={styles.fullNameText} />
+          <CommentText text={userProfile.availability} color="#1E2D60" style={{ marginBottom: 20 * hm }} />
           <CommentText
-            text="Je suis disponible le soir et le week-end"
-            color="#1E2D60"
-            style={{ marginBottom: 20 * em }}
-          />
-          <CommentText
-            text={'En plus d’être quelqu’un de sympa je suis un\ngrand bricoleur, je suis passionné par le bricolage'}
+            text={'En plus d’être quelqu’un de sympa je suis un grand bricoleur, je suis passionné par le bricolage'}
             color="#6A8596"
             style={{ lineHeight: 24 * em }}
           />
@@ -92,10 +58,13 @@ const UserProfileScreen = () => {
               style={{ lineHeight: 24 * em, fontFamily: 'Lato-Bold' }}
             />
           </View>
-          <View style={{ flexDirection: 'row', marginTop: 10 * em, marginBottom: 20 * em }}>
-            <ProfileCommonSpecView text={'Bricolage'} />
-            <ProfileCommonSpecView text={'Jardinage'} />
-          </View>
+          {userProfile.specs && (
+            <View style={{ flexDirection: 'row', marginTop: 15 * hm }}>
+              {userProfile.specs.map((spec) => (
+                <ProfileCommonSpecView text={spec} />
+              ))}
+            </View>
+          )}
           <CommonButton
             text="Ajouter à mon cercle"
             style={styles.addBtn}
@@ -104,15 +73,23 @@ const UserProfileScreen = () => {
           <TitleText text={'Mes cercles'} style={styles.title} />
           <View style={styles.circlesView}>
             <View style={styles.labelView}>
-              <ProfileCommonLabel icon={Family({ width: 48 * em, height: 48 * em })} number={17} name={'Mes voisins'} />
-            </View>
-            <View style={styles.labelView}>
-              <ProfileCommonLabel icon={Friend({ width: 48 * em, height: 48 * em })} number={23} name={'Mes amis'} />
+              <ProfileCommonLabel
+                icon={Neighbor({ width: 48 * em, height: 48 * em })}
+                number={userProfile.circles.families}
+                name={'Mes voisins'}
+              />
             </View>
             <View style={styles.labelView}>
               <ProfileCommonLabel
-                icon={Neighbor({ width: 48 * em, height: 48 * em })}
-                number={56}
+                icon={Friend({ width: 48 * em, height: 48 * em })}
+                number={userProfile.circles.friends}
+                name={'Mes amis'}
+              />
+            </View>
+            <View style={styles.labelView}>
+              <ProfileCommonLabel
+                icon={Family({ width: 48 * em, height: 48 * em })}
+                number={userProfile.circles.neighbours}
                 name={'Ma famille'}
               />
             </View>
@@ -122,13 +99,13 @@ const UserProfileScreen = () => {
           <TitleText text={'Mes demandes'} style={styles.title} />
           <View style={styles.circlesView}>
             <View style={styles.labelView}>
-              <ProfileCommonLabel number={24} name={'Coup de main'} />
+              <ProfileCommonLabel number={userProfile.needs.helps} name={'Coup de main'} />
             </View>
             <View style={styles.labelView}>
-              <ProfileCommonLabel number={6} name={'Dons'} />
+              <ProfileCommonLabel number={userProfile.needs.donations} name={'Dons'} />
             </View>
             <View style={styles.labelView}>
-              <ProfileCommonLabel number={2} name={'Évènements'} />
+              <ProfileCommonLabel number={userProfile.needs.events} name={'Évènements'} />
             </View>
           </View>
           <TitleText text={'Mes badges'} style={styles.title} />
@@ -145,29 +122,29 @@ const styles = {
     shadowColor: '#B3C6CF33',
     shadowOffset: {
       width: 0,
-      height: 20 * em,
+      height: 20 * hm,
     },
     shadowRadius: 40 * em,
     elevation: 10,
     position: 'absolute',
     zIndex: 1,
     backgroundColor: '#ffffff',
-    top: 27 * em,
+    top: 27 * hm,
     left: 15 * em,
   },
-  scrollView: { backgroundColor: '#40CDDE', paddingBottom: 16 * em },
-  header: { marginTop: 27 * em },
+  scrollView: { backgroundColor: '#40CDDE', paddingBottom: 16 * hm },
+  header: { marginTop: 27 * hm },
   firstPopView: {
     alignItems: 'center',
     backgroundColor: '#ffffff',
     borderRadius: 20 * em,
-    marginTop: 98 * em,
+    marginTop: 98 * hm,
     paddingHorizontal: 30 * em,
-    paddingBottom: 35 * em,
+    paddingBottom: 35 * hm,
   },
-  avatar: { marginTop: -17 * em, width: 108 * em, height: 108 * em },
-  fullNameText: { marginTop: 15 * em, marginBottom: 10 * em },
-  title: { marginTop: 35 * em, marginBottom: 11 * em, fontSize: 21 * em },
+  avatar: { marginTop: -17 * hm, width: 108 * hm, height: 108 * hm },
+  fullNameText: { marginTop: 15 * hm, marginBottom: 10 * hm },
+  title: { marginTop: 35 * hm, marginBottom: 11 * hm, fontSize: 21 * em },
   circlesView: { flexDirection: 'row', marginLeft: 0.072 * WIDTH, marginRight: 0.072 * WIDTH },
   labelView: { width: WIDTH * 0.285 },
   secondPopView: {
@@ -175,12 +152,13 @@ const styles = {
     backgroundColor: '#ffffff',
     borderTopLeftRadius: 20 * em,
     borderTopRightRadius: 20 * em,
-    marginTop: 15 * em,
-    height: 321 * em,
+    marginTop: 15 * hm,
+    height: 321 * hm,
+    // paddingBottom: 40 * hm,
   },
-  noticeText: { marginBottom: 60 * em },
+  noticeText: { marginBottom: 60 * hm },
   keywordTab: {
-    paddingVertical: 5 * em,
+    paddingVertical: 5 * hm,
     paddingHorizontal: 10 * em,
     fontSize: 12 * em,
     lineHeight: 14 * em,
@@ -190,7 +168,8 @@ const styles = {
   },
   keywordTabView: { paddingVertical: 5 * em, paddingHorizontal: 10 * em },
   addBtn: {
-    paddingVertical: 10 * em,
+    marginTop: 20 * hm,
+    paddingVertical: 10 * hm,
     paddingHorizontal: 20 * em,
     width: 'auto',
     fontSize: 12 * em,

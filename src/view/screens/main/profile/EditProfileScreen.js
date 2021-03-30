@@ -28,6 +28,7 @@ const EditProfileScreen = (props) => {
             fullName="Mathieu Torin"
             style={styles.avatar}
             icon={userProfile.avatar}
+            borderWidth={3*em}
           />
           <CommentText text="Changer ma photo de profil" style={styles.addPhotoBtn} color="#40CDDE" />
         </View>

@@ -1,16 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { View, Text, TouchableOpacity, TextInput } from 'react-native';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import { Invisible, CrossCircle } from 'assets/svg/icons';
 import SmallText from 'view/components/text/SmallText';
 const CommonTextInput = (props) => {
+  const [value, setValue] = useState('');
   const [onFocus, setOnFocus] = useState(false);
-  let icon = null;
+  const [passwd, setPasswd] = useState(props.isPasswordInput);
+  const input = useRef();
+  var PasswordButton;
   if (props.isPasswordInput) {
-    icon = <Invisible width={20 * em} height={17 * em} />;
+    PasswordButton = (
+      <TouchableOpacity style={{ justifyContent: 'flex-end', marginBottom: 20 * hm }} onPress={() => _visible()}>
+        <Invisible width={20 * em} height={17 * em} />
+      </TouchableOpacity>
+    );
   }
+  const DeleteButton = (
+    <TouchableOpacity style={{ justifyContent: 'flex-end', marginBottom: 20 * hm }} onPress={() => _delete()}>
+      <CrossCircle width={17 * em} height={17 * em} />
+    </TouchableOpacity>
+  );
+  const _delete = () => {
+    setValue('');
+  };
+  const _visible = () => {
+    setPasswd(!passwd);
+  };
   return (
-    <View
+    <TouchableOpacity onPress={()=>input.current.focus()} activeOpacity={1}
       style={[
         styles.container,
         {
@@ -23,22 +41,25 @@ const CommonTextInput = (props) => {
       <View style={styles.textBox}>
         <SmallText text={props.text} style={{ fontSize: onFocus ? 12 * em : 16 * em }} color="#A0AEB8" />
         <TextInput
+          ref={input}
+          secureTextEntry={passwd}
+          value={value}
+          onChangeText={(t) => setValue(t)}
           style={styles.textInput}
           onFocus={() => setOnFocus(true)}
           onBlur={() => setOnFocus(false)}
           selectionColor="#40CDDE"
         />
       </View>
-      <TouchableOpacity style={{ justifyContent: 'flex-end', marginBottom: 20 * em }}>
-        {onFocus ? <CrossCircle width={17 * em} height={17 * em} /> : icon}
-      </TouchableOpacity>
-    </View>
+      {PasswordButton}
+      {onFocus ? DeleteButton : <></>}
+    </TouchableOpacity>
   );
 };
 
 export default CommonTextInput;
 const styles = {
-  container: { flexDirection: 'row', height: 52 * em },
+  container: { flexDirection: 'row' },
   textBox: { justifyContent: 'flex-end', flex: 1 },
   textInput: {
     color: '#1E2D60',

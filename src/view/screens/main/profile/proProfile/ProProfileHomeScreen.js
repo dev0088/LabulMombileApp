@@ -45,12 +45,18 @@ const ProProfileHomeScreen = (props) => {
           blurRadius={8}>
           <View
             style={{
-              backgroundColor:'#7398FD',
+              backgroundColor: '#7398FD',
               flex: 1,
               width: '100%',
               alignItems: 'center',
             }}>
-            <ProfileCommonAvatar style={styles.avatar} fullName={userProfile.name} icon={userProfile.avatar} pro />
+            <ProfileCommonAvatar
+              style={styles.avatar}
+              borderWidth={3 * em}
+              fullName={userProfile.name}
+              icon={userProfile.avatar}
+              pro
+            />
             <TouchableOpacity onPress={() => Actions.proProfileOverview({ userProfile: originalProProfile })}>
               <Text style={styles.txtFullName}>{userProfile.name}</Text>
               <Text style={styles.txtGoToProfile}>Aller sur mon profil</Text>

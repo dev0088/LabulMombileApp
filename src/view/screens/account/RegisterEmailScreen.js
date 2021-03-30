@@ -1,5 +1,5 @@
 import React from 'react';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import { View } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
 import CommonTextInput from 'view/components/textInput/CommonTextInput';
@@ -15,10 +15,10 @@ const RegisterEmailScreen = () => {
       <View style={styles.popupView}>
         <View style={styles.popupTopView}>
           <View style={styles.icon}>
-            <Email width={30 * em} heigh={27 * em} />
+            <Email width={30 * em} height={27 * em} />
           </View>
           <TitleText text={'Mon Email'} style={styles.titleText} />
-          <CommonTextInput text={'Saisis to email'} isPasswordInput={false} style={styles.commonInput} />
+          <CommonTextInput text={'Saisis ton email'} isPasswordInput={false} style={styles.commonInput} />
         </View>
         <View style={styles.popupBottomView}>
           <CommonButton text={'Suivant'} onPress={() => Actions.registerFamilyName()} style={styles.btnNext} />
@@ -30,8 +30,8 @@ const RegisterEmailScreen = () => {
 
 const styles = {
   container: { flex: 1, backgroundColor: '#40CDDE', alignItems: 'center' },
-  header: { height: '12%' },
-  icon: { marginTop: 40 * em, marginBottom: 13 * em },
+  // header: { height: 67.5 * hm },
+  icon: { marginTop: 40 * hm, marginBottom: 13 * hm },
   popupView: {
     flex: 1,
     height: '88%',
@@ -42,9 +42,9 @@ const styles = {
     borderTopRightRadius: 28 * em,
     justifyContent: 'space-between',
   },
-  popupTopView: { alignItems: 'center', width: '80%' },
-  titleText: { marginBottom: 35 * em },
-  btnNext: { backgroundColor: 'rgba(64, 205, 222, 0.5)', marginBottom: 30 * em },
+  popupTopView: { alignItems: 'center', paddingHorizontal: 30 * em },
+  titleText: { marginBottom: 35 * hm },
+  btnNext: { backgroundColor: 'rgba(64, 205, 222, 0.5)', marginBottom: 30 * hm },
   commonInput: { width: '100%', height: 52 * em },
 };
 

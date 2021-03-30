@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View } from 'react-native';
-import { em } from 'view/common/const';
+import { em,hm } from 'view/common/const';
 import CommonButton from 'view/components/button/CommonButton';
 import FriendParticipatePopupScreen from './FriendParticipatePopupScreen';
 import FriendInvitePopupScreen from './FriendInvitePopupScreen';
@@ -48,8 +48,8 @@ const styles = {
   btnBox: {
     paddingLeft: 26 * em,
     paddingRight: 26 * em,
-    paddingTop: 15 * em,
-    paddingBottom: 22 * em,
+    paddingTop: 15 * hm,
+    paddingBottom: 22 * hm,
   },
 };
 

@@ -41,18 +41,13 @@ const CommonHeader = (props) => {
 };
 
 const styles = {
-  container: {
-    width: WIDTH,
-    flexDirection: 'row',
-    alignItems: 'center',
-    height: 44 * em,
-  },
+  container: { width: WIDTH, flexDirection: 'row', alignItems: 'flex-end', height: 44 * em },
   left: { marginLeft: 15 * em, flex: 1, justifyContent: 'flex-start' },
   leftTxt: { marginLeft: 15 * em, fontSize: 16 * em, color: '#6A8596', lineHeight: 18 * em, textAlign: 'left' },
   center: { flex: 1, alignItems: 'center', justifyContent: 'center' },
   centerTxt: { lineHeight: 18 * em, textAlign: 'center' },
-  icon: { width: 80 * em, height: 20 * em, resizeMode: 'contain' },
-  right: { marginRight: 15 * em, flex: 1, justifyContent: 'flex-end' },
+  icon: { width: 69 * em, height: 20 * em, resizeMode: 'contain', marginBottom: 15 * em },
+  right: { marginRight: 15 * em, alignSelf: 'center' },
   rightTxt: { marginRight: 15 * em, lineHeight: 17 * em, textAlign: 'right' },
 };
 

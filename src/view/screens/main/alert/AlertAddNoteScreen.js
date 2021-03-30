@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import CommentText from 'view/components/text/CommentText';
 import MabulCommonHeader from 'view/components/header/MabulCommonHeader';
 import { Actions } from 'react-native-router-flux';
@@ -68,7 +68,7 @@ const styles = {
   title: {
     width: 300 * em,
     textAlign: 'left',
-    marginTop: 35 * em,
+    marginTop: 35 * hm,
     lineHeight: 38 * em,
     fontSize: 28 * em,
     fontWeight: 'bold',
@@ -76,14 +76,14 @@ const styles = {
   comment: { textAlign: 'left', lineHeight: 20 * em, height: 16 * em, textAlignVertical: 'center', marginTop: 10 * em },
   listItem: {
     height: 43 * em,
-    marginTop: 25 * em,
+    marginTop: 25 * hm,
   },
   icon: { width: 19 * em, height: 22 * em, marginRight: 20 * em },
   listCaption: { color: '#6A8596' },
   listComment: { fontSize: 13 * em, lineHeight: 17 * em, color: '#6A8596' },
   nextBtn: {
     alignSelf: 'flex-end',
-    marginBottom: 30 * em,
+    marginBottom: 30 * hm,
   },
   line: { backgroundColor: '#BFCDDB', height: 1 * em, marginLeft: 39 * em },
 };

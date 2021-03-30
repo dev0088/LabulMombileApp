@@ -1,6 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
-import { em, WIDTH } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import { TouchableOpacity, View } from 'react-native';
 import CommonText from 'view/components/text/CommentText';
 
@@ -17,7 +16,7 @@ const CommonButton = (props) => {
 const styles = {
   buttonStyle: {
     backgroundColor: '#40CDDE',
-    paddingVertical: 20 * em,
+    paddingVertical: 20 * hm,
     width: 315 * em,
     borderRadius: 20 * em,
     justifyContent: 'center',
@@ -25,7 +24,6 @@ const styles = {
     flexDirection: 'row',
   },
   textStyle: { textAlign: 'center', color: '#FFFFFF', fontFamily: 'Lato-Bold', lineHeight: 19 * em },
-  iconStyle: {},
 };
 
 export default CommonButton;

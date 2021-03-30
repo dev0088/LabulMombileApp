@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, ImageBackground, DeviceEventEmitter, Image, TouchableOpacity } from 'react-native';
-import { em } from '../../../common/const';
+import { em, hm } from 'view/common/const';
 import { Actions } from 'react-native-router-flux';
 import { Animals, Bricolage, HomeCare, Interview, Workshop, Path, Return2Point, Alert } from 'assets/svg/icons';
 const servicIconSize = { width: 18 * em, height: 18 * em };
 const locationList = [
   {
     id: '0',
-    top: 205 * em,
+    top: 205 * hm,
     left: 36 * em,
     avatar: require('assets/images/sample_user_2.png'),
     serviceIcon: Animals(servicIconSize),
@@ -15,7 +15,7 @@ const locationList = [
   },
   {
     id: '1',
-    top: 164 * em,
+    top: 164 * hm,
     left: 181 * em,
     avatar: require('assets/images/sample_ic_plant.png'),
     serviceIcon: Interview(servicIconSize),
@@ -23,7 +23,7 @@ const locationList = [
   },
   {
     id: '2',
-    top: 273 * em,
+    top: 273 * hm,
     left: 211 * em,
     avatar: require('assets/images/sample_user_2.png'),
     serviceIcon: Bricolage(servicIconSize),
@@ -31,7 +31,7 @@ const locationList = [
   },
   {
     id: '3',
-    top: 321 * em,
+    top: 321 * hm,
     left: 149 * em,
     avatar: require('assets/images/avatar.png'),
     serviceIcon: Bricolage(servicIconSize),
@@ -39,7 +39,7 @@ const locationList = [
   },
   {
     id: '4',
-    top: 396 * em,
+    top: 396 * hm,
     left: 72 * em,
     avatar: require('assets/images/sample_ic_hair.png'),
     serviceIcon: HomeCare(servicIconSize),
@@ -47,7 +47,7 @@ const locationList = [
   },
   {
     id: '5',
-    top: 490 * em,
+    top: 490 * hm,
     left: 170 * em,
     avatar: require('assets/images/sample_user_2.png'),
     serviceIcon: Animals(servicIconSize),
@@ -58,15 +58,15 @@ const locationList = [
 const FriendsMenuScreen = () => {
   return (
     <View style={styles.container}>
-      <ImageBackground style={styles.TabControlContainer} source={require('assets/images/bg_map.png')} />
+      <Image style={styles.TabControlContainer} source={require('assets/images/bg_map.png')} />
 
-      <View style={{ position: 'absolute', top: 203 * em, left: 34 * em }}>
+      <View style={{ position: 'absolute', top: 203 * hm, left: 34 * em }}>
         <Path width={76 * em} height={48 * em} />
       </View>
       <View
         style={{
           position: 'absolute',
-          top: 213 * em,
+          top: 213 * hm,
           left: 309 * em,
           alignItems: 'center',
           justifyContent: 'center',
@@ -74,7 +74,7 @@ const FriendsMenuScreen = () => {
           shadowColor: '#254D5612',
           shadowOffset: {
             width: 0,
-            height: 5 * em,
+            height: 5 * hm,
           },
           shadowRadius: 9 * em,
         }}>
@@ -84,7 +84,7 @@ const FriendsMenuScreen = () => {
       <View
         style={{
           position: 'absolute',
-          top: 335 * em,
+          top: 335 * hm,
           width: 36 * em,
           height: 36 * em,
           left: 297 * em,
@@ -99,7 +99,7 @@ const FriendsMenuScreen = () => {
           shadowColor: '#254D5612',
           shadowOffset: {
             width: 0,
-            height: 10 * em,
+            height: 10 * hm,
           },
           shadowRadius: 12 * em,
         }}>
@@ -108,7 +108,7 @@ const FriendsMenuScreen = () => {
       <View
         style={{
           position: 'absolute',
-          top: 529 * em,
+          top: 529 * hm,
           width: 46 * em,
           height: 46 * em,
           left: 309 * em,
@@ -123,7 +123,7 @@ const FriendsMenuScreen = () => {
           shadowColor: '#254D5612',
           shadowOffset: {
             width: 0,
-            height: 10 * em,
+            height: 10 * hm,
           },
           shadowRadius: 12 * em,
         }}>
@@ -133,7 +133,7 @@ const FriendsMenuScreen = () => {
         onPress={() => Actions.alertCircles()}
         style={{
           position: 'absolute',
-          top: 463 * em,
+          top: 463 * hm,
           width: 46 * em,
           height: 46 * em,
           left: 309 * em,
@@ -154,16 +154,16 @@ const FriendsMenuScreen = () => {
         }}>
         {Alert({ width: 26.45 * em, height: 22.31 * em })}
       </TouchableOpacity>
-      <Image        
+      <Image
         source={require('assets/images/img_navigator.png')}
-        style={{ postion: 'absolute', top: 316 * em, zIndex: 0,opacity:1 }}
+        style={{ position: 'absolute', top: 316 * hm, zIndex: 0, opacity: 1 }}
       />
       <View
         style={{
           position: 'absolute',
-          top: 463 * em,
-          width: 46 * em,
-          height: 46 * em,
+          top: 463 * hm,
+          width: 36 * em,
+          height: 36 * em,
           left: 34 * em,
           borderRadius: 23 * em,
           flexDirection: 'row',
@@ -176,7 +176,7 @@ const FriendsMenuScreen = () => {
           shadowColor: '#254D5612',
           shadowOffset: {
             width: 0,
-            height: 10 * em,
+            height: 10 * hm,
           },
           shadowRadius: 12 * em,
         }}>
@@ -188,7 +188,9 @@ const FriendsMenuScreen = () => {
 
 const PositionView = ({ top, left, avatar, serviceIcon, bgColor, id }) => (
   <>
-    <View style={{ position: 'absolute', top: top - 2 * em, left: left - 2 * em, zIndex: 1 }} key={id}>
+    <View
+      style={{ position: 'absolute', top: top - 2 * hm, left: left - 2 * em, zIndex: 1 }}
+      key={(Date.now() + parseInt(Math.random() * 100000000)).toString()}>
       <Path width={76 * em} height={48 * em} />
     </View>
     <View key={id + 'also'} style={[styles.tagInView, { top: top, left: left, backgroundColor: bgColor }]}>
@@ -198,7 +200,7 @@ const PositionView = ({ top, left, avatar, serviceIcon, bgColor, id }) => (
   </>
 );
 const styles = {
-  container: { flex: 1, alignItems: 'center', backgroundColor: '#F0F5F7' },
+  container: { flex: 1, alignItems: 'center'},
   tagInView: {
     zIndex: 1,
     position: 'absolute',
@@ -209,13 +211,13 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  TabControlContainer: { position: 'absolute', flex: 1, width: '100%', height: '100%', backgroundColor: '#ff0000' },
+  TabControlContainer: { position: 'absolute', flex: 1, width: '100%', height: '100%' },
   alertImg: {
     width: 46 * em,
     height: 46 * em,
     position: 'absolute',
     resizeMode: 'contain',
-    top: 463 * em,
+    top: 463 * hm,
     left: 309 * em,
   },
 };

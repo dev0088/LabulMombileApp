@@ -182,8 +182,16 @@ import MagnifierBlue from 'assets/svg/icons/navigation/MagnifierBlue.svg';
 import ArrowDownBlack from 'assets/svg/icons/navigation/ArrowDownBlack.svg';
 import ArrowUpWhite from 'assets/svg/icons/navigation/ArrowUpWhite.svg';
 
+import AlertRed from 'assets/svg/icons/create/AlertRed.svg';
+import Computer from 'assets/svg/icons/create/Computer.svg';
+import AperoSell from 'assets/svg/icons/category/AperoSell.svg';
+import MealSell from 'assets/svg/icons/category/MealSell.svg';
+import MeetSell from 'assets/svg/icons/category/MeetSell.svg';
+import PartySell from 'assets/svg/icons/category/PartySell.svg';
+import ShowSell from 'assets/svg/icons/category/ShowSell.svg';
+import WorkshopSell from 'assets/svg/icons/category/WorkshopSell.svg';
 
-export {ArrowUpWhite,ArrowDownBlack,CreateGroupFamily,CreateGroupFriend,CreateGroupNeighbor,
+export {ArrowUpWhite,ArrowDownBlack,CreateGroupFamily,CreateGroupFriend,CreateGroupNeighbor,AlertRed,Computer,AperoSell,MealSell,MeetSell,PartySell,ShowSell,WorkshopSell,
   AddressBlue,CheckDarkBlue,CheckPink,
   OptionGray,
   LocationRed,
@@ -337,8 +345,9 @@ import AddPhotoBlue from 'assets/svg/icons/post/AddPhotoBlue.svg';
 import AddPhotoGreen from 'assets/svg/icons/post/AddPhotoGreen.svg';
 import AddPhotoPurple from 'assets/svg/icons/post/AddPhotoPurple.svg';
 import AddPhotoYellow from 'assets/svg/icons/post/AddPhotoYellow.svg';
+import EditAddPhoto from 'assets/svg/icons/post/EditAddPhoto.svg';
 
-export {
+export {EditAddPhoto,
   Edit,
   Edit1,
   Edit2,

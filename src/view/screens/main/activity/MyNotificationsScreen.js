@@ -42,13 +42,13 @@ const MyNotificationsScreen = () => {
   const emptyView = (
     <TouchableOpacity style={styles.emptyView} onPress={() => setIsEmpty(!isEmpty)}>
       <View style={styles.notificationIcon1}>
-        <NotificationGray width={17.31 * em} height={17.31 * em} />
+        <NotificationGray width={17.31 * hm} height={17.31 * hm} />
       </View>
       <View style={styles.notificationIcon2}>
-        <NotificationGray width={8.31 * em} height={8.31 * em} />
+        <NotificationGray width={8.31 * hm} height={8.31 * hm} />
       </View>
       <View style={styles.msgIcon}>
-        <NotificationGray width={37 * em} height={37 * em} />
+        <NotificationGray width={37 * hm} height={37 * hm} />
       </View>
       <CommonText text={'Tu n’as pas encore de notifications'} color={'#6A8596'} style={styles.msgTxt} />
       <CommentText
@@ -91,7 +91,7 @@ const MyNotificationsScreen = () => {
               navigationRef.current.navigate('Activity');
             }}>
             <View style={styles.notificationBtn}>
-              <NotificationBlue width={19 * em} height={22 * em} />
+              <NotificationBlue width={19 * hm} height={22 * hm} />
             </View>
           </TouchableOpacity>
         </View>
@@ -109,40 +109,40 @@ const styles = {
     backgroundColor: '#EDF2F5',
   },
   notificationIcon1: { position: 'absolute', left: 103.85 * em, transform: [{ rotate: '45deg' }] },
-  notificationIcon2: { position: 'absolute', top: 17.31 * em, left: 190.35 * em, transform: [{ rotate: '-45deg' }] },
+  notificationIcon2: { position: 'absolute', top: 17.31 * hm, left: 190.35 * em, transform: [{ rotate: '-45deg' }] },
   header: {
-    height: 146 * em,
+    height: 146 * hm,
     width: '100%',
     backgroundColor: '#ffffff',
     marginTop: 0,
-    marginBottom: 10 * em,
+    marginBottom: 10 * hm,
   },
-  notificationBtn: { alignSelf: 'flex-end', marginRight: 30 * em, marginTop: 39 * em },
+  notificationBtn: { alignSelf: 'flex-end', marginRight: 30 * em, marginTop: 39 * hm },
   title: {
-    fontSize: 34 * em,
-    lineHeight: 38 * em,
-    height: 40 * em,
+    fontSize: 34 * hm,
+    lineHeight: 38 * hm,
+    height: 40 * hm,
     textAlign: 'left',
     marginLeft: 30 * em,
-    marginTop: 20 * em,
-    marginBottom: 25 * em,
+    marginTop: 20 * hm,
+    marginBottom: 25 * hm,
   },
   body: {
     backgroundColor: '#ffffff',
     width: '100%',
     flex: 1,
     paddingHorizontal: 30 * em,
-    paddingTop: 25 * em,
+    paddingTop: 25 * hm,
   },
   emptyView: {
-    marginTop: 109 * em,
+    marginTop: 109 * hm,
     width: 315 * em,
-    height: 148.15 * em,
+    height: 148.15 * hm,
     alignSelf: 'center',
   },
-  msgIcon: { marginTop: 13.15 * em, alignSelf: 'center' },
+  msgIcon: { marginTop: 13.15 * hm, alignSelf: 'center' },
   msgTxt: {
-    marginTop: 15 * em,
+    marginTop: 15 * hm,
     textAlign: 'center',
     fontFamily: 'Lato-Black',
     lineHeight: 23 * em,
@@ -155,7 +155,7 @@ const styles = {
     alignSelf: 'center',
   },
   listItem: {
-    marginBottom: 35 * em,
+    marginBottom: 35 * hm,
     width: '100%',
   },
   listItemUserName: { color: '#1E2D60', lineHeight: 21 * hm, fontFamily: 'Lato-Black' },

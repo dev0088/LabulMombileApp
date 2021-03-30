@@ -5,8 +5,9 @@ import ProfileInformationListItem from 'view/components/adapter/ProfileInformati
 import ProfileCommonHeader from 'view/components/header/ProfileCommonHeader';
 import CommonButton from 'view/components/button/CommonButton';
 import CommentText from 'view/components/text/CommentText';
+import CommonText from 'view/components/text/CommonText';
 import { Actions } from 'react-native-router-flux';
-import { CrossGray, AddPhotoGreen } from 'assets/svg/icons';
+import { CrossGray, EditAddPhoto, Family } from 'assets/svg/icons';
 const updateUserPrfile = {
   avatar: require('assets/images/avatar_curology.png'),
   cover: require('assets/images/img_curology.png'),
@@ -60,7 +61,7 @@ const EditNeedScreen = () => {
                 },
               ]}>
               <View style={styles.addPhoto}>
-                <AddPhotoGreen width={32.86 * em} height={23 * em} />
+                <EditAddPhoto width={32.86 * em} height={23 * em} />
               </View>
               <CommentText text="Clique ici" color="#40CDDE" />
             </View>
@@ -68,35 +69,41 @@ const EditNeedScreen = () => {
         </View>
         <ProfileInformationListItem
           caption={'Type de demande'}
+          titleUpperCase
           value={'J’ai besoin/ coup de main'}
           style={styles.listItem}
         />
-        <ProfileInformationListItem caption={'Catégorie'} value={'Bricolage/ jardinage'} style={styles.listItem} />
         <ProfileInformationListItem
+          titleUpperCase
+          caption={'Catégorie'}
+          value={'Bricolage/ jardinage'}
+          style={styles.listItem}
+        />
+        <ProfileInformationListItem
+          titleUpperCase
           caption={'Titre'}
           value={'Récolter des figues'}
           style={styles.listItem}
-          options={userProfile.specs}
         />
         <ProfileInformationListItem
+          titleUpperCase
           caption={'Description'}
           value={
             'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos…'
           }
           style={styles.listItem}
-          options={userProfile.specs}
         />
+        <ProfileInformationListItem titleUpperCase caption={'Date'} value={'29 Fév · 14h00'} style={styles.listItem} />
         <ProfileInformationListItem
-          caption={'Date'}
-          value={'29 Fév · 14h00'}
-          style={styles.listItem}
-          options={userProfile.specs}
-        />
-        <ProfileInformationListItem
+          titleUpperCase
           caption={'Partagé avec'}
-          value={'Ma famille'}
+          circleText={
+            <>
+              <Family width={28 * em} height={28 * em} />
+              <CommonText text={'Ma famille'} color="#1E2D60" style={{ marginLeft: 10 * em, alignSelf: 'center' }} />
+            </>
+          }
           style={styles.listItem}
-          options={userProfile.specs}
         />
         <CommonButton
           text={'Supprimer mon compte'}
