@@ -10,13 +10,13 @@ import SellService from 'model/service/SellService';
 const needsLists = [
   new SellService(
     'La belle coiffure',
-    'Je vends Bon plan',
-    'Coiffure et soin keratine',
-    '04 Fév · 08h00',
+    'Je vends Évènement',
+    'Atelier de soin de cheveux',
+    '04 Fév · 25 Mars',
     require('assets/images/sample_cover_15.png'),
     1,
     SellServiceType.EVENT,
-    '5,00 €'
+    '15,00 €'
   ),
 ];
 const ProEventsTabScreen = () => {

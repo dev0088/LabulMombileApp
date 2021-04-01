@@ -10,20 +10,24 @@ import { NotificationOutline } from 'assets/svg/icons';
 import CommonTabBar from 'view/components/other/CommonTabBar';
 const Tab = createMaterialTopTabNavigator();
 
-const MyActivityHomeScreen = () => {
+const MyActivityHomeScreen = (prop) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigationRef.current.navigate('MyNotifictions')}>
         <View style={styles.notificationBtn}>
-          <NotificationOutline width={19 * hm} height={22 * hm} />
+          <NotificationOutline width={19 * em} height={22 * em} />
         </View>
       </TouchableOpacity>
       <TitleText text={'Mon activité'} style={styles.title} />
-      <Tab.Navigator tabBar={(props) => <CommonTabBar {...props} />} swipeEnabled={false} initialRouteName="families">
+      <Tab.Navigator
+        tabBar={(props) => <CommonTabBar {...props} />}
+        swipeEnabled={false}
+        initialRouteName={prop.route.params.activityType || 'needs'}>
         <Tab.Screen
           name="needs"
           options={{ title: 'Mes demandes', tabColor: '#40CDDE' }}
           component={ActivityNeedsTabScreen}
+          initialParams={{ selected: prop.route.params.noEmpty }}
         />
         <Tab.Screen
           name="invitations"
@@ -41,16 +45,15 @@ const styles = {
     backgroundColor: '#FFFFFF',
   },
   header: {
-    height: 181 * hm,
     width: '100%',
     backgroundColor: '#ffffff',
     marginTop: 0,
     marginBottom: 10 * hm,
   },
   title: {
-    fontSize: 34 * hm,
-    lineHeight: 38 * hm,
-    height: 40 * hm,
+    fontSize: 34 * em,
+    lineHeight: 38 * em,
+    height: 40 * em,
     textAlign: 'left',
     marginLeft: 30 * em,
     marginTop: 20 * hm,

@@ -58,7 +58,6 @@ const CommonListItem = (props) => {
             </View>
           )}
           {textView}
-
           <View style={styles.rightView}>{props.rightView}</View>
         </View>
         <View style={styles.bottomView}>

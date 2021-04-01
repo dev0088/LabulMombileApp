@@ -16,17 +16,27 @@ const options = [
 const AlertClassOptionScreen = (props) => {
   const conceptColor = '#F9547B';
   const [optionCheck, setOptionCheck] = useState();
+  const [checked, setChecked] = useState();
   const renderOptions = ({ item, index }) => {
-    const checked = item.id === optionCheck;
     var elevation = !checked ? 0 : 2;
 
     return (
       <TouchableOpacity
         activeOpacity={1}
-        style={[checked ? styles.optionBoxClicked : styles.optionBox, { marginBottom: index === 2 ? 40 * em : 0 }]}
-        onPress={() => setOptionCheck(item.id)}>
+        style={[
+          checked === index ? styles.optionBoxClicked : styles.optionBox,
+          { marginBottom: index === 2 ? 40 * em : 0 },
+        ]}
+        onPress={() => setChecked(index)}>
         <TitleText style={styles.optionCaption} text={item.title} />
-        <CheckBox oval red single isChecked={checked} singleSelection={true} />
+        <CheckBox
+          oval
+          red
+          single
+          isChecked={checked === index}
+          singleSelection={true}
+          onClick={() => setChecked(index)}
+        />
       </TouchableOpacity>
     );
   };

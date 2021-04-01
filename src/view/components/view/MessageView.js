@@ -1,7 +1,8 @@
 import React from 'react';
 import { View } from 'react-native';
-import { em } from 'view/common/const';
+import { em,hm } from 'view/common/const';
 import CommentText from 'view/components/text/CommentText';
+import SmallText from 'view/components/text/SmallText';
 
 const OTHERSIDE = 1;
 const OURSIDE = 2;
@@ -12,7 +13,7 @@ const MessageView = ({ date, messages, side }) => {
   const containerStyle = { alignSelf: alignSelf, flexDirection: 'column-reverse', alignItems: alignSelf };
   return (
     <View style={containerStyle}>
-      <CommentText text={date} style={styles.dateTxt} />
+      <SmallText text={date} style={styles.dateTxt} color="rgba(144, 147, 163, 1)" />
       {messages.map((message, index) => {
         var addBorderRadius;
         if (!index % 2 && side === OURSIDE) {
@@ -52,14 +53,14 @@ const styles = {
     marginBottom: 2 * em,
   },
   msgRightView: {
-    padding: 15 * em,
+    padding: 15 * hm,
     borderRadius: 23 * em,
     borderTopLeftRadius: 23 * em,
     backgroundColor: '#40CDDE',
     alignSelf: 'baseline',
     marginLeft: 40 * em,
-    marginBottom: 2 * em,
+    marginBottom: 2 * hm,
   },
-  dateTxt: { fontSize: 12 * em, marginTop: 3 * em },
+  dateTxt: { marginTop: 3 * hm,},
 };
 export default MessageView;

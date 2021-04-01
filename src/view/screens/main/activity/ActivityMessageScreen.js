@@ -13,6 +13,9 @@ import { TelephoneWhite } from 'assets/svg/icons';
 import ClockDraw from 'view/components/view/ClockDraw';
 import MessageView from 'view/components/view/MessageView';
 import { CheckedBlue } from 'assets/svg/icons';
+import CommonHeader from '../../../components/header/CommonHeader';
+import CommonListItem from '../../../components/adapter/CommonListItem';
+
 const OTHERSIDE = 1;
 const OURSIDE = 2;
 
@@ -37,7 +40,7 @@ var requestMessage = [
   },
 ];
 
-const ActivityMessageScreen = (props) => {
+const ActivityMessageScreen = ({ message, activityType }) => {
   const [messageCounterVisible, setMessageCounterVisible] = useState(false);
   const [messageProfileVisible, setMessageProfileVisible] = useState(false);
   const [accepted, setAccepted] = useState(false);
@@ -45,21 +48,21 @@ const ActivityMessageScreen = (props) => {
 
   const [isAccepted, setIsAccepted] = useState();
   const [seconds, setSeconds] = useState(20);
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       //assign interval to a variable to clear it.
       setSeconds(seconds - 1);
     }, 1000);
   }, []);
-  // console.log(seconds)
   const popupHeader = (
-    <View style={styles.popupHeader}>
-      <View style={styles.titleView}>
-        <Image source={props.user.badge} style={styles.titleIcon} />
-        <CommentText color="#1E2D60" text="Récolter des figues" style={{ fontFamily: 'Lato-Bold' }} />
-      </View>
-      {isAccepted && <ClockDraw height={28 * em} seconds={isAccepted} />}
-    </View>
+    <CommonListItem
+      style={styles.popupHeader}
+      icon={<Image source={message.service.coverImage} style={styles.titleIcon} />}
+      title={message.service.title}
+      titleStyle={{ fontFamily: 'Lato-Bold', color: '#1E2D60', fontSize: 14 * em }}
+      rightView={isAccepted && <View style={{ width: 20 * em, height: 30 * em, backgroundColor: 'blue' }} />}
+    />
   );
   const AcceptButton = accepted ? (
     <CommonButton
@@ -75,7 +78,7 @@ const ActivityMessageScreen = (props) => {
       text="Accepter"
       textStyle={{ fontSize: 14 * em }}
       onPress={() => {
-        props.activityType === 'invitation' ? setAccepted(true) : setMessageCounterVisible(true);
+        activityType === 'invitation' ? setAccepted(true) : setMessageCounterVisible(true);
       }}
     />
   );
@@ -114,7 +117,7 @@ const ActivityMessageScreen = (props) => {
       <CommentText
         text="Mathieu viens d’accepter la participation d’Amandine"
         color="#1E2D60"
-        style={{ paddingHorizontal: 30 * em, fontFamily: 'Lato-Bold' }}
+        style={{ fontFamily: 'Lato-Bold' }}
       />
     </View>
   );
@@ -123,7 +126,7 @@ const ActivityMessageScreen = (props) => {
     return <MessageView date={date} messages={messages} side={side} />;
   };
 
-  if (props.activityType === 'invitation') {
+  if (activityType === 'invitation') {
     requestMessage = [
       {
         id: 0,
@@ -135,7 +138,25 @@ const ActivityMessageScreen = (props) => {
   }
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
+      <CommonHeader
+        style={styles.header}
+        rightView={
+          <TouchableOpacity style={styles.dialIcon} onPress={() => Actions.activityDial()}>
+            <TelephoneWhite width={20 * em} height={20 * em} />
+          </TouchableOpacity>
+        }
+        centerView={
+          <CommonListItem
+            onPress={() => setMessageProfileVisible(!messageProfileVisible)}
+            style={{ flex: 1 }}
+            icon={<Image source={message.user.photo} style={styles.avatarIcon} />}
+            title={message.user.name}
+            titleStyle={{ fontFamily: 'Lato-Bold', color: '#ffffff' }}
+          />
+        }
+      />
+
+      {/* <View style={styles.header}>
         <View style={{ flexDirection: 'row', flex: 1, alignItems: 'center' }}>
           <CommonBackButton />
           <TouchableOpacity
@@ -150,7 +171,7 @@ const ActivityMessageScreen = (props) => {
             <TelephoneWhite width={20 * em} height={20 * em} />
           </View>
         </TouchableOpacity>
-      </View>
+      </View> */}
       <View style={styles.popup}>
         {popupHeader}
         {isAccepted && SuccessToast}
@@ -168,12 +189,13 @@ const ActivityMessageScreen = (props) => {
               inverted={1}
               renderItem={renderMessageList}
               keyExtractor={(i) => i.id}
+              showsVerticalScrollIndicator={false}
             />
           </View>
         </View>
       </View>
       <MessageCounterDownPopupScreen
-        onAccept={() => setIsAccepted(20)}
+        onAccept={() => setIsAccepted(true)}
         visible={messageCounterVisible}
         onPress={() => setMessageCounterVisible(false)}
       />
@@ -188,16 +210,8 @@ const ActivityMessageScreen = (props) => {
 
 const styles = {
   container: { flex: 1, alignItems: 'flex-start', backgroundColor: '#40CDDE' },
-  header: {
-    width: '100%',
-    height: 81 * em,
-    paddingBottom: 10 * em,
-    paddingHorizontal: 15 * em,
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-  },
+  header: { marginBottom: 10 * hm, marginTop: 27 * hm },
   toast: {
-    // margin: -30 * em,
     alignItems: 'center',
     marginLeft: -30 * em,
     width: 375 * em,
@@ -216,28 +230,22 @@ const styles = {
     marginTop: -10 * hm,
   },
   avatarIcon: { width: 28 * em, height: 28 * em, marginLeft: 10 * em, marginRight: 10 * em },
-  dialIcon: { width: 20 * em, height: 20 * em, marginRight: 15 * em, tintColor: '#ffffff', marginBottom: 11 * em },
+  dialIcon: { marginRight: 15 * em, alignSelf: 'center' },
   popup: {
     width: '100%',
     flex: 1,
     borderTopRightRadius: 20 * em,
     borderTopLeftRadius: 20 * em,
     backgroundColor: '#ffffff',
-    paddingHorizontal: 30 * em,
-    // paddingVertical: 15 * em,
+    paddingHorizontal: 29 * em,
     justifyContent: 'space-between',
     flexDirection: 'column',
   },
-  popupHeader: {
-    paddingVertical: 15 * hm,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
+  popupHeader: { paddingVertical: 15 * hm },
   titleView: { flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center' },
   titleIcon: { width: 28 * em, height: 28 * em, borderRadius: 14 * em, marginRight: 10 * em },
   popupBody: { flexDirection: 'column-reverse', alignItems: 'center', flex: 1 },
-  popupFooter: { flexDirection: 'row', alignItems: 'center', marginTop: 25 * em },
+  popupFooter: { flexDirection: 'row', alignItems: 'center', marginTop: 25 * hm, marginBottom: 15 * hm },
   inputView: {
     flex: 1,
     backgroundColor: '#F0F5F7',
@@ -276,7 +284,7 @@ const styles = {
     paddingHorizontal: 29 * em,
     justifyContent: 'space-between',
     width: '100%',
-    marginTop: 10 * em,
+    marginTop: 10 * hm,
   },
 };
 

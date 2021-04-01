@@ -10,19 +10,13 @@ const CommonCheckBox = (props) => {
   // console.log(props)
   return (
     <View style={[styles.container, props.style]}>
-      <CommonText text={props.text} style={styles.title} color="#1E2D60" />
+      <CommonText text={props.text} style={[styles.title, props.textStyle]} color={props.color || '#1E2D60'} />
       <CheckBox
         isChecked={checked}
         onClick={() => {
-          // console.log(checked)
-          // if (value) {
-          //   console.log(props.index)
-          //   props.onChecked(props.index);
-          // }
           setChecked(!checked);
+          props.onClick && props.onClick(!checked);
         }}
-        //   // props.onChecked(checked ? props.text : null);
-        // }}
         oval={props.oval}
       />
     </View>
@@ -32,7 +26,6 @@ const CommonCheckBox = (props) => {
 const styles = {
   container: {
     // backgroundColor:'red',
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

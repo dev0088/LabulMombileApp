@@ -10,12 +10,17 @@ import CommentText from 'view/components/text/CommentText';
 const ActivateNotificationScreen = () => {
   return (
     <View style={styles.container}>
-      <Image style={styles.behindImage} source={require('assets/images/bg_active_notification.png')} />
+      <View style={styles.behindImage}>
+        <Image
+          source={require('assets/images/bg_active_notification.png')}
+          style={{ resizeMode: 'contain', width: 356 * hm, height: 276 * hm }}
+        />
+      </View>
       <View style={styles.popupView}>
         <TitleText text={'Activer\nles notifications'} style={{ marginTop: 24 * hm }} />
         <CommentText
-          text={'Active les notifications pour recevoir l’activité de\n tes amis, ta famille et tes voisins.'}
-          style={{ marginTop: 12 * hm, paddingHorizontal: 29 * em }}
+          text={'Active les notifications pour recevoir l’activité de tes amis, ta famille et tes voisins.'}
+          style={{ marginTop: 12 * hm, paddingHorizontal: 30 * em }}
         />
         <View style={styles.buttonsContainer}>
           <View style={styles.fakeContainer} />
@@ -45,13 +50,12 @@ const styles = {
     alignItems: 'center',
     backgroundColor: '#F0F5F7',
   },
-  behindImage: { flex: 0.45, width: 356 * hm },
+  behindImage: { flex: 0.47, width: '100%', justifyContent: 'flex-end', alignItems: 'center' },
   popupView: {
     flex: 0.55,
     backgroundColor: '#ffffff',
     borderTopStartRadius: 25 * em,
     borderTopEndRadius: 25 * em,
-    marginTop: 10 * hm,
     width: '100%',
     alignItems: 'center',
   },

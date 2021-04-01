@@ -57,13 +57,13 @@ const usersData = [
 ];
 const GroupDetailScreen = (props) => {
   const [userOptionVisible, setUserOptionVisible] = useState(false);
-  const renderFlatList = ({ item }) => {
+  const renderFlatList = ({ item, index }) => {
     return (
       <CirclesCommonListItem
         name={item.userName}
         subName={item.relationship}
         icon={item.avatar}
-        style={styles.listItem}
+        style={[styles.listItem, { marginBottom: index === usersData.length - 1 ? 100 * hm : 35 * hm }]}
         onPress={() => setUserOptionVisible(true)}
       />
     );
@@ -104,13 +104,13 @@ const styles = {
     height: 18 * em,
     tintColor: '#ffffff',
   },
-  body: { backgroundColor: '#ffffff', paddingTop: 35 * em },
+  body: { backgroundColor: '#ffffff', paddingTop: 35 * hm },
   header: {
     paddingLeft: 15 * em,
-    height: 81 * em,
+    height: 81 * hm,
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 10 * em,
+    marginBottom: 10 * hm,
     justifyContent: 'flex-start',
     backgroundColor: '#ffffff',
   },

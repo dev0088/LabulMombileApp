@@ -1,18 +1,29 @@
 import React from 'react';
 import { View, Image, StatusBar } from 'react-native';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import CommonText from 'view/components/text/CommonText';
 import Modal from 'react-native-modal';
 import CommonListItem from 'view/components/adapter/CommonListItem';
 import CommonButton from 'view/components/button/CommonButton';
 import { DeleteRed } from 'assets/svg/icons';
-import { AddFamily, AddFriend, AddNeighbor } from 'assets/svg/icons';
-import { Friend, Family, Neighbor, OptionGray } from 'assets/svg/icons';
+import { Friend, Family, Neighbor } from 'assets/svg/icons';
 
 const GroupOptionPopupScreen = (props) => {
+  let groupIcon;
+  switch (props.data && props.data.sort) {
+    case 'friends':
+      groupIcon = <Friend width={40 * em} height={40 * em} />;
+      break;
+    case 'families':
+      groupIcon = <Family width={40 * em} height={40 * em} />;
+      break;
+    default:
+      groupIcon = <Neighbor width={40 * em} height={40 * em} />;
+      break;
+  }
   return (
     <Modal
-      isVisible={props.visible}
+      isVisible={props.data ? true : false}
       backdropOpacity={0.8}
       style={styles.container}
       backdropColor={'#1E2D60'}
@@ -20,11 +31,9 @@ const GroupOptionPopupScreen = (props) => {
       onBackButtonPress={() => props.onPress()}>
       <StatusBar backgroundColor="rgba(30, 45, 96, 0.8)" barStyle="light-content" />
       <View style={styles.body}>
-        <View style={styles.avatar}>
-          <Friend height={40 * em} width={40 * em} />
-        </View>
+        <View style={styles.avatar}>{groupIcon}</View>
         <CommonText text="Cousins" style={styles.userName} />
-        <CommonText text="8 membres" color="#A0AEB8" />
+        <CommonText text={props.data && props.data.number} style={{ marginBottom: 25 * hm }} color="#A0AEB8" />
 
         <CommonListItem
           style={styles.listItem}
@@ -55,11 +64,11 @@ const GroupOptionPopupScreen = (props) => {
 };
 const styles = {
   container: { margin: 0, flex: 1, justifyContent: 'flex-end' },
-  avatar: { width: 54 * em, height: 54 * em, marginTop: 29 * em },
-  userName: { color: '#1E2D60', marginBottom: 5 * em, marginTop: 5 * em, fontFamily: 'Lato-Black' },
+  avatar: { marginTop: 29 * hm},
+  userName: { color: '#1E2D60', marginBottom: 5 * hm, marginTop: 5 * hm, fontFamily: 'Lato-Black' },
   body: {
     paddingHorizontal: 25 * em,
-    paddingBotom: 12 * em,
+    paddingBotom: 12 * hm,
     alignItems: 'center',
     marginRight: 30 * em,
     marginLeft: 30 * em,
@@ -68,19 +77,19 @@ const styles = {
     borderRadius: 20 * em,
   },
   listItem: {
-    height: 70 * em,
+    height: 70 * hm,
     justifyContent: 'center',
     borderTopWidth: 1 * em,
     borderColor: '#B3C6CF33',
     width: '100%',
   },
   cancelBtn: {
-    marginTop: 35 * em,
+    marginTop: 35 * hm,
     backgroundColor: '#ffffff',
     color: '#1E2D60',
     alignSelf: 'center',
     width: 315 * em,
-    marginBottom: 23 * em,
+    marginBottom: 23 * hm,
   },
 };
 export default GroupOptionPopupScreen;

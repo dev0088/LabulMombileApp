@@ -12,14 +12,13 @@ const App = () => {
   }, []);
   StatusBar.setBarStyle('dark-content');
   Platform.OS === 'android' && StatusBar.setBackgroundColor('transparent');
-  StatusBar.setTranslucent(true);
+  Platform.OS === 'android' && StatusBar.setTranslucent(true);
   return (
     <RootSiblingParent>
-      <SafeAreaView style={styles.safeArea}>
-        <View style={styles.container}>
-          <RootRoutes />
-        </View>
-      </SafeAreaView>
+      <SafeAreaView style={styles.safeArea} />
+      <View style={styles.container}>
+        <RootRoutes />
+      </View>
     </RootSiblingParent>
   );
 };
@@ -29,7 +28,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   safeArea: {
-    flex: 1,
+    flex: 0,
+    position: 'absolute',
+    backgroundColor: 'transparent',
   },
 });
 

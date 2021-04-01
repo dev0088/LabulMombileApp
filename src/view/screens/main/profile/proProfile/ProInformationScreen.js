@@ -7,40 +7,37 @@ import ProfileCommonHeader from 'view/components/header/ProfileCommonHeader';
 import ProfileCommonModal from 'view/components/other/ProfileCommonModal';
 import { Actions } from 'react-native-router-flux';
 
-const MyProInformationScreen = () => {
+const ProInformationScreen = () => {
   const [inputItemKey, setInputItemKey] = useState(1);
   const [modalVisible, setModalVisible] = useState(false);
   return (
-    <View style={styles.container}>
-      <ScrollView>
-        <ProfileCommonHeader title="Mes informations" onCancel={() => Actions.pop()} />
-        <CommonText text="Contact" style={styles.itemTitle} />
-        <ProfileInformationListItem
-          caption={'Mon téléphone'}
-          value={'+590 6 90 874 258'}
-          style={styles.listItem}
-          onPress={() => {
-            setInputItemKey(3);
-            setModalVisible(!modalVisible);
-          }}
-        />
-        <CommonText text="Localisation" style={styles.itemTitle} />
-        <ProfileInformationListItem
-          caption={'Mon dresse'}
-          value={'ABYMES 97139\nGuadeloupe'}
-          style={styles.listItem}
-          onPress={() => {
-            setInputItemKey(4);
-            setModalVisible(!modalVisible);
-          }}
-        />
-        <CommonText
-          text={
-            'Votre adresse postale n’est jamais rendue publique. Nous en avons besoin uniquement pour vous proposer un service géolocalisé'
-          }
-          style={styles.notice}
-        />
-      </ScrollView>
+    <ProfileCommonHeader title="Mes informations" onCancel={() => Actions.pop()}>
+      <CommonText text="Contact" style={styles.itemTitle} />
+      <ProfileInformationListItem
+        caption={'Mon téléphone'}
+        value={'+590 6 90 874 258'}
+        style={styles.listItem}
+        onPress={() => {
+          setInputItemKey(3);
+          setModalVisible(!modalVisible);
+        }}
+      />
+      <CommonText text="Localisation" style={styles.itemTitle} />
+      <ProfileInformationListItem
+        caption={'Mon dresse'}
+        value={'ABYMES 97139\nGuadeloupe'}
+        style={styles.listItem}
+        onPress={() => {
+          setInputItemKey(4);
+          setModalVisible(!modalVisible);
+        }}
+      />
+      <CommonText
+        text={
+          'Votre adresse postale n’est jamais rendue publique. Nous en avons besoin uniquement pour vous proposer un service géolocalisé'
+        }
+        style={styles.notice}
+      />
       <ProfileCommonModal
         visible={modalVisible}
         itemKey={inputItemKey}
@@ -48,7 +45,7 @@ const MyProInformationScreen = () => {
           setModalVisible(false);
         }}
       />
-    </View>
+    </ProfileCommonHeader>
   );
 };
 
@@ -80,4 +77,4 @@ const styles = {
   },
 };
 
-export default MyProInformationScreen;
+export default ProInformationScreen;

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, ScrollView, Text, Image, ActionSheetIOS } from 'react-native';
+import { View, TouchableOpacity, ScrollView, Text, Image, ActionSheetIOS, StatusBar } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
 import CommentText from 'view/components/text/CommentText';
 import { em, WIDTH, HEIGHT, hm } from 'view/common/const';
+import SmallText from 'view/components/text/SmallText';
 import { Actions } from 'react-native-router-flux';
 import ProfileCommonAvatar from 'view/components/view/ProfileCommonAvatar';
 import ProfileCommonCard from 'view/components/adapter/ProfileCommonCard';
@@ -10,36 +11,94 @@ import ProfileCommonListItem from 'view/components/adapter/ProfileCommonListItem
 import CommonButton from 'view/components/button/CommonButton';
 import AccountChangeMenu from './AccountChangeMenu';
 import { MyNeeds, Circles, Information, Setting, PurchasedPremium } from 'assets/svg/icons';
-import { ArrowUpWhite, ArrowDownBlack } from 'assets/svg/icons';
+import User from 'model/user/User';
+import AccountType from 'model/user/AccountType';
+import { feedbackIcons } from 'view/common/icons';
+import ParallaxScrollView from 'react-native-parallax-scroll-view';
 
-const originalMyProfile = {
-  avatar: '',
-  fullName: 'Mathieu Torin',
-  circles: { families: 0, friends: 0, neighbours: 0 },
-  needs: { helps: 0, donations: 0, events: 0 },
-};
+const originalMyProfile = new User(
+  'Mathieu Torin',
+  null,
+  null,
+  'mathieu@labul.com',
+  null,
+  null,
+  null,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  null,
+  '+590 6 90 874 258',
+  'ABYMES 97139 Guadeloupe'
+);
+const updatedMyProfile = new User(
+  'Mathieu Torin',
+  require('assets/images/tab_profile_off.png'),
+  null,
+  'mathieu@labul.com',
+  'Je suis disponible le soir et le week-end',
+  'En plus d’être quelqu’un de sympa je suis un grand bricoleur, je suis passionné par le bricolage et dans tout le type de petits travaux.',
+  ['Bricoleur', 'Jardinier'],
+  4,
+  7,
+  17,
+  24,
+  6,
+  2,
+  feedbackIcons,
+  '+590 6 90 874 258',
+  'ABYMES 97139 Guadeloupe'
+);
 const iconSize = { width: 38 * em, height: 38 * em };
 const ProfileHomeScreen = (props) => {
-  const [userProfile] = useState(props.userProfile ? props.userProfile : originalMyProfile);
+  const [userProfile] = useState(
+    props.route.params.purchased !== AccountType.LIGHT ? originalMyProfile : updatedMyProfile
+  );
   return (
-    <ScrollView style={styles.scrollView}>
-      <AccountChangeMenu
-        style={styles.dropDown}
-        type="my"
-        visible={props.route.params.purchased || props.userProfile ? true : false}
-      />
-      <View style={styles.topView}>
-        <ProfileCommonAvatar
-          style={styles.avatar}
-          fullName={userProfile.fullName}
-          icon={props.route.params.purchased ? require('assets/images/tab_profile_off.png') : undefined}
-          borderWidth={3 * em}
-        />
-        <TouchableOpacity onPress={() => Actions.profileOverview({ userProfile: userProfile })}>
-          <TitleText style={styles.txtFullName} text={userProfile.fullName} />
-          <CommentText style={styles.txtGoToProfile} text="Aller sur mon profil" />
-        </TouchableOpacity>
-      </View>
+    <ParallaxScrollView
+      // onScroll={onScroll}
+      headerBackgroundColor="#333"
+      backgroundColor="#ffffff"
+      stickyHeaderHeight={85 * hm}
+      parallaxHeaderHeight={HEIGHT * 0.45}
+      backgroundSpeed={10}
+      renderForeground={() => (
+        <View style={styles.topView}>
+          <ProfileCommonAvatar
+            style={styles.avatar}
+            fullName={userProfile.name}
+            icon={userProfile.photo}
+            borderWidth={3 * em}
+          />
+          <TouchableOpacity onPress={() => Actions.profileOverview({ userProfile: userProfile })}>
+            <TitleText style={styles.txtFullName} text={userProfile.name} />
+            <CommentText style={styles.txtGoToProfile} text="Aller sur mon profil" />
+          </TouchableOpacity>
+        </View>
+      )}
+      renderFixedHeader={() => (
+        <View key="fixed-header" style={styles.dropDown}>
+          <AccountChangeMenu
+            // style={styles.dropDown}
+            type="my"
+            visible={props.route.params.purchased || props.userProfile ? true : false}
+          />
+        </View>
+      )}
+      renderStickyHeader={() => (
+        <View key="sticky-header" style={{ marginTop: 18 * em, flex: 1, alignItems: 'center' }}>
+          <ProfileCommonAvatar
+            style={{ width: 30 * em, height: 30 * em }}
+            fullName={userProfile.name}
+            icon={userProfile.photo}
+            borderWidth={3 * em}
+          />
+          <SmallText text={userProfile.name.split(' ')[0]} color="#1E2D60" />
+        </View>
+      )}>
       <View style={styles.bottomView}>
         <View style={styles.cardContainer}>
           <ProfileCommonCard
@@ -66,7 +125,7 @@ const ProfileHomeScreen = (props) => {
             style={styles.listItem}
             icon={Information(iconSize)}
             onPress={() => {
-              Actions.myInformation();
+              Actions.myInformation({ userProfile: userProfile });
             }}
           />
           <View style={styles.line1} />
@@ -140,7 +199,7 @@ const ProfileHomeScreen = (props) => {
         <CommentText text={'Version 1.0'} style={styles.txtVersion} color={'#BFCDDB'} />
         <View style={styles.emptyView} />
       </View>
-    </ScrollView>
+    </ParallaxScrollView>
   );
 };
 
@@ -149,10 +208,10 @@ const styles = {
   dropDown: { right: 30 * em, top: 33 * hm, position: 'absolute', zIndex: 1 },
 
   topView: { height: HEIGHT * 0.45, backgroundColor: '#40CDDE', alignItems: 'center' },
-  avatar: { marginTop: 89 * hm, height: 70 * em, width: 70 * em },
+  avatar: { marginTop: 89 * hm, height: 70 * hm, width: 70 * hm },
   txtFullName: { marginTop: 0 * em, fontSize: 20 * em, color: '#FFFFFF', textAlign: 'center' },
   txtGoToProfile: { marginTop: 5 * hm, fontSize: 14 * em, color: '#FFFFFF', textAlign: 'center' },
-  scrollView: { width: WIDTH, backgroundColor: '#ffffff' },
+  scrollView: { width: WIDTH, backgroundColor: '#ffffff', marginTop: 0 * em },
   bottomView: {
     backgroundColor: '#FFFFFF',
     shadowColor: '#254D5612',
@@ -163,7 +222,7 @@ const styles = {
     paddingHorizontal: 30 * em,
     justifyContent: 'space-between',
     flexDirection: 'row',
-    marginTop: -HEIGHT * 0.07,
+    marginTop: -46 * em,
     marginBottom: 30 * hm,
   },
   cardStyle: {
@@ -182,7 +241,7 @@ const styles = {
     textAlign: 'left',
     marginLeft: 30 * em,
     fontWeight: '300',
-    marginBottom: 20 * em,
+    marginBottom: 20 * hm,
   },
   listItem: { marginLeft: 30 * em, marginRight: 30 * em },
   line1: {

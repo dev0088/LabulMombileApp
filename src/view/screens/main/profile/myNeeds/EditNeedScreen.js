@@ -22,96 +22,102 @@ const updateUserPrfile = {
 const EditNeedScreen = () => {
   const [userProfile] = useState(updateUserPrfile);
   return (
-    <View>
-      <ScrollView style={styles.container}>
-        <ProfileCommonHeader title="Modifier demande" onCancel={() => Actions.pop()} onFinish={() => Actions.pop()} />
-        <View style={styles.listItem}>
-          <View style={{ flexDirection: 'row', marginBottom: 15 * em, justifyContent: 'space-between' }}>
-            <CommentText text="PHOTOS" color="#6A8596" />
-            <CommentText text="3 maximum" color="#A0AEB8" />
-          </View>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
-            <ImageBackground
-              imageStyle={{ borderRadius: 15 * em }}
-              source={require('assets/images/sample_cover_9.png')}
-              style={styles.photo}>
-              <View style={styles.cancel}>
-                <CrossGray width={12 * em} height={12 * em} />
-              </View>
-            </ImageBackground>
-            <ImageBackground
-              imageStyle={{ borderRadius: 15 * em }}
-              source={require('assets/images/sample_cover_9.png')}
-              style={styles.photo}>
-              <View style={styles.cancel}>
-                <CrossGray width={12 * em} height={12 * em} />
-              </View>
-            </ImageBackground>
-            <View
-              imageStyle={{ borderRadius: 15 * em }}
-              style={[
-                styles.photo,
-                {
-                  borderWidth: 2 * em,
-                  borderColor: '#BFCDDB',
-                  borderStyle: 'dashed',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  flexDirection: 'column',
-                },
-              ]}>
-              <View style={styles.addPhoto}>
-                <EditAddPhoto width={32.86 * em} height={23 * em} />
-              </View>
-              <CommentText text="Clique ici" color="#40CDDE" />
+    <ProfileCommonHeader title="Modifier demande" onCancel={() => Actions.pop()} onFinish={() => Actions.pop()}>
+      <View style={styles.listItem}>
+        <View style={{ flexDirection: 'row', marginBottom: 15 * em, justifyContent: 'space-between' }}>
+          <CommentText text="PHOTOS" color="#6A8596" />
+          <CommentText text="3 maximum" color="#A0AEB8" />
+        </View>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
+          <ImageBackground
+            imageStyle={{ borderRadius: 15 * em }}
+            source={require('assets/images/sample_cover_9.png')}
+            style={styles.photo}>
+            <View style={styles.cancel}>
+              <CrossGray width={12 * em} height={12 * em} />
             </View>
+          </ImageBackground>
+          <ImageBackground
+            imageStyle={{ borderRadius: 15 * em }}
+            source={require('assets/images/sample_cover_9.png')}
+            style={styles.photo}>
+            <View style={styles.cancel}>
+              <CrossGray width={12 * em} height={12 * em} />
+            </View>
+          </ImageBackground>
+          <View
+            imageStyle={{ borderRadius: 15 * em }}
+            style={[
+              styles.photo,
+              {
+                borderWidth: 2 * em,
+                borderColor: '#BFCDDB',
+                borderStyle: 'dashed',
+                justifyContent: 'center',
+                alignItems: 'center',
+                flexDirection: 'column',
+              },
+            ]}>
+            <View style={styles.addPhoto}>
+              <EditAddPhoto width={32.86 * em} height={23 * em} />
+            </View>
+            <CommentText text="Clique ici" color="#40CDDE" />
           </View>
         </View>
-        <ProfileInformationListItem
-          caption={'Type de demande'}
-          titleUpperCase
-          value={'J’ai besoin/ coup de main'}
-          style={styles.listItem}
-        />
-        <ProfileInformationListItem
-          titleUpperCase
-          caption={'Catégorie'}
-          value={'Bricolage/ jardinage'}
-          style={styles.listItem}
-        />
-        <ProfileInformationListItem
-          titleUpperCase
-          caption={'Titre'}
-          value={'Récolter des figues'}
-          style={styles.listItem}
-        />
-        <ProfileInformationListItem
-          titleUpperCase
-          caption={'Description'}
-          value={
-            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos…'
-          }
-          style={styles.listItem}
-        />
-        <ProfileInformationListItem titleUpperCase caption={'Date'} value={'29 Fév · 14h00'} style={styles.listItem} />
-        <ProfileInformationListItem
-          titleUpperCase
-          caption={'Partagé avec'}
-          circleText={
-            <>
-              <Family width={28 * em} height={28 * em} />
-              <CommonText text={'Ma famille'} color="#1E2D60" style={{ marginLeft: 10 * em, alignSelf: 'center' }} />
-            </>
-          }
-          style={styles.listItem}
-        />
-        <CommonButton
-          text={'Supprimer mon compte'}
-          style={styles.deleteBtn}
-          textStyle={{ color: '#F9547B' }}
-          onPress={() => Actions.pop()}
-        />
-      </ScrollView>
+      </View>
+      <ProfileInformationListItem
+        caption={'Type de demande'}
+        titleUpperCase
+        value={'J’ai besoin/ coup de main'}
+        style={styles.listItem}
+      />
+      <ProfileInformationListItem
+        titleUpperCase
+        caption={'Catégorie'}
+        value={'Bricolage/ jardinage'}
+        style={styles.listItem}
+      />
+      <ProfileInformationListItem
+        titleUpperCase
+        caption={'Titre'}
+        value={'Récolter des figues'}
+        noClick
+        style={styles.listItem}
+      />
+      <ProfileInformationListItem
+        titleUpperCase
+        caption={'Description'}
+        noClick
+        value={
+          'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos…'
+        }
+        style={styles.listItem}
+      />
+      <ProfileInformationListItem
+        titleUpperCase
+        caption={'Date'}
+        noClick
+        value={'29 Fév · 14h00'}
+        style={styles.listItem}
+      />
+      <ProfileInformationListItem
+        titleUpperCase
+        caption={'Partagé avec'}
+        circleText={
+          <>
+            <Family width={28 * em} height={28 * em} />
+            <CommonText text={'Ma famille'} color="#1E2D60" style={{ marginLeft: 10 * em, alignSelf: 'center' }} />
+          </>
+        }
+        style={styles.listItem}
+      />
+      <CommonButton
+        text={'Supprimer mon compte'}
+        style={styles.deleteBtn}
+        textStyle={{ color: '#F9547B' }}
+        onPress={() => Actions.pop()}
+      />
+
       {/* <ProfileCommonModal
         visible={modalVisible}
         itemKey={inputItemKey}
@@ -120,7 +126,7 @@ const EditNeedScreen = () => {
           setModalVisible(false);
         }}
       /> */}
-    </View>
+    </ProfileCommonHeader>
   );
 };
 

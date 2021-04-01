@@ -2,41 +2,53 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { em } from 'view/common/const';
 import TitleText from 'view/components/text/TitleText';
+import SmallText from 'view/components/text/SmallText';
 
 const PurchaseMenuCard = (props) => {
   var psStyle = {
     borderColor: '#ffffff',
-    marginTop: 25 * em,
-    marginBottom: 15 * em,
     bgColor: '#BFCDDB',
   };
   if (props.selected) {
     psStyle.borderColor = props.name === 'Pro' ? '#7398FD' : '#41D0E2';
     psStyle.bgColor = props.name === 'Pro' ? '#7398FD' : '#41D0E2';
-    psStyle.marginTop = 35 * em;
-    psStyle.marginBottom = 19 * em;
   }
+  const shadow = {
+    elevation: 2,
+    shadowColor: '#A7A7A733',
+    shadowOffset: {
+      width: 0,
+      height: 8 * em,
+    },
+    shadowRadius: 22 * em,
+  };
   return (
-    <View style={[styles.container, props.style, { borderColor: psStyle.borderColor }]}>
-      <Text style={[styles.title, { backgroundColor: psStyle.bgColor }]}>{props.name}</Text>
+    <View
+      style={[
+        styles.container,
+        props.selected || props.noMore ? { elevation: 0 } : shadow,
+        props.style,
+        { borderColor: psStyle.borderColor },
+      ]}>
+      <Text
+        style={[
+          styles.title,
+          { backgroundColor: psStyle.bgColor, borderColor: props.noMore ? '#ffffff' : 'transparent' },
+        ]}>
+        {props.name}
+      </Text>
       <TitleText text={props.price} style={styles.price} />
       <TitleText text={'par mois'} style={{ marginBottom: 17 * em, fontSize: 12 * em, lineHeight: 14 * em }} />
       <View style={[styles.containerTxt, { width: props.txtWidth }]}>
         <Text style={styles.comment}>{props.commentRadius}</Text>
-        <Text style={styles.comment}>{props.comment}</Text>
+        <Text style={[styles.comment, { color: '#6A8596' }]}>{props.comment}</Text>
       </View>
-      {!props.moreBtn && (
-        <Text
-          style={[
-            styles.addTxt,
-            {
-              color: props.name === 'Pro' ? '#7398FD' : '#41D0E2',
-              marginTop: psStyle.marginTop,
-              marginBottom: psStyle.marginBottom,
-            },
-          ]}>
-          En savoir plus
-        </Text>
+      {!props.noMore && (
+        <SmallText
+          style={[styles.addTxt, { bottom: props.name === 'Pro' ? 15 * em : 19 * em }]}
+          color={props.name === 'Pro' ? '#7398FD' : '#41D0E2'}
+          text="En savoir plus"
+        />
       )}
     </View>
   );
@@ -44,21 +56,20 @@ const PurchaseMenuCard = (props) => {
 
 const styles = {
   container: {
+    paddingHorizontal: 15 * em,
     backgroundColor: '#ffffff',
     borderRadius: 18 * em,
     borderWidth: 3 * em,
-    elevation: 2,
+
     alignItems: 'center',
   },
   title: {
-    backgroundColor: '#40CDDE',
+    fontFamily: 'Lato-Bold',
     borderRadius: 17 * em,
     color: '#FFFFFF',
-    paddingTop: 4 * em,
     fontSize: 18 * em,
-    paddingLeft: 17 * em,
-    paddingRight: 17 * em,
-    paddingBottom: 4 * em,
+    paddingHorizontal: 18 * em,
+    paddingVertical: 4 * em,
     lineHeight: 22 * em,
     marginTop: -15 * em,
     borderWidth: 1 * em,
@@ -67,7 +78,7 @@ const styles = {
   price: { marginTop: 25 * em, fontSize: 25 * em, lineHeight: 30 * em },
   containerTxt: { width: 120 * em, height: 30 * em },
   comment: { fontSize: 9 * em, lineHeight: 14 * em, textAlign: 'center', color: '#1E2D60', fontFamily: 'Lato-Regular' },
-  addTxt: { color: '#40CDDE', fontSize: 12 * em, lineHeight: 14 * em },
+  addTxt: { position: 'absolute', fontSize: 12 * em, lineHeight: 14 * em },
 };
 
 export default PurchaseMenuCard;

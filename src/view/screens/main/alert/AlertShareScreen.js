@@ -92,7 +92,7 @@ const styles = {
     marginTop: 35 * hm,
     lineHeight: 38 * em,
   },
-  searchBox: { marginTop: 35 * hm },
+  searchBox: { marginTop: 35 * hm, height: 52 * hm },
   location: {
     alignSelf: 'center',
     marginTop: 15 * hm,

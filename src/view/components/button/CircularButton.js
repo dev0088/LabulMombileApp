@@ -5,16 +5,16 @@ import { TouchableOpacity } from 'react-native';
 import { MabulGive, MabulNeed, MabulSell, MabulOrganize } from 'assets/svg/icons';
 
 const CircularButton = (props) => {
-  let imageTag = <MabulOrganize styles={styles.buttonImage} />;
+  let imageTag = MabulOrganize(styles.buttonImage);
   let text = "J'organisé";
   if (props.type === 'sell') {
-    imageTag = <MabulSell styles={styles.buttonImage} />;
+    imageTag = MabulSell(styles.buttonImage);
     text = 'Je vends';
   } else if (props.type === 'need') {
-    imageTag = <MabulNeed styles={styles.buttonImage} />;
+    imageTag = MabulNeed(styles.buttonImage);
     text = "J'ai besoin";
   } else if (props.type === 'give') {
-    imageTag = <MabulGive styles={styles.buttonImage} />;
+    imageTag = MabulGive(styles.buttonImage);
     text = 'Je donne';
   }
   return (

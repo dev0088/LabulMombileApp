@@ -9,6 +9,7 @@ import CommonListItem from 'view/components/adapter/CommonListItem';
 import AvatarWithBadge from 'view/components/view/AvatarWithBadge';
 import { NotificationGray } from 'assets/svg/icons';
 import { NotificationBlue } from 'assets/svg/icons';
+import { Actions } from 'react-native-router-flux';
 
 const notificationUsers = [
   {
@@ -42,13 +43,13 @@ const MyNotificationsScreen = () => {
   const emptyView = (
     <TouchableOpacity style={styles.emptyView} onPress={() => setIsEmpty(!isEmpty)}>
       <View style={styles.notificationIcon1}>
-        <NotificationGray width={17.31 * hm} height={17.31 * hm} />
+        <NotificationGray width={17.31 * em} height={17.31 * em} />
       </View>
       <View style={styles.notificationIcon2}>
-        <NotificationGray width={8.31 * hm} height={8.31 * hm} />
+        <NotificationGray width={8.31 * em} height={8.31 * em} />
       </View>
       <View style={styles.msgIcon}>
-        <NotificationGray width={37 * hm} height={37 * hm} />
+        <NotificationGray width={37 * em} height={37 * em} />
       </View>
       <CommonText text={'Tu n’as pas encore de notifications'} color={'#6A8596'} style={styles.msgTxt} />
       <CommentText
@@ -78,6 +79,7 @@ const MyNotificationsScreen = () => {
       }
       style={styles.listItem}
       rightView={<CommentText text={item.date} style={styles.listItemDate} />}
+      onPress={() => Actions.friendNeed()}
     />
   );
   const listView = <FlatList data={notificationUsers} renderItem={renderFlatList} keyExtractor={(i) => i.id} />;
@@ -91,7 +93,7 @@ const MyNotificationsScreen = () => {
               navigationRef.current.navigate('Activity');
             }}>
             <View style={styles.notificationBtn}>
-              <NotificationBlue width={19 * hm} height={22 * hm} />
+              <NotificationBlue width={19 * em} height={22 * em} />
             </View>
           </TouchableOpacity>
         </View>
@@ -111,7 +113,6 @@ const styles = {
   notificationIcon1: { position: 'absolute', left: 103.85 * em, transform: [{ rotate: '45deg' }] },
   notificationIcon2: { position: 'absolute', top: 17.31 * hm, left: 190.35 * em, transform: [{ rotate: '-45deg' }] },
   header: {
-    height: 146 * hm,
     width: '100%',
     backgroundColor: '#ffffff',
     marginTop: 0,
@@ -119,9 +120,8 @@ const styles = {
   },
   notificationBtn: { alignSelf: 'flex-end', marginRight: 30 * em, marginTop: 39 * hm },
   title: {
-    fontSize: 34 * hm,
-    lineHeight: 38 * hm,
-    height: 40 * hm,
+    fontSize: 34 * em,
+    lineHeight: 38 * em,
     textAlign: 'left',
     marginLeft: 30 * em,
     marginTop: 20 * hm,
@@ -137,7 +137,7 @@ const styles = {
   emptyView: {
     marginTop: 109 * hm,
     width: 315 * em,
-    height: 148.15 * hm,
+    // height: 148.15 * em,
     alignSelf: 'center',
   },
   msgIcon: { marginTop: 13.15 * hm, alignSelf: 'center' },
@@ -148,18 +148,15 @@ const styles = {
     lineHeight: 23 * em,
   },
   explainTxt: {
-    marginTop: 10 * em,
+    marginTop: 10 * hm,
     lineHeight: 23 * em,
     width: 289 * em,
     textAlign: 'center',
     alignSelf: 'center',
   },
-  listItem: {
-    marginBottom: 35 * hm,
-    width: '100%',
-  },
-  listItemUserName: { color: '#1E2D60', lineHeight: 21 * hm, fontFamily: 'Lato-Black' },
-  listItemComment: { color: '#A0AEB8', lineHeight: 18 * hm },
+  listItem: { marginBottom: 35 * hm, width: '100%' },
+  listItemUserName: { color: '#1E2D60', lineHeight: 21 * em, fontFamily: 'Lato-Black' },
+  listItemComment: { color: '#A0AEB8', lineHeight: 18 * em },
   listItemDate: { color: '#A0AEB8', fontSize: 13 * em, textAlign: 'right' },
   listItemNotification: { marginLeft: 55 * em, textAlign: 'left', color: '#1E2D60' },
 };

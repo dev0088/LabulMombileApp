@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { View, ScrollView } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import CommonButton from 'view/components/button/CommonButton';
 import { Actions } from 'react-native-router-flux';
 import NeedService from 'model/service/NeedService';
 import NeedServiceType from 'model/service/NeedServiceType';
 import User from 'model/user/User';
 import AvatarWithBadge from 'view/components/view/AvatarWithBadge';
-import FriendInvitePopupScreen from 'view/screens/main/friends/FriendInvitePopupScreen';
+import FriendInvitePopupScreen from 'view/screens/main/friends/popup/FriendInvitePopupScreen';
 import { LocationPink, Alert } from 'assets/svg/icons/index.js';
 import CommonListItem from 'view/components/adapter/CommonListItem';
 import CommonBackButton from 'view/components/button/CommonBackButton';
@@ -46,7 +46,7 @@ const MyAlertScreen = () => {
       <View style={styles.cover}>
         <Alert width={80.59 * em} height={65.25 * em} />
       </View>
-      <ScrollView style={styles.body}>
+      <View style={styles.body}>
         <CommonListItem
           icon={
             <AvatarWithBadge
@@ -72,7 +72,7 @@ const MyAlertScreen = () => {
         {data.status === 'canceled' ? <></> : data.relationship ? AskButton : ModifyButton}
         {data.status !== 'canceled' && InviteButton}
         <View style={{ height: 130 * em }} />
-      </ScrollView>
+      </View>
       <CommonBackButton dark style={styles.backBtn} />
       <FriendInvitePopupScreen visible={invitePopupVisible} onPress={() => setInvitePopupVisible(false)} />
     </View>
@@ -87,19 +87,19 @@ const styles = {
   backBtn: { position: 'absolute', backgroundColor: '#ffffff', left: 15 * em },
   cover: {
     width: '100%',
-    height: 312 * em,
+    height: 312 * hm,
     backgroundColor: '#FEE0E7',
     alignItems: 'center',
     justifyContent: 'center',
   },
   body: {
-    marginTop: -41 * em,
+    marginTop: -60 * hm,
     borderTopRightRadius: 28 * em,
     borderTopLeftRadius: 28 * em,
     backgroundColor: '#ffffff',
     width: '100%',
     paddingHorizontal: 30 * em,
-    paddingTop: 38 * em,
+    paddingTop: 38 * hm,
   },
 
   title: {
@@ -107,20 +107,13 @@ const styles = {
     lineHeight: 30 * em,
     fontSize: 24 * em,
     textAlign: 'left',
-    marginTop: 24 * em,
-    marginBottom: 14 * em,
+    marginTop: 24 * hm,
+    marginBottom: 14 * hm,
     fontWeight: 'bold',
   },
-  quizBtn: { marginTop: 25 * em, backgroundColor: '#FEE0E7' },
-  inviteBtn: { marginTop: 15 * em, backgroundColor: 'transparent', color: '#F9547B' },
+  quizBtn: { marginTop: 25 * hm, backgroundColor: '#FEE0E7' },
+  inviteBtn: { marginTop: 15 * hm, backgroundColor: 'transparent', color: '#F9547B' },
 
-  btnBox: {
-    paddingLeft: 26 * em,
-    paddingRight: 26 * em,
-    paddingTop: 15 * em,
-    paddingBottom: 22 * em,
-    backgroundColor: '#ffffff',
-  },
 };
 
 export default MyAlertScreen;

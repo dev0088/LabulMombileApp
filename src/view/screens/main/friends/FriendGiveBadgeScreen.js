@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { View, ScrollView, TouchableOpacity } from 'react-native';
-import { em, WIDTH } from 'view/common/const';
+import { em, WIDTH, hm } from 'view/common/const';
 import CommonText from 'view/components/text/CommonText';
 import TitleText from 'view/components/text/TitleText';
 import ProfileCommonAvatar from 'view/components/view/ProfileCommonAvatar';
 import CommentText from 'view/components/text/CommentText';
 import CommonButton from 'view/components/button/CommonButton';
-import FriendBadgeNoticePopupScreen from './FriendBadgeNoticePopupScreen';
+import FriendBadgeNoticePopupScreen from './popup/FriendBadgeNoticePopupScreen';
 import {
   Ambianceur,
   Aperitif,
@@ -102,12 +102,12 @@ const styles = {
     flex: 1,
     backgroundColor: '#40CDDE',
   },
-  backBtn: { position: 'absolute', zIndex: 1, backgroundColor: '#ffffff', top: 27 * em, left: 15 * em },
+  backBtn: { position: 'absolute', zIndex: 1, backgroundColor: '#ffffff', top: 27 * hm, left: 15 * em },
   scrollView: {
     backgroundColor: '#40CDDE',
   },
   badgeCard: {
-    marginBottom: 35 * em,
+    marginBottom: 35 * hm,
   },
   circleContainer: {
     alignItems: 'center',
@@ -132,18 +132,19 @@ const styles = {
     backgroundColor: '#ffffff',
     borderTopRightRadius: 20 * em,
     borderTopLeftRadius: 20 * em,
-    marginTop: 47 * em,
+    marginTop: 47 * hm,
     flex: 1,
-    paddingHorizontal: 30 * em,
+    paddingHorizontal: 30 * hm,
+    paddingBottom: 80 * hm,
   },
   avatar: {
     marginTop: (-97 / 2) * em,
     width: 97 * em,
     height: 97 * em,
   },
-  title: { marginTop: 10 * em, marginBottom: 10 * em, fontFamily: 'Lato-Bold' },
-  comment: { fontSize: 22 * em, marginTop: 10 * em, marginBottom: 5 * em },
-  notice: { marginTop: 5 * em, marginBottom: 35 * em },
+  title: { marginTop: 10 * hm, marginBottom: 10 * hm, fontFamily: 'Lato-Bold' },
+  comment: { fontSize: 22 * em, marginTop: 10 * hm, marginBottom: 5 * hm },
+  notice: { marginTop: 5 * hm, marginBottom: 35 * hm },
   circlesView: {
     flexDirection: 'row',
     marginLeft: 0.072 * WIDTH,
@@ -157,33 +158,13 @@ const styles = {
     backgroundColor: '#ffffff',
     borderTopLeftRadius: 20 * em,
     borderTopRightRadius: 20 * em,
-    marginTop: 15 * em,
+    marginTop: 15 * hm,
     height: 321 * em,
   },
   noticeText: {
-    marginBottom: 60 * em,
-    fontWeight: 'bold',
+    marginBottom: 60 * hm,
   },
-  keywordTab: {
-    paddingVertical: 5 * em,
-    paddingHorizontal: 10 * em,
-    fontSize: 12 * em,
-    lineHeight: 14 * em,
-    backgroundColor: '#F0F5F7',
-    borderRadius: 19 * em,
-    color: '#6A8596',
-  },
-  keywordTabView: {
-    paddingVertical: 5 * em,
-    paddingHorizontal: 10 * em,
-  },
-  addBtn: {
-    paddingVertical: 10 * em,
-    paddingHorizontal: 20 * em,
-    width: 160 * em,
-    fontSize: 12 * em,
-    lineHeight: 15 * em,
-  },
+
   badgeIcon: {
     width: 60 * em,
     height: 60 * em,

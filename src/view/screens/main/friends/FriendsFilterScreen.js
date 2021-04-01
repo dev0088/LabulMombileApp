@@ -6,8 +6,8 @@ import CommonListItem from 'view/components/adapter/CommonListItem';
 import CommonText from 'view/components/text/CommonText';
 import Switch from 'view/components/other/Switch';
 import { Actions } from 'react-native-router-flux';
-import FriendsFilterRequestModalScreen from './FriendsFilterRequestModalScreen';
-import FriendsFilterDateModalScreen from './FriendsFilterDateModalScreen';
+import FriendsFilterRequestModalScreen from './popup/FriendsFilterRequestModalScreen';
+import FriendsFilterDateModalScreen from './popup/FriendsFilterDateModalScreen';
 import FriendCommonHeader from 'view/components/header/FriendCommonHeader';
 import { Calendar, TypeRequest, Address } from 'assets/svg/icons';
 const FriendsFilterScreen = () => {
@@ -17,7 +17,7 @@ const FriendsFilterScreen = () => {
   return (
     <View style={styles.container}>
       <FriendCommonHeader title="Filtrer" />
-      <View>
+      <View style={{ marginTop: 35 * hm }}>
         <FriendsFilterListItem
           title={'Type de demande'}
           defaultSetting={'Tous'}

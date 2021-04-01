@@ -1,33 +1,33 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import Accordion from 'react-native-collapsible/Accordion';
 import CommentText from 'view/components/text/CommentText';
 import CommonHeader from 'view/components/header/CommonHeader';
 import { RightArrow, LeftArrow } from 'assets/svg/icons';
 const sections = [
-  { title: 'Politique de confidentialité1', content: '' },
+  { title: 'Politique\nde confidentialité', content: '' },
   {
-    title: 'Politique de confidentialité2',
+    title: 'Politique\nde confidentialité',
     content:
       'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna.',
   },
-  { title: 'Politique de confidentialité3', content: '' },
-  { title: 'Politique de confidentialité4', content: '' },
-  { title: 'Politique de confidentialité5', content: '' },
-  { title: 'Politique de confidentialité', content: '' },
+  { title: 'Politique\nde confidentialité', content: '' },
+  { title: 'Politique\nde confidentialité', content: '' },
+  { title: 'Politique\nde confidentialité', content: '' },
+  { title: 'Politique\nde confidentialité', content: '' },
 ];
 
 const PrivacyPolicyScreen = () => {
   const [activeSections, setActiveSections] = useState([]);
   const _renderHeader = (section, index, isActive) => {
     const Arrow = !isActive ? (
-      <View style={{ marginTop: 8 * em, transform: [{ rotate: '-90deg' }] }}>
+      <View style={{ transform: [{ rotate: '-90deg' }] }}>
         <LeftArrow width={11 * em} height={18 * em} />
       </View>
     ) : (
-      <View style={{ marginTop: 8 * em, transform: [{ rotate: '-90deg' }] }}>
+      <View style={{ transform: [{ rotate: '-90deg' }] }}>
         <RightArrow width={11 * em} height={18 * em} />
       </View>
     );
@@ -51,7 +51,7 @@ const PrivacyPolicyScreen = () => {
   };
   return (
     <ScrollView style={styles.container}>
-      <CommonHeader dark style={{ martinTop: 27 * em }} />
+      <CommonHeader dark style={{ marginTop: 27 * hm, marginBottom: 10 * hm }} />
       <TitleText text={'Politique\nde confidentialité'} style={styles.title} />
       <View style={styles.line} />
       <Accordion
@@ -70,21 +70,20 @@ const styles = {
   container: { backgroundColor: '#FFFFFF' },
   title: {
     lineHeight: 38 * em,
-    width: 231 * em,
     textAlign: 'left',
     marginLeft: 30 * em,
-    paddingBottom: 35 * em,
+    paddingBottom: 35 * hm,
   },
   line: { height: 10 * em, backgroundColor: '#F0F5F7' },
   sectionStyle: {
-    paddingVertical: 10 * em,
+    paddingVertical: 10 * hm,
     borderBottomWidth: 10 * em,
     borderBottomColor: '#F0F5F7',
     paddingHorizontal: 30 * em,
   },
-  header: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 15 * em },
+  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' },
   headerText: { width: 260 * em, fontSize: 24 * em, lineHeight: 29 * em, textAlign: 'left', color: '#1E2D60' },
-  contentText: { textAlign: 'left', lineHeight: 25 * em, marginBottom: 10 * em },
+  contentText: { textAlign: 'left', lineHeight: 25 * em, marginBottom: 10 * hm },
 };
 
 export default PrivacyPolicyScreen;

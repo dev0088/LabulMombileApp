@@ -9,7 +9,7 @@ import MabulDetailView from 'view/components/view/MabulDetailView';
 const organizeData = Object.assign(
   new OrganizeService(
     new User('Mathieu Torin', require('assets/images/sample_user_2.png'), 'anton@gmail.com'),
-    'J’organise Atelier',
+    'J’organise Apéro',
     'Universitaire',
     new Date(),
     require('assets/images/sample_cover_10.png'),

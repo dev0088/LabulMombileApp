@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { em,hm } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import CommonHeader from 'view/components/header/CommonHeader';
 import Switch from 'view/components/other/Switch';
 import CommonListItem from 'view/components/adapter/CommonListItem';
@@ -22,9 +22,10 @@ const MySettingScreen = () => {
         subTitleStyle={styles.listComment}
         rightView={
           <Switch
+          value={1}
             switchWidth={49 * em}
-            switchHeight={27 * hm}
-            switchdirection="rtl"
+            switchHeight={27 * em}
+            switchdirection="ltr"
             switchBorderColor="#ffffff"
             switchBackgroundColor="#40CDDE"
             btnBorderColor="red"
@@ -49,8 +50,8 @@ const MySettingScreen = () => {
         rightView={
           <Switch
             switchWidth={49 * em}
-            switchHeight={27 * hm}
-            switchdirection="rtl"
+            switchHeight={27 * em}
+            switchdirection="ltr"
             switchBorderColor="#ffffff"
             switchBackgroundColor="#40CDDE"
             btnBorderColor="red"
@@ -92,7 +93,7 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     width: 39 * em,
-    height: 39 * hm,
+    height: 39 * em,
     borderRadius: 20 * em,
   },
   containerTxt: {
@@ -105,6 +106,7 @@ const styles = {
     fontSize: 18 * em,
     lineHeight: 23 * hm,
     textAlign: 'left',
+    marginBottom: 7 * em,
     color: 'rgba(30, 45, 96, 1)',
   },
   listComment: {

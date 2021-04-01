@@ -99,7 +99,7 @@ const styles = {
   header: { marginRight: 30 * em, marginBottom: 18 * hm, marginTop: 25 * hm, alignSelf: 'flex-end' },
   body: { marginLeft: 30 * em, marginRight: 30 * em },
   title: { marginBottom: 17 * hm, alignSelf: 'flex-start' },
-  searchbox: { marginBottom: 29 * hm, height: 34 * hm },
+  searchbox: { marginBottom: 29 * hm, height: 52 * hm },
   listItem: { marginBottom: 35 * hm },
 };
 export default FriendInvitePopupScreen;

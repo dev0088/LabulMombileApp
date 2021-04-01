@@ -5,6 +5,7 @@ import SmallText from 'view/components/text/SmallText';
 
 const ProfileCommonTextInput = (props) => {
   const [onFocus, setOnFocus] = useState(!props.onFocus);
+  const [value, setValue] = useState(props.value);
   return (
     <View style={[onFocus ? styles.containerFocusOn : styles.containerFocusOff, props.style]}>
       <SmallText
@@ -17,8 +18,10 @@ const ProfileCommonTextInput = (props) => {
         onFocus={() => setOnFocus(true)}
         onBlur={() => setOnFocus(false)}
         multiline={true}
-        value={props.value}
+        value={value}
+        onChangeText={(text) => setValue(text)}
         selectionColor="#40CDDE"
+        keyboardType={props.keyboardType || 'default'}
       />
     </View>
   );

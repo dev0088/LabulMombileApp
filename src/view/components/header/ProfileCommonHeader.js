@@ -1,48 +1,55 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
-import { em,hm } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import CommonText from 'view/components/text/CommonText';
 import TitleText from 'view/components/text/TitleText';
+import CommonHeader from './CommonHeader';
+import ParallaxScrollView from 'react-native-parallax-scroll-view';
 
 const ProfileCommonHeader = (props) => {
   return (
-    <View style={[styles.container, props.style]}>
-      <View style={styles.containerTxtBtn}>
-        <TouchableOpacity onPress={() => props.onCancel()}>
-          <CommonText text={'Annuler'} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => props.onFinish()}>
-          <CommonText text={'Terminer'} color={'#40CDDE'} />
-        </TouchableOpacity>
-      </View>
-      <TitleText text={props.title} style={styles.title} />
-    </View>
+    <ParallaxScrollView
+      contentContainerStyle={styles.container}
+      headerBackgroundColor="#333"
+      backgroundColor="#ffffff"
+      stickyHeaderHeight={81 * hm}
+      parallaxHeaderHeight={139 * hm}
+      backgroundSpeed={10}
+      renderFixedHeader={() => (
+        <CommonHeader
+          rightTxt={'Terminer'}
+          style={{ position: 'absolute', top: 40 * hm }}
+          onRightPress={props.onFinish}
+          onLeftPress={props.onCancel}
+          leftTxt={'Annuler'}
+          rightTxtStyle={styles.rightTxt}
+        />
+      )}
+      renderForeground={() => <TitleText text={props.title} style={styles.title} />}
+      renderStickyHeader={() => (
+        <View key="sticky-header" style={{ marginTop: 40 * hm, flex: 1, alignItems: 'center' }}>
+          <CommonText text={props.title} color="#1E2D60" style={{ fontFamily: 'Lato-Bold' }} />
+        </View>
+      )}>
+      {props.children}
+    </ParallaxScrollView>
   );
 };
 
 const styles = {
   container: {
-    width: '100%',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#F0F5F7',
   },
-  containerTxtBtn: {
-    width: 318 * em,
-    marginLeft: 30 * em,
-    marginRight: 27 * em,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 15 * em,
-    marginTop: 13.5 * em,
-  },
+  commonHeader: { position: 'absolute', marginBottom: 23 * hm, marginTop: 40 * hm },
   title: {
     marginLeft: 30 * em,
     lineHeight: 38 * hm,
     backgroundColor: '#ffffff',
-    marginTop: 15 * em,
-    marginBottom: 25 * em,
+    // marginBottom: 25 * hm,
     textAlign: 'left',
+    marginTop: 81 * hm,
   },
+  rightTxt: { color: '#40CDDE', fontSize: 16 * em, marginRight: 12 * em },
 };
 
 export default ProfileCommonHeader;

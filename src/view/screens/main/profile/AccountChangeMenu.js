@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import { View, TouchableOpacity, Image, StatusBar } from 'react-native';
-import { em, hexToRGB } from 'view/common/const';
+import { em, hexToRGB, hm } from 'view/common/const';
 import Modal from 'react-native-modal';
 import CommonListItem from 'view/components/adapter/CommonListItem';
-import CommonText from 'view/components/text/CommonText';
 import { Actions } from 'react-native-router-flux';
-import { ArrowUpWhite, ArrowDownBlack } from 'assets/svg/icons';
+import AccountType from 'model/user/AccountType';
 
 const profileTypes = {
   my: { avatar: require('assets/images/tab_profile_off.png'), name: 'Mathieu Torin' },
   pro: { avatar: require('assets/images/avatar_curology.png'), name: 'Curology' },
 };
-
 const AccountChangeMenu = (props) => {
   const [menuVisible, setMenuVisible] = useState(false);
   return (
@@ -23,32 +21,46 @@ const AccountChangeMenu = (props) => {
         style={styles.modal}
         backdropColor={'#1E2D60'}
         swipeDirection={'up'}>
-        <StatusBar backgroundColor="rgba(30, 45, 96, 0.8)" barStyle="light-content" />
-        <DropDownButton style={props.style} type={props.type} onPress={() => setMenuVisible(true)} modal />
-        <View style={styles.menu}>
-          <CommonListItem
-            onPress={() => setMenuVisible(false)}
-            title="Leaves"
-            titleStyle={styles.menuCaption}
-            style={{ marginBottom: 25 * em }}
-            icon={<Image style={styles.menuIcon} />}
+        <StatusBar backgroundColor={'rgba(30, 45, 96, 0.9)'} barStyle="light-content" />
+        <View
+          style={{
+            justifyContent: 'flex-start',
+            alignItems: 'flex-end',
+            flex: 1,
+            backgroundColor: 'rgba(30, 45, 96, 0.9)',
+            width: '100%',
+          }}>
+          <DropDownButton
+            style={{ marginRight: 30 * em, marginTop: 30 * hm }}
+            type={props.type}
+            onPress={() => setMenuVisible(true)}
+            modal
           />
-          <CommonListItem
-            title={props.type !== 'my' ? profileTypes.my.name : profileTypes.pro.name}
-            titleStyle={styles.menuCaption}
-            icon={
-              <Image
-                style={styles.menuIcon}
-                source={props.type !== 'my' ? profileTypes.my.avatar : profileTypes.pro.avatar}
-              />
-            }
-            onPress={() => {
-              setMenuVisible(false);
-              props.type !== 'my'
-                ? Actions.main({ tabNav: 'Profile', purchased: 'light' })
-                : Actions.main({ tabNav: 'ProProfile', purchased: 'light' });
-            }}
-          />
+          <View style={styles.menu}>
+            <CommonListItem
+              onPress={() => setMenuVisible(false)}
+              title="Leaves"
+              titleStyle={styles.menuCaption}
+              style={{ marginBottom: 25 * hm }}
+              icon={<Image style={styles.menuIcon} />}
+            />
+            <CommonListItem
+              title={props.type !== 'my' ? profileTypes.my.name : profileTypes.pro.name}
+              titleStyle={styles.menuCaption}
+              icon={
+                <Image
+                  style={styles.menuIcon}
+                  source={props.type !== 'my' ? profileTypes.my.avatar : profileTypes.pro.avatar}
+                />
+              }
+              onPress={() => {
+                setMenuVisible(false);
+                props.type !== 'my'
+                  ? Actions.main({ tabNav: 'Profile', purchased: AccountType.LIGHT })
+                  : Actions.main({ tabNav: 'ProProfile', purchased: AccountType.PRO });
+              }}
+            />
+          </View>
         </View>
       </Modal>
     </View>
@@ -66,7 +78,7 @@ const styles = {
     shadowColor: '#254D5612',
     shadowOffset: {
       width: 0,
-      height: 16 * em,
+      height: 16 * hm,
     },
     shadowRadius: 24 * em,
   },
@@ -97,18 +109,16 @@ const styles = {
   menuIcon: {
     width: 28 * em,
     height: 28 * em,
-    backgroundColor: 'green',
     marginRight: 10 * em,
     borderRadius: 14 * em,
   },
   menu: {
+    marginRight: 30 * em,
     paddingHorizontal: 15 * em,
     paddingVertical: 25 * em,
     borderRadius: 20 * em,
     backgroundColor: '#FFFFFF',
-    position: 'absolute',
-    top: 95 * em,
-    left: 175 * em,
+    marginTop: 10 * hm,
     width: 170 * em,
   },
 };
@@ -121,7 +131,11 @@ const DropDownButton = (props) => (
       {
         borderWidth: props.modal ? 1 * em : 0,
         borderColor: '#FFFFFF',
-        backgroundColor: props.modal ? 'transparent' : hexToRGB('#FFFFFF', 0.5),
+        backgroundColor: props.modal
+          ? 'transparent'
+          : props.type !== 'my'
+          ? 'rgba(96,131,231,0.5)'
+          : 'rgba(47,188,205,0.5)',
       },
     ]}
     onPress={() => props.onPress()}>

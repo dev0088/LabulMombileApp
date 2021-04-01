@@ -6,48 +6,14 @@ import ProfileCommonTextInput from 'view/components/textInput/ProfileCommonTextI
 import CommonText from 'view/components/text/CommonText';
 import SearchBox from 'view/components/other/SearchBox';
 import CommonCheckBox from 'view/components/checkbox/CommonCheckBox';
-import {
-  Ambianceur,
-  Aperitif,
-  Benevolent,
-  Bricologe,
-  Confidence,
-  Discret,
-  Dishes,
-  Helpful,
-  GoodNeighbor,
-  GoodHost,
-  HandHeart,
-  Hypersociable,
-  Resourceful,
-  WellLiving,
-  SwissKnife,
-} from 'assets/svg/icons';
-import { StatusBar, View, Text } from 'react-native';
-
-const iconSize = { width: 34 * em, height: 34 * em };
-const feedbackIcons = [
-  { id: 0, name: 'Le discret/ pas intrusif', icon: Discret(iconSize) },
-  { id: 1, name: 'Le pro du bricolage', icon: Bricologe(iconSize) },
-  { id: 2, name: 'Le pro des p’tits plats', icon: Dishes(iconSize) },
-  { id: 3, name: 'Dingue de confiance', icon: Confidence(iconSize) },
-  { id: 4, name: 'Hypersociable', icon: Hypersociable(iconSize) },
-  { id: 5, name: 'Bon hôte', icon: GoodHost(iconSize) },
-  { id: 6, name: 'Pro des Apèros', icon: Aperitif(iconSize) },
-  { id: 7, name: 'La main sur le coeur', icon: HandHeart(iconSize) },
-  { id: 8, name: 'Le débrouillard', icon: Resourceful(iconSize) },
-  { id: 9, name: 'Le bon vivant', icon: WellLiving(iconSize) },
-  { id: 10, name: 'Le bon voisin', icon: GoodNeighbor(iconSize) },
-  { id: 11, name: 'Le serviable', icon: Helpful(iconSize) },
-  { id: 12, name: 'L’ambianceur', icon: Ambianceur(iconSize) },
-  { id: 13, name: 'Le couteau suisse', icon: SwissKnife(iconSize) },
-  { id: 14, name: 'Le bienveillant­­­', icon: Benevolent(iconSize) },
-];
-
+import { StatusBar, View, Text, Platform } from 'react-native';
+import User from '../../../model/user/User';
+import { feedbackIcons } from 'view/common/icons';
 const insertInformations = [
   { title: 'Mon email', inputTexts: [{ commentInput: 'Mon email', value: 'mathieu@labul.com' }] },
   {
     title: 'Mon mot de passe',
+    comment: 'Mot de passe oublié?',
     inputTexts: [
       { commentInput: 'Mot de passe actuel', value: '' },
       { commentInput: 'Nouveau mot de passe', value: '' },
@@ -77,7 +43,7 @@ const insertInformations = [
       {
         commentInput: '',
         value:
-          'Salut ! Je suis … Présente toi ici. Ce texte sera affiché pour vous invitations et apparaitra sur ta page profil. Soit court, avent et efficace. Vivons ensemble !',
+          'En plus d’être quelqu’un de sympa je suis un grand bricoleur, je suis passionné par le bricolage et dans tout le type de petits travaux.',
       },
     ],
   },
@@ -95,19 +61,26 @@ const options = [
   { id: 6, title: 'Élevage', checked: false },
 ];
 
-const changedUserProfile = {
-  avatar: require('assets/images/tab_profile_off.png'),
-  fullName: 'Mathieu Torin',
-  availability: 'Je suis disponible le soir et le week-end',
-  presentation:
-    'En plus d’être quelqu’un de sympa je suis un grand bricoleur, je suis passionné par le bricolage et dans tout le type de petits travaux.',
-  specs: ['Bricoleur', 'Jardinier'],
-  circles: { families: 4, friends: 7, neighbours: 17 },
-  needs: { helps: 24, donations: 6, events: 2 },
-  badges: feedbackIcons,
-};
-
+const updatedMyProfile = new User(
+  'Mathieu Torin',
+  require('assets/images/tab_profile_off.png'),
+  null,
+  'mathieu@labul.com',
+  'Je suis disponible le soir et le week-end',
+  'En plus d’être quelqu’un de sympa je suis un grand bricoleur, je suis passionné par le bricolage et dans tout le type de petits travaux.',
+  ['Bricoleur', 'Jardinier'],
+  4,
+  7,
+  17,
+  24,
+  6,
+  2,
+  feedbackIcons,
+  '+590 6 90 874 258',
+  'ABYMES 97139 Guadeloupe'
+);
 const ProfileCommonModal = (props) => {
+  // console.log(insertInfo.inputTexts[0].toString())
   const insertInfo = insertInformations[props.itemKey - 1];
   var modalBody =
     props.itemKey === 8 ? (
@@ -134,14 +107,15 @@ const ProfileCommonModal = (props) => {
               value={inpuText.value}
               onFocus={true}
               key={index}
+              kyeboardType={index === 3 ? 'numeric-pad' : 'default'}
             />
           );
         })}
         {insertInfo.comment && (
           <CommonText
-            color={props.itemKey - 1 === 2 ? '#40CDDE' : '#A0AEB8'}
+            color={props.itemKey === 2 ? '#40CDDE' : '#A0AEB8'}
             text={insertInfo.comment}
-            style={props.itemKey - 1 === 2 ? styles.forgotPsswd : styles.comment}
+            style={props.itemKey === 2 ? styles.forgotPsswd : styles.comment}
           />
         )}
       </>
@@ -161,7 +135,7 @@ const ProfileCommonModal = (props) => {
           height: 20 * hm,
           marginTop: -10 * hm,
           alignSelf: 'center',
-          position:'absolute',
+          position: 'absolute',
           backgroundColor: '#FFFFFF',
           borderTopLeftRadius: 20 * em,
           borderTopRightRadius: 20 * em,
@@ -174,7 +148,7 @@ const ProfileCommonModal = (props) => {
         onCancelPress={() => props.onPress()}
         onFinishPress={() => {
           props.onPress();
-          props.onChange(changedUserProfile);
+          props.onChange(updatedMyProfile);
         }}
       />
       {modalBody}
@@ -196,8 +170,8 @@ const styles = {
   },
   header: { marginBottom: 10 * hm, marginTop: 27 * hm },
   input: { marginTop: 25 * hm },
-  forgotPsswd: { lineHeight: 18 * hm, marginTop: 78 * hm, textAlign: 'center' },
-  comment: { fontSize: 12 * em, lineHeight: 20 * hm, marginTop: 15 * hm },
+  forgotPsswd: { lineHeight: 18 * em, marginTop: 78 * hm, textAlign: 'center' },
+  comment: { fontSize: 12 * em, lineHeight: 20 * em, marginTop: 15 * hm },
   listItem: { paddingHorizontal: 10 * em, marginBottom: 35 * hm },
 };
 export default ProfileCommonModal;

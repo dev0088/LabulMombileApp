@@ -56,13 +56,6 @@ const usersData = [
     avatar: require('assets/images/avatar.png'),
   },
   {
-    sort: 'friends',
-    userName: 'Amélie Petit',
-    relationship: 'Mon voisin/ mon ami',
-    avatar: require('assets/images/avatar.png'),
-  },
-
-  {
     sort: 'neighbours',
     userName: 'Amélie',
     relationship: 'Mon voisin/ mon ami',
@@ -95,7 +88,7 @@ const themeButton = {
 };
 const MyCirclesTabScreen = (props) => {
   const sort = props.route.params.sort;
-  const [groupOptionVisible, setGroupOptionVisible] = useState(false);
+  const [groupOptionVisible, setGroupOptionVisible] = useState();
   const [userOptionVisible, setUserOptionVisible] = useState(false);
   console.log(themeButton[sort]);
   const renderFlatList = ({ item }) => {
@@ -107,12 +100,12 @@ const MyCirclesTabScreen = (props) => {
             type={item.type}
             name={item.userName}
             subName={item.number}
-            icon={item.avatar}
+            // icon={item.avatar}
             style={styles.listItem}
             onLeftPress={() => {
               Actions.groupDetail({ groupName: item.userName });
             }}
-            onRightPress={() => setGroupOptionVisible(true)}
+            onRightPress={() => setGroupOptionVisible(item)}
           />
         );
       }
@@ -161,7 +154,7 @@ const MyCirclesTabScreen = (props) => {
         {themeButton[sort]}
       </TouchableOpacity>
       <UserOptionPopupScreen visible={userOptionVisible} onPress={() => setUserOptionVisible(false)} />
-      <GroupOptionPopupScreen visible={groupOptionVisible} onPress={() => setGroupOptionVisible(false)} />
+      <GroupOptionPopupScreen data={groupOptionVisible} onPress={() => setGroupOptionVisible(null)} />
     </View>
   );
 };

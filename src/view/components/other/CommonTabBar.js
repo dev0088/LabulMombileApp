@@ -50,10 +50,21 @@ export default class CommonTabBar extends Component {
       top: 0,
       left: 0,
       position: 'absolute',
+      elevation: 3,
+      shadowColor: '#254D5612',
+      shadowOffset: {
+        width: 0,
+        height: 9 * hm,
+      },
+      shadowRadius: 16 * em,
     };
     return (
-      <View style={{ paddingBottom: 15 * em, paddingLeft: 20 * em }}>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} ref={(view) => (this.tabContainer = view)}>
+      <View style={{ paddingLeft: 20 * em }}>
+        <ScrollView
+          style={{ height: 41 * em }}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          ref={(view) => (this.tabContainer = view)}>
           <View style={{ flexDirection: 'row' }}>
             <Animated.View style={{ transform: [{ translateX: this.state.pos }] }}>
               <View style={animatedViewStyle} />
@@ -107,13 +118,14 @@ export default class CommonTabBar extends Component {
                       paddingHorizontal: 14 * em,
                       paddingVertical: 7 * hm,
                       marginLeft: 10 * em,
+                      height: 31 * hm,
                     },
                   ]}
                   key={route.key}>
                   <CommentText
                     color={!isFocused ? '#6A8596' : '#FFFFFF'}
                     text={label}
-                    style={{ fontFamiy: 'Lato-Bold' }}
+                    style={{ fontFamiy: 'Lato-Bold',lineHeight:17*em }}
                   />
                 </TouchableOpacity>
               );
@@ -127,15 +139,7 @@ export default class CommonTabBar extends Component {
 }
 
 const switchStyles = StyleSheet.create({
-  textPos: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    fontSize: 16 * em,
-  },
-  rtl: {
-    flexDirection: 'row-reverse',
-  },
-  ltr: {
-    flexDirection: 'row',
-  },
+  textPos: { justifyContent: 'center', alignItems: 'center', fontSize: 16 * em },
+  rtl: { flexDirection: 'row-reverse' },
+  ltr: { flexDirection: 'row' },
 });

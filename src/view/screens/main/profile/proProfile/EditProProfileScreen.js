@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, ScrollView, Text, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, ScrollView, Text, TouchableOpacity, ImageBackground, StatusBar } from 'react-native';
 import { em, hexToRGB } from 'view/common/const';
 import ProfileInformationListItem from 'view/components/adapter/ProfileInformationListItem';
 import ProfileCommonHeader from 'view/components/header/ProfileCommonHeader';
@@ -9,6 +9,7 @@ import CommentText from 'view/components/text/CommentText';
 import { Actions } from 'react-native-router-flux';
 import Modal from 'react-native-modal';
 import { ProAddCover } from 'assets/svg/icons';
+import { feedbackIcons } from 'view/common/icons';
 const updateUserPrfile = {
   avatar: require('assets/images/avatar_curology.png'),
   cover: require('assets/images/img_curology.png'),
@@ -16,7 +17,7 @@ const updateUserPrfile = {
   type: 'Professional',
   publications: { tips: 3, promotions: 2, events: 1 },
   services: ['Beauté', 'Soins'],
-  badges: [],
+  badges: feedbackIcons,
   presentation:
     'Des soins de la peau personnalisés pour les besoins uniques de votre peau. Maintenant disponible dans un ensemble avec nettoyant et hydratant!',
 };
@@ -27,93 +28,88 @@ const EditProProfileScreen = (props) => {
 
   const [userProfile, setUserProfileOnChanged] = useState(props.userProfile);
   return (
-    <View>
-      <ScrollView style={styles.container}>
-        <ProfileCommonHeader
-          title="Modifier mon profil"
-          onCancel={() => Actions.pop()}
-          onFinish={() => Actions.proProfileOverview({ userProfile: updateUserPrfile })}
-        />
-        <ImageBackground style={styles.bgView} source={userProfile.cover} blurRadius={8}>
-          <View
-            style={
-              userProfile.cover
-                ? [
-                    styles.bgViewFilter,
-                    {
-                      backgroundColor: 'rgba(30, 45, 96, 0.64)',
-                    },
-                  ]
-                : styles.bgViewFilter
-            }>
-            <View style={[styles.addCoverBtn, { tintColor: userProfile.cover ? '#FFFFFF' : '#40CDDE' }]}>
-              <ProAddCover width={27.79 * em} height={28 * em} />
-            </View>
-            <CommentText
-              text={!userProfile.cover ? 'Ajouter une photo de couverture' : 'Changer photo de couverture'}
-              color={userProfile.cover ? '#FFFFFF' : '#40CDDE'}
-            />
+    <ProfileCommonHeader
+      title="Modifier mon profil"
+      onCancel={() => Actions.pop()}
+      onFinish={() => Actions.proProfileOverview({ userProfile: updateUserPrfile })}>
+      <ImageBackground style={styles.bgView} source={userProfile.cover} blurRadius={8}>
+        <View
+          style={
+            userProfile.cover
+              ? [
+                  styles.bgViewFilter,
+                  {
+                    backgroundColor: 'rgba(30, 45, 96, 0.64)',
+                  },
+                ]
+              : styles.bgViewFilter
+          }>
+          <View style={[styles.addCoverBtn, { tintColor: userProfile.cover ? '#FFFFFF' : '#40CDDE' }]}>
+            <ProAddCover width={27.79 * em} height={28 * em} />
           </View>
-        </ImageBackground>
-        <View style={[styles.listItem, { marginTop: 0, paddingVertical: 0 }]}>
-          <ProfileCommonAvatar pro
-           borderWidth={3*em}
-          fullName={userProfile.name} style={styles.avatar} icon={userProfile.avatar} />
-          <CommentText text="Ajouter mon logo" style={styles.addPhotoBtn} color="#40CDDE" />
+          <CommentText
+            text={!userProfile.cover ? 'Ajouter une photo de couverture' : 'Changer photo de couverture'}
+            color={userProfile.cover ? '#FFFFFF' : '#40CDDE'}
+          />
         </View>
-        <ProfileInformationListItem
-          caption={'Mon identité'}
-          value={userProfile.name}
-          style={styles.listItem}
-          onPress={() => {
-            setInputItemKey(5);
-            setModalVisible(!modalVisible);
-          }}
+      </ImageBackground>
+      <View style={[styles.listItem, { marginTop: 0, paddingVertical: 0 }]}>
+        <ProfileCommonAvatar
+          pro
+          borderWidth={3 * em}
+          fullName={userProfile.name}
+          style={styles.avatar}
+          icon={userProfile.avatar}
         />
-        <ProfileInformationListItem
-          caption={'Ma présentation'}
-          placeholder={!userProfile.presentation ? true : false}
-          value={
-            !userProfile.presentation
-              ? 'Présente ton activité en quelques lignes. Les 100 premiers caractères feront office de la présentation de ton activité.'
-              : userProfile.presentation
-          }
-          style={styles.listItem}
-          onPress={() => {
-            setInputItemKey(7);
-            setModalVisible(!modalVisible);
-          }}
-        />
-        <ProfileInformationListItem
-          caption={'Mes services'}
-          placeholder
-          value={'Sélectionne le(s) service(s) de ton activité'}
-          style={styles.listItem}
-          options={userProfile.specs}
-          onPress={() => {
-            setInputItemKey(8);
-            setModalVisible(!modalVisible);
-          }}
-        />
-        <CommonButton
-          text={'Supprimer mon compte'}
-          style={styles.deleteBtn}  textStyle={{ color: '#F9547B' }}
-          onPress={() => setDeleteModalVisible(true)}
-        />
-      </ScrollView>
-      {/* <ProfileCommonModal
-        visible={modalVisible}
-        itemKey={inputItemKey}
-        onChange={(val) => setUserProfileOnChanged(val)}
+        <CommentText text="Ajouter mon logo" style={styles.addPhotoBtn} color="#40CDDE" />
+      </View>
+      <ProfileInformationListItem
+        caption={'Mon identité'}
+        value={userProfile.name}
+        style={styles.listItem}
         onPress={() => {
-          setModalVisible(false);
+          setInputItemKey(5);
+          setModalVisible(!modalVisible);
         }}
-      /> */}
+      />
+      <ProfileInformationListItem
+        caption={'Ma présentation'}
+        placeholder={!userProfile.presentation ? true : false}
+        value={
+          !userProfile.presentation
+            ? 'Présente ton activité en quelques lignes. Les 100 premiers caractères feront office de la présentation de ton activité.'
+            : userProfile.presentation
+        }
+        style={styles.listItem}
+        onPress={() => {
+          setInputItemKey(7);
+          setModalVisible(!modalVisible);
+        }}
+      />
+      <ProfileInformationListItem
+        caption={'Mes services'}
+        placeholder
+        value={'Sélectionne le(s) service(s) de ton activité'}
+        style={styles.listItem}
+        options={userProfile.specs}
+        onPress={() => {
+          setInputItemKey(8);
+          setModalVisible(!modalVisible);
+        }}
+      />
+      <CommonButton
+        text={'Supprimer mon compte'}
+        style={styles.deleteBtn}
+        textStyle={{ color: '#F9547B' }}
+        onPress={() => setDeleteModalVisible(true)}
+      />
       <Modal
         isVisible={deleteModalVisible}
         backdropColor={'#04040F66'}
+        backdropOpacity={1}
         swipeDirection={'up'}
         onBackButtonPress={() => setDeleteModalVisible(false)}>
+        <StatusBar backgroundColor="#04040F66" barStyle="light-content" />
         <View style={styles.modalView}>
           <Text style={styles.modalTitle}>Supprimer mon compte</Text>
           <Text style={styles.modalContent}>
@@ -140,7 +136,15 @@ const EditProProfileScreen = (props) => {
           </View>
         </View>
       </Modal>
-    </View>
+      {/* <ProfileCommonModal
+        visible={modalVisible}
+        itemKey={inputItemKey}
+        onChange={(val) => setUserProfileOnChanged(val)}
+        onPress={() => {
+          setModalVisible(false);
+        }}
+      /> */}
+    </ProfileCommonHeader>
   );
 };
 
@@ -193,7 +197,13 @@ const styles = {
     alignItems: 'center',
   },
   modalTitle: { fontSize: 17 * em, lineHeight: 22 * em, marginTop: 20 * em, color: '#000000' },
-  modalContent: { fontSize: 13 * em, lineHeight: 18 * em, color: '#000000', marginBottom: 16 * em },
+  modalContent: {
+    fontSize: 13 * em,
+    lineHeight: 18 * em,
+    color: '#000000',
+    marginBottom: 16 * em,
+    textAlign: 'center',
+  },
   modalBtnBox: { flexDirection: 'row', flex: 1 },
   modalBtn: {
     borderColor: '#3F3F3F',

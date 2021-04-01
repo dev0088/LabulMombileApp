@@ -8,6 +8,8 @@ import NeedService from 'model/service/NeedService';
 import NeedServiceType from 'model/service/NeedServiceType';
 import User from 'model/user/User';
 import OrganizeServiceType from 'model/service/OrganizeServiceType';
+import NeedStatusType from 'model/service/NeedStatusType';
+import OrganizeService from 'model/service/OrganizeService';
 
 const paricipationLists = [
   Object.assign(
@@ -20,10 +22,10 @@ const paricipationLists = [
       3,
       NeedServiceType.REPAIR
     ),
-    { status: 'waiting' }
+    { status: NeedStatusType.WAITING }
   ),
   Object.assign(
-    new NeedService(
+    new OrganizeService(
       new User('Mathieu Torin', require('assets/images/tab_profile_off.png'), 'anton@gmail.com'),
       'J’organise atelier',
       'Photographie vintage',
@@ -32,7 +34,7 @@ const paricipationLists = [
       1,
       OrganizeServiceType.WORKSHOP
     ),
-    { status: 'participated' }
+    { status: NeedStatusType.PARTICPATED }
   ),
   Object.assign(
     new NeedService(
@@ -44,7 +46,7 @@ const paricipationLists = [
       3,
       NeedServiceType.REPAIR
     ),
-    { status: 'refused' }
+    { status: NeedStatusType.REFUSED }
   ),
 ];
 const MyParticipationsScreen = () => {
@@ -70,12 +72,12 @@ const MyParticipationsScreen = () => {
   //       />
   //     </TouchableOpacity>
   //   );
-  const renderFlatList = ({ item }) => (
+  const renderFlatList = ({ item, index }) => (
     <ProfileCommonNeedCard
       data={item}
-      style={styles.listItem}
+      style={[styles.listItem, { marginBottom: paricipationLists.length === index + 1 ? 50 * hm : 15 * hm }]}
       onPress={() => {
-        Actions.friendNeed({ data: item });
+        Actions.friendNeed({ detail: item });
       }}
     />
   );

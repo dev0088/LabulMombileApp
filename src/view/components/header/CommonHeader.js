@@ -9,45 +9,49 @@ import { Actions } from 'react-native-router-flux';
 const CommonHeader = (props) => {
   var leftButton = props.leftTxt ? (
     <TouchableOpacity onPress={props.onLeftPress ? props.onLeftPress : () => Actions.pop()}>
-      <CommentText text={props.leftTxt} color={'#FFFFFF'} style={styles.leftTxt} />
+      <CommentText text={props.leftTxt} color={'#FFFFFF'} style={[styles.leftTxt, props.leftTxtStyle]} />
     </TouchableOpacity>
   ) : (
-    <CommonBackButton dark={props.dark} onPress={props.onLeftPress ? props.onLeftPress : null} />
+    props.leftView || (
+      <CommonBackButton dark={props.dark} onPress={props.onLeftPress ? props.onLeftPress : () => Actions.pop()} />
+    )
   );
-  var centerIcon = require('assets/images/txt_logo_white.png');
-  if (props.blueLogo) {
-    centerIcon = require('assets/images/txt_logo.png');
-  }
-  var logoVisible = 'flex';
-  if (!props.logo) {
-    logoVisible = 'none';
-  }
+
   var centerView = props.centerTxt ? (
-    <CommonText text={props.centerTxt} color={'#1E2D60'} style={styles.centerTxt} />
+    <CommonText text={props.centerTxt} color={'#1E2D60'} style={[styles.centerTxt, props.centerTxtStyle]} />
   ) : (
-    <Image style={styles.icon} source={centerIcon} />
+    props.centerView
   );
+  var rightButton = props.rightTxt ? (
+    <TouchableOpacity onPress={props.onRightPress ? props.onRightPress : () => Actions.pop()}>
+      <CommonText text={props.rightTxt} color={'#FFFFFF'} style={[styles.rightTxt, props.rightTxtStyle]} />
+    </TouchableOpacity>
+  ) : (
+    props.rightView
+  );
+
   return (
     <View style={[styles.container, props.style]}>
       <View style={styles.left}>{leftButton}</View>
-      <View style={[styles.center, { display: logoVisible }]}>{centerView}</View>
-      <View style={styles.right}>
-        <TouchableOpacity onPress={() => props.onRightPress()}>
-          <CommentText text={props.rightTxt} color={'#FFFFFF'} style={styles.rightTxt} />
-        </TouchableOpacity>
-      </View>
+      <View style={styles.center}>{centerView}</View>
+      <View style={styles.right}>{rightButton}</View>
     </View>
   );
 };
 
 const styles = {
-  container: { width: WIDTH, flexDirection: 'row', alignItems: 'flex-end', height: 44 * em },
-  left: { marginLeft: 15 * em, flex: 1, justifyContent: 'flex-start' },
+  container: {
+    justifyContent: 'space-between',
+    width: WIDTH,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 15 * em,
+  },
+  left: { justifyContent: 'center' },
   leftTxt: { marginLeft: 15 * em, fontSize: 16 * em, color: '#6A8596', lineHeight: 18 * em, textAlign: 'left' },
-  center: { flex: 1, alignItems: 'center', justifyContent: 'center' },
-  centerTxt: { lineHeight: 18 * em, textAlign: 'center' },
-  icon: { width: 69 * em, height: 20 * em, resizeMode: 'contain', marginBottom: 15 * em },
-  right: { marginRight: 15 * em, alignSelf: 'center' },
+  center: { flex: 1, justifyContent: 'center', flexDirection: 'row', alignSelf: 'center' },
+  centerTxt: { lineHeight: 18 * em, textAlign: 'center', alignSelf: 'center' },
+  right: { justifyContent: 'center', alignSelf: 'center' },
   rightTxt: { marginRight: 15 * em, lineHeight: 17 * em, textAlign: 'right' },
 };
 

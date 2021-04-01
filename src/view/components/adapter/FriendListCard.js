@@ -88,7 +88,7 @@ const FriendListCard = (props) => {
             }
             title={data.user.name}
             titleStyle={styles.userDescText}
-            subTitle={data.type === ServiceType.GIVE ? data.organName : data.title}
+            subTitle={data.organName}
             subTitleStyle={styles.userDescText}
           />
           {data.type === ServiceType.GIVE && (
@@ -100,7 +100,7 @@ const FriendListCard = (props) => {
             />
           )}
           {data.type !== ServiceType.GIVE && (
-            <CommentText align="left" color="#1E2D60" style={styles.organText} text={data.organName} />
+            <CommentText align="left" color="#1E2D60" style={styles.organText} text={data.title} />
           )}
           {data.price && <CommentText align="left" color="#1E2D60" style={styles.priceText} text={data.price} />}
         </View>

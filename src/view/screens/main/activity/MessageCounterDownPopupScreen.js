@@ -6,6 +6,7 @@ import CommonText from 'view/components/text/CommonText';
 import Modal from 'react-native-modal';
 import ClockDraw from 'view/components/view/ClockDraw';
 import { Clock } from 'assets/svg/icons';
+import { Actions } from 'react-native-router-flux';
 const MessageCounterDownPopupScreen = (props) => {
   const [seconds, setSeconds] = useState(30);
 
@@ -53,10 +54,17 @@ const MessageCounterDownPopupScreen = (props) => {
             text={'D’accord, répondre maintenant'}
             onPress={() => {
               props.onPress();
-              props.onAccept(seconds);
+              props.onAccept();
             }}
           />
-          <CommonButton text={'Répondre plus tard'} style={styles.laterBtn} onPress={props.onPress} />
+          <CommonButton
+            text={'Répondre plus tard'}
+            style={styles.laterBtn}
+            onPress={() => {
+              props.onPress();
+              Actions.main({ tabNav: 'Activity', activityType: 'needs', noEmpty: true });
+            }}
+          />
         </View>
       </View>
     </Modal>
@@ -65,7 +73,7 @@ const MessageCounterDownPopupScreen = (props) => {
 
 const styles = {
   modalView: {
-    marginTop: 38 * hm,
+    marginTop: 0 * hm,
     marginRight: 0,
     marginLeft: 0,
     marginBottom: 0,

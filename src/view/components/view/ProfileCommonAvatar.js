@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, View } from 'react-native';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import { AvatarBg, ProAvatarBg } from 'assets/svg/icons';
 import TitleText from 'view/components/text/TitleText';
 
@@ -30,17 +30,17 @@ const ProfileCommonAvatar = (props) => {
         ]}>
         {props.pro
           ? ProAvatarBg({
-              width: props.style.width + 16 * em,
-              height: props.style.width + 16 * em,
+              width: props.style.width + 16 * hm,
+              height: props.style.width + 16 * hm,
             })
           : AvatarBg({
-              width: props.style.width + 16 * em,
-              height: props.style.width + 16 * em,
+              width: props.style.width + 16 * hm,
+              height: props.style.width + 16 * hm,
             })}
         <TitleText
           style={[
             styles.txtInitial,
-            { color: !props.pro ? '#40CDDE' : '#6784DA', fontSize: props.initialSize || 28 * em },
+            { color: !props.pro ? '#40CDDE' : '#6784DA', fontSize: (props.style.width / 5) * 2 || 28 * hm },
           ]}
           text={getInitials(props.fullName)}
         />

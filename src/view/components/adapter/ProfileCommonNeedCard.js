@@ -5,10 +5,9 @@ import CommentText from 'view/components/text/CommentText';
 import ServiceType from 'model/service/ServiceType';
 import SellServiceType from 'model/service/SellServiceType';
 import SmallText from 'view/components/text/SmallText';
-import NeedStatusType from 'model/service/NeedStatusType'
+import NeedStatusType from 'model/service/NeedStatusType';
 const ProfileCommonNeedCard = (props) => {
   const { data } = props;
-  console.log(data.status);
   if (data.type === ServiceType.SELL) {
     return (
       <TouchableOpacity onPress={props.onPress}>
@@ -29,7 +28,7 @@ const ProfileCommonNeedCard = (props) => {
               <SmallText text={data.discountInfo} style={{ marginTop: 15 * em }} color={'#A0AEB8'} />
             )}
             {data.subType === SellServiceType.EVENT && (
-              <SmallText text={'06 Fév · 14h00'} style={{ marginTop: 15 * em }} color={'#A0AEB8'} />
+              <SmallText text={'06 Fév · 14H00'} style={{ marginTop: 15 * em }} color={'#A0AEB8'} />
             )}
           </View>
         </View>
@@ -41,9 +40,9 @@ const ProfileCommonNeedCard = (props) => {
       <View style={[styles.container, props.style]}>
         <Image source={data.coverImage} style={styles.cover} />
         <View style={styles.textView}>
-          <SmallText text={'06 Fév · 14h00'} style={styles.date} color="#6A8596" />
-          <SmallText text={data.title} style={styles.title} color={'#1E2D60'} />
-          <CommentText text={data.organName} style={styles.organName} color={'#1E2D60'} />
+          <SmallText text={'06 Fév · 14H00'} style={styles.date} color="#6A8596" />
+          <SmallText text={data.organName} style={styles.title} color={'#1E2D60'} />
+          <CommentText text={data.title} style={styles.organName} color={'#1E2D60'} />
           <StatusView text={data.status} style={styles.status} />
         </View>
       </View>
@@ -60,16 +59,16 @@ const styles = {
   status: { marginTop: 15 * em },
   statusView: { fontSize: 12 * em, borderRadius: 15 * em, paddingVertical: 4 * em, paddingHorizontal: 8 * em },
 };
-const statuses = {
-  inProgress: { title: 'En cours', color: '#40CDDE', backgroundColor: '#D9F6F9' },
-  canceled: { title: 'Annulée', color: '#6A8596', backgroundColor: '#F0F5F7' },
-  waiting: { title: 'En attente', color: '#FEBD71', backgroundColor: '#FFF2E2' },
-  participated: { title: 'Je participe', color: '#1BD39A', backgroundColor: '#D1F6EB' },
-  refused: { title: 'Réfusé', color: '#F9547B', backgroundColor: '#FEDDE4' },
-};
+const statusStyle = [
+  { id: NeedStatusType.INPROGRESS, title: 'En cours', color: '#40CDDE', backgroundColor: '#D9F6F9' },
+  { id: NeedStatusType.CANCELED, title: 'Annulée', color: '#6A8596', backgroundColor: '#F0F5F7' },
+  { id: NeedStatusType.WAITING, title: 'En attente', color: '#FEBD71', backgroundColor: '#FFF2E2' },
+  { id: NeedStatusType.PARTICPATED, title: 'Je participe', color: '#1BD39A', backgroundColor: '#D1F6EB' },
+  { id: NeedStatusType.REFUSED, title: 'Réfusé', color: '#F9547B', backgroundColor: '#FEDDE4' },
+];
 export default ProfileCommonNeedCard;
 const StatusView = (props) => {
-  const status = statuses[props.text];
+  const status = statusStyle.find((element) => element.id === props.text);
   return (
     <CommentText
       style={[styles.statusView, { backgroundColor: status.backgroundColor }]}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, ScrollView, Image, ImageBackground } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
-import { em, WIDTH } from 'view/common/const';
+import { em, WIDTH, hm } from 'view/common/const';
 import CommonText from 'view/components/text/CommonText';
 import ProfileCommonLabel from 'view/components/other/ProfileCommonLabel';
 import CommonHeader from 'view/components/header/CommonHeader';
@@ -10,10 +10,10 @@ import { Actions } from 'react-native-router-flux';
 import CommentText from 'view/components/text/CommentText';
 import ProfileCommonSpecView from 'view/components/view/ProfileCommonSpecView';
 import { Events, Promotion, Tips } from 'assets/svg/icons';
+import AccountType from 'model/user/AccountType';
+
 const ProProfileOverviewScreen = (props) => {
   const iconSize = { width: 33 * em, height: 33 * em };
-
-  const [] = useState(false);
   const [userProfile] = useState(props.userProfile);
   const servicesView = userProfile.services ? (
     userProfile.services && (
@@ -31,9 +31,9 @@ const ProProfileOverviewScreen = (props) => {
   );
   const badgesView = userProfile.badges ? (
     <ScrollView horizontal={true} style={{ marginLeft: 30 * em }}>
-      {userProfile.badges.map((badge, index) => {
-        <Image style={styles.badgeIcon} source={badge} />;
-      })}
+      {userProfile.badges.map((badge, index) => (
+        <View style={styles.badgeIcon}>{badge.icon}</View>
+      ))}
     </ScrollView>
   ) : (
     <>
@@ -47,7 +47,12 @@ const ProProfileOverviewScreen = (props) => {
         <CommonHeader
           rightTxt={'Modifier mon profil'}
           style={styles.header}
-          onLeftPress={() => Actions.main({ tabNav: 'ProProfile' })}
+          onLeftPress={() =>
+            Actions.main({
+              tabNav: 'ProProfile',
+              purchased: userProfile.cover ? AccountType.PRO : null,
+            })
+          }
           onRightPress={() => Actions.editProProfile({ userProfile: userProfile })}
         />
         {userProfile.cover && (
@@ -110,20 +115,20 @@ const styles = {
     paddingBottom: 16 * em,
   },
   cover: { zIndex: -1, resizeMode: 'contain', width: '100%', height: 200 * em, position: 'absolute' },
-  header: { marginTop: 27 * em },
+  header: { marginTop: 27 * hm },
   firstPopView: {
     alignItems: 'center',
     backgroundColor: '#ffffff',
     borderRadius: 20 * em,
-    marginTop: 76 * em,
+    marginTop: 76 * hm,
     paddingHorizontal: 30 * em,
-    paddingBottom: 35 * em,
+    paddingBottom: 35 * hm,
   },
   avatar: { marginTop: -54 * em, width: 108 * em, height: 108 * em },
-  fullNameText: { marginTop: 15 * em, marginBottom: 10 * em, fontFamily: 'Lato-Black' },
+  fullNameText: { marginTop: 15 * hm, marginBottom: 10 * hm, fontFamily: 'Lato-Black' },
   title: {
-    marginTop: 17 * em,
-    marginBottom: 20 * em,
+    marginTop: 17 * hm,
+    marginBottom: 20 * hm,
     fontSize: 21 * em,
     fontFamily: 'Lato-Black',
   },
@@ -140,10 +145,10 @@ const styles = {
     backgroundColor: '#ffffff',
     borderTopLeftRadius: 20 * em,
     borderTopRightRadius: 20 * em,
-    marginTop: 15 * em,
-    paddingBottom: 47 * em,
+    marginTop: 15 * hm,
+    paddingBottom: 80 * hm,
   },
-  noticeText: { fontFamily: 'Lato-Black', marginBottom: 10 * em, textAlign: 'center' },
+  noticeText: { fontFamily: 'Lato-Black', marginBottom: 10 * hm, textAlign: 'center' },
   requestText: {
     fontSize: 14 * em,
     textAlign: 'center',
@@ -151,8 +156,11 @@ const styles = {
   badgeIcon: {
     width: 60 * em,
     height: 60 * em,
+    borderRadius: 30 * em,
+    elevation: 1,
     marginRight: 18 * em,
-    backgroundColor: 'yellow',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 };
 

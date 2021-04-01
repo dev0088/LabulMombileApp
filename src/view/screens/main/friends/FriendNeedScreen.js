@@ -8,7 +8,7 @@ import NeedServiceType from 'model/service/NeedServiceType';
 import User from 'model/user/User';
 import MabulDetailView from 'view/components/view/MabulDetailView';
 import { Send, Option } from 'assets/svg/icons';
-import FriendCancelParticipatePopupScreen from './FriendCancelParticipatePopupScreen';
+import FriendCancelParticipatePopupScreen from './popup/FriendCancelParticipatePopupScreen';
 import NeedStatusType from '../../../../model/service/NeedStatusType';
 const needData = Object.assign(
   new NeedService(
@@ -76,7 +76,7 @@ const FriendNeedScreen = (props) => {
       <FriendCancelParticipatePopupScreen
         visible={cancelParticipatePopupVisible}
         onPress={() => setcancelParticipatePopupVisible(false)}
-        onStatus={(v)=>setStatus(v)}
+        onStatus={(v) => setStatus(v)}
       />
     </View>
   );

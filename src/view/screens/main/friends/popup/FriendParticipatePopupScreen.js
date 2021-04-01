@@ -4,10 +4,11 @@ import { em, hm } from 'view/common/const';
 import CommonText from 'view/components/text/CommonText';
 import TitleText from 'view/components/text/TitleText';
 import CommonButton from 'view/components/button/CommonButton';
-import CheckBox from 'view/components/checkbox/CheckBox';
 
 import Modal from 'react-native-modal';
+import CommonCheckBox from '../../../../components/checkbox/CommonCheckBox';
 const FriendParticipatePopupScreen = (props) => {
+  const [checked, setChecked] = useState();
   return (
     <Modal
       isVisible={props.visible}
@@ -18,28 +19,49 @@ const FriendParticipatePopupScreen = (props) => {
       onBackButtonPress={() => props.onPress()}>
       <StatusBar opa backgroundColor="rgba(30, 45, 96, 0.8)" barStyle="light-content" />
       <CommonText text="Passer" style={styles.header} onPress={() => props.onPress()} />
+      <View
+        style={{
+          width: 349 * em,
+          height: 20 * hm,
+          marginTop: -10 * hm,
+          alignSelf: 'center',
+          position: 'absolute',
+          backgroundColor: '#FFFFFF',
+          borderTopLeftRadius: 20 * em,
+          borderTopRightRadius: 20 * em,
+        }}
+        opacity={0.5}
+      />
       <View style={styles.body}>
         <Image source={require('assets/images/sample_cover_1.png')} style={styles.titleImg} />
         <TitleText text="À prévoir" style={styles.title} />
-
         <CommonText text="Dans cette demande Antoine a pévu une liste des choses à apporter" style={styles.comment} />
-        <View style={styles.listItem}>
-          <CommonText text="Papier de fond noir" style={styles.itemCheckedText} color="#40CDDE" />
-          <CheckBox oval isChecked={true} />
-        </View>
-        <View style={styles.listItem}>
-          <CommonText text="Trépied Professionnel" style={styles.itemText} color="#1E2D60" />
-          <CheckBox oval isChecked={false} />
-        </View>
-        <View style={styles.listItem}>
-          <CommonText text="Objectif 105mm f / 2.8 EX DG Macro OS HSM" style={styles.itemText} color="#1E2D60" />
-          <CheckBox oval isChecked={false} color="#40CDDE" />
-        </View>
+        <CommonCheckBox
+          style={styles.listItem}
+          oval
+          text="Papier de fond noir"
+          color="#40CDDE"
+          textStyle={styles.itemCheckedText}
+        />
+        <CommonCheckBox
+          style={styles.listItem}
+          oval
+          text="Trépied Professionnel"
+          color="#1E2D60"
+          textStyle={styles.itemText}
+        />
+        <CommonCheckBox
+          style={styles.listItem}
+          oval
+          text="Objectif 105mm f / 2.8 EX DG Macro OS HSM"W
+          color="#1E2D60"
+          textStyle={styles.itemText}
+        />
       </View>
       <CommonButton
         text="Valider"
         onPress={() => props.onPress()}
-        style={{ marginBottom: 30 * hm, alignSelf: 'center' }}
+        style={{ alignSelf: 'center', marginBottom: 30 * hm }}
       />
     </Modal>
   );
@@ -57,16 +79,11 @@ const styles = {
     justifyContent: 'flex-start',
   },
   header: { marginRight: 30 * em, marginBottom: 18 * em, marginTop: 25 * hm, alignSelf: 'flex-end' },
-  body: { marginLeft: 30 * em, marginRight: 30 * em, alignItems: 'center', flex: 1 },
+  body: { paddingHorizontal: 30 * em, alignItems: 'center', flex: 1 },
   title: { marginTop: 15 * hm, fontFamily: 'Lato-Black' },
-  titleImg: { width: 58 * em, height: 58 * em, borderRadius: 29 * em, marginTop: 18 * em },
+  titleImg: { width: 58 * em, height: 58 * em, borderRadius: 29 * em, marginTop: 18 * hm },
   comment: { textAlign: 'center', lineHeight: 23 * em, width: 285 * em, marginTop: 5 * hm },
-  listItem: {
-    marginTop: 46 * hm,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
+  listItem: { marginTop: 42 * hm },
   itemCheckedText: {
     textDecorationLine: 'line-through',
     textDecorationStyle: 'solid',

@@ -235,7 +235,7 @@ const styles = {
     shadowRadius: 25 * em,
   },
   calendarStripStyle: { width: WIDTH - 32 * em, height: 140 * em },
-  calendarHeaderStyle: { color: '#1E2D60', fontSize: 20 * em, fontFamily: 'Lato-Regular', fontWeight: 'normal' },
+  calendarHeaderStyle: { color: '#1E2D60', fontSize: 20 * em, fontFamily: 'Lato-Regular' },
   calendarIconStyle: {
     width: 20 * em,
     height: 20 * em,
@@ -265,8 +265,18 @@ const styles = {
     paddingTop: 2 * em,
   },
   dateNumberStyle: { color: '#1E2D60', fontSize: 18 * em, fontFamily: 'Lato-Regular' },
-  dateNameStyle: { color: '#BFCDDB', marginBottom: 16 * em, fontSize: 14 * em, fontFamily: 'Lato-Bold' },
-  highlightDateNumberStyle: { color: '#1E2D60', width: 30 * em, fontSize: 18 * em, fontFamily: 'Lato-Bold' },
+  dateNameStyle: {
+    color: '#BFCDDB',
+    marginBottom: 16 * em,
+    fontSize: 14 * em,
+    fontFamily: 'Lato-Bold',
+  },
+  highlightDateNumberStyle: {
+    color: '#1E2D60',
+    width: 30 * em,
+    fontSize: 18 * em,
+    fontFamily: 'Lato-Bold',
+  },
   highlightDateNameStyle: {
     color: '#fff',
     width: 30 * em,

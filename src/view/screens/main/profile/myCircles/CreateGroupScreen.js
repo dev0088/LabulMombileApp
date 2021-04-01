@@ -106,10 +106,9 @@ const SelectedAvatarView = ({ avatar, userName }) => (
 );
 
 const CreateGroupScreen = (props) => {
-  console.log(props.sort);
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(new Array(usersData.length).fill(false));
   const renderSelectedList = ({ item }) => <SelectedAvatarView avatar={item.avatar} userName={item.userName} />;
-  const renderCircleList = ({ item }) => {
+  const renderCircleList = ({ item, index }) => {
     return (
       <CommonListItem
         icon={<Image source={item.avatar} style={{ width: 40 * em, height: 40 * em, marginRight: 15 * em }} />}
@@ -121,7 +120,12 @@ const CreateGroupScreen = (props) => {
             pink={props.sort === 'families' ? true : false}
             blue={props.sort === 'friends' ? true : false}
             bgColor="#EF88B9"
-            isChecked={checked}
+            isChecked={checked[index]}
+            onClick={() => {
+              const arr = [...checked];
+              arr[index] = !arr[index];
+              setChecked(arr);
+            }}
             // onClick={() => {
             //   setChecked(!checked);
             //   // props.onChecked(checked ? props.text : null);
@@ -136,7 +140,7 @@ const CreateGroupScreen = (props) => {
     <View style={styles.container}>
       <CommonText style={styles.header} text="Annuler" color="#6A8596" onPress={() => Actions.pop()} />
       <TitleText text="Nouveau groupe" style={styles.title} />
-      <SearchBox comment="Rechercher un contact" style={{ height: 34 * em }} />
+      <SearchBox comment="Rechercher un contact" style={{ height: 52 * em }} />
       <View style={{ height: 90 * em, marginTop: 15 * em, marginBottom: 25 * em }}>
         <FlatList horizontal={true} data={selectedList} renderItem={renderSelectedList} keyExtractor={(i) => i.id} />
       </View>

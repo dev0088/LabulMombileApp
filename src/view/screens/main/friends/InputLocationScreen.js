@@ -7,6 +7,7 @@ import SearchBox from 'view/components/other/SearchBox';
 import CommentText from 'view/components/text/CommentText';
 import SearchCommonListItem from 'view/components/adapter/SearchCommonListItem';
 import { LocationBlue } from 'assets/svg/icons';
+import FriendCommonHeader from '../../../components/header/FriendCommonHeader';
 const InputLocationScreen = () => {
   const [searchedUsers, getSearchResult] = useState('');
   const [locationViewVisible, setlocationViewVisible] = useState('flex');
@@ -21,10 +22,7 @@ const InputLocationScreen = () => {
   );
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <CommonHeader dark={true} centerTxt="Filtrer" logo={true} style={styles.commonHeader} />
-        <TitleText text={'Lieu'} style={styles.title} />
-      </View>
+      <FriendCommonHeader upperTitle="Filtrer" title="Lieu" />
       <SearchBox
         style={styles.searchBox}
         comment="Rechercher par ville"
@@ -74,7 +72,7 @@ const styles = {
     height: 40 * hm,
     marginTop: 10 * hm,
   },
-  searchBox: { marginTop: 25 * hm, width: 315 * em, marginLeft: 30 * em, height: 44 * hm },
+  searchBox: { marginTop: 25 * hm, width: 315 * em, marginLeft: 30 * em, height: 52 * hm },
   location: {
     alignSelf: 'center',
     marginTop: 15 * hm,

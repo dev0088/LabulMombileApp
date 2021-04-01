@@ -3,4 +3,5 @@ export default {
   WAITING: 841,
   INPROGRESS: 102,
   REFUSED: 123,
+  PARTICIPATED: 888,
 };

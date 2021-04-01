@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, ScrollView } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
-import { em, WIDTH } from 'view/common/const';
+import { em, WIDTH, hm } from 'view/common/const';
 import CommonText from 'view/components/text/CommonText';
 import ProfileCommonLabel from 'view/components/other/ProfileCommonLabel';
 import CommonHeader from 'view/components/header/CommonHeader';
@@ -10,13 +10,14 @@ import { Actions } from 'react-native-router-flux';
 import CommentText from 'view/components/text/CommentText';
 import ProfileCommonSpecView from 'view/components/view/ProfileCommonSpecView';
 import { Family, Friend, Neighbor } from 'assets/svg/icons';
+import AccountType from 'model/user/AccountType';
 
 const iconSize = { width: 48 * em, height: 48 * em };
 const ProfileOverviewScreen = (props) => {
   const [userProfile] = useState(props.userProfile);
-  const badgesView = userProfile.badges ? (
+  const badgesView = userProfile.feedback ? (
     <ScrollView horizontal={true} style={{ marginLeft: 30 * em }}>
-      {userProfile.badges.map((badge, index) => (
+      {userProfile.feedback.map((badge, index) => (
         <View style={styles.badgeIcon}>{badge.icon}</View>
       ))}
     </ScrollView>
@@ -31,9 +32,14 @@ const ProfileOverviewScreen = (props) => {
       <ScrollView style={styles.scrollView}>
         <CommonHeader
           rightTxt={'Modifier mon profil'}
-          rightAlign={'center'}
+          rightTxtStyle={{ fontSize: 14 * em }}
           style={styles.header}
-          onLeftPress={() => Actions.main({ tabNav: 'Profile' })}
+          onLeftPress={() =>
+            Actions.main({
+              tabNav: 'Profile',
+              purchased: userProfile.photo ? AccountType.LIGHT : null,
+            })
+          }
           onRightPress={() => Actions.editProfile({ userProfile: userProfile })}
         />
         <View style={styles.firstPopView}>
@@ -43,11 +49,11 @@ const ProfileOverviewScreen = (props) => {
             logoVisible={false}
             borderWidth={3 * em}
           />
-          <TitleText text={userProfile.fullName} style={styles.fullNameText} />
+          <TitleText text={userProfile.name} style={styles.fullNameText} />
           {userProfile.availability && <CommentText text={userProfile.availability} color="#1E2D60" />}
           {userProfile.presentation && <CommentText text={userProfile.presentation} color="#6A8596" />}
           {userProfile.specs && (
-            <View style={{ flexDirection: 'row', marginTop: 15 * em }}>
+            <View style={{ flexDirection: 'row', marginTop: 15 * hm }}>
               {userProfile.specs.map((spec) => (
                 <ProfileCommonSpecView text={spec} />
               ))}
@@ -58,7 +64,7 @@ const ProfileOverviewScreen = (props) => {
             <View style={styles.labelView}>
               <ProfileCommonLabel
                 icon={Neighbor(iconSize)}
-                number={userProfile.circles.neighbours}
+                number={userProfile.circles.neighbors}
                 name={'Mes voisins'}
               />
             </View>
@@ -93,19 +99,19 @@ const ProfileOverviewScreen = (props) => {
 
 const styles = {
   container: { flex: 1, backgroundColor: 'transparent' },
-  scrollView: { backgroundColor: '#40CDDE', paddingBottom: 16 * em },
-  header: { marginTop: 27 * em },
+  scrollView: { backgroundColor: '#40CDDE', paddingBottom: 16 * hm },
+  header: { marginTop: 27 * hm },
   firstPopView: {
     alignItems: 'center',
     backgroundColor: '#ffffff',
     borderRadius: 20 * em,
-    marginTop: 76 * em,
+    marginTop: 76 * hm,
     paddingHorizontal: 30 * em,
-    paddingBottom: 35 * em,
+    paddingBottom: 35 * hm,
   },
-  avatar: { marginTop: -57 * em, width: 114 * em, height: 114 * em },
-  fullNameText: { marginTop: 15 * em, marginBottom: 10 * em, fontWeight: 'bold' },
-  title: { marginTop: 35 * em, marginBottom: 20 * em, fontSize: 21 * em, fontWeight: 'bold' },
+  avatar: { marginTop: -57 * hm, width: 114 * em, height: 114 * em },
+  fullNameText: { marginTop: 15 * hm, marginBottom: 10 * hm, fontWeight: 'bold' },
+  title: { marginTop: 35 * hm, marginBottom: 20 * hm, fontSize: 21 * em, fontWeight: 'bold' },
   circlesView: { flexDirection: 'row', marginLeft: 0.072 * WIDTH, marginRight: 0.072 * WIDTH },
   labelView: { width: WIDTH * 0.285 },
   secondPopView: {
@@ -113,18 +119,17 @@ const styles = {
     backgroundColor: '#ffffff',
     borderTopLeftRadius: 20 * em,
     borderTopRightRadius: 20 * em,
-    marginTop: 15 * em,
-    paddingBottom: 54 * em,
+    marginTop: 15 * hm,
+    paddingBottom: 54 * hm,
   },
-  noticeText: { fontFamily: 'Lato-Black', marginBottom: 10 * em },
-  requestText: { fontSize: 14 * em, marginBottom: 65 * em },
+  noticeText: { fontFamily: 'Lato-Black', marginBottom: 10 * hm },
+  requestText: { fontSize: 14 * em, marginBottom: 65 * hm },
   badgeIcon: {
     width: 60 * em,
     height: 60 * em,
     borderRadius: 30 * em,
     elevation: 1,
     marginRight: 18 * em,
-    backgroundColor: 'rd',
     alignItems: 'center',
     justifyContent: 'center',
   },

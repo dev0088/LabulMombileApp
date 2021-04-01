@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
-import { em, HEIGHT, WIDTH } from 'view/common/const';
+import { em, hm, WIDTH } from 'view/common/const';
 import CommonButton from 'view/components/button/CommonButton';
 import CommonText from 'view/components/text/CommonText';
 import { Actions } from 'react-native-router-flux';
@@ -9,7 +9,7 @@ import CommentText from 'view/components/text/CommentText';
 const ActivityDialScreen = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.popup} >
+      <View style={styles.popup}>
         <Image source={require('assets/images/avatar.png')} style={styles.avatar} />
         <CommonText text="Amandine Bernard" style={styles.userName} color="#ffffff" />
         <CommentText text="Ça sonne…" style={styles.comment} />
@@ -22,7 +22,9 @@ const ActivityDialScreen = () => {
           <Text style={styles.btnCaption}>Mute</Text>
         </View>
         <View style={styles.btnView}>
-          <TouchableOpacity style={[styles.controlBtn,{backgroundColor:'#F83D39'}]} onPress={()=>Actions.pop()}>
+          <TouchableOpacity
+            style={[styles.controlBtn, { backgroundColor: '#F83D39' }]}
+            onPress={() => Actions.main({ tabNav: 'Activity', activityType: 'needs', noEmpty: true })}>
             <Image style={styles.btnIcon} />
           </TouchableOpacity>
           <Text style={styles.btnCaption}>Terminer</Text>
@@ -41,13 +43,13 @@ const ActivityDialScreen = () => {
 const styles = {
   container: {
     flex: 1,
-    backgroundColor: '#1F2E61',
+    backgroundColor: 'rgba(9, 14, 54, 1)',
     // opacity: 0.9,
     flexDirection: 'column',
     postion: 'absolute',
   },
   popup: {
-    backgroundColor: 'rgba(31, 46, 97, 0.1)',
+    backgroundColor: 'rgba(31, 46, 97, 1)',
     borderBottomRightRadius: 29 * em,
     borderBottomLeftRadius: 29 * em,
     flex: 1,
@@ -64,7 +66,7 @@ const styles = {
     marginTop: 10 * em,
     color: '#FFFFFF',
   },
-  controlView: {backgroundColor:'#1F2E61',
+  controlView: {
     height: 166 * em,
     flexDirection: 'row',
     paddingHorizontal: 20 * em,
@@ -79,7 +81,7 @@ const styles = {
   },
   btnView: {
     marginTop: 30 * em,
-    width: 76 * em,
+    flex: 1,
     alignItems: 'center',
   },
   btnCaption: {

@@ -4,7 +4,7 @@ import { em, hm } from 'view/common/const';
 import { FlatList } from 'react-native';
 import CommonListItem from 'view/components/adapter/CommonListItem';
 import { Actions } from 'react-native-router-flux';
-
+import { AlertRed } from 'assets/svg/icons';
 const alertList = [{ name: 'Alerte travaux', comment: 'Route de Mare Gaillard Guadeloupe' }];
 const MyAlertsTabScreen = () => {
   //   const [isEmpty, setIsEmpty] = useState(true);
@@ -38,10 +38,10 @@ const MyAlertsTabScreen = () => {
       subTitle={item.comment}
       icon={
         <View style={styles.alertIconContainer}>
-          <Image style={styles.alertIcon} source={require('assets/images/ic_sample_5.png')} />
+          <AlertRed width={50 * em} height={50 * em} />
         </View>
       }
-      onPress={()=>Actions.myAlert()}
+      onPress={() => Actions.myAlert()}
     />
   );
   const listView = (
@@ -49,7 +49,7 @@ const MyAlertsTabScreen = () => {
       data={alertList}
       renderItem={renderFlatList}
       keyExtractor={(i) => i.id}
-      style={{ flex: 1, width: '100%' , paddingTop: 25 * em, paddingHorizontal: 30 * em, backgroundColor: '#ffffff' }}
+      style={{ flex: 1, width: '100%', paddingTop: 25 * em, paddingHorizontal: 30 * em, backgroundColor: '#ffffff' }}
     />
   );
   return <View style={styles.container}>{listView}</View>;
@@ -76,7 +76,6 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
   },
-  alertIcon: { width: 50 * em, height: 50 * em, resizeMode: 'contain' },
 };
 
 export default MyAlertsTabScreen;

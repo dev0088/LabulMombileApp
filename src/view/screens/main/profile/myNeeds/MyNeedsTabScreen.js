@@ -10,6 +10,7 @@ import OrganizeService from 'model/service/OrganizeService';
 import User from 'model/user/User';
 import OrganizeServiceType from 'model/service/OrganizeServiceType';
 import ServiceType from 'model/service/ServiceType';
+import NeedStatusType from 'model/service/NeedStatusType';
 
 const needsLists = [
   Object.assign(
@@ -22,7 +23,7 @@ const needsLists = [
       3,
       NeedServiceType.REPAIR
     ),
-    { status: 'inProgress' }
+    { status: NeedStatusType.INPROGRESS }
   ),
   Object.assign(
     new OrganizeService(
@@ -34,7 +35,7 @@ const needsLists = [
       1,
       OrganizeServiceType.WORKSHOP
     ),
-    { status: 'inProgress' }
+    { status: NeedStatusType.INPROGRESS }
   ),
   Object.assign(
     new NeedService(
@@ -46,7 +47,7 @@ const needsLists = [
       3,
       NeedServiceType.REPAIR
     ),
-    { status: 'canceled' }
+    { status: NeedStatusType.CANCELED }
   ),
 ];
 const MyNeedsTabScreen = () => {
@@ -72,10 +73,10 @@ const MyNeedsTabScreen = () => {
   //       />
   //     </TouchableOpacity>
   //   );
-  const renderFlatList = ({ item }) => (
+  const renderFlatList = ({ item, index }) => (
     <ProfileCommonNeedCard
       data={item}
-      style={styles.listItem}
+      style={[styles.listItem, { marginBottom: needsLists.length === index + 1 ? 50 * hm : 15 * hm }]}
       onPress={() => {
         if (item.type === ServiceType.ORGANIZE) {
           Actions.myOrganize();
@@ -90,7 +91,7 @@ const MyNeedsTabScreen = () => {
       data={needsLists}
       renderItem={renderFlatList}
       keyExtractor={(i) => i.id}
-      style={{ paddingTop: 25 * em, paddingHorizontal: 30 * em, backgroundColor: '#ffffff' }}
+      style={{ paddingTop: 25 * hm, paddingHorizontal: 30 * em, backgroundColor: '#ffffff' }}
     />
   );
   return <View style={styles.container}>{listView}</View>;
@@ -105,7 +106,7 @@ const styles = {
   },
 
   emptyView: { marginTop: 74 * hm, width: 315 * em, height: 148.15 * hm, alignSelf: 'center' },
-  listItem: { marginBottom: 15 * em, width: 315 * em },
+  listItem: { marginBottom: 15 * hm, width: 315 * em },
 };
 
 export default MyNeedsTabScreen;

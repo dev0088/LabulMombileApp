@@ -209,7 +209,7 @@ const styles = {
     flex: 1,
     alignItems: 'center',
     backgroundColor: '#F0F5F7',
-    marginTop: 128 * hm,
+    paddingTop: 128 * hm,
   },
   card: {
     marginLeft: 30 * em,

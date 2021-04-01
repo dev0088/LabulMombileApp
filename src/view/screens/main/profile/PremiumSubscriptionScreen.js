@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { View, ScrollView, Text, Image, TouchableOpacity, StatusBar } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
-import { em } from 'view/common/const';
+import { em, hm } from 'view/common/const';
+import TinyText from 'view/components/text/TinyText';
+import SmallText from 'view/components/text/SmallText';
+
 import CommonButton from 'view/components/button/CommonButton';
 import CommonBackButton from 'view/components/button/CommonBackButton';
 import PurchaseMenuCard from 'view/components/adapter/PurchaseMenuCard';
 import Modal from 'react-native-modal';
 import { Actions } from 'react-native-router-flux';
-
+import { RightArrowBlue } from 'assets/svg/icons';
 const PremiumSubscriptionScreen = (props) => {
   const [modalVisible, setModalVisible] = useState(false);
-  console.log(props.profileType);
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scrollView}>
@@ -46,26 +48,26 @@ const PremiumSubscriptionScreen = (props) => {
               comment="Idéal pour un professionnel qui veut faire grimper son chiffre d’affaire"
             />
           </View>
-          <Text style={styles.comment}>Annule à tout moment. Paiement sécurisé</Text>
+          <TinyText color="#6A8596" style={styles.comment} text="Annule à tout moment. Paiement sécurisé" />
           <Text style={styles.guideline}>
-            Avantages Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-            labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-            rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor
-            sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-            aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
-            gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur
-            sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
+            {
+              'Avantages\nLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\nLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.'
+            }
           </Text>
         </View>
       </ScrollView>
       <CommonBackButton onPress={() => Actions.pop()} dark={true} style={styles.backBtn} />
-      <View style={styles.btnView}>
-        <CommonButton
-          text="M’abonner Labul Light - 0,90€/mois"
-          style={{ backgroundColor: props.profileType === 'my' ? '#40CDDE' : '#7398FD' }}
-          onPress={() => setModalVisible(true)}
-        />
-      </View>
+      <CommonButton
+        style={[
+          styles.purchaseBtn,
+          {
+            backgroundColor: props.profileType === 'my' ? '#40CDDE' : '#7398FD',
+          },
+        ]}
+        text="M’abonner Labul Light - 0,90€"
+        rightIcon={<TinyText text="/mois" style={{ fontSize: 8 * em }} color="#ffffff" />}
+        onPress={() => setModalVisible(true)}
+      />
       <Modal
         isVisible={modalVisible}
         backdropOpacity={0.9}
@@ -85,24 +87,28 @@ const PremiumSubscriptionScreen = (props) => {
               <Image style={styles.modalCardImage} />
             </View>
             <View style={styles.modalListRight}>
-              <Text style={styles.modalCreditCard}>Carte de crédit 1234 **** **** 3456</Text>
-              <Image style={styles.modalArrowIcon} source={require('assets/images/btn_arrow_ltr.png')} />
+              <SmallText color="#000000" text={'Carte de crédit\n1234 **** **** 3456'} />
+              <View style={styles.modalArrowIcon}>
+                <RightArrowBlue width={10 * em} height={16 * em} />
+              </View>
             </View>
           </View>
           <View style={styles.modalList}>
             <View style={styles.modalListLeft}>
-              <Text>CONTACT</Text>
+              <SmallText color="#76767A" text="CONTACT" />
             </View>
             <View style={styles.modalListRight}>
               <Text style={styles.modalCreditCard}>mathieu@labul.fr</Text>
-              <Image style={styles.modalArrowIcon} source={require('assets/images/btn_arrow_ltr.png')} />
+              <View style={styles.modalArrowIcon}>
+                <RightArrowBlue width={10 * em} height={16 * em} />
+              </View>
             </View>
           </View>
-          <View style={styles.modalList}>
+          <View style={[styles.modalList, { borderBottomWidth: 0 }]}>
             <View style={styles.modalListLeft} />
             <View style={styles.modalListRight}>
-              <Text style={styles.modalTotalTxt}>Total</Text>
-              <Text style={styles.modalTotalPrice}>0.90 €</Text>
+              <SmallText color="#76767A" text={'Total'} />
+              <SmallText color="#000000" text={'0.90 €'} style={{ marginRight: 16 * em }} />
             </View>
           </View>
         </View>
@@ -120,48 +126,22 @@ const PremiumSubscriptionScreen = (props) => {
 };
 
 const styles = {
-  container: {
-    flex: 1,
-    backgroundColor: 'transparent',
-  },
-  scrollView: {
-    backgroundColor: '#F0F5F7',
-  },
-  backBtn: {
-    position: 'absolute',
-    left: 15 * em,
-    top: 27 * em,
-  },
-  btnView: {
-    backgroundColor: 'transparent',
-    marginLeft: 25 * em,
-    marginRight: 34 * em,
-    marginBottom: 20 * em,
-  },
+  container: { flex: 1, backgroundColor: 'transparent' },
+  scrollView: { backgroundColor: '#F0F5F7' },
+  purchaseBtn: { position: 'absolute', alignSelf: 'center', bottom: 25 * hm },
+  backBtn: { position: 'absolute', left: 15 * em, top: 27 * hm },
+
   logo: {
-    marginTop: 54.5 * em,
+    marginTop: 54.5 * hm,
     width: 230 * em,
     height: 121 * em,
     resizeMode: 'contain',
     alignSelf: 'center',
-    marginBottom: 15 * em,
+    marginBottom: 15 * hm,
   },
-  title: {
-    fontSize: 27 * em,
-    lineHeight: 30 * em,
-    fontFamily: 'Cocon-Regular',
-  },
-  containerTitle: {
-    marginBottom: 0,
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  subTitle: {
-    fontSize: 13 * em,
-    fontWeight: '500',
-    lineHeight: 17 * em,
-    marginBottom: 25 * em,
-  },
+  title: { fontSize: 27 * em, lineHeight: 30 * em },
+  containerTitle: { marginBottom: 0, flexDirection: 'row', justifyContent: 'center' },
+  subTitle: { fontSize: 13 * em, fontWeight: '500', lineHeight: 17 * em, marginBottom: 25 * hm },
   popView: {
     flex: 1,
     backgroundColor: '#ffffff',
@@ -172,33 +152,16 @@ const styles = {
   cardContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: 40 * em,
+    marginTop: 40 * hm,
     marginLeft: 22.5 * em,
     marginRight: 22.5 * em,
   },
-  card: {
-    width: 150 * em,
-    height: 207 * em,
-    marginLeft: 7.5 * em,
-    marginRight: 7.5 * em,
-  },
-  comment: {
-    fontSize: 10 * em,
-    lineHeight: 12 * em,
-    marginTop: 10 * em,
-    marginBottom: 24 * em,
-    textAlign: 'center',
-  },
-  guideline: {
-    marginLeft: 30 * em,
-    marginRight: 30 * em,
-    fontSize: 14 * em,
-    color: '#A0AEB8',
-    lineHeight: 18 * em,
-  },
+  card: { width: 150 * em, height: 207 * em, marginLeft: 7.5 * em, marginRight: 7.5 * em },
+  comment: { lineHeight: 12 * em, marginTop: 10 * hm, marginBottom: 24 * hm, textAlign: 'center' },
+  guideline: { marginLeft: 30 * em, marginRight: 30 * em, fontSize: 14 * em, color: '#A0AEB8', lineHeight: 18 * em },
   modal: {
     backgroundColor: '#F9F9F9C7',
-    marginTop: 192 * em,
+    marginTop: 192 * hm,
     marginRight: 0,
     marginLeft: 0,
     marginBottom: 0,
@@ -213,70 +176,23 @@ const styles = {
     height: 44 * em,
     borderBottomColor: '#A4A4A6',
   },
-  modalName: {
-    lineHeight: 26 * em,
-    fontSize: 22 * em,
-    textAlign: 'left',
-    marginLeft: 8 * em,
-  },
-  modalCancel: {
-    fontSize: 17 * em,
-    marginRight: 16 * em,
-    lineHeight: 17 * em,
-    color: '#007AFF',
-  },
+  modalName: { lineHeight: 26 * em, fontSize: 22 * em, textAlign: 'left', marginLeft: 8 * em },
+  modalCancel: { fontSize: 17 * em, marginRight: 16 * em, lineHeight: 17 * em, color: '#007AFF' },
   modalList: {
     marginLeft: 16 * em,
     height: 39.5 * em,
-    alignItems: 'flex-start',
+    alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'flex-start',
     borderBottomWidth: 1 * em,
     borderBottomColor: '#A4A4A6',
   },
-  modalListLeft: {
-    width: 79 * em,
-    flexDirection: 'row-reverse',
-  },
-  modalListRight: {
-    flex: 1,
-    marginLeft: 16 * em,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  modalCardImage: {
-    width: 40 * em,
-    height: 26 * em,
-    backgroundColor: 'blue',
-  },
-  modalArrowIcon: {
-    width: 10 * em,
-    height: 16 * em,
-    marginTop: 6 * em,
-    marginRight: 16 * em,
-  },
-  modalCreditCard: {
-    fontSize: 12 * em,
-    width: 114 * em,
-    lineHeight: 14 * em,
-  },
-  modalTotalTxt: {
-    fontSize: 12 * em,
-    lineHeight: 14 * em,
-    color: '#76767A',
-    textAlign: 'left',
-  },
-  modalTotalPrice: {
-    fontSize: 12 * em,
-    lineHeight: 14 * em,
-    color: '#000000',
-    textAlign: 'right',
-    marginRight: 16 * em,
-  },
-  modalPayBtn: {
-    alignSelf: 'center',
-    marginBottom: 48 * em,
-  },
+  modalListLeft: { width: 79 * em, flexDirection: 'row-reverse' },
+  modalListRight: { flex: 1, marginLeft: 16 * em, flexDirection: 'row', justifyContent: 'space-between' },
+  modalCardImage: { width: 40 * em, height: 26 * em, backgroundColor: 'blue' },
+  modalArrowIcon: { marginTop: 6 * hm, marginRight: 16 * em },
+  modalCreditCard: { fontSize: 12 * em, width: 114 * em, lineHeight: 14 * em },
+  modalPayBtn: { alignSelf: 'center', marginBottom: 48 * hm },
 };
 
 export default PremiumSubscriptionScreen;

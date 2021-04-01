@@ -10,25 +10,25 @@ import SellServiceType from 'model/service/SellServiceType';
 const paricipationLists = [
   new SellService(
     'La belle coiffure',
-    'Je vends Bon plan',
-    'Coiffure et soin keratine',
+    'Je vends Promotion',
+    'Sac de courses transparent',
     '04 Fév · 08h00',
     require('assets/images/sample_cover_14.png'),
     1,
     SellServiceType.PROMOTION,
-    '5,00 €',
+    '12,00 €',
     '8,00 €',
     '(Jusqu’au 3 Mars)'
   ),
   new SellService(
     'La belle coiffure',
-    'Je vends Bon plan',
-    'Hydratant en spray',
+    'Je vends Promotion',
+    'Shampooing sec',
     '04 Fév · 08h00',
     require('assets/images/sample_cover_14.png'),
     1,
     SellServiceType.PROMOTION,
-    '5,00 €',
+    '3,50 €',
     '6,00 €'
   ),
 ];
@@ -55,8 +55,12 @@ const ProPromotionsTabScreen = () => {
   //       />
   //     </TouchableOpacity>
   //   );
-  const renderFlatList = ({ item }) => (
-    <ProfileCommonNeedCard data={item} style={styles.listItem} onPress={() => Actions.proSell({ data: item })} />
+  const renderFlatList = ({ item, index }) => (
+    <ProfileCommonNeedCard
+      data={item}
+      style={[styles.listItem, { marginBottom: paricipationLists.length === index + 1 ? 50 * hm : 15 * hm }]}
+      onPress={() => Actions.proSell({ data: item })}
+    />
   );
   const listView = (
     <FlatList

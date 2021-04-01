@@ -86,6 +86,8 @@ import CheckBlue from 'assets/svg/icons/navigation/CheckBlue.svg';
 import Address from 'assets/svg/icons/navigation/Address.svg';
 import Calendar from 'assets/svg/icons/navigation/Calendar.svg';
 import RightArrow from 'assets/svg/icons/navigation/RightArrow.svg';
+import RightArrowBlue from 'assets/svg/icons/navigation/RightArrowBlue.svg';
+
 import TypeRequest from 'assets/svg/icons/navigation/TypeRequest.svg';
 import SelectionOn from 'assets/svg/icons/navigation/SelectionOn.svg';
 import SelectionOff from 'assets/svg/icons/navigation/SelectionOff.svg';
@@ -127,7 +129,7 @@ import PurchasedPremium from 'assets/svg/icons/navigation/PurchasedPremium.svg';
 
 export {PurchasedPremium, TabPlus, TabCalendarOff, TabCalendarOn, TabCardOff, TabCardOn, TabMessageOff, TabMessageOn };
 
-export {
+export {RightArrowBlue,
   EmailBlue,
   MobileBlue,
   Mobile,
@@ -346,8 +348,8 @@ import AddPhotoGreen from 'assets/svg/icons/post/AddPhotoGreen.svg';
 import AddPhotoPurple from 'assets/svg/icons/post/AddPhotoPurple.svg';
 import AddPhotoYellow from 'assets/svg/icons/post/AddPhotoYellow.svg';
 import EditAddPhoto from 'assets/svg/icons/post/EditAddPhoto.svg';
-
-export {EditAddPhoto,
+import Premium from 'assets/svg/images/Premium.svg';
+export {EditAddPhoto,Premium,
   Edit,
   Edit1,
   Edit2,

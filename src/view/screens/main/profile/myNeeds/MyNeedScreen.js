@@ -8,7 +8,7 @@ import MabulDetailView from 'view/components/view/MabulDetailView';
 
 const needData = new NeedService(
   new User('Mathieu Torin', require('assets/images/tab_profile_off.png'), 'anton@gmail.com'),
-  'J’ai besoin coup de main bricolage',
+  'J’ai besoin Coup de main bricolage',
   'Récolter des figues',
   new Date(),
   require('assets/images/sample_cover_9.png'),

@@ -9,10 +9,11 @@ import CommonBackButton from 'view/components/button/CommonBackButton';
 import SeeMore from 'react-native-see-more-inline';
 import { Actions } from 'react-native-router-flux';
 import AvatarWithBadge from 'view/components/view/AvatarWithBadge';
-import FriendInvitePopupScreen from 'view/screens/main/friends/FriendInvitePopupScreen';
+import FriendInvitePopupScreen from 'view/screens/main/friends/popup/FriendInvitePopupScreen';
 import { getUserBadge } from 'view/common/icons';
 import CommonListItem from 'view/components/adapter/CommonListItem';
 import NeedStatusType from 'model/service/NeedStatusType';
+import Message from 'model/message/Message';
 
 const MabulDetailView = (props) => {
   const [invitePopupVisible, setInvitePopupVisible] = useState(false);
@@ -35,7 +36,14 @@ const MabulDetailView = (props) => {
       onPress={() => Actions.editNeed()}
     />
   );
-  const AskButton = <CommonButton style={styles.quizBtn} textStyle={{ color: '#41D0E2' }} text="Poser une question" />;
+  const AskButton = (
+    <CommonButton
+      onPress={() => Actions.activityMessage({ message: new Message(data.user, data.title, data.coverImage) })}
+      style={styles.quizBtn}
+      textStyle={{ color: '#41D0E2' }}
+      text="Poser une question"
+    />
+  );
   return (
     <>
       <ScrollView style={styles.scrollView}>
@@ -62,11 +70,11 @@ const MabulDetailView = (props) => {
             }
             title={data.user.name}
             titleStyle={styles.userName}
-            subTitle={data.relationship && 'Mon ami/ ma famille'}
+            subTitle={data.relationship || 'Mon ami/ ma famille'}
             subTitleStyle={colorStyles.label}
           />
-          <CommentText style={styles.comment} text={data.title} color={'#1E2D60'} />
-          <TitleText text={data.organName} style={styles.title} />
+          <CommentText style={styles.comment} text={data.organName} color={'#1E2D60'} />
+          <TitleText text={data.title} style={styles.title} />
           <SeeMore
             numberOfLines={4}
             seeLessText="Voir moins"
@@ -78,11 +86,9 @@ const MabulDetailView = (props) => {
           </SeeMore>
           {data.status === NeedStatusType.CANCELED ? <></> : data.relationship ? AskButton : ModifyButton}
           {data.status !== NeedStatusType.CANCELED && InviteButton}
-          <View style={{ height: 130 * hm }} />
         </View>
       </ScrollView>
-      <CommonBackButton dark style={styles.backBtnView} />
-
+      <CommonBackButton dark style={styles.backBtnView} onPress={() => Actions.main({ friendNav: 'Carte' })} />
       <FriendInvitePopupScreen visible={invitePopupVisible} onPress={() => setInvitePopupVisible(false)} />
     </>
   );
@@ -113,6 +119,7 @@ const styles = {
     borderTopLeftRadius: 28 * em,
     backgroundColor: '#ffffff',
     width: '100%',
+    paddingBottom: 50 * hm,
   },
   timeTxt: {
     fontFamily: 'Lato-Bold',

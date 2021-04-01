@@ -77,12 +77,14 @@ import ProNeedsHomeScreen from 'view/screens/main/profile/proProfile/proNeeds/Pr
 import MyAlertScreen from 'view/screens/main/profile/myNeeds/MyAlertScreen';
 import ProSellScreen from 'view/screens/main/profile/proProfile/proNeeds/ProSellScreen';
 import GroupDetailScreen from 'view/screens/main/profile/myCircles/GroupDetailScreen';
-import ProProfileHomeScreen from '../view/screens/main/profile/proProfile/ProProfileHomeScreen';
-import MyProInformationScreen from '../view/screens/main/profile/proProfile/MyProInformationScreen';
-import MabulNeedSortScreen from '../view/screens/main/mabul/need/MabulNeedSortScreen';
-import NameGroupScreen from '../view/screens/main/profile/myCircles/NameGroupScreen';
-import MabulSellPriceScreen from '../view/screens/main/mabul/sell/MabulSellPriceScreen';
-import MabulOrganizeParticipationScreen from '../view/screens/main/mabul/organize/MabulOrganizeParticipationScreen';
+import ProProfileHomeScreen from 'view/screens/main/profile/proProfile/ProProfileHomeScreen';
+import ProInformationScreen from 'view/screens/main/profile/proProfile/ProInformationScreen';
+import MabulNeedSortScreen from 'view/screens/main/mabul/need/MabulNeedSortScreen';
+import NameGroupScreen from 'view/screens/main/profile/myCircles/NameGroupScreen';
+import MabulSellPriceScreen from 'view/screens/main/mabul/sell/MabulSellPriceScreen';
+import MabulOrganizeParticipationScreen from 'view/screens/main/mabul/organize/MabulOrganizeParticipationScreen';
+import ProSettingScreen from 'view/screens/main/profile/proProfile/ProSettingScreen';
+import EditProNeedScreen from 'view/screens/main/profile/proProfile/proNeeds/EditProNeedScreen';
 
 class Routes extends Component {
   render() {
@@ -171,8 +173,11 @@ class Routes extends Component {
           <Scene key="proProfileHome" hideNavBar component={ProProfileHomeScreen} />
           <Scene key="profileHome" hideNavBar component={ProfileHomeScreen} />
           <Scene key="proNeedsHome" hideNavBar component={ProNeedsHomeScreen} />
+          <Scene key="editProNeed" hideNavBar component={EditProNeedScreen} />
 
-          <Scene key="myProInformation" hideNavBar component={MyProInformationScreen} />
+          <Scene key="proInformation" hideNavBar component={ProInformationScreen} />
+          <Scene key="proSetting" hideNavBar component={ProSettingScreen} />
+
           <Scene key="editProProfile" hideNavBar component={EditProProfileScreen} />
           <Scene key="proProfileOverview" hideNavBar component={ProProfileOverviewScreen} />
 

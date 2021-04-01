@@ -4,6 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import { em, WIDTH } from 'view/common/const';
 import CommentText from 'view/components/text/CommentText';
 import CommonBackButton from 'view/components/button/CommonBackButton';
+import CommonHeader from './CommonHeader';
 
 function hexToRGB(hex, alpha) {
   var r = parseInt(hex.slice(1, 3), 16),
@@ -17,16 +18,15 @@ function hexToRGB(hex, alpha) {
 }
 
 const MabulCommonHeader = (props) => {
-  console.log(props.noBackButton);
-  var topViewHeader = props.noBackButton ? (
-    <View style={[styles.topViewHeader, { flexDirection: 'row-reverse' }]}>
-      <CommentText text={'Annuler'} onPress={() => Actions.main()} style={styles.mainBtn} />
-    </View>
-  ) : (
-    <View style={styles.topViewHeader}>
-      <CommonBackButton dark={true} style={styles.backBtnView} />
-      <CommentText text={'Annuler'} onPress={() => Actions.main()} style={styles.mainBtn} />
-    </View>
+  const emptyBack = <View style={{ height: 44 * em, left: 44 * em }} />;
+  var topViewHeader = (
+    <CommonHeader
+      dark
+      leftView={props.noBackButton ? emptyBack : null}
+      rightTxt="Annuler"
+      rightTxtStyle={styles.rightTxt}
+      onRightPress={() => Actions.main()}
+    />
   );
   return (
     <View style={[styles.container, props.style]}>
@@ -44,11 +44,8 @@ const MabulCommonHeader = (props) => {
 };
 
 const styles = {
-  container: {
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
-    width: '100%',
-  },
+  container: { flexDirection: 'column', justifyContent: 'flex-end', width: '100%' },
+  rightTxt: { color: 'rgba(106, 133, 150, 1)', fontSize: 14 * em, marginRight: 15 * em, fontFamily: 'Lato-Bold' },
   topViewHeader: {
     height: 44 * em,
     flexDirection: 'row',

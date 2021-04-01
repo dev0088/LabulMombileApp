@@ -69,7 +69,7 @@ export default function FriendsNavigator(props) {
 }
 
 const styles = StyleSheet.create({
-  TabBarMainContainer: {  flex: 1 },
+  TabBarMainContainer: { backgroundColor: '#F0F5F7', flex: 1 },
   functionBtn: {
     width: 46 * em,
     height: 46 * em,

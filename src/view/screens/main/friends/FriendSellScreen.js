@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import TitleText from 'view/components/text/TitleText';
-import { em, hexToRGB } from 'view/common/const';
+import { em, hm } from 'view/common/const';
 import CommentText from 'view/components/text/CommentText';
 import CommonButton from 'view/components/button/CommonButton';
 import CommonBackButton from 'view/components/button/CommonBackButton';
-import FriendInvitePopupScreen from 'view/screens/main/friends/FriendInvitePopupScreen';
+import FriendInvitePopupScreen from 'view/screens/main/friends/popup/FriendInvitePopupScreen';
 import { Actions } from 'react-native-router-flux';
 import NeedStatusType from '../../../../model/service/NeedStatusType';
+import SeeMore from 'react-native-see-more-inline';
 
 const FriendSellScreen = () => {
   const [invitePopupVisible, setInvitePopupVisible] = useState(false);
@@ -23,16 +24,15 @@ const FriendSellScreen = () => {
           <CommentText style={styles.comment} text="Je vends Objet Entretien de la maison" color={'#1E2D60'} />
           <TitleText text={'Spray cuisine 100% Bio'} style={styles.title} />
           <CommentText text={'5,00 €'} style={styles.price} color="#1E2D60" />
-
-          <View style={{ marginLeft: 30 * em }}>
-            <CommentText text={'Lorem ipsum dolor sit amet, consetetur '} style={styles.content} />
-            <CommentText text={'sadipscing elitr, sed diam nonumy eirmod tempor '} style={styles.content} />
-            <CommentText text={'invidunt ut labore et dolore magna aliquyam erat, '} style={styles.content} />
-            <View style={styles.contentBox}>
-              <CommentText text={'ssed diam voluptua. At vero eos… '} style={styles.content} />
-              <CommentText text={'Continuer à lire'} color={'#40CDDE'} style={styles.content} />
-            </View>
-          </View>
+          <SeeMore
+            numberOfLines={4}
+            seeLessText="Voir moins"
+            seeMoreText="Continuer à lire"
+            style={styles.content}
+            linkColor="#40CDDE">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+            dolore magna aliquyam erat, ssed diam voluptua. At vero eos dsfsdfwefwef
+          </SeeMore>
           <CommonButton
             style={styles.quizBtn}
             text="Je suis intéresse"
@@ -57,7 +57,7 @@ const FriendSellScreen = () => {
 
 const styles = {
   container: { flex: 1, backgroundColor: 'transparent' },
-  backBtnView: { backgroundColor: '#ffffff', position: 'absolute', left: 15 * em, top: 27 * em },
+  backBtnView: { backgroundColor: '#ffffff', position: 'absolute', left: 15 * em, top: 27 * hm },
 
   backBtn: { width: 44 * em, height: 44 * em, resizeMode: 'contain', zIndex: 1 },
   cover: {
@@ -70,16 +70,16 @@ const styles = {
     borderTopLeftRadius: 28 * em,
     backgroundColor: '#ffffff',
     width: '100%',
+    paddingHorizontal: 30 * em,
   },
   icon: {
     width: 61 * em,
     height: 61 * em,
-    marginTop: -30.5 * em,
+    marginTop: -30.5 * hm,
     alignSelf: 'center',
   },
   itemName: {
-    marginTop: 5 * em,
-    height: 22 * em,
+    marginTop: 5 * hm,
     fontSize: 18 * em,
     lineHeight: 23 * em,
     textAlign: 'left',
@@ -99,38 +99,34 @@ const styles = {
     borderWidth: 2 * em,
     borderColor: '#ffffff',
   },
-  comment: { lineHeight: 15 * em, fontSize: 13 * em, textAlign: 'left', marginLeft: 30 * em, marginTop: 21 * em },
+  comment: { lineHeight: 15 * em, fontSize: 13 * em, textAlign: 'left', marginTop: 21 * hm },
   title: {
     height: 28 * em,
     lineHeight: 30 * em,
     fontSize: 24 * em,
     textAlign: 'left',
-    marginLeft: 30 * em,
-    marginTop: 5 * em,
+    marginTop: 5 * hm,
     fontFamily: 'Lato-Black',
-    marginBottom: 10 * em,
+    marginBottom: 10 * hm,
   },
-  price: {
-    fontSize: 18 * em,
-    marginLeft: 30 * em,
-    lineHeight: 21 * em,
-    height: 21 * em,
+  price: { fontSize: 18 * em, lineHeight: 21 * em, height: 21 * em, textAlign: 'left', textAlignVertical: 'center' },
+  contentBox: { flexDirection: 'row', justifyContent: 'flex-start' },
+  content: {
+    fontSize: 16 * em,
+    color: '#6A8596',
+    lineHeight: 25 * em,
     textAlign: 'left',
-    textAlignVertical: 'center',
+    marginTop: 3 * hm,
+    fontFamily: 'Lato-Regular',
   },
-  contentBox: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-  content: { lineHeight: 25 * em, textAlign: 'left', marginTop: 3 * em },
-  quizBtn: { color: '#41D0E2', marginLeft: 30 * em, marginTop: 25 * em },
-  inviteBtn: { marginLeft: 30 * em, marginTop: 15 * em, backgroundColor: 'transparent', color: '#41D0E2' },
+  quizBtn: { color: '#41D0E2', marginTop: 25 * hm },
+  inviteBtn: { marginTop: 15 * hm, backgroundColor: 'transparent', color: '#41D0E2' },
 
   btnBox: {
     paddingLeft: 26 * em,
     paddingRight: 26 * em,
-    paddingTop: 15 * em,
-    paddingBottom: 22 * em,
+    paddingTop: 15 * hm,
+    paddingBottom: 22 * hm,
   },
 };
 

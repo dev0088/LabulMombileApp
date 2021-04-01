@@ -11,12 +11,12 @@ const needsLists = [
   new SellService(
     'La belle coiffure',
     'Je vends Bon plan',
-    'Coiffure et soin keratine',
+    'Créme hydratant Bio',
     '04 Fév · 08h00',
     require('assets/images/sample_cover_132.png'),
     1,
     SellServiceType.TIP,
-    '5,00 €',
+    '50,00 €',
     '',
     '(Jusqu’au 3 Mars)'
   ),
@@ -64,8 +64,12 @@ const ProTipsTabScreen = () => {
   //       />
   //     </TouchableOpacity>
   //   );
-  const renderFlatList = ({ item }) => (
-    <ProfileCommonNeedCard data={item} style={styles.listItem} onPress={() => Actions.proSell({ data: item })} />
+  const renderFlatList = ({ item, index }) => (
+    <ProfileCommonNeedCard
+      data={item}
+      style={[styles.listItem, { marginBottom: needsLists.length === index + 1 ? 50 * hm : 15 * hm }]}
+      onPress={() => Actions.proSell({ data: item })}
+    />
   );
   const listView = (
     <FlatList

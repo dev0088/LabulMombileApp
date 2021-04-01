@@ -7,14 +7,19 @@ import TitleText from 'view/components/text/TitleText';
 const FriendCommonHeader = (props) => {
   return (
     <View style={styles.header}>
-      <CommonHeader dark={true} centerTxt={props.upperTitle} logo={true} style={styles.commonHeader} />
+      <CommonHeader
+        dark={true}
+        centerTxt={props.upperTitle}
+        rightView={<View width={44 * em} height={44 * em} />}
+        style={styles.commonHeader}
+      />
       <TitleText text={props.title} style={styles.title} />
     </View>
   );
 };
 
 const styles = {
-  header: { height: 131 * hm, marginBottom: 35 * hm },
+  header: { paddingBottom: 10 * hm },
   commonHeader: { marginTop: 27 * hm },
   title: {
     fontSize: 34 * em,

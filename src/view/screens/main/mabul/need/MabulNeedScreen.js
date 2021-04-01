@@ -13,7 +13,6 @@ const needItems = [
   { id: 2, itemName: 'Outil' },
 ];
 const MabulNeedScreen = (props) => {
-  console.log(needItems[0].onPress);
   const renderFlatList = ({ item }) => (
     <MabulCommonListItem
       text={item.itemName}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet, TouchableOpacity, Image, ImageBackground } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Image, ImageBackground, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FriendsNavigator from './friends/FriendsNavigator';
@@ -23,123 +23,76 @@ import {
 } from 'assets/svg/icons';
 const Tab = createBottomTabNavigator();
 
-export default function MainScreen(props) {
-  const [selectedTab, setSelectedTab] = React.useState(0);
-  const [mabulVisible, setMabulVisible] = React.useState(false);
+const myPhoto = require('assets/images/tab_profile_off.png');
+const proPhoto = require('assets/images/avatar_curology.png');
 
-  let mapImage = TabCardOff(styles.TapImage);
-  if (selectedTab === 0) {
-    mapImage = TabCardOn(styles.TapImage);
-  }
-  let calendarImage = TabCalendarOff(styles.TapImage);
-  if (selectedTab === 1) {
-    calendarImage = TabCalendarOn(styles.TapImage);
-  }
-  let addImage = (
-    <View
-      style={{
-        width: 46 * em,
-        height: 46 * em,
-        backgroundColor: 'transparent',
-        borderRadius: 23 * em,
-        elevation: 5,
-        shadowColor: '#254D5612',
-        shadowOffset: {
-          width: 0,
-          height: 16 * hm,
-        },
-        shadowRadius: 24 * em,
-      }}>
-      {TabPlus(styles.AddImage)}
-    </View>
-  );
-  let chatImage = TabMessageOff(styles.TapImage);
-  if (selectedTab === 3) {
-    chatImage = TabMessageOn(styles.TapImage);
-  }
-  let profileImage = require('assets/images/tab_profile_off.png');
-  if (selectedTab === 4) {
-    profileImage = require('assets/images/tab_profile_on.png');
-  }
-  let proProfileImage = require('assets/images/avatar_curology.png');
-  if (selectedTab === 4) {
-    proProfileImage = require('assets/images/avatar_curology.png');
+const MainTabBar = ({ state, descriptors, navigation }) => {
+  const [mabulVisible, setMabulVisible] = React.useState(false);
+  const focusedOptions = descriptors[state.routes[state.index].key].options;
+  const TabIcons = [
+    { on: TabCardOn(styles.TapImage), off: TabCardOff(styles.TapImage) },
+    {
+      on: TabCalendarOn({ width: 22 * em, height: 22 * em }),
+      off: TabCalendarOff({ width: 22 * em, height: 22 * em }),
+    },
+    { on: TabPlus(styles.AddImage), off: TabPlus(styles.AddImage) },
+    { on: TabMessageOn(styles.TapImage), off: TabMessageOff(styles.TapImage) },
+  ];
+
+  if (focusedOptions.tabBarVisible === false) {
+    return null;
   }
 
   return (
-    <View style={styles.TabBarMainContainer}>
-      <NavigationContainer ref={navigationRef}>
-        <Tab.Navigator initialRouteName={props.tabNav ? props.tabNav : 'Friends'}>
-          <Tab.Screen
-            name="Friends"
-            component={FriendsNavigator}
-            options={{ tabBarVisible: false }}
-            initialParams={{ frinedNav: props.friendNav || 'Carte' }}
-          />
-          <Tab.Screen name="Calendar" component={CalendarHomeScreen} options={{ tabBarVisible: false }} />
-          <Tab.Screen name="Activity" component={MyActivityHomeScreen} options={{ tabBarVisible: false }} />
-          <Tab.Screen name="MyNotifictions" component={MyNotificationsScreen} options={{ tabBarVisible: false }} />
-          <Tab.Screen
-            name="Profile"
-            component={ProfileHomeScreen}
-            options={{ tabBarVisible: false }}
-            initialParams={{ purchased: props.purchased }}
-          />
-          <Tab.Screen
-            name="ProProfile"
-            component={ProProfileHomeScreen}
-            options={{ tabBarVisible: false }}
-            initialParams={{ accountType: props.accountType, purchased: props.purchased }}
-          />
-        </Tab.Navigator>
-      </NavigationContainer>
-      <ImageBackground style={styles.VirtualTabButtons} source={require('assets/images/bg_bottom_tab.png')}>
-        <TouchableOpacity
-          activeOpacity={0.6}
-          onPress={() => {
-            navigationRef.current.navigate('Friends');
-            setSelectedTab(0);
-          }}
-          style={styles.TapImageWrapper}>
-          {mapImage}
-        </TouchableOpacity>
-        <TouchableOpacity
-          activeOpacity={0.6}
-          onPress={() => {
-            navigationRef.current.navigate('Calendar');
-            setSelectedTab(1);
-          }}
-          style={styles.TapImageWrapper}>
-          {calendarImage}
-        </TouchableOpacity>
-        <TouchableOpacity
-          activeOpacity={0.6}
-          onPress={() => {
-            setMabulVisible(true);
-            setSelectedTab(2);
-          }}
-          style={styles.AddImageWrapper}>
-          {addImage}
-        </TouchableOpacity>
-        <TouchableOpacity
-          activeOpacity={0.6}
-          onPress={() => {
-            navigationRef.current.navigate('Activity');
-            setSelectedTab(3);
-          }}
-          style={styles.TapImageWrapper}>
-          {chatImage}
-        </TouchableOpacity>
-        <TouchableOpacity
-          activeOpacity={0.6}
-          onPress={() => {
-            navigationRef.current.navigate('Profile');
-            setSelectedTab(4);
-          }}
-          style={styles.TapImageWrapper}>
-          <Image source={props.tabNav === 'ProProfie' ? proProfileImage : profileImage} style={styles.TapImage} />
-        </TouchableOpacity>
-      </ImageBackground>
+    <ImageBackground style={styles.VirtualTabButtons} source={require('assets/images/bg_bottom_tab.png')}>
+      {state.routes.map((route, index) => {
+        const { options } = descriptors[route.key];
+        const isFocused = state.index === index;
+        const tabIcon =
+          index <= 3 && (isFocused || (state.index === 6 && index === 3) ? TabIcons[index].on : TabIcons[index].off);
+        const onPress = () => {
+          const event = navigation.emit({
+            type: 'tabPress',
+            target: route.key,
+            canPreventDefault: true,
+          });
+
+          if (!isFocused && !event.defaultPrevented) {
+            index === 2 ? setMabulVisible(true) : navigation.navigate(route.name);
+          }
+        };
+
+        const onLongPress = () => {
+          navigation.emit({
+            type: 'tabLongPress',
+            target: route.key,
+          });
+        };
+        if (route.name === 'MyNotifictions') {
+          return <></>;
+        }
+        if (route.name === 'ProProfile') {
+          return <></>;
+        }
+        return (
+          <TouchableOpacity
+            accessibilityRole="button"
+            accessibilityState={isFocused ? { selected: true } : {}}
+            accessibilityLabel={options.tabBarAccessibilityLabel}
+            testID={options.tabBarTestID}
+            onPress={onPress}
+            onLongPress={onLongPress}
+            style={{ marginBottom: index === 2 ? -8 * hm : 0 }}>
+            {tabIcon}
+            {index === 4 && (
+              <View
+                style={[styles.photoWrapper, { borderColor: isFocused || state.index === 5 ? '#4BD8E9' : '#ffffff' }]}>
+                <Image source={state.index === 5 ? proPhoto : myPhoto} style={styles.TapImage} />
+              </View>
+            )}
+          </TouchableOpacity>
+        );
+      })}
       <Modal backdropColor={'transparent'} style={styles.modalStyle} isVisible={mabulVisible}>
         <MabulHomeScreeen
           onClosePress={() => {
@@ -147,11 +100,45 @@ export default function MainScreen(props) {
           }}
         />
       </Modal>
+    </ImageBackground>
+  );
+};
+export default function MainScreen(props) {
+  return (
+    <View style={styles.TabBarMainContainer}>
+      <NavigationContainer ref={navigationRef}>
+        <Tab.Navigator
+          tabBar={(props) => <MainTabBar {...props} />}
+          initialRouteName={props.tabNav ? props.tabNav : 'Friends'}>
+          <Tab.Screen
+            name="Friends"
+            component={FriendsNavigator}
+            initialParams={{ friendNav: props.friendNav || 'Carte' }}
+          />
+          <Tab.Screen name="Calendar" component={CalendarHomeScreen} />
+          <Tab.Screen name="Mabul" component={MabulHomeScreeen} />
+          <Tab.Screen
+            name="Activity"
+            component={MyActivityHomeScreen}
+            initialParams={{ activityType: props.activityType || 'needs', noEmpty: props.noEmpty }}
+          />
+          <Tab.Screen name="Profile" component={ProfileHomeScreen} initialParams={{ purchased: props.purchased }} />
+          <Tab.Screen
+            name="ProProfile"
+            component={ProProfileHomeScreen}
+            initialParams={{
+              accountType: props.accountType,
+              purchased: props.purchased,
+            }}
+          />
+          <Tab.Screen name="MyNotifictions" component={MyNotificationsScreen} />
+        </Tab.Navigator>
+      </NavigationContainer>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
+const styles = {
   TabBarMainContainer: {
     flex: 1,
   },
@@ -164,12 +151,9 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     flexDirection: 'row',
-    // backgroundColor:'gray',elevation:10,
-  },
-  TabBackground: {
-    flex: 1,
-    width: '100%',
-    resizeMode: 'contain',
+    alignItems: 'flex-end',
+    paddingBottom: 30 * hm,
+    justifyContent: 'space-around',
   },
   AddImageWrapper: {
     flex: 1,
@@ -189,4 +173,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   TapImage: { width: 22 * em, height: 22 * em },
-});
+  photoWrapper: {
+    width: 24 * em,
+    height: 24 * em,
+    borderWidth: 2 * em,
+    borderRadius: 14 * em,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+};
